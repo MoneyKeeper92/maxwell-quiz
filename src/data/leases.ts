@@ -406,15 +406,7 @@ What amount should Oak report as a lease liability in its December 31, Year 2, b
 <p style="margin-left:0; margin-right:0">Finance Lease Liability Calculation Under ASC 842</p>
 </div>
 
-<div style="padding:20px"><!-- Video Section -->
-<div style="background-color:#f0f8ff; border-left:5px solid #0099d4; border-radius:8px; margin-bottom:20px; padding:15px; text-align:center">
-<h3>Video Explanation</h3>
-
-<div style="background-color:white; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); padding:15px">
-<video controls="controls" height="400" src="/uploads/2025/07/07/17013-f.mp4" style="max-width:700px" width="100%">Your browser does not support the video tag.</video>
-</div>
-</div>
-<!-- Answer Summary -->
+<div style="padding:20px"><!-- Answer Summary -->
 
 <div style="background-color:#e8f5e9; border-left:5px solid #68d3a7; border-radius:8px; margin-bottom:20px; padding:15px; text-align:center">
 <h3>Correct Answer</h3>
@@ -1772,15 +1764,7 @@ What is the interest expense related to the lease for the first year?`,
 <p style="margin-left:0; margin-right:0">Straight-Line Expense Recognition Method</p>
 </div>
 
-<div style="padding:20px"><!-- Video Section -->
-<div style="background-color:#f0f8ff; border-left:5px solid #0099d4; border-radius:8px; margin-bottom:20px; padding:15px; text-align:center">
-<h3>Video Explanation</h3>
-
-<div style="background-color:white; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); padding:15px">
-<video controls="controls" height="400" src="/uploads/2025/07/07/1707-f.mp4" style="max-width:700px" width="100%">Your browser does not support the video tag.</video>
-</div>
-</div>
-<!-- Answer Summary -->
+<div style="padding:20px"><!-- Answer Summary -->
 
 <div style="background-color:#e8f5e9; border-left:5px solid #68d3a7; border-radius:8px; margin-bottom:20px; padding:15px; text-align:center">
 <h3>Correct Answer</h3>
@@ -2166,15 +2150,7 @@ Interest Expense = $304,542 × 5% = <strong>$15,227</strong>
 <p style="margin-left:0; margin-right:0">Year-End Liability Balance After Interest and Payments</p>
 </div>
 
-<div style="padding:20px"><!-- Video Section -->
-<div style="background-color:#f0f8ff; border-left:5px solid #0099d4; border-radius:8px; margin-bottom:20px; padding:15px; text-align:center">
-<h3>Video Explanation</h3>
-
-<div style="background-color:white; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); padding:15px">
-<video controls="controls" height="400" src="/uploads/2025/07/07/1708-f.mp4" style="max-width:700px" width="100%">Your browser does not support the video tag.</video>
-</div>
-</div>
-<!-- Answer Summary -->
+<div style="padding:20px"><!-- Answer Summary -->
 
 <div style="background-color:#e8f5e9; border-left:5px solid #68d3a7; border-radius:8px; margin-bottom:20px; padding:15px; text-align:center">
 <h3>Correct Answer</h3>
