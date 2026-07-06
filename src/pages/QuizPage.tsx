@@ -7,6 +7,10 @@ export default function QuizPage() {
   const quiz = getQuiz(quizKey);
   const catalogItem = getCatalogItem(quizKey);
 
+  if (quiz) {
+    return <QuizRunner quiz={quiz} />;
+  }
+
   if (!catalogItem) {
     return (
       <div className="not-found-card">
@@ -19,17 +23,13 @@ export default function QuizPage() {
     );
   }
 
-  if (!quiz) {
-    return (
-      <div className="not-found-card">
-        <h1>{catalogItem.title}</h1>
-        <p>This quiz is coming soon.</p>
-        <Link to="/" className="text-link">
-          ← Back to all quizzes
-        </Link>
-      </div>
-    );
-  }
-
-  return <QuizRunner quiz={quiz} />;
+  return (
+    <div className="not-found-card">
+      <h1>{catalogItem.title}</h1>
+      <p>This quiz is coming soon.</p>
+      <Link to="/" className="text-link">
+        ← Back to all quizzes
+      </Link>
+    </div>
+  );
 }

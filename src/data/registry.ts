@@ -3,11 +3,13 @@ import { quizCatalog, type QuizCatalogItem } from "./catalog";
 import { cashToAccrualQuiz } from "./cash-to-accrual";
 import { ratiosQuiz } from "./ratios";
 import { leasesQuiz } from "./leases";
+import { testQuiz } from "./test";
 
 const quizzes: Record<string, Quiz> = {
   cashtoaccrual: cashToAccrualQuiz,
   ratios: ratiosQuiz,
   leases: leasesQuiz,
+  test: testQuiz,
 };
 
 export interface HomeQuizLink extends QuizCatalogItem {
