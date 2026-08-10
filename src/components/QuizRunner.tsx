@@ -10,20 +10,10 @@ interface QuizRunnerProps {
   quiz: Quiz;
 }
 
-function scoreHeading(correct: number, total: number): string {
-  const pct = Math.round((correct / total) * 100);
-  let label = "Keep studying!";
-  if (correct === total) label = "Perfect score!";
-  else if (pct >= 80) label = "Great work!";
-  else if (pct >= 60) label = "Solid effort!";
-  return `${label} — ${pct}% (${correct}/${total})`;
-}
-
-function scoreSubtext(correct: number, total: number): string {
-  if (correct === total) {
-    return "You nailed every question. Keep the momentum going with another practice set below.";
-  }
-  return "Review the topics you missed, then try another practice set below.";
+function scoreRingColor(pct: number): string {
+  if (pct >= 80) return "#28a745";
+  if (pct >= 60) return "#e9a825";
+  return "#e57373";
 }
 
 export default function QuizRunner({ quiz }: QuizRunnerProps) {
@@ -40,6 +30,9 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
   const isCorrect = userAnswer === question.correctIndex;
   const correctCount = answers.filter(
     (a, i) => a === quiz.questions[i].correctIndex,
+  ).length;
+  const incorrectCount = answers.filter(
+    (a, i) => a !== null && a !== quiz.questions[i].correctIndex,
   ).length;
   const isLast = index === total - 1;
   const otherQuizzes = getHomeQuizLinks().filter(
@@ -67,11 +60,53 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
   };
 
   if (finished) {
+    const pct = total === 0 ? 0 : Math.round((correctCount / total) * 100);
+    const radius = 40;
+    const circumference = 2 * Math.PI * radius;
+    const dashOffset = circumference - (pct / 100) * circumference;
+    const ringColor = scoreRingColor(pct);
+
     return (
       <div className="results-page show">
-        <div className="score-card">
-          <div className="score-heading">{scoreHeading(correctCount, total)}</div>
-          <div className="score-sub">{scoreSubtext(correctCount, total)}</div>
+        <div className="score-summary">
+          <div className="score-donut" aria-label={`${pct} percent`}>
+            <svg viewBox="0 0 100 100" className="score-donut-svg">
+              <circle
+                className="score-donut-track"
+                cx="50"
+                cy="50"
+                r={radius}
+                fill="none"
+              />
+              <circle
+                className="score-donut-progress"
+                cx="50"
+                cy="50"
+                r={radius}
+                fill="none"
+                stroke={ringColor}
+                strokeDasharray={circumference}
+                strokeDashoffset={dashOffset}
+                transform="rotate(-90 50 50)"
+              />
+            </svg>
+            <div className="score-donut-label">{pct}%</div>
+          </div>
+
+          <div className="score-stats">
+            <div className="score-stat">
+              <div className="score-stat-value correct">{correctCount}</div>
+              <div className="score-stat-label">Correct</div>
+            </div>
+            <div className="score-stat">
+              <div className="score-stat-value incorrect">{incorrectCount}</div>
+              <div className="score-stat-label">Incorrect</div>
+            </div>
+            <div className="score-stat">
+              <div className="score-stat-value total">{total}</div>
+              <div className="score-stat-label">Total</div>
+            </div>
+          </div>
         </div>
 
         <div className="other-quizzes-card">

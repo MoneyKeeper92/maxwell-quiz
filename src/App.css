@@ -639,49 +639,111 @@
 }
 
 /* RESULTS PAGE */
-.score-card {
+.score-summary {
+  display: flex;
+  align-items: center;
+  gap: 36px;
   background: var(--white);
   border-radius: 12px;
   border: 1px solid var(--border);
-  padding: 32px;
-  text-align: center;
+  padding: 28px 36px;
   margin-bottom: 28px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
-.score-circle {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: var(--blue);
-  color: #fff;
+.score-donut {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+}
+
+.score-donut-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.score-donut-track {
+  stroke: #e5e7eb;
+  stroke-width: 10;
+}
+
+.score-donut-progress {
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.4s ease;
+}
+
+.score-donut-label {
+  position: absolute;
+  inset: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 16px;
-}
-
-.score-n {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 700;
-  line-height: 1;
+  color: #374151;
 }
 
-.score-d {
-  font-size: 13px;
-  opacity: 0.85;
+.score-stats {
+  display: flex;
+  align-items: stretch;
+  flex: 1;
+  min-width: 0;
 }
 
-.score-heading {
-  font-size: 20px;
+.score-stat {
+  flex: 1;
+  text-align: center;
+  padding: 8px 12px;
+  border-right: 1px solid var(--border);
+}
+
+.score-stat:last-child {
+  border-right: none;
+}
+
+.score-stat-value {
+  font-size: 36px;
   font-weight: 700;
+  line-height: 1.1;
   margin-bottom: 6px;
 }
 
-.score-sub {
-  font-size: 15px;
-  color: var(--muted);
+.score-stat-value.correct {
+  color: #28a745;
+}
+
+.score-stat-value.incorrect {
+  color: #e57373;
+}
+
+.score-stat-value.total {
+  color: #6b7280;
+}
+
+.score-stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+@media (max-width: 600px) {
+  .score-summary {
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+
+  .score-stats {
+    width: 100%;
+  }
+
+  .score-stat-value {
+    font-size: 28px;
+  }
 }
 
 .reviews-embed-card {
