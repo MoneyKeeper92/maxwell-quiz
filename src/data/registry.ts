@@ -4,12 +4,14 @@ import { cashToAccrualQuiz } from "./cash-to-accrual";
 import { ratiosQuiz } from "./ratios";
 import { leasesQuiz } from "./leases";
 import { mostCommonFarQuiz } from "./most-common-far";
+import { aicpaFar2026Quiz } from "./aicpa-far-2026";
 
 const quizzes: Record<string, Quiz> = {
   cashtoaccrual: cashToAccrualQuiz,
   ratios: ratiosQuiz,
   leases: leasesQuiz,
   "most-common-far": mostCommonFarQuiz,
+  "aicpa-far-2026": aicpaFar2026Quiz,
 };
 
 export interface HomeQuizLink extends QuizCatalogItem {

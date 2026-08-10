@@ -9,6 +9,12 @@ export interface QuizCatalogItem {
 
 export const quizCatalog: QuizCatalogItem[] = [
   {
+    key: "aicpa-far-2026",
+    title: "2026 Official AICPA FAR Questions",
+    subtitle: "Released AICPA FAR multiple-choice questions",
+    discipline: "far",
+  },
+  {
     key: "most-common-far",
     title: "10 Most Common FAR Questions",
     subtitle: "High-frequency FAR MCQs across core topics",
