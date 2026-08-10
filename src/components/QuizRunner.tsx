@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { Quiz } from "../data/types";
+import { getHomeQuizLinks } from "../data/registry";
 
 const LETTERS = ["A", "B", "C", "D"];
 const BASELINE_REVIEW_URL = "https://reviews.maxwellstudy.com/far101/";
@@ -20,9 +21,9 @@ function scoreHeading(correct: number, total: number): string {
 
 function scoreSubtext(correct: number, total: number): string {
   if (correct === total) {
-    return "You nailed every question. Complete the steps below to unlock your FAR Baseline Exam.";
+    return "You nailed every question. Keep the momentum going with another practice set below.";
   }
-  return "Complete the steps below to unlock your FAR Baseline Exam and find your weakest areas.";
+  return "Review the topics you missed, then try another practice set below.";
 }
 
 export default function QuizRunner({ quiz }: QuizRunnerProps) {
@@ -42,6 +43,10 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
     (a, i) => a === quiz.questions[i].correctIndex,
   ).length;
   const isLast = index === total - 1;
+  const otherQuizzes = getHomeQuizLinks().filter(
+    (item) => item.key !== quiz.key && item.available,
+  );
+
   const goTo = (next: number) => {
     if (next < 0 || next >= total) return;
     setIndex(next);
@@ -57,7 +62,7 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
     });
   };
 
-  const showResults = () => {
+  const submitQuiz = () => {
     setFinished(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -70,7 +75,32 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
           <div className="score-sub">{scoreSubtext(correctCount, total)}</div>
         </div>
 
-        <div className="reviews-embed-card">
+        <div className="other-quizzes-card">
+          <h2 className="other-quizzes-heading">Practice more quizzes</h2>
+          <p className="other-quizzes-sub">
+            Keep drilling FAR with another free practice set.
+          </p>
+          <ul className="quiz-list">
+            {otherQuizzes.map((item) => (
+              <li key={item.key}>
+                <Link to={`/${item.key}`} className="quiz-link">
+                  <span className="quiz-link-tag">{item.discipline.toUpperCase()}</span>
+                  <span className="quiz-link-title">{item.title}</span>
+                  <span className="quiz-link-meta">
+                    {item.questionCount} questions
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="results-bottom-actions">
+            <Link to="/" className="btn-results practice-more-btn">
+              View all quizzes
+            </Link>
+          </div>
+        </div>
+
+        <div className="reviews-embed-card" style={{ marginTop: 28 }}>
           <iframe
             className="reviews-iframe"
             src={BASELINE_REVIEW_URL}
@@ -78,26 +108,12 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
             allow="fullscreen; popups"
           />
         </div>
-
-        <div className="results-bottom-actions">
-          <Link to="/" className="btn-results practice-more-btn">
-            Practice More Questions
-          </Link>
-        </div>
       </div>
     );
   }
 
   return (
     <div className="quiz-section">
-      {allAnswered && (
-        <div className="results-top-row">
-          <button type="button" className="btn-results btn-results-top" onClick={showResults}>
-            See Results ›
-          </button>
-        </div>
-      )}
-
       <div className="q-nav">
         {quiz.questions.map((q, i) => {
           let className = "q-num";
@@ -175,6 +191,25 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
           >
             Analyze Your 5 Weakest FAR Topics
           </a>
+        </div>
+      )}
+
+      {isLast && answered && (
+        <div className="submit-quiz-row">
+          <button
+            type="button"
+            className="btn-results submit-quiz-btn"
+            onClick={submitQuiz}
+            disabled={!allAnswered}
+          >
+            {allAnswered ? "Submit Quiz ›" : "Answer all questions to submit"}
+          </button>
+          {!allAnswered && (
+            <p className="submit-quiz-hint">
+              Some earlier questions are still unanswered. Use the numbers above
+              to finish them, then submit.
+            </p>
+          )}
         </div>
       )}
 

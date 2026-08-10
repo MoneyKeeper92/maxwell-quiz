@@ -376,6 +376,54 @@
   min-width: 200px;
 }
 
+.submit-quiz-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.submit-quiz-btn {
+  min-width: 240px;
+}
+
+.submit-quiz-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.submit-quiz-hint {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  max-width: 420px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.other-quizzes-card {
+  background: var(--white);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 28px 32px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  margin-bottom: 0;
+}
+
+.other-quizzes-heading {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.other-quizzes-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 20px;
+}
+
 /* EXPLANATION */
 .exp {
   display: none;
