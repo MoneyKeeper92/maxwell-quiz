@@ -619,25 +619,6 @@
   margin-bottom: 1rem !important;
 }
 
-.baseline-cta-bar {
-  display: block;
-  margin-top: 24px;
-  padding: 14px 20px;
-  background: var(--blue-header);
-  color: #fff;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: opacity 0.15s;
-}
-
-.baseline-cta-bar:hover {
-  opacity: 0.88;
-  color: #fff;
-}
-
 /* RESULTS PAGE */
 .score-summary {
   display: flex;
@@ -746,21 +727,6 @@
   }
 }
 
-.reviews-embed-card {
-  background: var(--white);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-}
-
-.reviews-iframe {
-  display: block;
-  width: 100%;
-  min-height: 820px;
-  border: none;
-}
-
 .results-bottom-actions {
   display: flex;
   justify-content: center;
@@ -775,131 +741,6 @@
   text-decoration: none;
 }
 
-/* BASELINE OFFER */
-.offer-card {
-  background: var(--white);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-}
-
-.offer-banner {
-  background: var(--blue-header);
-  color: #fff;
-  padding: 24px 32px;
-}
-
-.offer-banner h2 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.offer-banner p {
-  font-size: 14px;
-  opacity: 0.9;
-  line-height: 1.6;
-}
-
-.offer-body {
-  padding: 28px 32px;
-}
-
-.offer-features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-
-.feature-item {
-  background: #f7f9fc;
-  border-radius: 8px;
-  padding: 14px 16px;
-  border: 1px solid var(--border);
-}
-
-.feature-item .f-num {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--blue);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.feature-item .f-label {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.4;
-}
-
-.divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 0 0 24px;
-}
-
-.unlock-section h3 {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.unlock-section p {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.unlock-section a {
-  color: var(--blue);
-  text-decoration: none;
-}
-
-.unlock-section a:hover {
-  text-decoration: underline;
-}
-
-.review-btn {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  border-radius: 8px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  transition: opacity 0.15s;
-  margin-bottom: 12px;
-}
-
-.review-btn:hover {
-  opacity: 0.88;
-}
-
-.review-note {
-  font-size: 13px;
-  color: var(--muted);
-  text-align: center;
-  line-height: 1.5;
-}
-
-.review-note a {
-  color: var(--blue);
-  text-decoration: none;
-}
-
-.review-note a:hover {
-  text-decoration: underline;
-}
-
 @media (max-width: 600px) {
   .main {
     padding: 20px 14px 60px;
@@ -911,18 +752,6 @@
 
   .home-card {
     padding: 20px 16px;
-  }
-
-  .offer-banner {
-    padding: 20px 20px;
-  }
-
-  .offer-body {
-    padding: 20px 20px;
-  }
-
-  .offer-features {
-    grid-template-columns: 1fr 1fr;
   }
 
   .analysis-table th,

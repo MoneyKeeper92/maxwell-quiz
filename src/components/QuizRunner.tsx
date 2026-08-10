@@ -4,7 +4,6 @@ import type { Quiz } from "../data/types";
 import { getHomeQuizLinks } from "../data/registry";
 
 const LETTERS = ["A", "B", "C", "D"];
-const BASELINE_REVIEW_URL = "https://reviews.maxwellstudy.com/far101/";
 
 interface QuizRunnerProps {
   quiz: Quiz;
@@ -133,15 +132,6 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
             </Link>
           </div>
         </div>
-
-        <div className="reviews-embed-card" style={{ marginTop: 28 }}>
-          <iframe
-            className="reviews-iframe"
-            src={BASELINE_REVIEW_URL}
-            title="Unlock your FAR Baseline Exam"
-            allow="fullscreen; popups"
-          />
-        </div>
       </div>
     );
   }
@@ -227,14 +217,6 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
             className="exp-content"
             dangerouslySetInnerHTML={{ __html: question.explanation }}
           />
-          <a
-            className="baseline-cta-bar"
-            href={BASELINE_REVIEW_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Analyze Your 5 Weakest FAR Topics
-          </a>
         </div>
       )}
 
