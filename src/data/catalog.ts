@@ -9,6 +9,12 @@ export interface QuizCatalogItem {
 
 export const quizCatalog: QuizCatalogItem[] = [
   {
+    key: "most-common-far",
+    title: "10 Most Common FAR Questions",
+    subtitle: "High-frequency FAR MCQs across core topics",
+    discipline: "far",
+  },
+  {
     key: "cashtoaccrual",
     title: "Cash to Accrual",
     subtitle: "Converting between cash and accrual basis",

@@ -3,13 +3,13 @@ import { quizCatalog, type QuizCatalogItem } from "./catalog";
 import { cashToAccrualQuiz } from "./cash-to-accrual";
 import { ratiosQuiz } from "./ratios";
 import { leasesQuiz } from "./leases";
-import { testQuiz } from "./test";
+import { mostCommonFarQuiz } from "./most-common-far";
 
 const quizzes: Record<string, Quiz> = {
   cashtoaccrual: cashToAccrualQuiz,
   ratios: ratiosQuiz,
   leases: leasesQuiz,
-  test: testQuiz,
+  "most-common-far": mostCommonFarQuiz,
 };
 
 export interface HomeQuizLink extends QuizCatalogItem {
