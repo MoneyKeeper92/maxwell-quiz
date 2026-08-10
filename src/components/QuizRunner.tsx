@@ -38,7 +38,6 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
   const answered = answers[index] !== null;
   const userAnswer = answers[index];
   const isCorrect = userAnswer === question.correctIndex;
-  const allAnswered = answers.every((a) => a !== null);
   const correctCount = answers.filter(
     (a, i) => a === quiz.questions[i].correctIndex,
   ).length;
@@ -114,6 +113,16 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
 
   return (
     <div className="quiz-section">
+      <div className="submit-quiz-row submit-quiz-row-top">
+        <button
+          type="button"
+          className="btn-results submit-quiz-btn"
+          onClick={submitQuiz}
+        >
+          Submit Quiz ›
+        </button>
+      </div>
+
       <div className="q-nav">
         {quiz.questions.map((q, i) => {
           let className = "q-num";
@@ -191,25 +200,6 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
           >
             Analyze Your 5 Weakest FAR Topics
           </a>
-        </div>
-      )}
-
-      {isLast && answered && (
-        <div className="submit-quiz-row">
-          <button
-            type="button"
-            className="btn-results submit-quiz-btn"
-            onClick={submitQuiz}
-            disabled={!allAnswered}
-          >
-            {allAnswered ? "Submit Quiz ›" : "Answer all questions to submit"}
-          </button>
-          {!allAnswered && (
-            <p className="submit-quiz-hint">
-              Some earlier questions are still unanswered. Use the numbers above
-              to finish them, then submit.
-            </p>
-          )}
         </div>
       )}
 
