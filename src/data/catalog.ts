@@ -21,6 +21,12 @@ export const quizCatalog: QuizCatalogItem[] = [
     discipline: "aud",
   },
   {
+    key: "aicpa-reg-2026",
+    title: "2026 Official AICPA REG Questions",
+    subtitle: "Released AICPA REG multiple-choice questions",
+    discipline: "reg",
+  },
+  {
     key: "most-common-far",
     title: "10 Most Common FAR Questions",
     subtitle: "High-frequency FAR MCQs across core topics",

@@ -8,6 +8,7 @@ import { mostCommonAudQuiz } from "./most-common-aud";
 import { mostCommonRegQuiz } from "./most-common-reg";
 import { aicpaFar2026Quiz } from "./aicpa-far-2026";
 import { aicpaAud2026Quiz } from "./aicpa-aud-2026";
+import { aicpaReg2026Quiz } from "./aicpa-reg-2026";
 
 const quizzes: Record<string, Quiz> = {
   cashtoaccrual: cashToAccrualQuiz,
@@ -18,6 +19,7 @@ const quizzes: Record<string, Quiz> = {
   "most-common-reg": mostCommonRegQuiz,
   "aicpa-far-2026": aicpaFar2026Quiz,
   "aicpa-aud-2026": aicpaAud2026Quiz,
+  "aicpa-reg-2026": aicpaReg2026Quiz,
 };
 
 export interface HomeQuizLink extends QuizCatalogItem {
