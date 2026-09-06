@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUD CPA Exam MCQ Practice</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        const App = () => {
+            const [currentQuestion, setCurrentQuestion] = useState(0);
+            const [showAnswer, setShowAnswer] = useState(false);
+            const [selectedOption, setSelectedOption] = useState(null);
+            
+            // Color scheme from requirements
+            const colors = {
+                primary: '#4A6FA5',
+                darkBlue: '#3D5A80',
+                lightBlue: '#5B7FA8',
+                green: '#10B981',
+                lightGreen: '#D1FAE5',
+                grey: '#6B7280',
+                lightGrey: '#F3F4F6',
+            };
+
+            // Array of all questions
+            const questions = [
+                {
+                    id: 1,
+                    number: "Question 1",
+                    title: "Audit Opinion Selection",
+                    difficulty: "4/5",
+                    question: "During an audit of Lavender Ltd., the auditor finds that the accounting records for a substantial portion of sales transactions are inadequate, preventing the acquisition of sufficient appropriate audit evidence for these transactions. Faced with this situation, the auditor would most likely choose between issuing a(an):",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "Qualified opinion and an unmodified opinion with an emphasis-of-matter paragraph.",
+                            correct: false
+                        },
+                        {
+                            letter: "B",
+                            content: "Unmodified opinion with an emphasis-of-matter paragraph and an adverse opinion.",
+                            correct: false
+                        },
+                        {
+                            letter: "C",
+                            content: "Adverse opinion and a disclaimer of opinion.",
+                            correct: false
+                        },
+                        {
+                            letter: "D",
+                            content: "Disclaimer of opinion and a qualified opinion.",
+                            correct: true
+                        }
+                    ],
+                    explanation: "When an auditor confronts inadequate accounting records for a 'substantial portion' of sales transactions, they must assess whether this scope limitation is pervasive to the financial statements as a whole or only material but not pervasive. This is precisely why the auditor would be deciding between a disclaimer of opinion (issued when the auditor cannot obtain sufficient appropriate audit evidence and concludes that the possible effects on the financial statements are both material and pervasive) and a qualified opinion (issued when the auditor cannot obtain sufficient appropriate audit evidence, but concludes that the possible effects are material but not pervasive). The key determination is whether the inadequate records for a 'substantial portion' of sales transactions would have effects that are pervasive throughout the financial statements or are more limited in scope."
+                },
+                {
+                    id: 2,
+                    number: "Question 2",
+                    title: "Inventory Observation",
+                    difficulty: "3/5",
+                    question: "An auditor was hired to audit the financial statements of Maple Inc. for the fiscal year ending December 31, 2024. However, the auditor could not attend the year-end inventory count due to timing issues. The inventory is a material aspect of Maple Inc.'s financial statements. Despite this, the auditor successfully performed alternative audit procedures and obtained sufficient appropriate audit evidence regarding the inventory balances. In this situation, what type of audit opinion should the auditor consider issuing?",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "Unqualified opinion, as the auditor obtained sufficient appropriate evidence through alternative procedures.",
+                            correct: true
+                        },
+                        {
+                            letter: "B",
+                            content: "Qualified opinion, due to the inability to observe the year-end inventory count.",
+                            correct: false
+                        },
+                        {
+                            letter: "C",
+                            content: "Adverse opinion, because the inventory count is a critical part of the audit.",
+                            correct: false
+                        },
+                        {
+                            letter: "D",
+                            content: "Disclaimer of opinion, as the audit was not comprehensive in scope.",
+                            correct: false
+                        }
+                    ],
+                    explanation: "While physical observation of inventory is typically a primary audit procedure for verifying inventory existence, auditing standards recognize that there may be situations where an auditor cannot attend the physical count. In such cases, if the auditor can perform alternative procedures that provide sufficient appropriate audit evidence about inventory existence and condition, an unqualified (or unmodified) opinion can still be issued. The key factor in this scenario is that the auditor 'successfully performed alternative audit procedures and obtained sufficient appropriate audit evidence regarding the inventory balances.' This means the auditor has satisfied the audit objectives for inventory despite not being able to attend the physical count."
+                },
+                {
+                    id: 3,
+                    number: "Question 3",
+                    title: "Audit Procedures & Objectives",
+                    difficulty: "2/5",
+                    question: "During an audit of Henderson Corporation, the auditor performs a procedure where they trace several bills of lading to corresponding sales invoices. What audit objective is primarily being addressed by this procedure?",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "Ensuring that all goods dispatched have been recorded as sales.",
+                            correct: false
+                        },
+                        {
+                            letter: "B",
+                            content: "Verifying that all recorded sales are supported by shipment documents.",
+                            correct: false
+                        },
+                        {
+                            letter: "C",
+                            content: "Confirming that shipments to customers were invoiced.",
+                            correct: true
+                        },
+                        {
+                            letter: "D",
+                            content: "Checking the accuracy of inventory count and valuation.",
+                            correct: false
+                        }
+                    ],
+                    explanation: "When an auditor traces bills of lading to corresponding sales invoices, they are starting with the shipping documents (bills of lading) and verifying that for each shipment, there is a corresponding sales invoice. This procedure is designed to test the completeness of revenue recognition by ensuring that all goods that were shipped (as evidenced by bills of lading) were properly invoiced and recorded as sales. The direction of this test is crucial to understanding which assertion is being tested: forward tracing from bills of lading to sales invoices tests completeness of revenue recognition, while backward tracing from sales invoices to bills of lading would test existence/occurrence of revenue recognition."
+                },
+                {
+                    id: 4,
+                    number: "Question 4",
+                    title: "Testing Controls for Completeness",
+                    difficulty: "3/5",
+                    question: "Which of the following audit procedures would an auditor most likely perform to test controls related to management's assertion of the completeness of sales transactions?",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "Examine a sample of shipping documents and trace them to the purchase order.",
+                            correct: false
+                        },
+                        {
+                            letter: "B",
+                            content: "Review a selection of sales invoices and compare them to the shipping log to ensure that all billed sales have corresponding shipment records.",
+                            correct: false
+                        },
+                        {
+                            letter: "C",
+                            content: "Analyze a report detailing prenumbered sales invoices and investigate any sequences of missing invoices to ensure all sales are recorded.",
+                            correct: true
+                        },
+                        {
+                            letter: "D",
+                            content: "Assess the consistency of sales invoice processing by checking for proper authorization and recording of sales transactions in the sales journal.",
+                            correct: false
+                        }
+                    ],
+                    explanation: "Option C represents a control test specifically designed to address the completeness assertion for sales transactions. Sequential numbering of documents (like sales invoices) is a crucial control that helps ensure transactions are not lost, deleted, or omitted from the accounting records. By analyzing a report of prenumbered sales invoices and investigating any gaps in the sequence, the auditor is testing whether the company's control system effectively ensures that all sales transactions are captured and recorded (completeness). This procedure directly tests whether the control is operating effectively to prevent or detect missing sales transactions."
+                },
+                {
+                    id: 5,
+                    number: "Question 5",
+                    title: "Searching for Unrecorded Liabilities",
+                    difficulty: "3/5",
+                    scenario: "A critical part of the year-end audit is testing for unrecorded liabilities—obligations that the company has incurred but failed to record in the accounting records. This directly tests the completeness assertion for liabilities. Auditors must perform specific procedures to identify potential liabilities that may have been omitted, ensuring the financial statements aren't understated.",
+                    question: "In the process of searching for unrecorded liabilities at the year-end, which of the following would an auditor most likely examine?",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "Receiving reports for items received before year-end but not yet recorded as liabilities.",
+                            correct: true
+                        },
+                        {
+                            letter: "B",
+                            content: "Cutoff bank statements for checks issued just after year-end.",
+                            correct: false
+                        },
+                        {
+                            letter: "C",
+                            content: "Invoices received and recorded in the subsequent period.",
+                            correct: false
+                        },
+                        {
+                            letter: "D",
+                            content: "Correspondence with legal counsel regarding potential lawsuits.",
+                            correct: false
+                        }
+                    ],
+                    explanation: "Receiving reports are documents created when goods are physically received by a company. According to the accrual basis of accounting, a liability should be recorded when goods or services are received, not when the invoice is processed or when payment is made. By examining receiving reports for items received before year-end and comparing them to recorded liabilities, the auditor can identify goods that have been received (creating an obligation) but where the corresponding liability hasn't yet been recorded. This directly tests the completeness assertion for accounts payable. The key point is that the receipt of goods creates the liability, not the receipt of the invoice or the payment."
+                },
+                {
+                    id: 6,
+                    number: "Question 6",
+                    title: "Internal Controls Over Payroll",
+                    difficulty: "2/5",
+                    scenario: "Payroll processes typically involve significant amounts of money and sensitive data, making them high-risk areas for fraud and errors. Effective internal controls over payroll are essential to prevent unauthorized payments, ensure accurate compensation, and protect the organization from financial losses. Proper segregation of duties is particularly critical in payroll processes.",
+                    question: "Which of the following scenarios most likely represents a weakness in an entity's internal controls over its payroll process?",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "Unclaimed payroll checks are stored in a secure location by the treasurer, who is responsible for check distribution and maintains custody.",
+                            correct: false
+                        },
+                        {
+                            letter: "B",
+                            content: "The payroll department, after preparing payroll checks, sends them directly to the treasurer for signing without any independent review.",
+                            correct: false
+                        },
+                        {
+                            letter: "C",
+                            content: "The human resources department is responsible for informing the payroll department about employee terminations, but there is no process for cross-verification of this information.",
+                            correct: false
+                        },
+                        {
+                            letter: "D",
+                            content: "The employee who distributes payroll checks is also responsible for updating payroll records, including hours worked and rates of pay.",
+                            correct: true
+                        }
+                    ],
+                    explanation: "Option D represents a significant weakness in internal controls because it violates a fundamental principle of internal control: segregation of duties. This scenario combines two incompatible responsibilities in the hands of one person: distributing payroll checks (a custodial function that gives the employee physical access to assets) and updating payroll records, including hours and pay rates (a record-keeping function that allows the employee to modify the basis for payment calculations). This arrangement creates both the opportunity and means to commit payroll fraud. The employee could inflate hours or pay rates in the system and divert the resulting overpayments, create payments to fictitious or terminated employees and collect those checks during distribution, or manipulate payroll records after the fact to conceal fraudulent activities."
+                },
+                {
+                    id: 7,
+                    number: "Question 7",
+                    title: "Control Risk Assessment",
+                    difficulty: "3/5",
+                    scenario: "Control risk is a critical component of the audit risk model, representing the risk that material misstatements won't be prevented or detected by the entity's internal controls. Auditors assess control risk by testing the design and operating effectiveness of internal controls. An incorrect assessment of control risk can have significant implications for the audit strategy and the reliability of the financial statements.",
+                    question: "During an audit, if an auditor erroneously assesses the control risk as too low, what is the most likely reason for this incorrect assessment?",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "The auditor overestimates the operating effectiveness of the client's control activity based on the sample results.",
+                            correct: true
+                        },
+                        {
+                            letter: "B",
+                            content: "The auditor underestimates the operating effectiveness of the client's control activity based on the sample results.",
+                            correct: false
+                        },
+                        {
+                            letter: "C",
+                            content: "The auditor incorrectly assumes that the control activity is not relevant to the client's assertions.",
+                            correct: false
+                        },
+                        {
+                            letter: "D",
+                            content: "The auditor incorrectly anticipates that the control activity will significantly reduce the necessity for substantive testing.",
+                            correct: false
+                        }
+                    ],
+                    explanation: "The correct answer is A because when an auditor erroneously assesses control risk as too low, it means they have placed more reliance on internal controls than is warranted. This typically occurs when the auditor overestimates how effectively the controls are operating. This overestimation commonly happens due to sampling error (the sample selected for testing happens to contain fewer deviations than actually exist in the population), confirmation bias, insufficient sample size, or improper evaluation of deviations. When control risk is assessed too low, the auditor may reduce substantive testing below appropriate levels, increasing the risk that material misstatements will not be detected."
+                },
+                {
+                    id: 8,
+                    number: "Question 8",
+                    title: "Control Risk Adjustment",
+                    difficulty: "3/5",
+                    scenario: "During an audit, auditors assess internal controls to determine how much reliance they can place on those controls. When auditors discover that key controls are not operating effectively, they must adjust their audit approach to maintain an acceptably low level of audit risk. This typically involves modifying the nature, timing, and extent of substantive procedures to compensate for the higher control risk.",
+                    question: "An auditor, during the course of an audit, finds that certain key control activities are not functioning as expected and therefore increases the assessed level of control risk. As a result of this assessment, which of the following would the auditor most likely increase?",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "Extent of tests of details.",
+                            correct: true
+                        },
+                        {
+                            letter: "B",
+                            content: "Level of detection risk.",
+                            correct: false
+                        },
+                        {
+                            letter: "C",
+                            content: "Level of inherent risk.",
+                            correct: false
+                        },
+                        {
+                            letter: "D",
+                            content: "Extent of tests of controls.",
+                            correct: false
+                        }
+                    ],
+                    explanation: "The correct answer is A because when control risk increases (meaning internal controls are less reliable), the auditor must compensate by gathering more audit evidence through substantive procedures to reduce detection risk. Tests of details are a key type of substantive procedure, and increasing their extent is a direct response to higher control risk. Specifically, when control risk increases, the auditor can rely less on the entity's internal controls to prevent or detect misstatements. To maintain an acceptably low audit risk, the auditor must reduce detection risk, which requires more extensive substantive procedures. Tests of details (examining individual transactions, account balances, and disclosures) are a primary form of substantive testing, and increasing the sample sizes for tests of details provides more evidence and greater assurance."
+                },
+                {
+                    id: 9,
+                    number: "Question 9",
+                    title: "SOC Reports for Service Organizations",
+                    difficulty: "4/5",
+                    scenario: "Service Organization Control (SOC) reports provide assurance about controls at a service organization that may affect user entities' financial reporting, security, availability, processing integrity, confidentiality, or privacy. These reports are increasingly important as companies outsource critical business functions and IT services to third-party service providers.",
+                    question: "A technology service provider furnishes data processing services to a variety of clients. One of its clients, a publicly-traded company, requests an external audit of the service provider's system to gain assurance about the effectiveness of its controls related to financial reporting. The service provider engages an auditor to examine and report on the system's controls. Which of the following reports should the auditor provide to satisfy the client's needs, especially regarding the suitability of the design and operating effectiveness of the controls over financial reporting?",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "SOC 1 Type 1 report",
+                            correct: false
+                        },
+                        {
+                            letter: "B",
+                            content: "SOC 2 Type 1 report",
+                            correct: false
+                        },
+                        {
+                            letter: "C",
+                            content: "SOC 1 Type 2 report",
+                            correct: true
+                        },
+                        {
+                            letter: "D",
+                            content: "SOC 2 Type 2 report",
+                            correct: false
+                        }
+                    ],
+                    explanation: "The correct answer is C: SOC 1 Type 2 report. This is the most appropriate choice based on the scenario for two key reasons: 1) SOC 1 (not SOC 2) reports specifically focus on controls relevant to financial reporting, while SOC 2 reports focus on security, availability, processing integrity, confidentiality, and privacy controls that may not directly relate to financial reporting; 2) Type 2 (not Type 1) reports cover both the design suitability and the operating effectiveness of controls over a period of time. A Type 1 report only addresses design effectiveness at a point in time without testing operating effectiveness. The SOC 1 Type 2 report would give the publicly-traded client company the assurance it needs about the data processing services that affect its financial reporting."
+                },
+                {
+                    id: 10,
+                    number: "Question 10",
+                    title: "Segregation of Duties",
+                    difficulty: "2/5",
+                    scenario: "Segregation of duties is a critical component of an effective internal control system. It involves dividing tasks and responsibilities among different employees to reduce the risk of error or inappropriate actions. When responsibilities are properly segregated, it typically requires collusion among multiple individuals to perpetrate and conceal fraud, thus reducing this risk significantly.",
+                    question: "Which of the following scenarios demonstrates an effective segregation of duties in a company's internal controls?",
+                    options: [
+                        {
+                            letter: "A",
+                            content: "The cashier who handles cash receipts also reconciles the cash ledger at the end of the day.",
+                            correct: false
+                        },
+                        {
+                            letter: "B",
+                            content: "An accounts payable clerk prepares checks but does not have the authority to sign them.",
+                            correct: true
+                        },
+                        {
+                            letter: "C",
+                            content: "The inventory manager is responsible for both ordering inventory and receiving goods.",
+                            correct: false
+                        },
+                        {
+                            letter: "D",
+                            content: "A salesperson records their own sales transactions and adjusts customer account balances.",
+                            correct: false
+                        }
+                    ],
+                    explanation: "Option B represents effective segregation of duties because it separates two critical functions in the disbursement process: record keeping (the accounts payable clerk prepares checks, which involves recording and processing the payment obligation) and authorization (someone else has the authority to sign the checks, which represents the approval of the payment). This arrangement prevents a single individual from both creating and authorizing payments, which significantly reduces the risk of fraudulent disbursements. For example, it prevents the clerk from creating payments to fictitious vendors or to themselves, the person signing the checks can verify the legitimacy and accuracy of the payment before authorizing it, and any attempt to commit fraud would require collusion between the clerk and the check signer."
+                }
+            ];
+
+            const handleNextQuestion = () => {
+                if (currentQuestion < questions.length - 1) {
+                    setCurrentQuestion(currentQuestion + 1);
+                    setShowAnswer(false);
+                    setSelectedOption(null);
+                }
+            };
+
+            const handlePrevQuestion = () => {
+                if (currentQuestion > 0) {
+                    setCurrentQuestion(currentQuestion - 1);
+                    setShowAnswer(false);
+                    setSelectedOption(null);
+                }
+            };
+
+            const handleQuestionSelect = (questionIndex) => {
+                setCurrentQuestion(questionIndex);
+                setShowAnswer(false);
+                setSelectedOption(null);
+            };
+
+            const handleAnswerClick = (optionLetter, isCorrect) => {
+                setSelectedOption(optionLetter);
+                setShowAnswer(true);
+            };
+
+            const question = questions[currentQuestion];
+
+            return (
+                <div className="flex flex-col min-h-screen bg-gray-100">
+                    {/* Header */}
+                    <header className="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-6 shadow-md" style={{ background: `linear-gradient(to right, ${colors.darkBlue}, ${colors.primary})` }}>
+                        <div className="container mx-auto">
+                            <h1 className="text-2xl font-bold mb-2">AUD CPA Exam MCQ Practice</h1>
+                            <p className="text-sm opacity-80">Master your audit knowledge with these practice questions</p>
+                        </div>
+                    </header>
+
+                    {/* Question Navigation */}
+                    <div className="bg-white shadow-md p-4">
+                        <div className="container mx-auto flex flex-wrap gap-2">
+                            {questions.map((q, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleQuestionSelect(index)}
+                                    className={`px-3 py-1 rounded text-sm font-semibold ${
+                                        currentQuestion === index 
+                                            ? 'bg-blue-600 text-white' 
+                                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                                    }`}
+                                    style={currentQuestion === index ? {backgroundColor: colors.primary, color: 'white'} : {}}
+                                >
+                                    Q{q.id}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Main Content */}
+                    <main className="flex-grow container mx-auto p-6">
+                        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                            {/* Question Header */}
+                            <div className="bg-gradient-to-r from-blue-700 to-blue-500 p-6 text-white relative" style={{ background: `linear-gradient(to right, ${colors.darkBlue}, ${colors.primary})` }}>
+                                <div className="flex justify-between items-start mb-2">
+                                    <span className="text-sm bg-blue-800 px-3 py-1 rounded-full" style={{ backgroundColor: colors.lightBlue }}>
+                                        {question.number}
+                                    </span>
+                                </div>
+                                <h2 className="text-xl font-bold mb-2">{question.title}</h2>
+                                <p className="text-sm opacity-90">Understanding the key concepts and applications in auditing</p>
+                            </div>
+
+                            {/* Question */}
+                            <div className="px-6 mb-6 mt-8">
+                                <h3 className="text-lg font-semibold mb-4 pb-2 border-b-2 border-gray-200" style={{ color: colors.darkBlue }}>
+                                    {question.question}
+                                </h3>
+
+                                {/* Options */}
+                                <div className="space-y-4 mb-6">
+                                    {question.options.map((option) => {
+                                        const isSelected = showAnswer && selectedOption === option.letter;
+                                        const isCorrect = option.correct;
+                                        const showAsCorrect = showAnswer && isCorrect;
+                                        const showAsWrong = isSelected && !isCorrect;
+                                        
+                                        return (
+                                            <div 
+                                                key={option.letter}
+                                                onClick={() => handleAnswerClick(option.letter, option.correct)}
+                                                className={`p-4 border-l-4 rounded-lg transition-all cursor-pointer ${
+                                                    showAsCorrect
+                                                        ? 'bg-green-50 border-green-500' 
+                                                        : showAsWrong
+                                                        ? 'bg-red-50 border-red-500'
+                                                        : 'bg-gray-50 border-gray-300 hover:bg-gray-100 hover:translate-x-2'
+                                                }`}
+                                                style={
+                                                    showAsCorrect 
+                                                        ? {backgroundColor: colors.lightGreen, borderColor: colors.green}
+                                                        : showAsWrong
+                                                        ? {backgroundColor: '#FEE2E2', borderColor: '#EF4444'}
+                                                        : {}
+                                                }
+                                            >
+                                                <div className="flex items-start">
+                                                    <span 
+                                                        className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center mr-4 text-white font-bold ${
+                                                            showAsCorrect 
+                                                                ? 'bg-green-500' 
+                                                                : showAsWrong
+                                                                ? 'bg-red-500'
+                                                                : 'bg-blue-600'
+                                                        }`}
+                                                        style={
+                                                            showAsCorrect 
+                                                                ? {backgroundColor: colors.green}
+                                                                : showAsWrong
+                                                                ? {backgroundColor: '#EF4444'}
+                                                                : {backgroundColor: colors.primary}
+                                                        }
+                                                    >
+                                                        {option.letter}
+                                                    </span>
+                                                    <span className="mt-1">{option.content}</span>
+                                                    {showAsCorrect && (
+                                                        <span className="ml-auto text-green-600 text-xl font-bold" style={{color: colors.green}}>✓</span>
+                                                    )}
+                                                    {showAsWrong && (
+                                                        <span className="ml-auto text-red-600 text-xl font-bold" style={{color: '#EF4444'}}>✗</span>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
+                                {/* Explanation */}
+                                {showAnswer && (
+                                    <div className="mt-6 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg" style={{backgroundColor: '#EFF6FF', borderColor: colors.primary}}>
+                                        <h4 className="font-bold text-lg mb-3 flex items-center" style={{color: colors.darkBlue}}>
+                                            <span className="mr-2">💡</span>
+                                            Explanation
+                                        </h4>
+                                        <p className="text-gray-700 leading-relaxed">{question.explanation}</p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Navigation Buttons */}
+                        <div className="flex justify-between">
+                            <button
+                                onClick={handlePrevQuestion}
+                                disabled={currentQuestion === 0}
+                                className={`px-6 py-2 rounded-lg font-semibold ${
+                                    currentQuestion === 0 
+                                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                                        : 'bg-blue-600 text-white hover:bg-blue-700'
+                                }`}
+                                style={currentQuestion !== 0 ? {backgroundColor: colors.primary} : {}}
+                            >
+                                Previous Question
+                            </button>
+                            <button
+                                onClick={handleNextQuestion}
+                                disabled={currentQuestion === questions.length - 1}
+                                className={`px-6 py-2 rounded-lg font-semibold ${
+                                    currentQuestion === questions.length - 1 
+                                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                                        : 'bg-blue-600 text-white hover:bg-blue-700'
+                                }`}
+                                style={currentQuestion !== questions.length - 1 ? {backgroundColor: colors.primary} : {}}
+                            >
+                                Next Question
+                            </button>
+                        </div>
+                    </main>
+
+                    {/* Footer */}
+                    <footer className="bg-gray-800 text-gray-300 p-6" style={{ backgroundColor: colors.darkBlue }}>
+                        <div className="container mx-auto text-center">
+                            <p className="mb-2">CPA Audit (AUD) Exam Preparation</p>
+                            <p className="text-sm opacity-70">© 2025 AUD Exam Prep Tools</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

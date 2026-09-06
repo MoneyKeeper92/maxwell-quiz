@@ -21,6 +21,12 @@ export const quizCatalog: QuizCatalogItem[] = [
     discipline: "far",
   },
   {
+    key: "most-common-aud",
+    title: "10 Most Common AUD Questions",
+    subtitle: "High-frequency AUD MCQs covering opinions, controls, and procedures",
+    discipline: "aud",
+  },
+  {
     key: "cashtoaccrual",
     title: "Cash to Accrual",
     subtitle: "Converting between cash and accrual basis",

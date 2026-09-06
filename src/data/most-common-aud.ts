@@ -1,0 +1,130 @@
+import type { Quiz } from "./types";
+
+export const mostCommonAudQuiz: Quiz = {
+  key: "most-common-aud",
+  title: "10 Most Common AUD Questions",
+  subtitle: "High-frequency AUD MCQs covering opinions, controls, and procedures",
+  discipline: "aud",
+  questions: [
+    {
+      id: "1",
+      prompt: `During an audit of Lavender Ltd., the auditor finds that the accounting records for a substantial portion of sales transactions are inadequate, preventing the acquisition of sufficient appropriate audit evidence for these transactions. Faced with this situation, the auditor would most likely choose between issuing a(an):`,
+      choices: [
+        `Qualified opinion and an unmodified opinion with an emphasis-of-matter paragraph.`,
+        `Unmodified opinion with an emphasis-of-matter paragraph and an adverse opinion.`,
+        `Adverse opinion and a disclaimer of opinion.`,
+        `Disclaimer of opinion and a qualified opinion.`,
+      ],
+      correctIndex: 3,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">When an auditor confronts inadequate accounting records for a 'substantial portion' of sales transactions, they must assess whether this scope limitation is pervasive to the financial statements as a whole or only material but not pervasive. This is precisely why the auditor would be deciding between a disclaimer of opinion (issued when the auditor cannot obtain sufficient appropriate audit evidence and concludes that the possible effects on the financial statements are both material and pervasive) and a qualified opinion (issued when the auditor cannot obtain sufficient appropriate audit evidence, but concludes that the possible effects are material but not pervasive). The key determination is whether the inadequate records for a 'substantial portion' of sales transactions would have effects that are pervasive throughout the financial statements or are more limited in scope.</p>`,
+    },
+    {
+      id: "2",
+      prompt: `An auditor was hired to audit the financial statements of Maple Inc. for the fiscal year ending December 31, 2024. However, the auditor could not attend the year-end inventory count due to timing issues. The inventory is a material aspect of Maple Inc.'s financial statements. Despite this, the auditor successfully performed alternative audit procedures and obtained sufficient appropriate audit evidence regarding the inventory balances. In this situation, what type of audit opinion should the auditor consider issuing?`,
+      choices: [
+        `Unqualified opinion, as the auditor obtained sufficient appropriate evidence through alternative procedures.`,
+        `Qualified opinion, due to the inability to observe the year-end inventory count.`,
+        `Adverse opinion, because the inventory count is a critical part of the audit.`,
+        `Disclaimer of opinion, as the audit was not comprehensive in scope.`,
+      ],
+      correctIndex: 0,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">While physical observation of inventory is typically a primary audit procedure for verifying inventory existence, auditing standards recognize that there may be situations where an auditor cannot attend the physical count. In such cases, if the auditor can perform alternative procedures that provide sufficient appropriate audit evidence about inventory existence and condition, an unqualified (or unmodified) opinion can still be issued. The key factor in this scenario is that the auditor 'successfully performed alternative audit procedures and obtained sufficient appropriate audit evidence regarding the inventory balances.' This means the auditor has satisfied the audit objectives for inventory despite not being able to attend the physical count.</p>`,
+    },
+    {
+      id: "3",
+      prompt: `During an audit of Henderson Corporation, the auditor performs a procedure where they trace several bills of lading to corresponding sales invoices. What audit objective is primarily being addressed by this procedure?`,
+      choices: [
+        `Ensuring that all goods dispatched have been recorded as sales.`,
+        `Verifying that all recorded sales are supported by shipment documents.`,
+        `Confirming that shipments to customers were invoiced.`,
+        `Checking the accuracy of inventory count and valuation.`,
+      ],
+      correctIndex: 2,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">When an auditor traces bills of lading to corresponding sales invoices, they are starting with the shipping documents (bills of lading) and verifying that for each shipment, there is a corresponding sales invoice. This procedure is designed to test the completeness of revenue recognition by ensuring that all goods that were shipped (as evidenced by bills of lading) were properly invoiced and recorded as sales. The direction of this test is crucial to understanding which assertion is being tested: forward tracing from bills of lading to sales invoices tests completeness of revenue recognition, while backward tracing from sales invoices to bills of lading would test existence/occurrence of revenue recognition.</p>`,
+    },
+    {
+      id: "4",
+      prompt: `Which of the following audit procedures would an auditor most likely perform to test controls related to management's assertion of the completeness of sales transactions?`,
+      choices: [
+        `Examine a sample of shipping documents and trace them to the purchase order.`,
+        `Review a selection of sales invoices and compare them to the shipping log to ensure that all billed sales have corresponding shipment records.`,
+        `Analyze a report detailing prenumbered sales invoices and investigate any sequences of missing invoices to ensure all sales are recorded.`,
+        `Assess the consistency of sales invoice processing by checking for proper authorization and recording of sales transactions in the sales journal.`,
+      ],
+      correctIndex: 2,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">Option C represents a control test specifically designed to address the completeness assertion for sales transactions. Sequential numbering of documents (like sales invoices) is a crucial control that helps ensure transactions are not lost, deleted, or omitted from the accounting records. By analyzing a report of prenumbered sales invoices and investigating any gaps in the sequence, the auditor is testing whether the company's control system effectively ensures that all sales transactions are captured and recorded (completeness). This procedure directly tests whether the control is operating effectively to prevent or detect missing sales transactions.</p>`,
+    },
+    {
+      id: "5",
+      prompt: `In the process of searching for unrecorded liabilities at the year-end, which of the following would an auditor most likely examine?`,
+      choices: [
+        `Receiving reports for items received before year-end but not yet recorded as liabilities.`,
+        `Cutoff bank statements for checks issued just after year-end.`,
+        `Invoices received and recorded in the subsequent period.`,
+        `Correspondence with legal counsel regarding potential lawsuits.`,
+      ],
+      correctIndex: 0,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">Receiving reports are documents created when goods are physically received by a company. According to the accrual basis of accounting, a liability should be recorded when goods or services are received, not when the invoice is processed or when payment is made. By examining receiving reports for items received before year-end and comparing them to recorded liabilities, the auditor can identify goods that have been received (creating an obligation) but where the corresponding liability hasn't yet been recorded. This directly tests the completeness assertion for accounts payable. The key point is that the receipt of goods creates the liability, not the receipt of the invoice or the payment.</p>`,
+    },
+    {
+      id: "6",
+      prompt: `Which of the following scenarios most likely represents a weakness in an entity's internal controls over its payroll process?`,
+      choices: [
+        `Unclaimed payroll checks are stored in a secure location by the treasurer, who is responsible for check distribution and maintains custody.`,
+        `The payroll department, after preparing payroll checks, sends them directly to the treasurer for signing without any independent review.`,
+        `The human resources department is responsible for informing the payroll department about employee terminations, but there is no process for cross-verification of this information.`,
+        `The employee who distributes payroll checks is also responsible for updating payroll records, including hours worked and rates of pay.`,
+      ],
+      correctIndex: 3,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">Option D represents a significant weakness in internal controls because it violates a fundamental principle of internal control: segregation of duties. This scenario combines two incompatible responsibilities in the hands of one person: distributing payroll checks (a custodial function that gives the employee physical access to assets) and updating payroll records, including hours and pay rates (a record-keeping function that allows the employee to modify the basis for payment calculations). This arrangement creates both the opportunity and means to commit payroll fraud. The employee could inflate hours or pay rates in the system and divert the resulting overpayments, create payments to fictitious or terminated employees and collect those checks during distribution, or manipulate payroll records after the fact to conceal fraudulent activities.</p>`,
+    },
+    {
+      id: "7",
+      prompt: `During an audit, if an auditor erroneously assesses the control risk as too low, what is the most likely reason for this incorrect assessment?`,
+      choices: [
+        `The auditor overestimates the operating effectiveness of the client's control activity based on the sample results.`,
+        `The auditor underestimates the operating effectiveness of the client's control activity based on the sample results.`,
+        `The auditor incorrectly assumes that the control activity is not relevant to the client's assertions.`,
+        `The auditor incorrectly anticipates that the control activity will significantly reduce the necessity for substantive testing.`,
+      ],
+      correctIndex: 0,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">The correct answer is A because when an auditor erroneously assesses control risk as too low, it means they have placed more reliance on internal controls than is warranted. This typically occurs when the auditor overestimates how effectively the controls are operating. This overestimation commonly happens due to sampling error (the sample selected for testing happens to contain fewer deviations than actually exist in the population), confirmation bias, insufficient sample size, or improper evaluation of deviations. When control risk is assessed too low, the auditor may reduce substantive testing below appropriate levels, increasing the risk that material misstatements will not be detected.</p>`,
+    },
+    {
+      id: "8",
+      prompt: `An auditor, during the course of an audit, finds that certain key control activities are not functioning as expected and therefore increases the assessed level of control risk. As a result of this assessment, which of the following would the auditor most likely increase?`,
+      choices: [
+        `Extent of tests of details.`,
+        `Level of detection risk.`,
+        `Level of inherent risk.`,
+        `Extent of tests of controls.`,
+      ],
+      correctIndex: 0,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">The correct answer is A because when control risk increases (meaning internal controls are less reliable), the auditor must compensate by gathering more audit evidence through substantive procedures to reduce detection risk. Tests of details are a key type of substantive procedure, and increasing their extent is a direct response to higher control risk. Specifically, when control risk increases, the auditor can rely less on the entity's internal controls to prevent or detect misstatements. To maintain an acceptably low audit risk, the auditor must reduce detection risk, which requires more extensive substantive procedures. Tests of details (examining individual transactions, account balances, and disclosures) are a primary form of substantive testing, and increasing the sample sizes for tests of details provides more evidence and greater assurance.</p>`,
+    },
+    {
+      id: "9",
+      prompt: `A technology service provider furnishes data processing services to a variety of clients. One of its clients, a publicly-traded company, requests an external audit of the service provider's system to gain assurance about the effectiveness of its controls related to financial reporting. The service provider engages an auditor to examine and report on the system's controls. Which of the following reports should the auditor provide to satisfy the client's needs, especially regarding the suitability of the design and operating effectiveness of the controls over financial reporting?`,
+      choices: [
+        `SOC 1 Type 1 report`,
+        `SOC 2 Type 1 report`,
+        `SOC 1 Type 2 report`,
+        `SOC 2 Type 2 report`,
+      ],
+      correctIndex: 2,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">The correct answer is C: SOC 1 Type 2 report. This is the most appropriate choice based on the scenario for two key reasons: 1) SOC 1 (not SOC 2) reports specifically focus on controls relevant to financial reporting, while SOC 2 reports focus on security, availability, processing integrity, confidentiality, and privacy controls that may not directly relate to financial reporting; 2) Type 2 (not Type 1) reports cover both the design suitability and the operating effectiveness of controls over a period of time. A Type 1 report only addresses design effectiveness at a point in time without testing operating effectiveness. The SOC 1 Type 2 report would give the publicly-traded client company the assurance it needs about the data processing services that affect its financial reporting.</p>`,
+    },
+    {
+      id: "10",
+      prompt: `Which of the following scenarios demonstrates an effective segregation of duties in a company's internal controls?`,
+      choices: [
+        `The cashier who handles cash receipts also reconciles the cash ledger at the end of the day.`,
+        `An accounts payable clerk prepares checks but does not have the authority to sign them.`,
+        `The inventory manager is responsible for both ordering inventory and receiving goods.`,
+        `A salesperson records their own sales transactions and adjusts customer account balances.`,
+      ],
+      correctIndex: 1,
+      explanation: `<p style="margin:0 0 0.65rem; line-height:1.7;">Option B represents effective segregation of duties because it separates two critical functions in the disbursement process: record keeping (the accounts payable clerk prepares checks, which involves recording and processing the payment obligation) and authorization (someone else has the authority to sign the checks, which represents the approval of the payment). This arrangement prevents a single individual from both creating and authorizing payments, which significantly reduces the risk of fraudulent disbursements. For example, it prevents the clerk from creating payments to fictitious vendors or to themselves, the person signing the checks can verify the legitimacy and accuracy of the payment before authorizing it, and any attempt to commit fraud would require collusion between the clerk and the check signer.</p>`,
+    },
+  ],
+};
