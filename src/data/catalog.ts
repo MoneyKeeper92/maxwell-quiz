@@ -15,6 +15,12 @@ export const quizCatalog: QuizCatalogItem[] = [
     discipline: "far",
   },
   {
+    key: "aicpa-aud-2026",
+    title: "2026 Official AICPA AUD Questions",
+    subtitle: "Released AICPA AUD multiple-choice questions",
+    discipline: "aud",
+  },
+  {
     key: "most-common-far",
     title: "10 Most Common FAR Questions",
     subtitle: "High-frequency FAR MCQs across core topics",
