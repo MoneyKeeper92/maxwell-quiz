@@ -5,6 +5,7 @@ import { ratiosQuiz } from "./ratios";
 import { leasesQuiz } from "./leases";
 import { mostCommonFarQuiz } from "./most-common-far";
 import { mostCommonAudQuiz } from "./most-common-aud";
+import { mostCommonRegQuiz } from "./most-common-reg";
 import { aicpaFar2026Quiz } from "./aicpa-far-2026";
 import { aicpaAud2026Quiz } from "./aicpa-aud-2026";
 
@@ -14,6 +15,7 @@ const quizzes: Record<string, Quiz> = {
   leases: leasesQuiz,
   "most-common-far": mostCommonFarQuiz,
   "most-common-aud": mostCommonAudQuiz,
+  "most-common-reg": mostCommonRegQuiz,
   "aicpa-far-2026": aicpaFar2026Quiz,
   "aicpa-aud-2026": aicpaAud2026Quiz,
 };

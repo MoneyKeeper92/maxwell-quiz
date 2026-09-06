@@ -33,6 +33,12 @@ export const quizCatalog: QuizCatalogItem[] = [
     discipline: "aud",
   },
   {
+    key: "most-common-reg",
+    title: "10 Most Common REG Questions",
+    subtitle: "High-frequency REG MCQs covering basis, partnerships, and individual taxation",
+    discipline: "reg",
+  },
+  {
     key: "cashtoaccrual",
     title: "Cash to Accrual",
     subtitle: "Converting between cash and accrual basis",
