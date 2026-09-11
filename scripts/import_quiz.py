@@ -106,7 +106,10 @@ HTML_TAG_RE = re.compile(
 
 
 def text_to_html(
-    raw: str | None, answer: str | None = None, choices: list[str] | None = None
+    raw: str | None,
+    answer: str | None = None,
+    choices: list[str] | None = None,
+    fallback_title: str = "Answer Explanation",
 ) -> str:
     """Format an explanation to the house MCQ HTML standard.
 
@@ -119,7 +122,9 @@ def text_to_html(
     # A real tag, not a stray comparison like "stated rate < market yield".
     if re.search(HTML_TAG_RE, t):
         return t  # already HTML — leave the source markup alone
-    return explanation_html.build(t, str(answer or ""), choices or [])
+    return explanation_html.build(
+        t, str(answer or ""), choices or [], fallback_title
+    )
 
 
 COLUMN_ALIASES = {
@@ -227,7 +232,10 @@ def read_rows(path: Path, sheet: str | None = None) -> list[dict]:
                 "choices": choices,
                 "correctIndex": correct,
                 "explanation": text_to_html(
-                    cell(r, "explanation"), cell(r, "answer"), choices
+                    cell(r, "explanation"),
+                    cell(r, "answer"),
+                    choices,
+                    topic_title(str(cell(r, "topic") or "")) or "Answer Explanation",
                 )
                 or None,
             }

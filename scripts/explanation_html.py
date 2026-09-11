@@ -202,13 +202,35 @@ def collapse_lists(items: list[dict]) -> list[dict]:
     return out
 
 
-def parse(text: str) -> tuple[str, list[dict]]:
+def looks_like_title(block: list[str]) -> bool:
+    """First block is a title only when it reads as a label, not as prose.
+
+    Some questions arrive as flat prose with no title line at all; taking the
+    opening sentence as the heading puts a paragraph in the header bar.
+    """
+    if len(block) != 1:
+        return False
+    line = block[0].strip()
+    if not line or len(line) > 70 or len(line.split()) > 10:
+        return False
+    # A trailing period may just be an abbreviation ("Coffee Co."), so only
+    # reject when the last word reads like the end of a sentence.
+    if line.endswith("."):
+        words = line[:-1].split()
+        last = words[-1] if words else ""
+        if last.islower() and len(last) > 3:
+            return False
+    return True
+
+
+def parse(text: str) -> tuple[str | None, list[dict]]:
     blocks = split_blocks(text)
     if not blocks:
-        return "", []
-    title = blocks[0][0]
+        return None, []
+    has_title = looks_like_title(blocks[0])
+    title = blocks[0][0] if has_title else None
     items: list[dict] = []
-    i = 1
+    i = 1 if has_title else 0
     while i < len(blocks):
         b = blocks[i]
         if is_pipe_block(b):
@@ -454,8 +476,14 @@ def option_card(rows: list[tuple[str, str]]) -> str:
     )
 
 
-def build(explanation: str, answer_text: str, choices: list[str] | None = None) -> str:
+def build(
+    explanation: str,
+    answer_text: str,
+    choices: list[str] | None = None,
+    fallback_title: str = "Answer Explanation",
+) -> str:
     doc_title, items = parse(explanation)
+    doc_title = doc_title or fallback_title
     sections = group_sections(items)
 
     body: list[str] = []
