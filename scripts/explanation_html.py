@@ -66,6 +66,8 @@ KNOWN_HEADINGS = (
 )
 
 
+LIST_ITEM_MAX = 200
+
 EMOJI_RE = re.compile(
     "[\U0001F000-\U0001FAFF\U00002600-\U000026FF\U00002700-\U000027BF"
     "\U0001F1E6-\U0001F1FF\U0000FE0F\U00002B00-\U00002BFF]"
@@ -164,7 +166,11 @@ def is_known_heading(it: dict) -> bool:
     if it["kind"] != "heading":
         return False
     low = it["text"].lower().strip()
-    return low in KNOWN_HEADINGS or bool(re.match(r"^step\s+\d+\b", low))
+    return (
+        low in KNOWN_HEADINGS
+        or "journal entr" in low
+        or bool(re.match(r"^step\s+\d+\b", low))
+    )
 
 
 def collapse_lists(items: list[dict]) -> list[dict]:
@@ -182,6 +188,16 @@ def collapse_lists(items: list[dict]) -> list[dict]:
             return it["lines"][0]
         return None
 
+    def usable(c: str) -> bool:
+        # A colon-terminated line introduces a list; it is not an item, and
+        # treating it as one swallows the heading above it into the bullets.
+        return (
+            bool(c)
+            and len(c) <= LIST_ITEM_MAX
+            and not c.endswith((".", ":"))
+            and not is_formula(c)
+        )
+
     out: list[dict] = []
     i = 0
     while i < len(items):
@@ -189,7 +205,7 @@ def collapse_lists(items: list[dict]) -> list[dict]:
         j = i
         while j < len(items):
             c = candidate(items[j])
-            if c is None or len(c) > 110 or c.endswith(".") or is_formula(c):
+            if c is None or not usable(c):
                 break
             run.append(c)
             j += 1
@@ -499,7 +515,10 @@ def build(
             sec["title"] = None
             sec_title, low = "", ""
 
-        if low in DROP_HEADINGS or is_bare_option_list(sec):
+        # Rule 6: no journal entries in an MCQ explanation, whatever the
+        # section happens to be called ("Journal Entry Example", "Required
+        # Journal Entry", "Correct Journal Entry" all appear in the source).
+        if "journal entr" in low or low in DROP_HEADINGS or is_bare_option_list(sec):
             continue
 
         sec["items"] = [
@@ -576,9 +595,6 @@ def build(
 # "|"-prefixed blocks, optionally preceded by a header row. Left as raw text
 # they render as stray pipe characters, and label/value lines separated by
 # blank lines render as very airy paragraphs.
-
-LIST_ITEM_MAX = 200
-
 
 def _is_list_item(block: list[str]) -> bool:
     if len(block) != 1:

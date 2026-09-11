@@ -241,9 +241,11 @@ def read_rows(path: Path, sheet: str | None = None) -> list[dict]:
                 "promptHtml": prompt_html,
                 "choices": choices,
                 "correctIndex": correct,
+                # The keyed choice text, not the answer cell: the AICPA sheets
+                # put "Choice1" there and keep the text in answer_value.
                 "explanation": text_to_html(
                     cell(r, "explanation"),
-                    cell(r, "answer"),
+                    choices[correct],
                     choices,
                     topic_title(str(cell(r, "topic") or "")) or "Answer Explanation",
                 )
