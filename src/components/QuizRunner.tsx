@@ -1,9 +1,67 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Quiz } from "../data/types";
 import { getHomeQuizLinks } from "../data/registry";
 
 const LETTERS = ["A", "B", "C", "D"];
+
+interface SavedProgress {
+  answers: (number | null)[];
+  index: number;
+  finished: boolean;
+}
+
+/**
+ * Progress is kept per quiz so a refresh — or a Thinkific lesson reload —
+ * doesn't wipe an attempt. Storage can throw outright in an embedded iframe
+ * (Safari blocks third-party storage), so every access is guarded and the
+ * quiz simply runs without persistence when it is unavailable.
+ */
+function storageKey(quiz: Quiz): string {
+  return `maxwell-quiz:${quiz.course}/${quiz.key}`;
+}
+
+function loadProgress(quiz: Quiz): SavedProgress | null {
+  try {
+    const raw = window.localStorage.getItem(storageKey(quiz));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as SavedProgress;
+    if (
+      !Array.isArray(parsed.answers) ||
+      parsed.answers.length !== quiz.questions.length
+    ) {
+      return null;
+    }
+    const answers = parsed.answers.map((a) =>
+      typeof a === "number" && a >= 0 && a <= 3 ? a : null,
+    );
+    const index =
+      typeof parsed.index === "number" &&
+      parsed.index >= 0 &&
+      parsed.index < quiz.questions.length
+        ? parsed.index
+        : 0;
+    return { answers, index, finished: !!parsed.finished };
+  } catch {
+    return null;
+  }
+}
+
+function saveProgress(quiz: Quiz, progress: SavedProgress): void {
+  try {
+    window.localStorage.setItem(storageKey(quiz), JSON.stringify(progress));
+  } catch {
+    // storage unavailable — progress just isn't persisted
+  }
+}
+
+function clearProgress(quiz: Quiz): void {
+  try {
+    window.localStorage.removeItem(storageKey(quiz));
+  } catch {
+    // ignore
+  }
+}
 
 interface QuizRunnerProps {
   quiz: Quiz;
@@ -17,11 +75,16 @@ function scoreRingColor(pct: number): string {
 
 export default function QuizRunner({ quiz }: QuizRunnerProps) {
   const total = quiz.questions.length;
-  const [index, setIndex] = useState(0);
-  const [answers, setAnswers] = useState<(number | null)[]>(() =>
-    Array.from({ length: total }, () => null),
+  const [restored] = useState(() => loadProgress(quiz));
+  const [index, setIndex] = useState(() => restored?.index ?? 0);
+  const [answers, setAnswers] = useState<(number | null)[]>(
+    () => restored?.answers ?? Array.from({ length: total }, () => null),
   );
-  const [finished, setFinished] = useState(false);
+  const [finished, setFinished] = useState(() => restored?.finished ?? false);
+
+  useEffect(() => {
+    saveProgress(quiz, { answers, index, finished });
+  }, [quiz, answers, index, finished]);
 
   const question = quiz.questions[index];
   const answered = answers[index] !== null;
@@ -30,13 +93,19 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
   const correctCount = answers.filter(
     (a, i) => a === quiz.questions[i].correctIndex,
   ).length;
-  const incorrectCount = answers.filter(
-    (a, i) => a !== null && a !== quiz.questions[i].correctIndex,
-  ).length;
+  const answeredCount = answers.filter((a) => a !== null).length;
+  const unansweredCount = total - answeredCount;
+  const incorrectCount = total - correctCount;
   const isLast = index === total - 1;
-  const otherQuizzes = getHomeQuizLinks().filter(
+  const otherQuizzes = getHomeQuizLinks(quiz.course).filter(
     (item) => item.key !== quiz.key && item.available,
   );
+  const showTag = new Set(otherQuizzes.map((q) => q.discipline)).size > 1;
+  const courseHome = quiz.course === "intermediate" ? "/intermediate" : "/";
+  const moreCopy =
+    quiz.course === "intermediate"
+      ? "Keep practicing with another quiz from the course."
+      : "Keep drilling with another free practice set.";
 
   const goTo = (next: number) => {
     if (next < 0 || next >= total) return;
@@ -54,7 +123,31 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
   };
 
   const submitQuiz = () => {
+    if (
+      unansweredCount > 0 &&
+      !window.confirm(
+        `${unansweredCount} of ${total} question${unansweredCount === 1 ? " is" : "s are"} still unanswered. ` +
+          "Unanswered questions are scored as incorrect. Submit anyway?",
+      )
+    ) {
+      return;
+    }
     setFinished(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  /** Back into the quiz with every answer and explanation still visible. */
+  const reviewAnswers = () => {
+    setFinished(false);
+    setIndex(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const retakeQuiz = () => {
+    clearProgress(quiz);
+    setAnswers(Array.from({ length: total }, () => null));
+    setIndex(0);
+    setFinished(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -108,16 +201,39 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
           </div>
         </div>
 
+        {unansweredCount > 0 && (
+          <p className="score-note">
+            {unansweredCount} question{unansweredCount === 1 ? " was" : "s were"} left
+            unanswered and scored as incorrect.
+          </p>
+        )}
+
+        <div className="results-actions">
+          <button type="button" className="btn-results" onClick={reviewAnswers}>
+            Review answers
+          </button>
+          <button
+            type="button"
+            className="btn-results btn-results-secondary"
+            onClick={retakeQuiz}
+          >
+            Retake quiz
+          </button>
+        </div>
+
+        {otherQuizzes.length > 0 && (
         <div className="other-quizzes-card">
           <h2 className="other-quizzes-heading">Practice more quizzes</h2>
-          <p className="other-quizzes-sub">
-            Keep drilling FAR with another free practice set.
-          </p>
+          <p className="other-quizzes-sub">{moreCopy}</p>
           <ul className="quiz-list">
             {otherQuizzes.map((item) => (
               <li key={item.key}>
-                <Link to={`/${item.key}`} className="quiz-link">
-                  <span className="quiz-link-tag">{item.discipline.toUpperCase()}</span>
+                <Link to={item.href} className="quiz-link">
+                  {showTag && (
+                    <span className="quiz-link-tag">
+                      {item.discipline.toUpperCase()}
+                    </span>
+                  )}
                   <span className="quiz-link-title">{item.title}</span>
                   <span className="quiz-link-meta">
                     {item.questionCount} questions
@@ -127,11 +243,12 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
             ))}
           </ul>
           <div className="results-bottom-actions">
-            <Link to="/" className="btn-results practice-more-btn">
+            <Link to={courseHome} className="btn-results practice-more-btn">
               View all quizzes
             </Link>
           </div>
         </div>
+        )}
       </div>
     );
   }
@@ -178,7 +295,14 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
           </div>
           <span className="q-id">ID:{question.id}</span>
         </div>
-        <div className="q-text">{question.prompt}</div>
+        {question.promptHtml ? (
+          <div
+            className="q-text q-text-html"
+            dangerouslySetInnerHTML={{ __html: question.promptHtml }}
+          />
+        ) : (
+          <div className="q-text">{question.prompt}</div>
+        )}
         <div className="choices">
           {question.choices.map((choice, i) => {
             let className = "choice";

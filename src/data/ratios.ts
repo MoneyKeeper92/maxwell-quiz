@@ -5,6 +5,7 @@ export const ratiosQuiz: Quiz = {
   title: "Ratios",
   subtitle: "Financial statement analysis and ratio interpretation",
   discipline: "far",
+  course: "cpa",
   questions: [
     {
       id: "5461",

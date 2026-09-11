@@ -1,22 +1,64 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import QuizRunner from "../components/QuizRunner";
-import { getCatalogItem, getQuiz } from "../data/registry";
+import type { Course, Quiz } from "../data/types";
+import { getCatalogItem, getQuizLoader } from "../data/registry";
 
-export default function QuizPage() {
+interface QuizPageProps {
+  /** Which course's URL namespace this page is mounted under. */
+  course?: Course;
+}
+
+type LoadState = "loading" | "ready" | "missing" | "error";
+
+export default function QuizPage({ course = "cpa" }: QuizPageProps) {
   const { quizKey } = useParams<{ quizKey: string }>();
-  const quiz = getQuiz(quizKey);
-  const catalogItem = getCatalogItem(quizKey);
+  const [quiz, setQuiz] = useState<Quiz | null>(null);
+  const [state, setState] = useState<LoadState>("loading");
+  const catalogItem = getCatalogItem(quizKey, course);
+  const home = course === "intermediate" ? "/intermediate" : "/";
 
-  if (quiz) {
-    return <QuizRunner quiz={quiz} />;
+  useEffect(() => {
+    const load = getQuizLoader(quizKey, course);
+    if (!load) {
+      setQuiz(null);
+      setState("missing");
+      return;
+    }
+    let cancelled = false;
+    setState("loading");
+    load()
+      .then((loaded) => {
+        if (cancelled) return;
+        setQuiz(loaded);
+        setState("ready");
+      })
+      .catch(() => {
+        if (!cancelled) setState("error");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [quizKey, course]);
+
+  if (state === "ready" && quiz) {
+    return <QuizRunner key={`${course}/${quiz.key}`} quiz={quiz} />;
   }
 
-  if (!catalogItem) {
+  if (state === "loading") {
+    return (
+      <div className="quiz-loading" role="status" aria-live="polite">
+        Loading {catalogItem?.title ?? "quiz"}…
+      </div>
+    );
+  }
+
+  if (state === "error") {
     return (
       <div className="not-found-card">
-        <h1>Quiz not found</h1>
-        <p>That practice set doesn&apos;t exist yet.</p>
-        <Link to="/" className="text-link">
+        <h1>Couldn&apos;t load this quiz</h1>
+        <p>Check your connection and refresh the page.</p>
+        <Link to={home} className="text-link">
           ← Back to all quizzes
         </Link>
       </div>
@@ -25,9 +67,13 @@ export default function QuizPage() {
 
   return (
     <div className="not-found-card">
-      <h1>{catalogItem.title}</h1>
-      <p>This quiz is coming soon.</p>
-      <Link to="/" className="text-link">
+      <h1>{catalogItem ? catalogItem.title : "Quiz not found"}</h1>
+      <p>
+        {catalogItem
+          ? "This quiz is coming soon."
+          : "That practice set doesn't exist yet."}
+      </p>
+      <Link to={home} className="text-link">
         ← Back to all quizzes
       </Link>
     </div>

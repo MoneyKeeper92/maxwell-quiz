@@ -5,6 +5,7 @@ export const mostCommonRegQuiz: Quiz = {
   title: "10 Most Common REG Questions",
   subtitle: "High-frequency REG MCQs covering basis, partnerships, and individual taxation",
   discipline: "reg",
+  course: "cpa",
   questions: [
     {
       id: "1",

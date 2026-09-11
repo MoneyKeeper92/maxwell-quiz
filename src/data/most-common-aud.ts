@@ -5,6 +5,7 @@ export const mostCommonAudQuiz: Quiz = {
   title: "10 Most Common AUD Questions",
   subtitle: "High-frequency AUD MCQs covering opinions, controls, and procedures",
   discipline: "aud",
+  course: "cpa",
   questions: [
     {
       id: "1",

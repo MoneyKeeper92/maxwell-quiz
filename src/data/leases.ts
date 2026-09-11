@@ -5,6 +5,7 @@ export const leasesQuiz: Quiz = {
   title: "Leases",
   subtitle: "Lessee and lessor accounting under ASC 842",
   discipline: "far",
+  course: "cpa",
   questions: [
     {
       id: "8718",

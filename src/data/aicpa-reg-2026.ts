@@ -4,10 +4,11 @@ export const aicpaReg2026Quiz: Quiz = {
   key: "aicpa-reg-2026",
   title: "2026 Official AICPA REG Questions",
   subtitle: "Released AICPA REG multiple-choice questions",
-  discipline: "reg",
+  discipline: "far",
+  course: "cpa",
   questions: [
     {
-      id: "210100",
+      id: "9555",
       prompt: `Orbit Corp., a calendar-year C corporation, was incorporated on January 1 and began business operations on July 1. Orbit incurred $32,000 of organizational expenses between March 1 and July 1. What amount can Orbit deduct as organizational expenses in its first year?`,
       choices: [
         `$3,200`,
@@ -129,7 +130,7 @@ export const aicpaReg2026Quiz: Quiz = {
 </div>`,
     },
     {
-      id: "260302",
+      id: "9576",
       prompt: `On July 1, year 1, a taxpayer acquired a Section 197 intangible asset that is used in a business. The taxpayer's adjusted basis in the intangible asset upon its acquisition is $360,000. Assuming that the taxpayer uses a calendar year, how much of the intangible asset can be amortized for year 1 income tax purposes?`,
       choices: [
         `$0`,
@@ -244,7 +245,7 @@ export const aicpaReg2026Quiz: Quiz = {
 </div>`,
     },
     {
-      id: "250303",
+      id: "9556",
       prompt: `An individual taxpayer received the following for the tax year: $50 interest on a federal tax refund, $25 interest from a credit union savings account, $110 interest on Series EE U.S. savings bonds used for the taxpayer's qualified higher education expenses, and $200 in qualified dividends. What amount is taxed at ordinary income rates?`,
       choices: [
         `$75`,
@@ -362,7 +363,7 @@ export const aicpaReg2026Quiz: Quiz = {
 </div>`,
     },
     {
-      id: "250304",
+      id: "9557",
       prompt: `Hardy purchased 100 shares of Able Mfg., Inc. for $12,000. Later in the year, Hardy received an additional 10 shares of Able stock in lieu of his option to receive cash dividends of $1,400. At the end of year, the fair market value of Able stock was $16,500. What amount, if any, should Hardy include in gross income from the ownership of Able stock?`,
       choices: [
         `$0`,
@@ -479,7 +480,7 @@ export const aicpaReg2026Quiz: Quiz = {
 </div>`,
     },
     {
-      id: "260303",
+      id: "9577",
       prompt: `On July 1, year 3, a taxpayer inherited a piece of land with a fair market value of $16,000. The decedent had purchased the land on January 1, year 1, and had a $14,000 basis in it. The taxpayer sold the land on December 1, year 3, for $19,000. What is the amount and character of the taxpayer's gain?`,
       choices: [
         `$3,000, short-term.`,
@@ -589,7 +590,7 @@ export const aicpaReg2026Quiz: Quiz = {
 </div>`,
     },
     {
-      id: "260304",
+      id: "9578",
       prompt: `A taxpayer received a gift of 10 shares of a company's stock with a fair market value of $1,000 per share. This is the only gift the taxpayer received from the donor in the current year. The donor had purchased the shares two years earlier for $500 per share. If the taxpayer sold the shares for $1,500 per share six months after receiving them, then the taxpayer has incurred a`,
       choices: [
         `$5,000 long-term capital gain.`,
@@ -708,7 +709,7 @@ export const aicpaReg2026Quiz: Quiz = {
 </div>`,
     },
     {
-      id: "260305",
+      id: "9579",
       prompt: `A taxpayer received shares of publicly held stock as a gift. At the time of the gift, the donor's adjusted basis in the stock was $8,000, and the fair market value of the stock was $10,000. In the following tax year, the taxpayer sold the stock for $6,000. Which of the following statements is correct regarding the taxpayer's holding period of the stock?`,
       choices: [
         `The holding period begins on the day after the gift was made.`,
@@ -806,7 +807,7 @@ export const aicpaReg2026Quiz: Quiz = {
 </div>`,
     },
     {
-      id: "260306",
+      id: "9580",
       prompt: `Janson realized a loss on the sale of 100 shares of Sunshine stock on October 1. These shares were purchased in two lots on March 25 and April 20. After considering the wash sale rules, Janson bought another 100 shares of Sunshine stock on November 15. Which of the following dates marks the beginning of the holding period for the Sunshine stock bought on November 15?`,
       choices: [
         `March 25.`,
@@ -911,24 +912,32 @@ export const aicpaReg2026Quiz: Quiz = {
 </div>`,
     },
     {
-      id: "250305",
+      id: "9558",
       prompt: `Greene, an individual, reports the following in the current year:
 
- Description: Amount
+Description
+Amount
 
- Salary: $50,000
+Salary
+$50,000
 
- Bank interest income: $1,000
+Bank interest income
+$1,000
 
- Net capital loss: $10,000
+Net capital loss
+$10,000
 
- Employer contributions to retirement plan: $5,000
+Employer contributions to retirement plan
+$5,000
 
- Roth IRA contribution: $2,000
+Roth IRA contribution
+$2,000
 
- Child support payments: $4,000
+Child support payments
+$4,000
 
 What is the amount of Greene's adjusted gross income?`,
+      promptHtml: `<p>Greene, an individual, reports the following in the current year:</p> <table> <tbody> <tr> <th>Description</th> <th>Amount</th> </tr> <tr> <td>Salary</td> <td>$50,000</td> </tr> <tr> <td>Bank interest income</td> <td>$1,000</td> </tr> <tr> <td>Net capital loss</td> <td>$10,000</td> </tr> <tr> <td>Employer contributions to retirement plan</td> <td>$5,000</td> </tr> <tr> <td>Roth IRA contribution</td> <td>$2,000</td> </tr> <tr> <td>Child support payments</td> <td>$4,000</td> </tr> </tbody> </table> <p>What is the amount of Greene&#39;s adjusted gross income?</p>`,
       choices: [
         `$30,000`,
         `$37,000`,
@@ -1066,16 +1075,16 @@ What is the amount of Greene's adjusted gross income?`,
 </div>`,
     },
     {
-      id: "250306",
+      id: "9559",
       prompt: `A married couple who lived together for the entire tax year considered the following facts in choosing their federal tax return filing status:
 
-One spouse earns the majority of the household income.
+• One spouse earns the majority of the household income.
 
-Only one spouse has enough deductions to make it advantageous to itemize.
+• Only one spouse has enough deductions to make it advantageous to itemize.
 
-The couple potentially qualifies for the child tax credit.
+• The couple potentially qualifies for the child tax credit.
 
-One spouse wants to avoid liability for the other spouse's taxes.
+• One spouse wants to avoid liability for the other spouse's taxes.
 
 The filing status of married filing separately is an appropriate choice for the couple based on which fact?`,
       choices: [
@@ -1183,7 +1192,7 @@ The filing status of married filing separately is an appropriate choice for the 
 </div>`,
     },
     {
-      id: "250307",
+      id: "9560",
       prompt: `What is the proper filing status for a taxpayer without dependents who is legally separated from the taxpayer's spouse and is under a separate maintenance agreement as of the end of the year?`,
       choices: [
         `Single.`,
@@ -1284,20 +1293,26 @@ The filing status of married filing separately is an appropriate choice for the 
 </div>`,
     },
     {
-      id: "250308",
+      id: "9561",
       prompt: `A single taxpayer, age 52, consulted a CPA for tax planning advice regarding a distribution from a qualified retirement plan to purchase a new car. The taxpayer is in the 22% tax bracket. The taxpayer provided the following information:
 
- Description: Amount
+Description
+Amount
 
- Salary: $50,000
+Salary
+$50,000
 
- Long-term capital gain: $4,000
+Long-term capital gain
+$4,000
 
- Short-term capital loss: ($2,000)
+Short-term capital loss
+($2,000)
 
- Distribution from qualified retirement plan: $15,000
+Distribution from qualified retirement plan
+$15,000
 
 What amount, if any, would be the penalty for early distribution from the qualified retirement plan?`,
+      promptHtml: `<p>A single taxpayer, age 52, consulted a CPA for tax planning advice regarding a distribution from a qualified retirement plan to purchase a new car. The taxpayer is in the 22% tax bracket. The taxpayer provided the following information:</p> <table> <tbody> <tr> <th>Description</th> <th>Amount</th> </tr> <tr> <td>Salary</td> <td>$50,000</td> </tr> <tr> <td>Long-term capital gain</td> <td>$4,000</td> </tr> <tr> <td>Short-term capital loss</td> <td>($2,000)</td> </tr> <tr> <td>Distribution from qualified retirement plan</td> <td>$15,000</td> </tr> </tbody> </table> <p>What amount, if any, would be the penalty for early distribution from the qualified retirement plan?</p>`,
       choices: [
         `$0`,
         `$1,500`,
@@ -1425,20 +1440,26 @@ What amount, if any, would be the penalty for early distribution from the qualif
 </div>`,
     },
     {
-      id: "210101",
+      id: "9562",
       prompt: `A corporation had the following interest income accrued and received during the year:
 
- Source of Interest Income: Amount
+Source of Interest Income
+Amount
 
- General obligation municipal bonds: $12,000
+General obligation municipal bonds
+$12,000
 
- General obligation state bonds: $13,000
+General obligation state bonds
+$13,000
 
- Federal Treasury notes: $14,000
+Federal Treasury notes
+$14,000
 
- Banks: $15,000
+Banks
+$15,000
 
 What amount of book/tax difference for the year is attributable to interest income?`,
+      promptHtml: `<p>A corporation had the following interest income accrued and received during the year:</p> <table> <tbody> <tr> <th>Source of Interest Income</th> <th>Amount</th> </tr> <tr> <td>General obligation municipal bonds</td> <td>$12,000</td> </tr> <tr> <td>General obligation state bonds</td> <td>$13,000</td> </tr> <tr> <td>Federal Treasury notes</td> <td>$14,000</td> </tr> <tr> <td>Banks</td> <td>$15,000</td> </tr> </tbody> </table> <p>What amount of book/tax difference for the year is attributable to interest income?</p>`,
       choices: [
         `$12,000`,
         `$14,000`,
@@ -1550,20 +1571,31 @@ What amount of book/tax difference for the year is attributable to interest inco
 </div>`,
     },
     {
-      id: "210102",
+      id: "9563",
       prompt: `An accrual-basis, calendar-year-end corporation operates a professional sports team. During a year, the corporation was assessed the following fines and penalties:
 
- Fine or Penalty Assessed By • Amount • For
+Fine or Penalty Assessed By
+Amount
+For
 
- Federal government • $32,000 • Late payment penalty on federal taxes
+Federal government
+$32,000
+Late payment penalty on federal taxes
 
- State government • $1,000 • Speeding tickets paid by team
+State government
+$1,000
+Speeding tickets paid by team
 
- Local government • $12,000 • Zoning violations fine
+Local government
+$12,000
+Zoning violations fine
 
- Sports league • $40,000 • Dress code violations on the field
+Sports league
+$40,000
+Dress code violations on the field
 
 What amount of book/tax difference is attributable to the fines and penalties?`,
+      promptHtml: `<p>An accrual-basis, calendar-year-end corporation operates a professional sports team. During a year, the corporation was assessed the following fines and penalties:</p> <table> <tbody> <tr> <th>Fine or Penalty Assessed By</th> <th>Amount</th> <th>For</th> </tr> <tr> <td>Federal government</td> <td>$32,000</td> <td>Late payment penalty on federal taxes</td> </tr> <tr> <td>State government</td> <td>$1,000</td> <td>Speeding tickets paid by team</td> </tr> <tr> <td>Local government</td> <td>$12,000</td> <td>Zoning violations fine</td> </tr> <tr> <td>Sports league</td> <td>$40,000</td> <td>Dress code violations on the field</td> </tr> </tbody> </table> <p>What amount of book/tax difference is attributable to the fines and penalties?</p>`,
       choices: [
         `$32,000`,
         `$44,000`,
@@ -1713,7 +1745,7 @@ What amount of book/tax difference is attributable to the fines and penalties?`,
 </div>`,
     },
     {
-      id: "210103",
+      id: "9564",
       prompt: `For the current year, an accrual-basis corporation's bad debt expense for book purposes is $27,000. The corporation had $25,000 in write-offs of previously accrued credit losses for the current year. How is the corporation's book net income adjusted in order to arrive at taxable income?`,
       choices: [
         `$2,000 is added back to book net income.`,
@@ -1722,9 +1754,10 @@ What amount of book/tax difference is attributable to the fines and penalties?`,
         `$27,000 is deducted from book net income.`,
       ],
       correctIndex: 0,
+      explanation: `<h3 class="exp-title">nan</h3>`,
     },
     {
-      id: "210104",
+      id: "9565",
       prompt: `If a taxpayer incurred $200 in business meals with client expenses that are an expense for financial reporting but subject to a deduction limitation, how is the amount reported on Schedule M-3?`,
       choices: [
         `An entry of $100 is shown as a difference that is a book expense and not deductible.`,
@@ -1733,9 +1766,10 @@ What amount of book/tax difference is attributable to the fines and penalties?`,
         `An entry of $200 is shown as a difference that is a deduction and not a book expense.`,
       ],
       correctIndex: 0,
+      explanation: `<h3 class="exp-title">nan</h3>`,
     },
     {
-      id: "210105",
+      id: "9566",
       prompt: `A calendar-year, accrual-basis company accrued bonuses of $200,000 to its cash-basis employees at the end of year 4, when the employees were officially notified of the bonus amounts. A total of $125,000 of the bonuses was paid on February 1, year 5, and the remaining $75,000 was paid on June 1, year 5. Regarding the deductibility of the bonuses, the company may deduct`,
       choices: [
         `$200,000 in year 4.`,
@@ -1744,16 +1778,17 @@ What amount of book/tax difference is attributable to the fines and penalties?`,
         `$125,000 in year 4 and $75,000 in year 5.`,
       ],
       correctIndex: 3,
+      explanation: `<h3 class="exp-title">nan</h3>`,
     },
     {
-      id: "210106",
+      id: "9567",
       prompt: `A publicly traded C corporation pays its CEO annual compensation consisting of the following amounts:
 
-$600,000 in cash salary
+• $600,000 in cash salary
 
-$250,000 in cash commissions
+• $250,000 in cash commissions
 
-$350,000 in performance-based stock grants
+• $350,000 in performance-based stock grants
 
 What is the maximum deduction the corporation may claim on its federal income tax return for the CEO's total compensation?`,
       choices: [
@@ -1766,7 +1801,7 @@ What is the maximum deduction the corporation may claim on its federal income ta
       explanation: `<div style='background: linear-gradient(135deg, #1a3c5e, #2e6da4); color: white; padding: 16px 20px; border-radius: 8px 8px 0 0; font-size: 1.1em; font-weight: bold;'>REG — Federal Taxation of Entities: Section 162(m) Executive Compensation Deduction Limit</div><div style='border: 1px solid #2e6da4; border-top: none; border-radius: 0 0 8px 8px; padding: 20px;'><div style='background-color: #d4edda; border: 1px solid #28a745; border-radius: 6px; padding: 12px 16px; margin-bottom: 16px;'><strong>Correct Answer: $1,000,000 (Choice 3)</strong></div><div style='margin-bottom: 16px;'><strong>Explanation</strong><p>Under <strong>Section 162(m)</strong>, a publicly traded C corporation may <em>not</em> deduct more than <strong>$1,000,000</strong> of compensation paid to a <em>covered employee</em> (which includes the CEO) in any taxable year. For tax year 2026, this $1,000,000 cap applies to <strong>all forms of remuneration</strong> — including cash salary, cash commissions, and performance-based compensation such as stock grants. There is no exception for commissions or performance-based pay under current law.</p><p>The total compensation paid to the CEO is:</p></div><div style='background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; padding: 14px 18px; margin-bottom: 16px;'><strong>Computation</strong><table style='width:100%; border-collapse: collapse;'><tr><td style='padding: 4px 8px;'>Cash salary</td><td style='padding: 4px 8px; text-align: right;'>$600,000</td></tr><tr><td style='padding: 4px 8px;'>Cash commissions</td><td style='padding: 4px 8px; text-align: right;'>250,000</td></tr><tr><td style='padding: 4px 8px;'>Performance-based stock grants</td><td style='padding: 4px 8px; text-align: right;'>350,000</td></tr><tr style='border-top: 1px solid #aaa;'><td style='padding: 4px 8px;'><strong>Total compensation paid</strong></td><td style='padding: 4px 8px; text-align: right;'><strong>$1,200,000</strong></td></tr><tr><td style='padding: 4px 8px;'>Section 162(m) deduction limit</td><td style='padding: 4px 8px; text-align: right;'>$1,000,000</td></tr><tr style='border-top: 1px solid #aaa;'><td style='padding: 4px 8px;'><strong>Maximum allowable deduction</strong></td><td style='padding: 4px 8px; text-align: right;'><strong>$1,000,000</strong></td></tr></table></div><div><strong>Analysis of Each Option</strong><table style='width:100%; border-collapse: collapse; border: 1px solid #dee2e6;'><thead><tr style='background-color: #2e6da4; color: white;'><th style='padding: 8px; text-align: left;'>Choice</th><th style='padding: 8px; text-align: left;'>Analysis</th></tr></thead><tbody><tr style='background-color: #f2f2f2;'><td style='padding: 8px; border: 1px solid #dee2e6;'>$600,000</td><td style='padding: 8px; border: 1px solid #dee2e6;'>Incorrect. This equals only the cash salary component. Section 162(m) applies to total compensation, not just salary, and the deduction limit is $1,000,000 — not the salary component alone.</td></tr><tr><td style='padding: 8px; border: 1px solid #dee2e6;'>$850,000</td><td style='padding: 8px; border: 1px solid #dee2e6;'>Incorrect. This equals the sum of cash salary and commissions ($600,000 + $250,000). Under current law, commissions are not separately excluded from the Section 162(m) cap.</td></tr><tr style='background-color: #d4edda;'><td style='padding: 8px; border: 1px solid #dee2e6;'><strong>$1,000,000 ✓</strong></td><td style='padding: 8px; border: 1px solid #dee2e6;'><strong>Correct.</strong> Section 162(m) limits the deduction for compensation paid to a covered employee of a publicly traded C corporation to $1,000,000. All forms of compensation — including salary, commissions, and performance-based grants — count toward this cap. Total compensation of $1,200,000 exceeds the limit, so the maximum deductible amount is $1,000,000.</td></tr><tr style='background-color: #f2f2f2;'><td style='padding: 8px; border: 1px solid #dee2e6;'>$1,200,000</td><td style='padding: 8px; border: 1px solid #dee2e6;'>Incorrect. This is the total compensation paid, but Section 162(m) caps the deduction at $1,000,000. The $200,000 excess is permanently nondeductible.</td></tr></tbody></table></div></div>`,
     },
     {
-      id: "210107",
+      id: "9568",
       prompt: `A corporation had taxable income of $100,000 before considering the following sales. The corporation sold stock in Carver Corp. that it held for five years for $60,000. The corporation's basis in Carver stock was $84,000. The corporation also sold stock in Sherfey Corp. that it held for two years for $72,000. The corporation's basis in Sherfey stock was $60,000. What amount is the corporation's taxable income after considering the capital asset sales?`,
       choices: [
         `$88,000`,
@@ -1868,13 +1903,17 @@ What is the maximum deduction the corporation may claim on its federal income ta
 </div>`,
     },
     {
-      id: "210108",
+      id: "9569",
       prompt: `A C corporation earned income of $100,000 from business operations in year 3. Before the year 3 tax return was filed, an IRS audit found $10,000 of unreported income for year 1 and $5,000 of additional deductions for year 2. The tax returns as originally filed reported the following taxable income:
-Year: Taxable Income
-Year 1: $80,000
-Year 2: $50,000
+
+YearTaxable Income
+
+Year 1$80,000
+
+Year 2$50,000
 
 As a result of the IRS audit findings, what amount of taxable income should be reported on the year 3 tax return?`,
+      promptHtml: `<p>A C corporation earned income of $100,000 from business operations in year 3. Before the year 3 tax return was filed, an IRS audit found $10,000 of unreported income for year 1 and $5,000 of additional deductions for year 2. The tax returns as originally filed reported the following taxable income:</p><table><tr><th>Year</th><th>Taxable Income</th></tr><tr><td>Year 1</td><td>$80,000</td></tr><tr><td>Year 2</td><td>$50,000</td></tr></table><p>As a result of the IRS audit findings, what amount of taxable income should be reported on the year 3 tax return?</p>`,
       choices: [
         `$95,000`,
         `$100,000`,
@@ -1882,9 +1921,10 @@ As a result of the IRS audit findings, what amount of taxable income should be r
         `$110,000`,
       ],
       correctIndex: 1,
+      explanation: `<h3 class="exp-title">nan</h3>`,
     },
     {
-      id: "230150",
+      id: "9570",
       prompt: `A general partnership has two partners that each have a 50% interest in the profits and losses of the company. During year 1, the partnership earned a net profit of $60,000 from ordinary business activities, reduced its liabilities by $26,000, and distributed $10,000 to each partner. At the beginning of year 1, one of the partners had a tax basis of $70,000. What amount is that partner's tax basis at year end?`,
       choices: [
         `$77,000`,
@@ -1991,7 +2031,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "29051",
+      id: "9571",
       prompt: `Which of the following federal tax classifications is not available to a limited liability company?`,
       choices: [
         `A trust.`,
@@ -2000,9 +2040,10 @@ As a result of the IRS audit findings, what amount of taxable income should be r
         `An entity disregarded as separate from its owner.`,
       ],
       correctIndex: 0,
+      explanation: `<h3 class="exp-title">nan</h3>`,
     },
     {
-      id: "27050",
+      id: "9545",
       prompt: `Which of the following representations before the IRS would not be appropriate under Treasury Circular 230?`,
       choices: [
         `A general partner in a partnership represents the partnership in an IRS audit.`,
@@ -2090,7 +2131,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "27051",
+      id: "9546",
       prompt: `According to Treasury Circular 230, which of the following is allowed during an Internal Revenue Service audit of a client?`,
       choices: [
         `The tax practitioner uses the services of a newly retired IRS auditor, who audited the client's tax return four months before.`,
@@ -2178,7 +2219,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "250400",
+      id: "9572",
       prompt: `In the absence of fraud or a taxpayer's request, at most how many times may the IRS examine the taxpayer's books of account for a given tax year?`,
       choices: [
         `One time.`,
@@ -2279,7 +2320,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "250401",
+      id: "9573",
       prompt: `A taxpayer plans to deduct gambling losses on a federal individual tax return. Which of the following is required to substantiate the losses?`,
       choices: [
         `A list of gambling establishments routinely visited by the taxpayer with estimated wins and losses.`,
@@ -2385,7 +2426,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "250302",
+      id: "9547",
       prompt: `An accuracy-related penalty is assessed on each of the following, except`,
       choices: [
         `The portion of the tax due to negligence.`,
@@ -2491,7 +2532,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "212050",
+      id: "9548",
       prompt: `Which of the following is an advantage when forming a principal-agent relationship?`,
       choices: [
         `Has perpetual life.`,
@@ -2596,7 +2637,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "212051",
+      id: "9549",
       prompt: `In an agency relationship, the agent's obligations to the principal include which of the following?`,
       choices: [
         `Duty of indemnification.`,
@@ -2707,7 +2748,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "210050",
+      id: "9550",
       prompt: `Moore Co. contracted with a clothing manufacturer to purchase 200 shirts for resale at Moore's store. The contract specified that the purchase price was to be $5 per shirt. A representative for the manufacturer later called Moore and stated that, due to an unforeseen increase in the cost of labor, the manufacturer could deliver the shirts only if Moore agreed to pay $7 per shirt. Moore verbally agreed to the price increase. The manufacturer immediately sent Moore a written confirmation of the order detailing the 200 shirts at $7 each. Moore received the confirmation, noted its contents, and did not object to it in writing. Under the Sales Article of the UCC, what total amount will Moore have to pay the manufacturer?`,
       choices: [
         `$0`,
@@ -2810,7 +2851,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "210051",
+      id: "9551",
       prompt: `A retailer entered into a contract with a supplier to purchase some inventory for the store. While the contract was executory, the retailer informed the supplier that it did not need the contracted inventory and wanted to cancel the contract. The supplier replied that it will voluntarily cancel the contract. The two parties discharged the contract by means of`,
       choices: [
         `A novation.`,
@@ -2921,7 +2962,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "210052",
+      id: "9552",
       prompt: `A commercial bakery entered into a contract with a supermarket chain to deliver a large order of cookies on a certain date. To bake the cookies, the bakery needs large quantities of vanilla. Between the date when the contract was entered into and the date of delivery, an unexpected event caused the price of vanilla to rise sharply. The bakery would lose a significant amount of money if it delivered the cookies at the contracted price. A court would most likely discharge the bakery's obligations under the contract for which reason?`,
       choices: [
         `Accord and satisfaction.`,
@@ -3022,7 +3063,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "210053",
+      id: "9553",
       prompt: `If a contract states a performance date and specifies that time is of the essence, then the contract will be materially breached unless performance occurs`,
       choices: [
         `By the time of performance stated in the contract.`,
@@ -3121,7 +3162,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "29050",
+      id: "9554",
       prompt: `The death of an owner automatically terminates which of the following business organizations?`,
       choices: [
         `Limited liability company.`,
@@ -3232,7 +3273,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "260300",
+      id: "9574",
       prompt: `Cang bought a duplex and used one unit as a principal residence and rented the other unit. Both units were identical and were built on leased land. On the sale of the duplex, how is Cang's basis determined?`,
       choices: [
         `Cang's purchase price for the duplex is allocated equally to each unit, and the rental unit's basis is adjusted for allowable depreciation.`,
@@ -3332,7 +3373,7 @@ As a result of the IRS audit findings, what amount of taxable income should be r
 </div>`,
     },
     {
-      id: "260301",
+      id: "9575",
       prompt: `A taxpayer purchased a home in year 2 and used it as a primary residence. In June, year 4, the taxpayer converted the home from personal to business use by leasing it for vacation rentals. Which of the following statements is correct regarding the tax depreciation deduction that the taxpayer may take with respect to the property?`,
       choices: [
         `The taxpayer must wait until year 5 to take depreciation deductions for the property.`,

@@ -5,6 +5,7 @@ export const aicpaFar2026Quiz: Quiz = {
   title: "2026 Official AICPA FAR Questions",
   subtitle: "Released AICPA FAR multiple-choice questions",
   discipline: "far",
+  course: "cpa",
   questions: [
     {
       id: "14093",

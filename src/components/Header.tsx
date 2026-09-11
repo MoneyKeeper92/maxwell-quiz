@@ -1,16 +1,15 @@
 import { useLocation } from "react-router-dom";
-import { getCatalogItem, getQuiz } from "../data/registry";
+import { courseForPath, getCatalogItem } from "../data/registry";
 
 export default function Header() {
   const location = useLocation();
-  const quizKey = location.pathname.split("/").filter(Boolean)[0];
-  const catalogItem = getCatalogItem(quizKey);
-  const quiz = getQuiz(quizKey);
+  const course = courseForPath(location.pathname);
+  const segments = location.pathname.split("/").filter(Boolean);
+  const quizKey = course === "intermediate" ? segments[1] : segments[0];
+  const catalogItem = getCatalogItem(quizKey, course);
 
-  let subtitle = "Free FAR Practice Quizzes";
-  if (quiz) {
-    subtitle = quiz.title;
-  } else if (catalogItem) {
+  let subtitle = "Free CPA Practice Quizzes";
+  if (catalogItem) {
     subtitle = catalogItem.title;
   } else if (location.pathname !== "/") {
     subtitle = "Practice Quiz";

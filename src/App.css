@@ -885,3 +885,85 @@
     font-size: 12px;
   }
 }
+
+/* EMBED (Thinkific iframe) — no site header, tighter chrome */
+.main-embed {
+  padding: 16px 16px 32px;
+}
+
+@media (max-width: 600px) {
+  .main-embed {
+    padding: 12px 12px 28px;
+  }
+}
+
+/* Question stems that carry a real table (imported from the source sheet) */
+.q-text-html {
+  white-space: normal;
+  overflow-x: auto;
+}
+
+.q-text-html p {
+  margin: 0 0 10px;
+}
+
+.q-text-html p:last-child {
+  margin-bottom: 0;
+}
+
+.q-text-html table {
+  border-collapse: collapse;
+  margin: 14px 0;
+  min-width: 320px;
+}
+
+.q-text-html th,
+.q-text-html td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.q-text-html th {
+  background: #f7f9fb;
+  font-weight: 600;
+}
+
+.q-text-html ul,
+.q-text-html ol {
+  margin: 0 0 10px 20px;
+}
+
+.quiz-loading {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.score-note {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 14px;
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 24px 0 28px;
+}
+
+.btn-results-secondary {
+  background: var(--white);
+  color: var(--blue-dark);
+  border: 1.5px solid var(--border);
+}
+
+.btn-results-secondary:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}

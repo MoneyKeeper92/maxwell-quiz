@@ -5,6 +5,7 @@ export const cashToAccrualQuiz: Quiz = {
   title: "Cash to Accrual",
   subtitle: "Converting between cash and accrual basis",
   discipline: "far",
+  course: "cpa",
   questions: [
     {
       id: "1",

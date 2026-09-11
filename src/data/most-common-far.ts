@@ -5,6 +5,7 @@ export const mostCommonFarQuiz: Quiz = {
   title: "10 Most Common FAR Questions",
   subtitle: "High-frequency FAR MCQs covering cash flows, EPS, leases, inventory, and more",
   discipline: "far",
+  course: "cpa",
   questions: [
     {
       id: "1",

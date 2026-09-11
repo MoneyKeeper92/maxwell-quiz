@@ -5,6 +5,7 @@ export const aicpaAud2026Quiz: Quiz = {
   title: "2026 Official AICPA AUD Questions",
   subtitle: "Released AICPA AUD multiple-choice questions",
   discipline: "aud",
+  course: "cpa",
   questions: [
     {
       id: "345070",
