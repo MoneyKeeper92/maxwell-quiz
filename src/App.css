@@ -967,3 +967,101 @@
   border-color: var(--blue);
   color: var(--blue);
 }
+
+/* REPORT AN ISSUE */
+.report-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.report-trigger {
+  background: none;
+  border: none;
+  padding: 4px 2px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.report-trigger:hover {
+  color: var(--blue);
+}
+
+.report-sent {
+  font-size: 13px;
+  color: var(--green);
+  font-weight: 500;
+}
+
+.report-panel {
+  margin-top: 14px;
+  padding: 16px 18px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+}
+
+.report-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.report-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.report-textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+
+.report-error {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--red);
+}
+
+.report-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.report-cancel {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 8px 10px;
+}
+
+.report-cancel:hover {
+  color: var(--text);
+}
+
+.report-send {
+  padding: 9px 20px;
+  font-size: 14px;
+}
+
+.report-send:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

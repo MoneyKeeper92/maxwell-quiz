@@ -111,3 +111,62 @@ so opening one lesson downloads only that quiz (~250 kB entry bundle rather than
 <iframe src="https://quiz.maxwellstudy.com/intermediate/revenue-recognition"
         width="100%" height="900" style="border:0" loading="lazy"></iframe>
 ```
+
+## Usage tracking and issue reports
+
+Both features are optional. Without the env vars the quiz works exactly as
+before: tracking silently no-ops and the report button hides itself.
+
+### One-time setup
+
+1. Run `supabase/01_quiz_events.sql` in the Supabase SQL editor. It creates the
+   `quiz_events` table and an RLS policy allowing **insert only** for `anon`.
+   With no select policy the data is write-only from the browser and readable
+   only from the SQL editor or with the service role key.
+2. In Netlify, add the environment variables from `.env.example`
+   (Project configuration -> Environment variables), then redeploy. Vite inlines
+   `VITE_*` at build time, so a redeploy is required for changes to take effect.
+
+### What gets recorded
+
+One row per event in `quiz_events`, grouped by `attempt_id` (one per opening of
+a quiz):
+
+| Event | When | Carries |
+|-------|------|---------|
+| `quiz_started` | quiz opens | total questions |
+| `question_answered` | each answer | question id, correct or not |
+| `quiz_submitted` | submit | score, active time |
+| `quiz_exit` | tab hidden or closed before submitting | active time |
+
+`active_ms` counts only time the quiz is actually on screen, so a lesson left
+open in a background tab does not inflate it. Each event carries the running
+total for its attempt, so reports aggregate with `max(active_ms)`.
+
+### Identifying students
+
+Turn on **Add dynamic variables to the URL** in the Thinkific multimedia lesson
+and append the learner variables to the embed URL:
+
+```
+https://quiz.maxwellstudy.com/intermediate/leases?email={{email}}&first_name={{first_name}}&last_name={{last_name}}
+```
+
+The app reads these from the query string and stores them on each event, giving
+exact per-student counts. Without them it falls back to a random per-browser id
+kept in `localStorage`, which still measures sessions and time but counts one
+student on two devices twice.
+
+### Reading the data
+
+`supabase/02_reports.sql` has ready-made queries: headline usage, per quiz,
+hardest questions, daily usage, and reported questions. Paste any block into the
+Supabase SQL editor.
+
+### Issue reports
+
+The button under each question writes to the shared `feedback` table with
+`source = "quiz"` and `material_id` of the form `intermediate/leases#4940`. The
+message carries the quiz, question number, question text, the keyed answer, what
+the learner chose, and who reported it. Nothing new to set up: it is the same
+table the textbook app already uses.

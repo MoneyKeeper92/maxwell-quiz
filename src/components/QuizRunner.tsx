@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import type { Quiz } from "../data/types";
 import { getHomeQuizLinks } from "../data/registry";
+import ReportIssueButton from "./ReportIssueButton";
+import { ActiveTimer, newAttemptId, track } from "../lib/analytics";
 
 const LETTERS = ["A", "B", "C", "D"];
 
@@ -86,6 +88,59 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
     saveProgress(quiz, { answers, index, finished });
   }, [quiz, answers, index, finished]);
 
+  // One attempt per mount. QuizPage keys this component by quiz, so opening a
+  // different quiz starts a new attempt rather than extending the old one.
+  // Built lazily: a plain useRef initialiser would construct a throwaway timer
+  // on every render.
+  const attemptRef = useRef<{ id: string; timer: ActiveTimer } | null>(null);
+  if (attemptRef.current === null) {
+    attemptRef.current = { id: newAttemptId(), timer: new ActiveTimer() };
+  }
+  // Both are stable for the lifetime of this mount, so they are safe (and
+  // honest) to list as effect dependencies.
+  const { id: attemptId, timer: attemptTimer } = attemptRef.current;
+  const submitted = useRef(false);
+
+  useEffect(() => {
+    const timer = attemptTimer;
+    const base = { course: quiz.course, quiz: quiz.key, attempt_id: attemptId };
+    // Resume explicitly: the cleanup below pauses the timer, and React runs
+    // mount/cleanup/mount in development.
+    timer.resume();
+    track({ event: "quiz_started", ...base, total_count: total });
+
+    // A quiz open for under a second was never really read: React's dev-mode
+    // double mount and accidental loads both land here, and neither is an exit.
+    const reportExit = () => {
+      const ms = timer.elapsedMs();
+      if (submitted.current || ms < 1000) return;
+      track({ event: "quiz_exit", ...base, active_ms: ms }, true);
+    };
+
+    // Time is only counted while the lesson is actually on screen.
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        timer.pause();
+        reportExit();
+      } else {
+        timer.resume();
+      }
+    };
+    const onPageHide = () => {
+      timer.pause();
+      reportExit();
+    };
+
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("pagehide", onPageHide);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pagehide", onPageHide);
+      timer.pause();
+      reportExit();
+    };
+  }, [quiz.course, quiz.key, total, attemptId, attemptTimer]);
+
   const question = quiz.questions[index];
   const answered = answers[index] !== null;
   const userAnswer = answers[index];
@@ -120,6 +175,16 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
       next[index] = choiceIndex;
       return next;
     });
+    track({
+      event: "question_answered",
+      course: quiz.course,
+      quiz: quiz.key,
+      attempt_id: attemptId,
+      question_id: question.id,
+      question_index: index,
+      is_correct: choiceIndex === question.correctIndex,
+      active_ms: attemptTimer.elapsedMs(),
+    });
   };
 
   const submitQuiz = () => {
@@ -132,6 +197,16 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
     ) {
       return;
     }
+    submitted.current = true;
+    track({
+      event: "quiz_submitted",
+      course: quiz.course,
+      quiz: quiz.key,
+      attempt_id: attemptId,
+      correct_count: correctCount,
+      total_count: total,
+      active_ms: attemptTimer.elapsedMs(),
+    });
     setFinished(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -343,6 +418,19 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
           />
         </div>
       )}
+
+      <ReportIssueButton
+        context={{
+          course: quiz.course,
+          quiz: quiz.key,
+          quizTitle: quiz.title,
+          questionId: question.id,
+          questionIndex: index,
+          prompt: question.prompt,
+          selectedLetter: userAnswer === null ? null : LETTERS[userAnswer],
+          correctLetter: LETTERS[question.correctIndex],
+        }}
+      />
 
       <div className="nav-row">
         <button
