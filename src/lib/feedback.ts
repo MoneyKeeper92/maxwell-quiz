@@ -70,7 +70,10 @@ export async function submitReport(
         source: "quiz",
         material_id: materialId(ctx),
         message: composeMessage(ctx, message),
-        textbook: null,
+        // `textbook` is NOT NULL in the shared table — the textbook app always
+        // fills it. The course is the closest honest value; the precise
+        // location lives in material_id.
+        textbook: ctx.course,
         page: null,
         chapter: null,
       }),

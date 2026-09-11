@@ -166,7 +166,9 @@ Supabase SQL editor.
 ### Issue reports
 
 The button under each question writes to the shared `feedback` table with
-`source = "quiz"` and `material_id` of the form `intermediate/leases#4940`. The
+`source = "quiz"` and `material_id` of the form `intermediate/leases#4940`.
+`textbook` is NOT NULL on that table, so it carries the course name; the
+precise location is in `material_id`. The
 message carries the quiz, question number, question text, the keyed answer, what
 the learner chose, and who reported it. Nothing new to set up: it is the same
 table the textbook app already uses.
