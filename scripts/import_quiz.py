@@ -198,7 +198,11 @@ def read_rows(path: Path, sheet: str | None = None) -> list[dict]:
     out = []
     for n, r in enumerate(rows[1:], start=2):
         raw_prompt = cell(r, "prompt")
-        prompt = html_to_text(raw_prompt)
+        source_is_html = bool(re.search(HTML_TAG_RE, str(raw_prompt or "")))
+        if source_is_html:
+            prompt = html_to_text(raw_prompt)
+        else:
+            prompt, plain_prompt_html = explanation_html.build_prompt(str(raw_prompt or ""))
         choices = [html_to_text(cell(r, f"choice{k}")) for k in range(1, 5)]
         if not prompt or not all(choices):
             print(f"  ! row {n}: skipped (blank question or choice)")
@@ -219,9 +223,14 @@ def read_rows(path: Path, sheet: str | None = None) -> list[dict]:
             print(f"       option: {choices[correct][:70]}")
 
         prompt_html = None
-        if re.search(r"<\s*table", str(raw_prompt or ""), re.I):
-            prompt_html = clean_prompt_html(raw_prompt)
-            print(f"  \u00b7 row {n}: table in stem — kept as HTML")
+        if source_is_html:
+            if re.search(r"<\s*table", str(raw_prompt or ""), re.I):
+                prompt_html = clean_prompt_html(raw_prompt)
+                print(f"  \u00b7 row {n}: table in stem — kept as HTML")
+        else:
+            prompt_html = plain_prompt_html
+            if prompt_html:
+                print(f"  \u00b7 row {n}: stem rebuilt with a table or list")
 
         out.append(
             {

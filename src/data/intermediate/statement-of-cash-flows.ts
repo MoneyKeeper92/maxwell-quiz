@@ -91,22 +91,23 @@ In Karr's Year 2 statement of cash flows, net cash provided by operating activit
       id: "5121",
       prompt: `Martin Co. had net income of $70,000 during the year. Depreciation expense was $10,000. The following information is available:
 
-| Accounts receivable increase
-| $20,000
+Accounts receivable increase
+$20,000
 
-| Equipment gain on sale increase
-| 10,000
+Equipment gain on sale increase
+10,000
 
-| Nontrade notes payable increase
-| 50,000
+Nontrade notes payable increase
+50,000
 
-| Prepaid insurance increase
-| 40,000
+Prepaid insurance increase
+40,000
 
-| Accounts payable increase
-| 30,000
+Accounts payable increase
+30,000
 
 What amount should Martin report as net cash provided by operating activities in its statement of cash flows for the year?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Martin Co. had net income of $70,000 during the year. Depreciation expense was $10,000. The following information is available:</p><table cellspacing="0" style="border-collapse:collapse; margin-top:15px; width:100%"><tbody><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Accounts receivable increase</td><td style="border-bottom:1px solid #dddddd; padding:10px">$20,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Equipment gain on sale increase</td><td style="border-bottom:1px solid #dddddd; padding:10px">10,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Nontrade notes payable increase</td><td style="border-bottom:1px solid #dddddd; padding:10px">50,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Prepaid insurance increase</td><td style="border-bottom:1px solid #dddddd; padding:10px">40,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Accounts payable increase</td><td style="border-bottom:1px solid #dddddd; padding:10px">30,000</td></tr></tbody></table><p style="margin:0 0 12px 0">What amount should Martin report as net cash provided by operating activities in its statement of cash flows for the year?</p>`,
       choices: [
         `$0`,
         `$40,000`,
@@ -155,6 +156,7 @@ Conversion of convertible preferred stock into common shares
 Proceeds from sale of treasury stock (carrying amount at cost $43,000): $50,000
 
 What amount should Xan report as net cash used in financing activities in its Year 2 statement of cash flows?`,
+      promptHtml: `<p style="margin:0 0 12px 0">During Year 2, Xan, Inc. had the following financing-related activities:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Payment for early retirement of long-term bonds payable (carrying amount $370,000): $375,000</li><li style="margin:0 0 8px 0">Distribution of cash dividend declared in Year 1 to preferred shareholders: $31,000</li><li style="margin:0 0 8px 0">Conversion of convertible preferred stock into common shares</li><li style="margin:0 0 8px 0">Proceeds from sale of treasury stock (carrying amount at cost $43,000): $50,000</li></ul><p style="margin:0 0 12px 0">What amount should Xan report as net cash used in financing activities in its Year 2 statement of cash flows?</p>`,
       choices: [
         `$358,000`,
         `$356,000`,

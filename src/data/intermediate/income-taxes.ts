@@ -98,6 +98,7 @@ Depreciation deducted for income tax purposes in excess of depreciation reported
 Enacted corporate income tax rate: 30%
 
 What amount of current income tax liability should be reported in Dunn's December 31 balance sheet?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Dunn Co.&#x27;s income statement reported $90,000 income before provision for income taxes. To compute the provision for federal income taxes, the following data are provided:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Rent received in advance: $16,000</li><li style="margin:0 0 8px 0">Income from exempt municipal bonds: $20,000</li><li style="margin:0 0 8px 0">Depreciation deducted for income tax purposes in excess of depreciation reported for financial statement purposes: $10,000</li><li style="margin:0 0 8px 0">Enacted corporate income tax rate: 30%</li></ul><p style="margin:0 0 12px 0">What amount of current income tax liability should be reported in Dunn&#x27;s December 31 balance sheet?</p>`,
       choices: [
         `$18,000`,
         `$22,800`,
@@ -142,6 +143,7 @@ Premium on officer's life insurance (with Lake as owner and beneficiary): $15,00
 Interest received on municipal bonds: $20,000
 
 The enacted tax rate for the current year is 30% and 21% thereafter. In its December 31 balance sheet, Lake should report a deferred income tax liability of:`,
+      promptHtml: `<p style="margin:0 0 12px 0">Lake Corp., a newly organized company, reported pretax financial income of $100,000 for the current year. Among the items in Lake&#x27;s income statement are:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Premium on officer&#x27;s life insurance (with Lake as owner and beneficiary): $15,000</li><li style="margin:0 0 8px 0">Interest received on municipal bonds: $20,000</li></ul><p style="margin:0 0 12px 0">The enacted tax rate for the current year is 30% and 21% thereafter. In its December 31 balance sheet, Lake should report a deferred income tax liability of:</p>`,
       choices: [
         `$3,150`,
         `$0`,

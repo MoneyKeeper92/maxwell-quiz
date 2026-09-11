@@ -80,6 +80,7 @@ Previously written-off accounts recovered during Year 3: $2,000
 Gross accounts receivable at 12/31/Yr 3 (before deducting the allowance): $350,000
 
 For Year 3, what would be Inge's credit loss expense?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Inge Co. determined that the net realizable value of its accounts receivable at December 31, Year 3, based on an aging of the receivables, was $325,000. Additional information is as follows:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Allowance for credit losses, 1/1/Yr 3: $30,000 (credit balance)</li><li style="margin:0 0 8px 0">Accounts receivable written off during Year 3: $18,000</li><li style="margin:0 0 8px 0">Previously written-off accounts recovered during Year 3: $2,000</li><li style="margin:0 0 8px 0">Gross accounts receivable at 12/31/Yr 3 (before deducting the allowance): $350,000</li></ul><p style="margin:0 0 12px 0">For Year 3, what would be Inge&#x27;s credit loss expense?</p>`,
       choices: [
         `$5,000`,
         `$11,000`,
@@ -138,6 +139,7 @@ Adjustment to credit losses (write-offs), 11/30: $46,000
 Estimated credit losses per aging, 12/31: $52,000
 
 After year-end adjustment, the credit loss expense should be:`,
+      promptHtml: `<p style="margin:0 0 12px 0">For the year ended December 31, Beal Co. estimated its allowance for credit losses using the year-end aging of accounts receivable. The following data are available:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Allowance for credit losses, 1/1: $42,000</li><li style="margin:0 0 8px 0">Estimated credit losses (2% on credit sales of $2,000,000): $40,000</li><li style="margin:0 0 8px 0">Adjustment to credit losses (write-offs), 11/30: $46,000</li><li style="margin:0 0 8px 0">Estimated credit losses per aging, 12/31: $52,000</li></ul><p style="margin:0 0 12px 0">After year-end adjustment, the credit loss expense should be:</p>`,
       choices: [
         `$56,000`,
         `$52,000`,

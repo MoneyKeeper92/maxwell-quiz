@@ -20,6 +20,7 @@ January 20: Purchase - 150 units at $15 each
 January 25: Sale - 300 units
 
 Assuming Company E uses the FIFO method, calculate the cost of goods sold for the sale on January 25.`,
+      promptHtml: `<p style="margin:0 0 12px 0">Throughout the month, Company E made the following transactions:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">January 1: Beginning Inventory - 100 units at $10 each</li><li style="margin:0 0 8px 0">January 10: Purchase - 200 units at $12 each</li><li style="margin:0 0 8px 0">January 20: Purchase - 150 units at $15 each</li><li style="margin:0 0 8px 0">January 25: Sale - 300 units</li></ul><p style="margin:0 0 12px 0">Assuming Company E uses the FIFO method, calculate the cost of goods sold for the sale on January 25.</p>`,
       choices: [
         `$3,400`,
         `$3,750`,
@@ -42,6 +43,7 @@ February 23: Purchase - 200 units at $27 each
 February 28: Sale - 400 units
 
 If Company F uses the LIFO method, what is the cost of goods sold for the sale on February 28?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Company F&#x27;s transactions for the month were as follows:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">February 1: Beginning Inventory - 120 units at $20 each</li><li style="margin:0 0 8px 0">February 15: Purchase - 180 units at $25 each</li><li style="margin:0 0 8px 0">February 23: Purchase - 200 units at $27 each</li><li style="margin:0 0 8px 0">February 28: Sale - 400 units</li></ul><p style="margin:0 0 12px 0">If Company F uses the LIFO method, what is the cost of goods sold for the sale on February 28?</p>`,
       choices: [
         `$10,300`,
         `$10,800`,
@@ -88,6 +90,7 @@ September 25: Purchase - 200 units at $63 each
 September sales: 400 units in total were sold during the month
 
 What is the cost of goods sold for September using the weighted average method?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Company K recorded the following transactions in September:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">September 1: Beginning Inventory - 200 units at $54 each</li><li style="margin:0 0 8px 0">September 18: Purchase - 300 units at $62 each</li><li style="margin:0 0 8px 0">September 25: Purchase - 200 units at $63 each</li><li style="margin:0 0 8px 0">September sales: 400 units in total were sold during the month</li></ul><p style="margin:0 0 12px 0">What is the cost of goods sold for September using the weighted average method?</p>`,
       choices: [
         `$23,200`,
         `$24,000`,
@@ -112,6 +115,7 @@ August 10: Purchase - 150 units at $50 each
 August 25: Sale - 250 units
 
 Using the perpetual LIFO method, calculate the cost of goods sold for the sales during the period.`,
+      promptHtml: `<p style="margin:0 0 12px 0">Company J had the following transactions:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">July 1: Beginning Inventory - 150 units at $40 each</li><li style="margin:0 0 8px 0">July 12: Purchase - 200 units at $45 each</li><li style="margin:0 0 8px 0">July 18: Sale - 100 units</li><li style="margin:0 0 8px 0">August 10: Purchase - 150 units at $50 each</li><li style="margin:0 0 8px 0">August 25: Sale - 250 units</li></ul><p style="margin:0 0 12px 0">Using the perpetual LIFO method, calculate the cost of goods sold for the sales during the period.</p>`,
       choices: [
         `$19,000`,
         `$19,500`,

@@ -22,6 +22,7 @@ Marketable debt security: $7,500
 ABC Bank—depository account: $5,000
 
 What amount should Star report as cash and cash equivalents in the balance sheet as of December 31?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Star Corp. had the following accounts and balances in its general ledger as of December 31:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Petty cash: $500</li><li style="margin:0 0 8px 0">XYZ Bank: checking account: $20,000</li><li style="margin:0 0 8px 0">Marketable equity security: $10,000</li><li style="margin:0 0 8px 0">Marketable debt security: $7,500</li><li style="margin:0 0 8px 0">ABC Bank: depository account: $5,000</li></ul><p style="margin:0 0 12px 0">What amount should Star report as cash and cash equivalents in the balance sheet as of December 31?</p>`,
       choices: [
         `$42,500`,
         `$35,000`,
@@ -68,6 +69,7 @@ U.S. Treasury bill, purchased 12/1/Year 2, maturing 2/28/Year 3: $800,000
 U.S. Treasury bond, purchased 3/1/Year 2, maturing 2/28/Year 3: $500,000
 
 Cook's policy is to treat as cash equivalents all highly liquid investments with a maturity of three months or less when purchased. What amount should Cook report as cash and cash equivalents in its December 31, Year 2, balance sheet?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Cook Co. had the following balances at December 31, Year 2:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Cash in checking account: $350,000</li><li style="margin:0 0 8px 0">Cash in money market account: $250,000</li><li style="margin:0 0 8px 0">U.S. Treasury bill, purchased 12/1/Year 2, maturing 2/28/Year 3: $800,000</li><li style="margin:0 0 8px 0">U.S. Treasury bond, purchased 3/1/Year 2, maturing 2/28/Year 3: $500,000</li></ul><p style="margin:0 0 12px 0">Cook&#x27;s policy is to treat as cash equivalents all highly liquid investments with a maturity of three months or less when purchased. What amount should Cook report as cash and cash equivalents in its December 31, Year 2, balance sheet?</p>`,
       choices: [
         `$600,000`,
         `$1,150,000`,
@@ -94,6 +96,7 @@ Commercial paper (matures in two months): $7,000
 Certificate of deposit (matures in six months): $5,000
 
 What amount should be reported as cash and cash equivalents on Smite's balance sheet?`,
+      promptHtml: `<p style="margin:0 0 12px 0">The following are held by Smite Co. The bond sinking fund is restricted for long-term debt retirement and is not available for general use:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Cash in checking account: $20,000</li><li style="margin:0 0 8px 0">Cash in bond sinking fund account: $30,000</li><li style="margin:0 0 8px 0">Post-dated check from customer dated one month from balance sheet date: $250</li><li style="margin:0 0 8px 0">Petty cash: $200</li><li style="margin:0 0 8px 0">Commercial paper (matures in two months): $7,000</li><li style="margin:0 0 8px 0">Certificate of deposit (matures in six months): $5,000</li></ul><p style="margin:0 0 12px 0">What amount should be reported as cash and cash equivalents on Smite&#x27;s balance sheet?</p>`,
       choices: [
         `$32,200`,
         `$27,200`,
@@ -116,6 +119,7 @@ Checks outstanding: $2,000
 Deposits in transit: $400
 
 A check deposited by Mountain and cleared by the bank for $150 was improperly recorded by Mountain as $105. What is the correct (adjusted) cash balance after completing the bank reconciliation?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Mountain Co.&#x27;s monthly bank statement shows a balance of $60,000. Reconciliation of the statement with company books reveals the following:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Bank service charge: $20</li><li style="margin:0 0 8px 0">Insufficient funds check: $700</li><li style="margin:0 0 8px 0">Checks outstanding: $2,000</li><li style="margin:0 0 8px 0">Deposits in transit: $400</li></ul><p style="margin:0 0 12px 0">A check deposited by Mountain and cleared by the bank for $150 was improperly recorded by Mountain as $105. What is the correct (adjusted) cash balance after completing the bank reconciliation?</p>`,
       choices: [
         `$58,400`,
         `$57,775`,
@@ -129,28 +133,27 @@ A check deposited by Mountain and cleared by the bank for $150 was improperly re
       id: "4897",
       prompt: `On December 31, a company has the following bank accounts and corresponding cash balances:
 
-| Florida Bank
-|
+Florida Bank
 
-| Operating Account - Orlando
-| ($400,000)
+Operating Account - Orlando
+($400,000)
 
-| Operating Account - Tampa
-| 300,000
+Operating Account - Tampa
+300,000
 
-| Operating Account - Miami
-| 50,000
+Operating Account - Miami
+50,000
 
-| Savings Account
-| 500,000
+Savings Account
+500,000
 
-| Georgia Bank
-|
+Georgia Bank
 
-| Checking
-| ($375,000)
+Checking
+($375,000)
 
 How should the company report the above bank account balances in the balance sheet at December 31?`,
+      promptHtml: `<p style="margin:0 0 12px 0">On December 31, a company has the following bank accounts and corresponding cash balances:</p><table cellspacing="0" style="border-collapse:collapse; margin-top:15px; width:100%"><tbody><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Florida Bank</td><td style="border-bottom:1px solid #dddddd; padding:10px"></td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Operating Account - Orlando</td><td style="border-bottom:1px solid #dddddd; padding:10px">($400,000)</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Operating Account - Tampa</td><td style="border-bottom:1px solid #dddddd; padding:10px">300,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Operating Account - Miami</td><td style="border-bottom:1px solid #dddddd; padding:10px">50,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Savings Account</td><td style="border-bottom:1px solid #dddddd; padding:10px">500,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Georgia Bank</td><td style="border-bottom:1px solid #dddddd; padding:10px"></td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Checking</td><td style="border-bottom:1px solid #dddddd; padding:10px">($375,000)</td></tr></tbody></table><p style="margin:0 0 12px 0">How should the company report the above bank account balances in the balance sheet at December 31?</p>`,
       choices: [
         `Cash of $75,000.`,
         `Cash of $450,000 and a liability of $375,000.`,
@@ -189,6 +192,7 @@ Bank statement balance: $16,000
 Check drawn on Grey's account, payable to a vendor, dated and recorded 12/31/Year 1 but not mailed until 1/10/Year 2: $1,800
 
 On Grey's December 31, Year 1, balance sheet, what amount should be reported as cash?`,
+      promptHtml: `<p style="margin:0 0 12px 0">The following information pertains to Grey Co. at December 31, Year 1:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Checkbook balance: $12,000</li><li style="margin:0 0 8px 0">Bank statement balance: $16,000</li><li style="margin:0 0 8px 0">Check drawn on Grey&#x27;s account, payable to a vendor, dated and recorded 12/31/Year 1 but not mailed until 1/10/Year 2: $1,800</li></ul><p style="margin:0 0 12px 0">On Grey&#x27;s December 31, Year 1, balance sheet, what amount should be reported as cash?</p>`,
       choices: [
         `$16,000`,
         `$13,800`,
@@ -205,18 +209,19 @@ On Grey's December 31, Year 1, balance sheet, what amount should be reported as 
 Item
 Amount
 
-| Cash in bank
-| $3,000
+Cash in bank
+$3,000
 
-| Petty cash
-| $120
+Petty cash
+$120
 
-| Money market account
-| $10,000
+Money market account
+$10,000
 
 The cashier is holding postdated checks from customers totaling $500 to be deposited on the date of the check. Further, $5,000 of the money market account is subject to a compensating-balance arrangement for a loan due in three years.
 
 What amount should be reported as cash and cash equivalents in the year-end balance sheet?`,
+      promptHtml: `<p style="margin:0 0 12px 0">A corporation has the following balances at year end:</p><table cellspacing="0" style="border-collapse:collapse; margin-top:15px; width:100%"><thead><tr><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">Item</th><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">Amount</th></tr></thead><tbody><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Cash in bank</td><td style="border-bottom:1px solid #dddddd; padding:10px">$3,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Petty cash</td><td style="border-bottom:1px solid #dddddd; padding:10px">$120</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Money market account</td><td style="border-bottom:1px solid #dddddd; padding:10px">$10,000</td></tr></tbody></table><p style="margin:0 0 12px 0">The cashier is holding postdated checks from customers totaling $500 to be deposited on the date of the check. Further, $5,000 of the money market account is subject to a compensating-balance arrangement for a loan due in three years.</p><p style="margin:0 0 12px 0">What amount should be reported as cash and cash equivalents in the year-end balance sheet?</p>`,
       choices: [
         `$8,120`,
         `$8,500`,

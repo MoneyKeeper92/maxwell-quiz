@@ -65,19 +65,20 @@ Security
 Cost
 Market Value at 12/31/Year 1
 
-| D
-| $36,000
-| $40,000
+D
+$36,000
+$40,000
 
-| E
-| $80,000
-| $60,000
+E
+$80,000
+$60,000
 
-| F
-| $180,000
-| $186,000
+F
+$180,000
+$186,000
 
 Total cost = $296,000; Total market value = $286,000. Scott appropriately carries these securities at market value. The amount of unrealized loss on these securities in Scott's Year 1 income statement should be:`,
+      promptHtml: `<p style="margin:0 0 12px 0">During Year 1, Scott Corp. purchased marketable equity securities. Pertinent data follow:</p><table cellspacing="0" style="border-collapse:collapse; margin-top:15px; width:100%"><thead><tr><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">Security</th><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">Cost</th><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">Market Value at 12/31/Year 1</th></tr></thead><tbody><tr><td style="border-bottom:1px solid #dddddd; padding:10px">D</td><td style="border-bottom:1px solid #dddddd; padding:10px">$36,000</td><td style="border-bottom:1px solid #dddddd; padding:10px">$40,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">E</td><td style="border-bottom:1px solid #dddddd; padding:10px">$80,000</td><td style="border-bottom:1px solid #dddddd; padding:10px">$60,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">F</td><td style="border-bottom:1px solid #dddddd; padding:10px">$180,000</td><td style="border-bottom:1px solid #dddddd; padding:10px">$186,000</td></tr></tbody></table><div style="background-color:white; border:1px solid #dddddd; border-radius:5px; font-family:monospace; margin:0 0 12px 0; padding:12px; text-align:center"><strong>Total cost = $296,000; Total market value = $286,000. Scott appropriately carries these securities at market value. The amount of unrealized loss on these securities in Scott&#x27;s Year 1 income statement should be:</strong></div>`,
       choices: [
         `$20,000`,
         `$0`,

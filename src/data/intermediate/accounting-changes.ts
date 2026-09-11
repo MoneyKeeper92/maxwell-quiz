@@ -75,15 +75,16 @@ Method used in Year 1
 Method used in Year 2
 After-tax effect
 
-| Sum-of-the-years' digits depreciation
-| Straight-line depreciation
-| $30,000
+Sum-of-the-years' digits depreciation
+Straight-line depreciation
+$30,000
 
-| Last-in, first-out (LIFO) for inventory valuation
-| First-in, first-out (FIFO) for inventory valuation
-| $98,000
+Last-in, first-out (LIFO) for inventory valuation
+First-in, first-out (FIFO) for inventory valuation
+$98,000
 
 What amount should be shown in the Year 2 retained earnings statement as an adjustment to the beginning balance?`,
+      promptHtml: `<p style="margin:0 0 12px 0">During Year 2, Dale Corp. made the following U.S. GAAP accounting changes:</p><table cellspacing="0" style="border-collapse:collapse; margin-top:15px; width:100%"><thead><tr><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">Method used in Year 1</th><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">Method used in Year 2</th><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">After-tax effect</th></tr></thead><tbody><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Sum-of-the-years&#x27; digits depreciation</td><td style="border-bottom:1px solid #dddddd; padding:10px">Straight-line depreciation</td><td style="border-bottom:1px solid #dddddd; padding:10px">$30,000</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Last-in, first-out (LIFO) for inventory valuation</td><td style="border-bottom:1px solid #dddddd; padding:10px">First-in, first-out (FIFO) for inventory valuation</td><td style="border-bottom:1px solid #dddddd; padding:10px">$98,000</td></tr></tbody></table><p style="margin:0 0 12px 0">What amount should be shown in the Year 2 retained earnings statement as an adjustment to the beginning balance?</p>`,
       choices: [
         `$98,000`,
         `$0`,

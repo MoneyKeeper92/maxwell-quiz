@@ -1065,3 +1065,11 @@
   opacity: 0.5;
   cursor: default;
 }
+
+.q-text-html > *:last-child {
+  margin-bottom: 0;
+}
+
+.q-text-html li {
+  line-height: 1.6;
+}

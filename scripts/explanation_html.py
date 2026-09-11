@@ -569,3 +569,120 @@ def build(
         'font-family: Arial, Helvetica, sans-serif; overflow:hidden">'
         f"{header}{content}</div>"
     )
+
+
+# --------------------------------------------------------- question stems ---
+# Stems use the same flattened-table encoding as explanations: a run of
+# "|"-prefixed blocks, optionally preceded by a header row. Left as raw text
+# they render as stray pipe characters, and label/value lines separated by
+# blank lines render as very airy paragraphs.
+
+LIST_ITEM_MAX = 200
+
+
+def _is_list_item(block: list[str]) -> bool:
+    if len(block) != 1:
+        return False
+    line = block[0].strip()
+    if not line or len(line) > LIST_ITEM_MAX:
+        return False
+    # A lead-in ("The following values are given:") introduces a list; it is
+    # not itself an item. Prose sentences end in terminal punctuation.
+    return not line.endswith((":", ".", "?", "!"))
+
+
+def _header_from_first_row(rows: list[list[str]]) -> bool:
+    """True when the first row reads as column labels.
+
+    These tables often start with a row whose leading cell is blank and whose
+    remaining cells name the columns.
+    """
+    if len(rows) < 2:
+        return False
+    first = rows[0]
+    if first[0].strip():
+        return False
+    labels = [c for c in first[1:] if c.strip()]
+    if not labels:
+        return False
+    return all(not re.search(r"\d", c) or len(c) > 12 for c in labels)
+
+
+def parse_prompt(text: str) -> list[dict]:
+    blocks = split_blocks(text)
+    items: list[dict] = []
+    i = 0
+    while i < len(blocks):
+        if is_pipe_block(blocks[i]):
+            rows = []
+            while i < len(blocks) and is_pipe_block(blocks[i]):
+                rows.append(blocks[i])
+                i += 1
+            header = None
+            if items and items[-1]["kind"] == "lines" and len(items[-1]["lines"]) == max(
+                len(r) for r in rows
+            ):
+                header = items.pop()["lines"]
+            table = rebuild_table(header, rows)
+            if table["cols"] is None and _header_from_first_row(table["rows"]):
+                table = {**table, "cols": table["rows"][0], "rows": table["rows"][1:]}
+            items.append(table)
+            continue
+        items.append({"kind": "lines", "lines": blocks[i]})
+        i += 1
+
+    # Collapse runs of short one-liners into lists.
+    out: list[dict] = []
+    j = 0
+    while j < len(items):
+        run = []
+        k = j
+        while k < len(items) and items[k]["kind"] == "lines" and _is_list_item(items[k]["lines"]):
+            run.append(items[k]["lines"][0])
+            k += 1
+        if len(run) >= 2:
+            out.append({"kind": "list", "items": run})
+            j = k
+        else:
+            out.append(items[j])
+            j += 1
+    return out
+
+
+def plain_prompt(text: str) -> str:
+    """Plain-text stem with the table pipes removed, used as the fallback."""
+    lines = []
+    for raw in str(text or "").split("\n"):
+        line = re.sub(r"^\s*\|\s?", "", raw).strip()
+        lines.append(line)
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).strip()
+
+
+def build_prompt(text: str) -> tuple[str, str | None]:
+    """Return (plain text, html) for a question stem.
+
+    The html is None when the stem is ordinary prose that needs no structure,
+    so simple questions keep rendering as plain text.
+    """
+    plain = plain_prompt(text)
+    items = parse_prompt(text)
+    if not any(it["kind"] in ("table", "list") for it in items):
+        return plain, None
+
+    def para(lines: list[str]) -> str:
+        # Uniform spacing between stem paragraphs; the CSS drops the trailing
+        # margin on the last child so the card does not gain dead space.
+        return "".join(
+            formula_box(l) if is_formula(l) else f'<p style="margin:0 0 12px 0">{inline(l)}</p>'
+            for l in lines
+        )
+
+    parts = []
+    for it in items:
+        if it["kind"] == "table":
+            parts.append(render_table(it))
+        elif it["kind"] == "list":
+            parts.append(render_list(it["items"]))
+        else:
+            parts.append(para(it["lines"]))
+    return plain, "".join(parts)

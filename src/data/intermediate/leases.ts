@@ -40,6 +40,7 @@ export const leasesQuiz: Quiz = {
 12% for 7 years: 5.1
 
 What amount should Action report as a lease liability in its December 31 balance sheet?`,
+      promptHtml: `<p style="margin:0 0 12px 0">On December 29, Action Corp. signed a seven‐year finance lease for an airplane to transport its sports team around the country. The airplane&#x27;s fair value was $841,500. Action made the first annual lease payment of $153,000 on December 31. Action&#x27;s incremental borrowing rate was 12% and the interest rate implicit in the lease (known by Action) was 9%. The following are the rounded present value factors for an annuity due:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">9% for 7 years: 5.5</li><li style="margin:0 0 8px 0">12% for 7 years: 5.1</li></ul><p style="margin:0 0 12px 0">What amount should Action report as a lease liability in its December 31 balance sheet?</p>`,
       choices: [
         `$627,300`,
         `$841,500`,

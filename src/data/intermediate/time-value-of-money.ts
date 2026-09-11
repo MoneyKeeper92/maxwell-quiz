@@ -11,19 +11,19 @@ export const timeValueOfMoneyQuiz: Quiz = {
       id: "5043",
       prompt: `Young Co. issues $800,000 of 10% bonds dated January 1, Year 1. Interest is payable semiannually on June 30 and December 31. The bonds mature in five years. The current market for similar bonds is 8%. The entire issue is sold on the date of issue. The following values are given:
 
-|
-| Present value of ordinary annuity
-| Present value of $1
+Present value of ordinary annuity
+Present value of $1
 
-| N = 10; i = 0.04
-| 8.11090
-| 0.67556
+N = 10; i = 0.04
+8.11090
+0.67556
 
-| N = 10; i = 0.05
-| 7.72173
-| 0.61391
+N = 10; i = 0.05
+7.72173
+0.61391
 
 What amount of proceeds on the sale of bonds should Young report?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Young Co. issues $800,000 of 10% bonds dated January 1, Year 1. Interest is payable semiannually on June 30 and December 31. The bonds mature in five years. The current market for similar bonds is 8%. The entire issue is sold on the date of issue. The following values are given:</p><table cellspacing="0" style="border-collapse:collapse; margin-top:15px; width:100%"><thead><tr><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left"></th><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">Present value of ordinary annuity</th><th style="border-bottom:2px solid #01506e; padding:10px; text-align:left">Present value of $1</th></tr></thead><tbody><tr><td style="border-bottom:1px solid #dddddd; padding:10px">N = 10; i = 0.04</td><td style="border-bottom:1px solid #dddddd; padding:10px">8.11090</td><td style="border-bottom:1px solid #dddddd; padding:10px">0.67556</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">N = 10; i = 0.05</td><td style="border-bottom:1px solid #dddddd; padding:10px">7.72173</td><td style="border-bottom:1px solid #dddddd; padding:10px">0.61391</td></tr></tbody></table><p style="margin:0 0 12px 0">What amount of proceeds on the sale of bonds should Young report?</p>`,
       choices: [
         `$799,997`,
         `$815,564`,
@@ -54,6 +54,7 @@ At 6%: Present value of $1 for 10 periods = 0.558; Future value of $1 for 10 per
 At 9%: Present value of $1 for 10 periods = 0.422; Future value of $1 for 10 periods = 2.367; Present value of an ordinary annuity of $1 for 10 periods = 6.418
 
 What should be the issue price for each $1,000 bond?`,
+      promptHtml: `<p style="margin:0 0 12px 0">The following information pertains to Camp Corp.&#x27;s issuance of bonds on July 1:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Face amount: $800,000</li><li style="margin:0 0 8px 0">Term: 10 years</li><li style="margin:0 0 8px 0">Stated interest rate: 6%</li><li style="margin:0 0 8px 0">Interest payment dates: Annually on July 1</li><li style="margin:0 0 8px 0">Yield: 9%</li></ul><p style="margin:0 0 12px 0">The present value factors are as follows:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">At 6%: Present value of $1 for 10 periods = 0.558; Future value of $1 for 10 periods = 1.791; Present value of an ordinary annuity of $1 for 10 periods = 7.360</li><li style="margin:0 0 8px 0">At 9%: Present value of $1 for 10 periods = 0.422; Future value of $1 for 10 periods = 2.367; Present value of an ordinary annuity of $1 for 10 periods = 6.418</li></ul><p style="margin:0 0 12px 0">What should be the issue price for each $1,000 bond?</p>`,
       choices: [
         `$1,000`,
         `$864`,
@@ -72,6 +73,7 @@ At 7%: Present value of $1 for five periods = 0.712986; Present value of an ordi
 At 8%: Present value of $1 for five periods = 0.680583; Present value of an ordinary annuity of $1 for five periods = 3.992710; Present value of an annuity due of $1 for five periods = 4.312127
 
 What amount of long-term liability should Grant report on December 31, Year 1, for this sale?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Grant Co. issued $500,000 face-value, five-year, 8% bonds on December 31, Year 1. The bonds pay interest annually, and were sold to yield 7%. Present value factors are as follows:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">At 7%: Present value of $1 for five periods = 0.712986; Present value of an ordinary annuity of $1 for five periods = 4.100197; Present value of an annuity due of $1 for five periods = 4.387211</li><li style="margin:0 0 8px 0">At 8%: Present value of $1 for five periods = 0.680583; Present value of an ordinary annuity of $1 for five periods = 3.992710; Present value of an annuity due of $1 for five periods = 4.312127</li></ul><p style="margin:0 0 12px 0">What amount of long-term liability should Grant report on December 31, Year 1, for this sale?</p>`,
       choices: [
         `$500,000`,
         `$512,777`,

@@ -71,19 +71,19 @@ export const bondsQuiz: Quiz = {
       id: "5054",
       prompt: `On January 1, Year 1, Boston Group issued $100,000 par value, 5% five-year bonds when the market rate of interest was 8%. Interest is payable annually on December 31. The following present value information is available:
 
-|
-| 5%
-| 8%
+5%
+8%
 
-| Present value of $1 (n = 5)
-| 0.78353
-| 0.68058
+Present value of $1 (n = 5)
+0.78353
+0.68058
 
-| Present value of an ordinary annuity (n = 5)
-| 4.32948
-| 3.99271
+Present value of an ordinary annuity (n = 5)
+4.32948
+3.99271
 
 What amount is the value of net bonds payable at the end of Year 1?`,
+      promptHtml: `<p style="margin:0 0 12px 0">On January 1, Year 1, Boston Group issued $100,000 par value, 5% five-year bonds when the market rate of interest was 8%. Interest is payable annually on December 31. The following present value information is available:</p><table cellspacing="0" style="border-collapse:collapse; margin-top:15px; width:100%"><tbody><tr><td style="border-bottom:1px solid #dddddd; padding:10px"></td><td style="border-bottom:1px solid #dddddd; padding:10px">5%</td><td style="border-bottom:1px solid #dddddd; padding:10px">8%</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Present value of $1 (n = 5)</td><td style="border-bottom:1px solid #dddddd; padding:10px">0.78353</td><td style="border-bottom:1px solid #dddddd; padding:10px">0.68058</td></tr><tr><td style="border-bottom:1px solid #dddddd; padding:10px">Present value of an ordinary annuity (n = 5)</td><td style="border-bottom:1px solid #dddddd; padding:10px">4.32948</td><td style="border-bottom:1px solid #dddddd; padding:10px">3.99271</td></tr></tbody></table><p style="margin:0 0 12px 0">What amount is the value of net bonds payable at the end of Year 1?</p>`,
       choices: [
         `$88,022`,
         `$90,064`,

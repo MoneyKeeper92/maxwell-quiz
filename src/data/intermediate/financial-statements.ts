@@ -36,6 +36,7 @@ Unearned Revenue: $15,000
 Cash: $40,000
 
 What are the total current assets and total noncurrent assets for Orion Global?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Below is a list of account balances for Orion Global:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Buildings, net: $200,000</li><li style="margin:0 0 8px 0">Accounts Payable: $20,000</li><li style="margin:0 0 8px 0">Prepaid Expenses: $25,000</li><li style="margin:0 0 8px 0">Land: $120,000</li><li style="margin:0 0 8px 0">Common Stock: $250,000</li><li style="margin:0 0 8px 0">Patents: $50,000</li><li style="margin:0 0 8px 0">Inventory: $75,000</li><li style="margin:0 0 8px 0">Retained Earnings: $180,000</li><li style="margin:0 0 8px 0">Equipment, net: $150,000</li><li style="margin:0 0 8px 0">Accounts Receivable: $90,000</li><li style="margin:0 0 8px 0">Unearned Revenue: $15,000</li><li style="margin:0 0 8px 0">Cash: $40,000</li></ul><p style="margin:0 0 12px 0">What are the total current assets and total noncurrent assets for Orion Global?</p>`,
       choices: [
         `Current Assets: $260,000; Noncurrent Assets: $520,000`,
         `Current Assets: $230,000; Noncurrent Assets: $520,000`,
@@ -58,6 +59,7 @@ Operating expenses: $90,000
 Unrealized holding gain on available-for-sale debt securities, net of tax: $30,000
 
 What amount should the company report as comprehensive income as of December 31?`,
+      promptHtml: `<p style="margin:0 0 12px 0">A company reports the following information as of December 31:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Sales revenue: $800,000</li><li style="margin:0 0 8px 0">Cost of goods sold: $600,000</li><li style="margin:0 0 8px 0">Operating expenses: $90,000</li><li style="margin:0 0 8px 0">Unrealized holding gain on available-for-sale debt securities, net of tax: $30,000</li></ul><p style="margin:0 0 12px 0">What amount should the company report as comprehensive income as of December 31?</p>`,
       choices: [
         `$140,000`,
         `$200,000`,
@@ -100,6 +102,7 @@ Property, plant and equipment, net: $8,000
 Accounts payable: $2,000
 
 What amount of total liabilities and stockholders’ equity should the company report in its balance sheet as of December 31, year 1?`,
+      promptHtml: `<p style="margin:0 0 12px 0">A company provided the following financial information as of and for the year ended December 31, year 1:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Retained earnings (beginning): $14,000</li><li style="margin:0 0 8px 0">Revenues: $14,000</li><li style="margin:0 0 8px 0">Expenses: $10,000</li><li style="margin:0 0 8px 0">Contributed capital: $5,000</li><li style="margin:0 0 8px 0">Dividends paid: $3,000</li><li style="margin:0 0 8px 0">Cash: $14,000</li><li style="margin:0 0 8px 0">Property, plant and equipment, net: $8,000</li><li style="margin:0 0 8px 0">Accounts payable: $2,000</li></ul><p style="margin:0 0 12px 0">What amount of total liabilities and stockholders’ equity should the company report in its balance sheet as of December 31, year 1?</p>`,
       choices: [
         `$25,000`,
         `$22,000`,
@@ -158,6 +161,7 @@ Loss on early retirement of long-term debt: $25,000
 The income tax rate is 30%.
 
 Using a multiple‐step income statement format, what is the income from continuing operations for Phoenix Systems Inc. for Year 1?`,
+      promptHtml: `<p style="margin:0 0 12px 0">Phoenix Systems Inc. has the following trial balance information for its income statement accounts for the year ended December 31, Year 1:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Sales: $720,000</li><li style="margin:0 0 8px 0">Cost of goods sold: $320,000</li><li style="margin:0 0 8px 0">Administrative expenses: $90,000</li><li style="margin:0 0 8px 0">Sales commissions: $60,000</li><li style="margin:0 0 8px 0">Freight out: $20,000</li><li style="margin:0 0 8px 0">Bad debt expense: $20,000</li><li style="margin:0 0 8px 0">Loss on sale of equipment: $15,000</li><li style="margin:0 0 8px 0">Interest revenue: $35,000</li><li style="margin:0 0 8px 0">Loss on early retirement of long-term debt: $25,000</li></ul><p style="margin:0 0 12px 0">The income tax rate is 30%.</p><p style="margin:0 0 12px 0">Using a multiple‐step income statement format, what is the income from continuing operations for Phoenix Systems Inc. for Year 1?</p>`,
       choices: [
         `$143,500`,
         `$138,500`,
@@ -212,6 +216,7 @@ Gain on sale of equipment: $4,700
 Total revenues as reported: $213,900
 
 In the revenues section of its income statement, how much should Baer Food have reported as the correct amount of total revenues?`,
+      promptHtml: `<p style="margin:0 0 12px 0">In Baer Food Co.&#x27;s single-step income statement, the section titled &quot;Revenues&quot; consisted of the following items as currently presented:</p><p style="margin:0 0 12px 0">Net sales revenue: $187,000</p><p style="margin:0 0 12px 0">Results from discontinued operations:</p><ul style="margin:0 0 12px 0; padding-left:22px"><li style="margin:0 0 8px 0">Loss from operations of component (net of $1,200 tax effect): ($2,400)</li><li style="margin:0 0 8px 0">Gain on disposal of component (net of $7,200 tax effect): $14,400</li><li style="margin:0 0 8px 0">Total from discontinued operations: $12,000</li><li style="margin:0 0 8px 0">Interest revenue: $10,200</li><li style="margin:0 0 8px 0">Gain on sale of equipment: $4,700</li><li style="margin:0 0 8px 0">Total revenues as reported: $213,900</li></ul><p style="margin:0 0 12px 0">In the revenues section of its income statement, how much should Baer Food have reported as the correct amount of total revenues?</p>`,
       choices: [
         `$201,900`,
         `$203,700`,
