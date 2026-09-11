@@ -7,3 +7,6 @@ dist-ssr
 .env.local
 .env.*.local
 ~$*
+
+# Python bytecode from scripts/
+__pycache__/

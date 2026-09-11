@@ -28,6 +28,10 @@ try:
 except ImportError:
     sys.exit("openpyxl is required:  python3 -m pip install openpyxl")
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import explanation_html  # noqa: E402  (needs the path above)
+
 ROOT = Path(__file__).resolve().parent.parent
 BLOCK_TAGS = r"p|div|br|tr|li|h[1-6]|table|thead|tbody"
 
@@ -94,25 +98,28 @@ def parse_answer(value) -> int:
     raise ValueError(f"Cannot read answer column value: {value!r}")
 
 
-def text_to_html(raw: str | None) -> str:
-    """Wrap a plain-text explanation in HTML for the .exp-content renderer.
+HTML_TAG_RE = re.compile(
+    r"</?(?:p|div|br|span|table|thead|tbody|tfoot|tr|td|th|ul|ol|li|h[1-6]"
+    r"|strong|b|em|i|u|sup|sub|a|img|hr)\b[^>]*>",
+    re.I,
+)
 
-    The first line reads as a title in these sheets, so it becomes a heading;
-    blank-line-separated blocks become paragraphs. Everything is escaped —
-    explanations contain things like "R&D" and "$46,139 < face value".
+
+def text_to_html(
+    raw: str | None, answer: str | None = None, choices: list[str] | None = None
+) -> str:
+    """Format an explanation to the house MCQ HTML standard.
+
+    Plain-text explanations are rebuilt by scripts/explanation_html.py. Source
+    text that is already HTML is left alone.
     """
     t = str(raw or "").replace("\r\n", "\n").replace("\xa0", " ").strip()
     if not t:
         return ""
-    if re.search(r"<\s*[a-zA-Z/]", t):
+    # A real tag, not a stray comparison like "stated rate < market yield".
+    if re.search(HTML_TAG_RE, t):
         return t  # already HTML — leave the source markup alone
-    blocks = [b.strip() for b in re.split(r"\n\s*\n", t) if b.strip()]
-    if not blocks:
-        return ""
-    out = [f'<h3 class="exp-title">{html.escape(blocks[0])}</h3>']
-    for b in blocks[1:]:
-        out.append("<p>" + "<br>".join(html.escape(x) for x in b.split("\n")) + "</p>")
-    return "".join(out)
+    return explanation_html.build(t, str(answer or ""), choices or [])
 
 
 COLUMN_ALIASES = {
@@ -219,7 +226,10 @@ def read_rows(path: Path, sheet: str | None = None) -> list[dict]:
                 "promptHtml": prompt_html,
                 "choices": choices,
                 "correctIndex": correct,
-                "explanation": text_to_html(cell(r, "explanation")) or None,
+                "explanation": text_to_html(
+                    cell(r, "explanation"), cell(r, "answer"), choices
+                )
+                or None,
             }
         )
     return out
@@ -286,6 +296,15 @@ def regenerate_registry() -> None:
 
     subprocess.run([sys.executable, str(Path(__file__).with_name("gen_registry.py"))],
                    check=True)
+
+
+def module_path(key: str, course: str) -> Path:
+    """CPA modules live flat in src/data/; intermediate ones are namespaced."""
+    return (
+        ROOT / "src/data/intermediate" / f"{key}.ts"
+        if course == "intermediate"
+        else ROOT / "src/data" / f"{key}.ts"
+    )
 
 
 def write_quiz(key: str, title: str, subtitle: str, course: str, qs: list[dict]) -> None:

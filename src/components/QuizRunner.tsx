@@ -334,8 +334,8 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
         <div className="exp show">
           <p className={`correct-line ${isCorrect ? "ok" : "bad"}`}>
             {isCorrect
-              ? `✓ Correct — Option ${LETTERS[question.correctIndex]}`
-              : `✗ Incorrect — The correct answer is Option ${LETTERS[question.correctIndex]}`}
+              ? `✓ Correct: Option ${LETTERS[question.correctIndex]}`
+              : `✗ Incorrect: The correct answer is Option ${LETTERS[question.correctIndex]}`}
           </p>
           <div
             className="exp-content"
