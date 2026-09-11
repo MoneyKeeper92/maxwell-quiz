@@ -117,7 +117,8 @@ def text_to_html(
     text that is already HTML is left alone.
     """
     t = str(raw or "").replace("\r\n", "\n").replace("\xa0", " ").strip()
-    if not t:
+    # Empty cells exported from pandas arrive as the literal text "nan".
+    if not t or t.lower() in {"nan", "none", "null", "#n/a"}:
         return ""
     # A real tag, not a stray comparison like "stated rate < market yield".
     if re.search(HTML_TAG_RE, t):

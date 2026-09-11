@@ -172,3 +172,29 @@ precise location is in `material_id`. The
 message carries the quiz, question number, question text, the keyed answer, what
 the learner chose, and who reported it. Nothing new to set up: it is the same
 table the textbook app already uses.
+
+## Quality control
+
+```bash
+npm run qc                      # full report
+npm run qc -- --course intermediate
+npm run qc -- --only leases
+npm run qc -- --json            # machine-readable, exits non-zero on findings
+```
+
+Three kinds of check across every question in the app:
+
+| Kind | Catches |
+|------|---------|
+| `STRUCTURE` | missing ids, blank or duplicate choices, `correctIndex` out of range, missing explanations, duplicate prompts |
+| `FORMATTING` | the house MCQ HTML standard (gradients, emoji, em dashes, journal-entry tables, marks alone in a block) plus stray table pipes and malformed tables or lists in stems |
+| `AGREEMENT` | the explanation contradicting its own keyed answer |
+
+`AGREEMENT` is the one that finds real mistakes. It does not solve the
+accounting; it checks each question against itself. If the explanation says
+"$270,000 - Correct" but the keyed choice is $258,000, one of them is wrong.
+It only reports when the value the explanation calls correct belongs to a
+*different* choice, so intermediate figures from the working do not trigger it.
+
+What it cannot do is verify the accounting is right. That needs someone to
+actually work the question.

@@ -9,7 +9,8 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "import-quiz": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/import_quiz.py \"$@\"' --",
-    "gen-registry": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/gen_registry.py'"
+    "gen-registry": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/gen_registry.py'",
+    "qc": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/qc.py \"$@\"' --"
   },
   "dependencies": {
     "react": "^19.2.7",
