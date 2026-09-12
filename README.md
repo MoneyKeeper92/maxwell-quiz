@@ -198,3 +198,29 @@ It only reports when the value the explanation calls correct belongs to a
 
 What it cannot do is verify the accounting is right. That needs someone to
 actually work the question.
+
+### Advisory audit
+
+```bash
+npm run audit                   # statistical tells and content smells
+npm run audit -- --course intermediate
+```
+
+Softer than `qc`: nothing it reports is automatically wrong, but it is good at
+ranking what to re-read. It covers answer-position balance, the longest-choice
+tell (prose questions only, since a longer dollar figure means nothing),
+duplicate questions across quizzes, explanations that never mention their own
+keyed answer, truncated stems, and all-of-the-above options.
+
+### Normalizing pre-standard CPA explanations
+
+```bash
+npm run normalize-cpa                             # report
+npm run normalize-cpa -- --apply                  # rewrite presentation only
+npm run normalize-cpa -- --apply --drop-journal-entries
+```
+
+The CPA explanations were authored before the house standard. This flattens
+gradients to the mapped solid colors, removes emoji (keeping the check and
+cross marks), replaces em and en dashes, and drops outer `max-width` and auto
+margins. Journal-entry removal deletes content, so it is a separate opt-in.
