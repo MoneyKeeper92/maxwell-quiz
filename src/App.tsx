@@ -1,4 +1,5 @@
 import { Navigate, Routes, Route, useLocation } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import QuizPage from "./pages/QuizPage";
@@ -13,9 +14,10 @@ export default function App() {
   return (
     <>
       {!embedded && <Header />}
-      <div className={embedded ? "main main-embed" : "main"}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
+      <main className={embedded ? "main main-embed" : "main"}>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
           <Route
             path="/cash-to-accrual"
             element={<Navigate to="/cashtoaccrual" replace />}
@@ -35,8 +37,9 @@ export default function App() {
             element={<QuizPage course="intermediate" />}
           />
           <Route path="/:quizKey" element={<QuizPage />} />
-        </Routes>
-      </div>
+          </Routes>
+        </ErrorBoundary>
+      </main>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { Course } from "../data/types";
 import { getHomeQuizLinks } from "../data/registry";
+import { useDocumentTitle } from "../lib/documentTitle";
 
 interface HomePageProps {
   course?: Course;
@@ -14,6 +15,11 @@ export default function HomePage({
   subtitle = "Pick a topic and start practicing.",
 }: HomePageProps) {
   const quizzes = getHomeQuizLinks(course);
+  useDocumentTitle(
+    course === "intermediate"
+      ? "Intermediate Accounting Practice Quizzes | Maxwell CPA Review"
+      : "Free CPA Practice Quizzes | Maxwell CPA Review",
+  );
   // The discipline tag only carries information when the list actually mixes
   // disciplines — on the intermediate index every row would read the same.
   const showTag = new Set(quizzes.map((q) => q.discipline)).size > 1;

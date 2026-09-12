@@ -224,3 +224,28 @@ The CPA explanations were authored before the house standard. This flattens
 gradients to the mapped solid colors, removes emoji (keeping the check and
 cross marks), replaces em and en dashes, and drops outer `max-width` and auto
 margins. Journal-entry removal deletes content, so it is a separate opt-in.
+
+## Tests
+
+```bash
+npm test          # once
+npm run test:watch
+```
+
+Vitest with jsdom, covering the logic that has no other safety net: scoring
+(where unanswered counts as incorrect and the three tiles must sum), progress
+storage (corrupt data, a changed question count, and storage throwing outright
+as it does in a third-party iframe), the Thinkific learner variables including
+unreplaced liquid, the active-time timer, and whether the catalog and registry
+still agree.
+
+`npm run qc` covers the question data; these cover the app.
+
+## Route metadata
+
+The app is a single page, so every quiz URL once served the same title and
+description. `scripts/generate-meta.mjs` runs after the Vite build and writes
+one HTML file per route with its own title, description, canonical URL and
+Open Graph tags. Netlify serves those before falling back to the SPA rewrite,
+which matters because the scrapers behind link previews do not run JavaScript.
+`src/lib/documentTitle.ts` keeps the title right during client-side navigation.

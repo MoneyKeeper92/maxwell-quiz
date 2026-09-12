@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import QuizRunner from "../components/QuizRunner";
 import type { Course, Quiz } from "../data/types";
-import { getCatalogItem, getQuizLoader } from "../data/registry";
+import { getCatalogItem, getHomeQuizLinks, getQuizLoader } from "../data/registry";
+import { quizTitle, useDocumentTitle } from "../lib/documentTitle";
 
 interface QuizPageProps {
   /** Which course's URL namespace this page is mounted under. */
@@ -17,6 +18,10 @@ export default function QuizPage({ course = "cpa" }: QuizPageProps) {
   const [state, setState] = useState<LoadState>("loading");
   const catalogItem = getCatalogItem(quizKey, course);
   const home = course === "intermediate" ? "/intermediate" : "/";
+  const listed = getHomeQuizLinks(course).find((item) => item.key === quizKey);
+  useDocumentTitle(
+    catalogItem ? quizTitle(catalogItem.title, listed?.questionCount ?? null) : null,
+  );
 
   useEffect(() => {
     const load = getQuizLoader(quizKey, course);

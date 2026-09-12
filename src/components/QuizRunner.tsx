@@ -4,65 +4,17 @@ import type { Quiz } from "../data/types";
 import { getHomeQuizLinks } from "../data/registry";
 import ReportIssueButton from "./ReportIssueButton";
 import { ActiveTimer, newAttemptId, track } from "../lib/analytics";
+import { clearProgress, loadProgress, saveProgress } from "../lib/progress";
+import { scoreQuiz } from "../lib/score";
 
 const LETTERS = ["A", "B", "C", "D"];
 
-interface SavedProgress {
-  answers: (number | null)[];
-  index: number;
-  finished: boolean;
-}
-
-/**
- * Progress is kept per quiz so a refresh — or a Thinkific lesson reload —
- * doesn't wipe an attempt. Storage can throw outright in an embedded iframe
- * (Safari blocks third-party storage), so every access is guarded and the
- * quiz simply runs without persistence when it is unavailable.
- */
-function storageKey(quiz: Quiz): string {
-  return `maxwell-quiz:${quiz.course}/${quiz.key}`;
-}
-
-function loadProgress(quiz: Quiz): SavedProgress | null {
-  try {
-    const raw = window.localStorage.getItem(storageKey(quiz));
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as SavedProgress;
-    if (
-      !Array.isArray(parsed.answers) ||
-      parsed.answers.length !== quiz.questions.length
-    ) {
-      return null;
-    }
-    const answers = parsed.answers.map((a) =>
-      typeof a === "number" && a >= 0 && a <= 3 ? a : null,
-    );
-    const index =
-      typeof parsed.index === "number" &&
-      parsed.index >= 0 &&
-      parsed.index < quiz.questions.length
-        ? parsed.index
-        : 0;
-    return { answers, index, finished: !!parsed.finished };
-  } catch {
-    return null;
-  }
-}
-
-function saveProgress(quiz: Quiz, progress: SavedProgress): void {
-  try {
-    window.localStorage.setItem(storageKey(quiz), JSON.stringify(progress));
-  } catch {
-    // storage unavailable — progress just isn't persisted
-  }
-}
-
-function clearProgress(quiz: Quiz): void {
-  try {
-    window.localStorage.removeItem(storageKey(quiz));
-  } catch {
-    // ignore
-  }
+/** Respects the reader's reduced-motion setting, which `behavior: "smooth"` ignores. */
+function scrollToTop(): void {
+  const reduced =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
 }
 
 interface QuizRunnerProps {
@@ -145,12 +97,10 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
   const answered = answers[index] !== null;
   const userAnswer = answers[index];
   const isCorrect = userAnswer === question.correctIndex;
-  const correctCount = answers.filter(
-    (a, i) => a === quiz.questions[i].correctIndex,
-  ).length;
-  const answeredCount = answers.filter((a) => a !== null).length;
-  const unansweredCount = total - answeredCount;
-  const incorrectCount = total - correctCount;
+  const score = scoreQuiz(quiz, answers);
+  const correctCount = score.correct;
+  const incorrectCount = score.incorrect;
+  const unansweredCount = score.unanswered;
   const isLast = index === total - 1;
   const otherQuizzes = getHomeQuizLinks(quiz.course).filter(
     (item) => item.key !== quiz.key && item.available,
@@ -165,7 +115,7 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
   const goTo = (next: number) => {
     if (next < 0 || next >= total) return;
     setIndex(next);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTop();
   };
 
   const selectAnswer = (choiceIndex: number) => {
@@ -208,14 +158,14 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
       active_ms: attemptTimer.elapsedMs(),
     });
     setFinished(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTop();
   };
 
   /** Back into the quiz with every answer and explanation still visible. */
   const reviewAnswers = () => {
     setFinished(false);
     setIndex(0);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTop();
   };
 
   const retakeQuiz = () => {
@@ -223,7 +173,7 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
     setAnswers(Array.from({ length: total }, () => null));
     setIndex(0);
     setFinished(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    scrollToTop();
   };
 
   if (finished) {
@@ -340,13 +290,19 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
         </button>
       </div>
 
-      <div className="q-nav">
+      <h1 className="sr-only">
+        {quiz.title}: question {index + 1} of {total}
+      </h1>
+
+      <nav className="q-nav" aria-label="Questions in this quiz">
         {quiz.questions.map((q, i) => {
           let className = "q-num";
+          let state = "not answered yet";
           if (i === index) className += " active";
-          else if (answers[i] !== null) {
-            className +=
-              answers[i] === q.correctIndex ? " done-correct" : " done-wrong";
+          if (answers[i] !== null) {
+            const right = answers[i] === q.correctIndex;
+            if (i !== index) className += right ? " done-correct" : " done-wrong";
+            state = right ? "answered correctly" : "answered incorrectly";
           }
 
           return (
@@ -355,12 +311,14 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
               type="button"
               className={className}
               onClick={() => goTo(i)}
+              aria-current={i === index ? "true" : undefined}
+              aria-label={`Question ${i + 1} of ${total}, ${state}`}
             >
               {i + 1}
             </button>
           );
         })}
-      </div>
+      </nav>
 
       <div className="q-card">
         <div className="q-meta">
@@ -389,6 +347,14 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
               className += " selected";
             }
 
+            // Colour alone carried right and wrong, which neither a screen
+            // reader nor a colour-blind reader can use.
+            let status = "";
+            if (answered) {
+              if (i === question.correctIndex) status = "Correct answer.";
+              else if (i === userAnswer) status = "Your answer, incorrect.";
+            }
+
             return (
               <button
                 key={i}
@@ -397,8 +363,12 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
                 onClick={() => selectAnswer(i)}
                 disabled={answered}
               >
-                <span className="letter">{LETTERS[i]}</span>
+                <span className="letter" aria-hidden="true">
+                  {LETTERS[i]}
+                </span>
+                <span className="sr-only">Option {LETTERS[i]}.</span>
                 <span>{choice}</span>
+                {status && <span className="sr-only"> {status}</span>}
               </button>
             );
           })}
@@ -407,7 +377,11 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
 
       {answered && question.explanation && (
         <div className="exp show">
-          <p className={`correct-line ${isCorrect ? "ok" : "bad"}`}>
+          <p
+            className={`correct-line ${isCorrect ? "ok" : "bad"}`}
+            role="status"
+            aria-live="polite"
+          >
             {isCorrect
               ? `✓ Correct: Option ${LETTERS[question.correctIndex]}`
               : `✗ Incorrect: The correct answer is Option ${LETTERS[question.correctIndex]}`}
