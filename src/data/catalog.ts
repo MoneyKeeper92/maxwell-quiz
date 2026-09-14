@@ -222,6 +222,20 @@ export const intermediateCatalog: QuizCatalogItem[] = [
     discipline: "intermediate",
     course: "intermediate",
   },
+  {
+    key: "pensions",
+    title: "Pensions and Postretirement Benefits",
+    subtitle: "Pensions and Postretirement Benefits",
+    discipline: "intermediate",
+    course: "intermediate",
+  },
+  {
+    key: "stock-based-compensation",
+    title: "Stock-Based Compensation",
+    subtitle: "Stock-Based Compensation",
+    discipline: "intermediate",
+    course: "intermediate",
+  },
   // INTERMEDIATE_CATALOG_ENTRIES
 ];
 
