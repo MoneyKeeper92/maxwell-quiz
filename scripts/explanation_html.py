@@ -213,6 +213,8 @@ def is_title_case(line: str) -> bool:
 
 
 ARROW_ONLY = re.compile(r"^(?:[\u2192\u21d2\u27a1\u25b6\u00bb]|->|=>)$")
+VERSUS_ONLY = re.compile(r"^(?:vs\.?|versus)$", re.I)
+OPERATOR_ONLY = re.compile(r"^[\u2212\u002d\u002b\u00d7\u00f7]$")
 
 
 def merge_flow_blocks(blocks: list[list[str]]) -> list[list[str]]:
@@ -223,8 +225,20 @@ def merge_flow_blocks(blocks: list[list[str]]) -> list[list[str]]:
     bullets on their own. This joins the chain back into one line.
     """
 
+    def separator(b: list[str]) -> str | None:
+        if len(b) != 1:
+            return None
+        t = b[0].strip()
+        if ARROW_ONLY.match(t):
+            return " \u2192 "
+        if VERSUS_ONLY.match(t):
+            return " vs. "
+        if OPERATOR_ONLY.match(t):
+            return f" {t} "
+        return None
+
     def is_arrow(b: list[str]) -> bool:
-        return len(b) == 1 and bool(ARROW_ONLY.match(b[0].strip()))
+        return separator(b) is not None
 
     out: list[list[str]] = []
     i = 0
@@ -250,7 +264,11 @@ def merge_flow_blocks(blocks: list[list[str]]) -> list[list[str]]:
             if current:
                 groups.append(current)
             if len(groups) >= 2:
-                chain = " \u2192 ".join(
+                joiner = next(
+                    (separator(blocks[k]) for k in range(i, j) if separator(blocks[k])),
+                    " \u2192 ",
+                )
+                chain = joiner.join(
                     ": ".join(g) if len(g) == 2 else g[0] for g in groups
                 )
                 out.append([chain])
@@ -261,6 +279,33 @@ def merge_flow_blocks(blocks: list[list[str]]) -> list[list[str]]:
             i += 1
             continue
         out.append(blocks[i])
+        i += 1
+    return out
+
+
+def merge_step_numbers(blocks: list[list[str]]) -> list[list[str]]:
+    """Join a step number to the title beneath it.
+
+    A step arrives as a block holding just "1", then another holding its title,
+    so the number rendered as a bullet of its own.
+    """
+    out: list[list[str]] = []
+    i = 0
+    while i < len(blocks):
+        cur = blocks[i]
+        nxt = blocks[i + 1] if i + 1 < len(blocks) else None
+        if (
+            len(cur) == 1
+            and re.fullmatch(r"[1-9]\d?", cur[0].strip())
+            and nxt
+            and len(nxt) == 1
+            and 3 < len(nxt[0].strip()) <= 90
+            and not re.match(r"^[\d$(]", nxt[0].strip())
+        ):
+            out.append([f"{cur[0].strip()}. {nxt[0].strip()}"])
+            i += 2
+            continue
+        out.append(cur)
         i += 1
     return out
 
@@ -291,6 +336,9 @@ def merge_label_value_blocks(blocks: list[list[str]]) -> list[list[str]]:
                 # itself. Left separate, the answer matches a choice and is
                 # dropped as a restatement, stranding the lead-in.
                 or re.search(r"\banswer\s+is\s*:?$", cur[0].strip(), re.I)
+                # "Result:" and the like: a short label whose value is a
+                # sentence-length conclusion rather than a figure.
+                or (len(cur[0].strip()) <= 20 and len(nxt[0].strip()) <= 70)
             )
         ):
             out.append([f"{cur[0].rstrip()} {nxt[0].strip()}"])
@@ -384,7 +432,9 @@ def looks_like_title(block: list[str]) -> bool:
 
 
 def parse(text: str) -> tuple[str | None, list[dict]]:
-    blocks = merge_label_value_blocks(merge_flow_blocks(split_blocks(text)))
+    blocks = merge_label_value_blocks(
+        merge_step_numbers(merge_flow_blocks(split_blocks(text)))
+    )
     if not blocks:
         return None, []
     has_title = looks_like_title(blocks[0])
@@ -835,7 +885,9 @@ def _header_from_first_row(rows: list[list[str]]) -> bool:
 
 
 def parse_prompt(text: str) -> list[dict]:
-    blocks = merge_label_value_blocks(merge_flow_blocks(split_blocks(text)))
+    blocks = merge_label_value_blocks(
+        merge_step_numbers(merge_flow_blocks(split_blocks(text)))
+    )
     items: list[dict] = []
     i = 0
     while i < len(blocks):
