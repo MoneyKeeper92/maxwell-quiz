@@ -64,9 +64,24 @@ const VISITOR_ID = sessionId();
  * dynamic variables to the URL" is on, e.g.
  *   /intermediate/leases?email={{email}}&first_name={{first_name}}
  */
-export function student(): { email: string | null; name: string | null } {
+export interface Student {
+  email: string | null;
+  name: string | null;
+}
+
+/**
+ * The learner variables as they were when this document loaded.
+ *
+ * Captured once, because the exit event fires after the reader has navigated
+ * away. Reading the URL at that point returns the page they left for, so the
+ * exit event arrived with no identity attached.
+ */
+const INITIAL_SEARCH =
+  typeof window === "undefined" ? "" : window.location.search;
+
+export function parseStudent(search: string): Student {
   try {
-    const q = new URLSearchParams(window.location.search);
+    const q = new URLSearchParams(search);
     const email = q.get("email")?.trim() || null;
     const first = q.get("first_name")?.trim() || "";
     const last = q.get("last_name")?.trim() || "";
@@ -78,6 +93,13 @@ export function student(): { email: string | null; name: string | null } {
   } catch {
     return { email: null, name: null };
   }
+}
+
+let resolved: Student | null = null;
+
+export function student(): Student {
+  if (!resolved) resolved = parseStudent(INITIAL_SEARCH);
+  return resolved;
 }
 
 function payload(e: QuizEvent): string {
