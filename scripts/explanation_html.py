@@ -282,8 +282,16 @@ def merge_label_value_blocks(blocks: list[list[str]]) -> list[list[str]]:
             and len(cur[0]) <= 60
             and nxt
             and len(nxt) == 1
-            and len(nxt[0].strip()) <= 30
-            and re.match(r"^[(\-\u2212$\d]", nxt[0].strip())
+            and (
+                (
+                    len(nxt[0].strip()) <= 30
+                    and re.match(r"^[(\-\u2212$\d]", nxt[0].strip())
+                )
+                # "Therefore, the correct answer is:" introduces the answer
+                # itself. Left separate, the answer matches a choice and is
+                # dropped as a restatement, stranding the lead-in.
+                or re.search(r"\banswer\s+is\s*:?$", cur[0].strip(), re.I)
+            )
         ):
             out.append([f"{cur[0].rstrip()} {nxt[0].strip()}"])
             i += 2
