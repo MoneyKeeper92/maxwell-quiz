@@ -29,15 +29,15 @@ What amount should Thompson report as net cash provided by operating activities 
         `$110,000`,
       ],
       correctIndex: 1,
-      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 1</div><h2>Statement of Cash Flows — Indirect Method</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice B — $85,000</strong> is correct. Under the indirect method, Thompson starts with net income and adjusts for noncash items, gains and losses, and changes in operating working-capital accounts.</p></div>
+      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 1</div><h2>Statement of Cash Flows: Indirect Method</h2></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice B: $85,000</strong> is correct. Under the indirect method, Thompson starts with net income and adjusts for noncash items, gains and losses, and changes in operating working-capital accounts.</p></div>
 <div class="section"><h3>What the Question Is Testing</h3>
 <p>This question tests whether you can convert <strong>accrual-basis net income</strong> into <strong>cash provided by operating activities</strong> using the indirect method.</p>
 <p>The key is to separate items into three categories:</p>
 <ul>
-<li><strong>Noncash income statement items</strong> — reverse their effect on net income.</li>
-<li><strong>Changes in operating assets and liabilities</strong> — adjust for the difference between accrual accounting and cash movement.</li>
-<li><strong>Investing or financing items</strong> — do not include the related cash flow in operating activities.</li>
+<li><strong>Noncash income statement items</strong>: reverse their effect on net income.</li>
+<li><strong>Changes in operating assets and liabilities</strong>: adjust for the difference between accrual accounting and cash movement.</li>
+<li><strong>Investing or financing items</strong>: do not include the related cash flow in operating activities.</li>
 </ul>
 </div>
 <div class="section"><h3>Step-by-Step Calculation</h3>
@@ -77,8 +77,8 @@ $100,000 + $20,000 − $15,000 − $30,000 − $25,000 + $35,000 = <strong>$85,0
         `$3.40`,
       ],
       correctIndex: 1,
-      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 2</div><h2>Basic Earnings per Share — Weighted-Average Shares</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice B — $2.85</strong> is correct. Basic EPS equals income available to common shareholders divided by weighted-average common shares outstanding.</p></div>
+      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 2</div><h2>Basic Earnings per Share: Weighted-Average Shares</h2></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice B: $2.85</strong> is correct. Basic EPS equals income available to common shareholders divided by weighted-average common shares outstanding.</p></div>
 <div class="section"><h3>Core Formula</h3>
 <div class="formula"><strong>Basic EPS = (Net Income − Preferred Dividends) ÷ Weighted-Average Common Shares Outstanding</strong></div>
 <p>Because the preferred stock is <strong>nonconvertible</strong>, it does not enter the denominator. However, the declared preferred dividend reduces the income available to common shareholders.</p>
@@ -94,8 +94,8 @@ $100,000 + $20,000 − $15,000 − $30,000 − $25,000 + $35,000 = <strong>$85,0
 <table>
 <thead><tr><th>Period</th><th>Shares</th><th>Weight</th><th>Weighted Shares</th></tr></thead>
 <tbody>
-<tr><td>Jan. 1–Jun. 30</td><td>100,000</td><td>6/12</td><td>50,000</td></tr>
-<tr><td>Jul. 1–Dec. 31</td><td>130,000</td><td>6/12</td><td>65,000</td></tr>
+<tr><td>Jan. 1, Jun. 30</td><td>100,000</td><td>6/12</td><td>50,000</td></tr>
+<tr><td>Jul. 1, Dec. 31</td><td>130,000</td><td>6/12</td><td>65,000</td></tr>
 <tr><td colspan="3"><strong>Total</strong></td><td><strong>115,000</strong></td></tr>
 </tbody>
 </table>
@@ -123,7 +123,7 @@ $100,000 + $20,000 − $15,000 − $30,000 − $25,000 + $35,000 = <strong>$85,0
       ],
       correctIndex: 1,
       explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 3</div><h2>Cash Basis to Accrual Basis Income</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice B — Higher by $15,000</strong> is correct. Accrual-basis income is $215,000, which is $15,000 higher than the $200,000 cash-basis income.</p></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice B: Higher by $15,000</strong> is correct. Accrual-basis income is $215,000, which is $15,000 higher than the $200,000 cash-basis income.</p></div>
 <div class="section"><h3>What Changes When Converting to Accrual Accounting?</h3>
 <p>Cash-basis income recognizes revenue when cash is received and expenses when cash is paid. Accrual accounting instead recognizes revenue when earned and expenses when incurred.</p>
 <p>That means changes in receivables and payables help identify amounts that belong in accrual income even though the cash has not yet moved.</p>
@@ -160,7 +160,7 @@ $100,000 + $20,000 − $15,000 − $30,000 − $25,000 + $35,000 = <strong>$85,0
       ],
       correctIndex: 0,
       explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 4</div><h2>Debt-to-Equity Ratio After a Share Issuance</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice A — 0.47</strong> is correct. Issuing shares increases assets and equity but does not increase liabilities, so the debt-to-equity ratio falls.</p></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice A: 0.47</strong> is correct. Issuing shares increases assets and equity but does not increase liabilities, so the debt-to-equity ratio falls.</p></div>
 <div class="section"><h3>Step 1: Determine Existing Equity</h3>
 <div class="formula"><strong>Assets = Liabilities + Equity</strong></div>
 <div class="calc">$800,000 − $320,000 = <strong>$480,000 existing equity</strong></div>
@@ -185,7 +185,7 @@ $100,000 + $20,000 − $15,000 − $30,000 − $25,000 + $35,000 = <strong>$85,0
 <tr class="correct-row"><td>A. 0.47</td><td>Correct. $320,000 of liabilities divided by $680,000 of post-issuance equity equals approximately 0.47.</td></tr>
 <tr><td>B. 0.54</td><td>Incorrect. The share issuance must be added to equity before calculating the ratio.</td></tr>
 <tr><td>C. 0.62</td><td>Incorrect. This does not use the correct post-issuance equity balance.</td></tr>
-<tr><td>D. 0.71</td><td>Incorrect. The transaction reduces—not increases—the company&#x27;s debt relative to equity.</td></tr>
+<tr><td>D. 0.71</td><td>Incorrect. The transaction reduces: not increases: the company&#x27;s debt relative to equity.</td></tr>
 </tbody></table></div>
 <div class="summary"><h3>Summary</h3><p>Compute equity first, add the $200,000 share issuance to equity, and leave liabilities unchanged. The new debt-to-equity ratio is $320,000 ÷ $680,000 = 0.47.</p></div></div>`,
     },
@@ -205,18 +205,18 @@ What amount should Frost report as cash in its December 31 balance sheet?`,
         `$16,000`,
       ],
       correctIndex: 2,
-      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 5</div><h2>Cash Balance — Postdated and NSF Checks</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice C — $13,000</strong> is correct. The $2,000 NSF check must be removed from the checkbook balance because the cash was never collected.</p></div>
+      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 5</div><h2>Cash Balance: Postdated and NSF Checks</h2></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice C: $13,000</strong> is correct. The $2,000 NSF check must be removed from the checkbook balance because the cash was never collected.</p></div>
 <div class="section"><h3>Starting Point</h3>
 <div class="calc">December 31 checkbook balance = <strong>$15,000</strong></div>
 <p>The task is to determine whether either check should be included in cash at year-end.</p>
 </div>
-<div class="section"><h3>Postdated Check — $3,000</h3>
+<div class="section"><h3>Postdated Check: $3,000</h3>
 <p>The $3,000 check is dated January 5. As of December 31, it is a <strong>postdated check</strong> and is not available as cash at year-end.</p>
 <p>However, the problem specifically says it was <strong>not included</strong> in the $15,000 checkbook balance. Therefore, no adjustment to the $15,000 balance is necessary.</p>
 <div class="tip">Economically, the amount remains a receivable until the check becomes collectible.</div>
 </div>
-<div class="section"><h3>NSF Check — $2,000</h3>
+<div class="section"><h3>NSF Check: $2,000</h3>
 <p>The $2,000 check had been deposited and included in the checkbook balance, but the bank returned it for <strong>non-sufficient funds (NSF)</strong>.</p>
 <p>Because the customer payment failed, the company does not have the cash. The amount must be removed from cash and restored to a receivable.</p>
 <div class="calc">$15,000 − $2,000 = <strong>$13,000</strong></div>
@@ -255,15 +255,15 @@ The beginning balance in the allowance for doubtful accounts is $3,000, and duri
         `$3,800`,
       ],
       correctIndex: 1,
-      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 6</div><h2>Allowance for Doubtful Accounts — Aging Method</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice B — $3,200</strong> is correct. Under the aging method, first calculate the required ending allowance balance, then solve for the bad debt expense needed to reach that balance.</p></div>
+      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 6</div><h2>Allowance for Doubtful Accounts: Aging Method</h2></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice B: $3,200</strong> is correct. Under the aging method, first calculate the required ending allowance balance, then solve for the bad debt expense needed to reach that balance.</p></div>
 <div class="section"><h3>Step 1: Compute the Required Ending Allowance</h3>
 <table>
 <thead><tr><th>Aging Category</th><th>Receivable</th><th>Estimated Uncollectible</th><th>Required Allowance</th></tr></thead>
 <tbody>
-<tr><td>1–30 days late</td><td>$30,000</td><td>2%</td><td>$600</td></tr>
-<tr><td>31–60 days late</td><td>$40,000</td><td>5%</td><td>$2,000</td></tr>
-<tr><td>61–90 days late</td><td>$20,000</td><td>8%</td><td>$1,600</td></tr>
+<tr><td>1 to 30 days late</td><td>$30,000</td><td>2%</td><td>$600</td></tr>
+<tr><td>31 to 60 days late</td><td>$40,000</td><td>5%</td><td>$2,000</td></tr>
+<tr><td>61 to 90 days late</td><td>$20,000</td><td>8%</td><td>$1,600</td></tr>
 <tr><td colspan="3"><strong>Required ending allowance</strong></td><td><strong>$4,200</strong></td></tr>
 </tbody>
 </table>
@@ -309,8 +309,8 @@ Maple uses the FIFO method to determine the value of its inventory. What amount 
         `$780,000`,
       ],
       correctIndex: 2,
-      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 7</div><h2>FIFO Inventory — Cost of Goods Sold</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice C — $700,000</strong> is correct. FIFO assigns the oldest inventory costs to cost of goods sold first.</p></div>
+      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 7</div><h2>FIFO Inventory: Cost of Goods Sold</h2></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice C: $700,000</strong> is correct. FIFO assigns the oldest inventory costs to cost of goods sold first.</p></div>
 <div class="section"><h3>Inventory Available for Sale</h3>
 <table>
 <thead><tr><th>Layer</th><th>Units</th><th>Unit Cost</th><th>Total Cost</th></tr></thead>
@@ -362,7 +362,7 @@ Maple uses the FIFO method to determine the value of its inventory. What amount 
       ],
       correctIndex: 2,
       explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 8</div><h2>Double-Declining-Balance Depreciation</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice C — $12,500</strong> is correct. The question gives mileage data, but it explicitly requires the double-declining-balance method.</p></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice C: $12,500</strong> is correct. The question gives mileage data, but it explicitly requires the double-declining-balance method.</p></div>
 <div class="section"><h3>Step 1: Determine the DDB Rate</h3>
 <p>Straight-line rate for an 8-year life:</p>
 <div class="calc">1 ÷ 8 = 12.5%</div>
@@ -401,8 +401,8 @@ Maple uses the FIFO method to determine the value of its inventory. What amount 
         `$18,106`,
       ],
       correctIndex: 1,
-      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 9</div><h2>Finance Lease — First-Year Interest Expense</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice B — $12,637</strong> is correct. First-year interest expense equals the beginning lease liability multiplied by the lease interest rate.</p></div>
+      explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 9</div><h2>Finance Lease: First-Year Interest Expense</h2></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice B: $12,637</strong> is correct. First-year interest expense equals the beginning lease liability multiplied by the lease interest rate.</p></div>
 <div class="section"><h3>Step 1: Measure the Initial Lease Liability</h3>
 <p>The annual payments are made at year-end, so the supplied annuity factor is applied to the five $50,000 payments.</p>
 <div class="calc">$50,000 × 4.21236 = <strong>$210,618 initial lease liability</strong></div>
@@ -453,7 +453,7 @@ Maple uses the FIFO method to determine the value of its inventory. What amount 
       ],
       correctIndex: 1,
       explanation: `<div class="maxwell-exp"><div class="header"><div class="qid">Question ID: 10</div><h2>Correction of a Prior-Period Depreciation Error</h2></div>
-<div class="answer"><p><strong>Answer:</strong> <strong>Choice B — Debit Retained Earnings $20,000; Credit Accumulated Depreciation $20,000</strong> is correct. The omitted depreciation relates to prior periods, so the correction is made through beginning retained earnings rather than current-year depreciation expense.</p></div>
+<div class="answer"><p><strong>Answer:</strong> <strong>Choice B: Debit Retained Earnings $20,000; Credit Accumulated Depreciation $20,000</strong> is correct. The omitted depreciation relates to prior periods, so the correction is made through beginning retained earnings rather than current-year depreciation expense.</p></div>
 <div class="section"><h3>Step 1: Calculate Annual Depreciation</h3>
 <p>The vehicle cost $40,000, has a 4-year life, and has no salvage value.</p>
 <div class="calc">$40,000 ÷ 4 years = <strong>$10,000 annual depreciation</strong></div>
