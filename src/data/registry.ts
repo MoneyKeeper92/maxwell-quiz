@@ -75,6 +75,10 @@ const loaders: Record<Course, Record<string, QuizLoader>> = {
     import("./intermediate/accounting-changes").then((m) => m.accountingChangesQuiz),
   "statement-of-cash-flows": () =>
     import("./intermediate/statement-of-cash-flows").then((m) => m.statementOfCashFlowsQuiz),
+  "pensions": () =>
+    import("./intermediate/pensions").then((m) => m.pensionsQuiz),
+  "stock-based-compensation": () =>
+    import("./intermediate/stock-based-compensation").then((m) => m.stockBasedCompensationQuiz),
   },
 };
 
@@ -110,6 +114,8 @@ const questionCounts: Record<string, number> = {
   "intermediate/income-taxes": 10,
   "intermediate/accounting-changes": 10,
   "intermediate/statement-of-cash-flows": 10,
+  "intermediate/pensions": 10,
+  "intermediate/stock-based-compensation": 10,
 };
 
 export interface HomeQuizLink extends QuizCatalogItem {
