@@ -63,9 +63,14 @@ export default function QuizRunner({ quiz }: QuizRunnerProps) {
 
     // A quiz open for under a second was never really read: React's dev-mode
     // double mount and accidental loads both land here, and neither is an exit.
+    // Hiding the tab and unloading both fire, so the same exit was recorded
+    // twice. Only a later exit, with more time on it, is worth sending: a
+    // reader who returns and leaves again should still update the total.
+    let lastExitMs = 0;
     const reportExit = () => {
       const ms = timer.elapsedMs();
-      if (submitted.current || ms < 1000) return;
+      if (submitted.current || ms < 1000 || ms <= lastExitMs) return;
+      lastExitMs = ms;
       track({ event: "quiz_exit", ...base, active_ms: ms }, true);
     };
 
