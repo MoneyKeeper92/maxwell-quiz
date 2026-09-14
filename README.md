@@ -249,3 +249,19 @@ one HTML file per route with its own title, description, canonical URL and
 Open Graph tags. Netlify serves those before falling back to the SPA rewrite,
 which matters because the scrapers behind link previews do not run JavaScript.
 `src/lib/documentTitle.ts` keeps the title right during client-side navigation.
+
+## Syllabus coverage
+
+```bash
+npm run coverage
+npm run coverage -- --course intermediate
+```
+
+Answers "what do we not teach?" rather than "what is broken?". A topic counts
+as covered only when a question is *about* it: the match has to land in the
+stem or the answer choices. A term appearing only in an explanation is reported
+separately as a passing mention, so a distractor that happens to name a topic
+is not mistaken for teaching it.
+
+The topic list in `scripts/coverage.py` is a standard Intermediate syllabus plus
+the topics students most often report as hard. Edit it as that picture changes.

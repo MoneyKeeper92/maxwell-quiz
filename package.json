@@ -14,7 +14,8 @@
     "audit": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/audit.py \"$@\"' --",
     "normalize-cpa": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/normalize_cpa_html.py \"$@\"' --",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "coverage": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/coverage.py \"$@\"' --"
   },
   "dependencies": {
     "react": "^19.2.7",
