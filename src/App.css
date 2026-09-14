@@ -602,9 +602,11 @@
   vertical-align: top;
 }
 
+/* The first column holds the row label, so it reads left. Amount columns stay
+   right-aligned below, which is the accounting convention. */
 .exp-content table td:first-child,
 .exp-content table th:first-child {
-  text-align: right !important;
+  text-align: left !important;
 }
 
 .exp-content table td:nth-child(2),
@@ -612,6 +614,7 @@
 .exp-content table th:nth-child(2),
 .exp-content table th:nth-child(3) {
   text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
 .exp-content div[style*="border-left"] {
@@ -1122,4 +1125,21 @@ textarea:focus-visible,
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Generated explanation tables put the label in the first column. Legacy rules
+   above right-align that column, which reads wrong for a label. Amount columns
+   stay right-aligned, which is the accounting convention. */
+.exp-content .mx-table td:first-child,
+.exp-content .mx-table th:first-child {
+  text-align: left !important;
+}
+
+.exp-content .mx-table td:not(:first-child) {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Head the amount columns over the figures they describe. */
+.exp-content .mx-table th:not(:first-child) {
+  text-align: right !important;
 }

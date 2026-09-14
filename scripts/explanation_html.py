@@ -75,6 +75,9 @@ EMOJI_RE = re.compile(
 
 
 # ------------------------------------------------------------- sanitising ---
+BULLET_PREFIX = re.compile(r"^\s*[\u2022\u00b7\u25cf\u25aa\u2023\u2043*]\s+")
+
+
 def clean_text(s: str) -> str:
     """Strip emoji and em dashes; keep the semantic check and cross marks."""
     s = s.replace("✅", "✓").replace("❌", "✗")
@@ -88,6 +91,7 @@ def clean_text(s: str) -> str:
     s = re.sub(r"(\d)\s*–\s*(\d)", r"\1 to \2", s)
     s = s.replace("–", ", ")
     s = s.replace("\xa0", " ")
+    s = BULLET_PREFIX.sub("", s)
     return re.sub(r"[ \t]+", " ", s).strip()
 
 
@@ -173,6 +177,69 @@ def is_known_heading(it: dict) -> bool:
     )
 
 
+SUBLABEL = re.compile(r"^\s*\d+[.)]\s+\S")
+
+SMALL_WORDS = {
+    "a", "an", "and", "as", "at", "but", "by", "for", "from", "in", "into",
+    "of", "on", "or", "the", "to", "vs", "with", "without",
+}
+
+
+def is_title_case(line: str) -> bool:
+    """True for a line that reads as a heading rather than a bullet.
+
+    The source lost its nesting, so a group heading and its items arrive at the
+    same level. Headings in these documents are written in Title Case and the
+    items are not, which is what this leans on.
+    """
+    line = line.strip()
+    if len(line) > 60 or line.endswith((".", ":", "?", "!", ",", ";")):
+        return False
+    # A heading names a thing. A colon, an equals sign or a figure means this is
+    # a label and its value, or a step in a calculation, not a heading.
+    if ":" in line or "=" in line or re.search(r"\d", line):
+        return False
+    # A comparison, a marked answer, or a parenthetical aside is not a heading.
+    if "<" in line or ">" in line or line[0] in "✓✗(":
+        return False
+    words = [w for w in re.findall(r"[A-Za-z][A-Za-z'/-]*", line)]
+    if len(words) < 2:
+        return False
+    significant = [w for w in words if w.lower() not in SMALL_WORDS]
+    if len(significant) < 2:
+        return False
+    capped = sum(1 for w in significant if w[0].isupper())
+    return capped / len(significant) >= 0.8
+
+
+def merge_label_value_blocks(blocks: list[list[str]]) -> list[list[str]]:
+    """Join "Accrual-basis income:" with the "$280,000" block beneath it.
+
+    Must run before anything is classified. A colon-terminated label reads as a
+    heading, and once it is treated as one the colon is stripped and the amount
+    below it is left stranded as its own line.
+    """
+    out: list[list[str]] = []
+    i = 0
+    while i < len(blocks):
+        cur, nxt = blocks[i], blocks[i + 1] if i + 1 < len(blocks) else None
+        if (
+            len(cur) == 1
+            and cur[0].rstrip().endswith(":")
+            and len(cur[0]) <= 60
+            and nxt
+            and len(nxt) == 1
+            and len(nxt[0].strip()) <= 30
+            and re.match(r"^[(\-\u2212$\d]", nxt[0].strip())
+        ):
+            out.append([f"{cur[0].rstrip()} {nxt[0].strip()}"])
+            i += 2
+            continue
+        out.append(cur)
+        i += 1
+    return out
+
+
 def collapse_lists(items: list[dict]) -> list[dict]:
     """Bullets arrive as consecutive one-line blocks and look like headings.
 
@@ -191,11 +258,14 @@ def collapse_lists(items: list[dict]) -> list[dict]:
     def usable(c: str) -> bool:
         # A colon-terminated line introduces a list; it is not an item, and
         # treating it as one swallows the heading above it into the bullets.
+        # A numbered line heads a group and is handled as a sub-label.
         return (
             bool(c)
             and len(c) <= LIST_ITEM_MAX
             and not c.endswith((".", ":"))
             and not is_formula(c)
+            and not SUBLABEL.match(c)
+            and not is_title_case(c)
         )
 
     out: list[dict] = []
@@ -213,7 +283,11 @@ def collapse_lists(items: list[dict]) -> list[dict]:
             out.append({"kind": "list", "items": run})
             i = j
         else:
-            out.append(items[i])
+            one = candidate(items[i])
+            if one and (SUBLABEL.match(one) or is_title_case(one)):
+                out.append({"kind": "sublabel", "text": one})
+            else:
+                out.append(items[i])
             i += 1
     return out
 
@@ -240,7 +314,7 @@ def looks_like_title(block: list[str]) -> bool:
 
 
 def parse(text: str) -> tuple[str | None, list[dict]]:
-    blocks = split_blocks(text)
+    blocks = merge_label_value_blocks(split_blocks(text))
     if not blocks:
         return None, []
     has_title = looks_like_title(blocks[0])
@@ -289,6 +363,7 @@ def is_bare_option_list(section: dict) -> bool:
     """Choice restatements with no reasoning carry nothing the student can use."""
     lines = [l for it in section["items"] if it["kind"] == "lines" for l in it["lines"]]
     lines += [l for it in section["items"] if it["kind"] == "list" for l in it["items"]]
+    lines += [it["text"] for it in section["items"] if it["kind"] == "sublabel"]
     if not lines:
         return False
     labelled = sum(
@@ -309,7 +384,14 @@ def option_rows(section: dict) -> list[tuple[str, str]]:
                 if len(r) >= 2 and len(r[1]) > 25:
                     rows.append((r[0], r[1]))
         else:
-            src = it["lines"] if it["kind"] == "lines" else it["items"]
+            if it["kind"] == "lines":
+                src = it["lines"]
+            elif it["kind"] == "list":
+                src = it["items"]
+            elif it["kind"] == "sublabel":
+                src = [it["text"]]
+            else:
+                continue
             for line in src:
                 m = re.match(r"^(.{1,70}?)\s*[-–:]\s+((?:In)?correct\b.*)$", line, re.I)
                 if m and len(m.group(2)) > 20:
@@ -324,10 +406,13 @@ def p(text: str, last: bool = False) -> str:
 
 
 def formula_box(text: str) -> str:
+    # The colour is explicit: this box has its own white background, and inside
+    # the dark Summary block it would otherwise inherit white text.
     return (
         '<div style="background-color:white; border:1px solid #dddddd; '
-        "border-radius:5px; font-family:monospace; margin:0 0 12px 0; padding:12px; "
-        f'text-align:center"><strong>{inline(text)}</strong></div>'
+        "border-radius:5px; color:#12232d; font-family:monospace; "
+        'margin:0 0 12px 0; padding:12px; text-align:center">'
+        f"<strong>{inline(text)}</strong></div>"
     )
 
 
@@ -408,6 +493,13 @@ def fold_mark_columns(t: dict) -> dict:
     return {**t, "rows": rows}
 
 
+def render_sublabel(text: str) -> str:
+    return (
+        '<p style="color:#01506e; font-weight:600; margin:14px 0 6px 0">'
+        f"{inline(text)}</p>"
+    )
+
+
 def render_list(items: list[str], choices: list[str] | None = None) -> str:
     items = [x for x in items if not is_restatement(x, choices or [])]
     if not items:
@@ -445,8 +537,8 @@ def render_table(t: dict) -> str:
             + "</tr>"
         )
     return (
-        '<table cellspacing="0" style="border-collapse:collapse; margin-top:15px; '
-        f'width:100%">{head}<tbody>{"".join(body)}</tbody></table>'
+        '<table class="mx-table" cellspacing="0" style="border-collapse:collapse; '
+        f'margin-top:15px; width:100%">{head}<tbody>{"".join(body)}</tbody></table>'
     )
 
 
@@ -536,6 +628,8 @@ def build(
         inner = "".join(
             render_table(it)
             if it["kind"] == "table"
+            else render_sublabel(it["text"])
+            if it["kind"] == "sublabel"
             else render_list(it["items"], choices)
             if it["kind"] == "list"
             else render_lines(it["lines"], choices)
@@ -603,8 +697,9 @@ def _is_list_item(block: list[str]) -> bool:
     if not line or len(line) > LIST_ITEM_MAX:
         return False
     # A lead-in ("The following values are given:") introduces a list; it is
-    # not itself an item. Prose sentences end in terminal punctuation.
-    return not line.endswith((":", ".", "?", "!"))
+    # not itself an item. Prose sentences end in terminal punctuation, and a
+    # numbered line heads a group rather than being one of its bullets.
+    return not line.endswith((":", ".", "?", "!")) and not SUBLABEL.match(line)
 
 
 def _header_from_first_row(rows: list[list[str]]) -> bool:
@@ -625,7 +720,7 @@ def _header_from_first_row(rows: list[list[str]]) -> bool:
 
 
 def parse_prompt(text: str) -> list[dict]:
-    blocks = split_blocks(text)
+    blocks = merge_label_value_blocks(split_blocks(text))
     items: list[dict] = []
     i = 0
     while i < len(blocks):
@@ -660,7 +755,12 @@ def parse_prompt(text: str) -> list[dict]:
             out.append({"kind": "list", "items": run})
             j = k
         else:
-            out.append(items[j])
+            it = items[j]
+            one = it["lines"][0] if it["kind"] == "lines" and len(it["lines"]) == 1 else None
+            if one and SUBLABEL.match(one):
+                out.append({"kind": "sublabel", "text": one})
+            else:
+                out.append(it)
             j += 1
     return out
 
@@ -697,6 +797,8 @@ def build_prompt(text: str) -> tuple[str, str | None]:
     for it in items:
         if it["kind"] == "table":
             parts.append(render_table(it))
+        elif it["kind"] == "sublabel":
+            parts.append(render_sublabel(it["text"]))
         elif it["kind"] == "list":
             parts.append(render_list(it["items"]))
         else:
