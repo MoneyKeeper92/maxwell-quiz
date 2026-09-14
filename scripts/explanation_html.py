@@ -212,6 +212,59 @@ def is_title_case(line: str) -> bool:
     return capped / len(significant) >= 0.8
 
 
+ARROW_ONLY = re.compile(r"^(?:[\u2192\u21d2\u27a1\u25b6\u00bb]|->|=>)$")
+
+
+def merge_flow_blocks(blocks: list[list[str]]) -> list[list[str]]:
+    """Rebuild a flow diagram that was flattened into separate blocks.
+
+    "COGS / Understated / arrow / Gross Margin / Overstated / arrow ..." is a
+    chain, but each part arrives as its own block, so the arrows rendered as
+    bullets on their own. This joins the chain back into one line.
+    """
+
+    def is_arrow(b: list[str]) -> bool:
+        return len(b) == 1 and bool(ARROW_ONLY.match(b[0].strip()))
+
+    out: list[list[str]] = []
+    i = 0
+    while i < len(blocks):
+        window = range(i + 1, min(i + 4, len(blocks)))
+        if not is_arrow(blocks[i]) and any(is_arrow(blocks[j]) for j in window):
+            groups: list[list[str]] = []
+            current: list[str] = []
+            j = i
+            while j < len(blocks):
+                if is_arrow(blocks[j]):
+                    if current:
+                        groups.append(current)
+                    current = []
+                    j += 1
+                    continue
+                if len(current) >= 2:
+                    break
+                current.append(" ".join(blocks[j]))
+                j += 1
+                if len(current) >= 2 and (j >= len(blocks) or not is_arrow(blocks[j])):
+                    break
+            if current:
+                groups.append(current)
+            if len(groups) >= 2:
+                chain = " \u2192 ".join(
+                    ": ".join(g) if len(g) == 2 else g[0] for g in groups
+                )
+                out.append([chain])
+                i = j
+                continue
+        # A stray arrow with nothing to chain is noise.
+        if is_arrow(blocks[i]):
+            i += 1
+            continue
+        out.append(blocks[i])
+        i += 1
+    return out
+
+
 def merge_label_value_blocks(blocks: list[list[str]]) -> list[list[str]]:
     """Join "Accrual-basis income:" with the "$280,000" block beneath it.
 
@@ -283,11 +336,20 @@ def collapse_lists(items: list[dict]) -> list[dict]:
             out.append({"kind": "list", "items": run})
             i = j
         else:
-            one = candidate(items[i])
+            it = items[i]
+            # Only body text becomes a sub-label. A heading that stands alone
+            # stays a heading: demoting it merged whole sections into the card
+            # above and, where the section above was dropped, took the
+            # explanation with it.
+            one = (
+                it["lines"][0]
+                if it["kind"] == "lines" and len(it["lines"]) == 1
+                else None
+            )
             if one and (SUBLABEL.match(one) or is_title_case(one)):
                 out.append({"kind": "sublabel", "text": one})
             else:
-                out.append(items[i])
+                out.append(it)
             i += 1
     return out
 
@@ -314,7 +376,7 @@ def looks_like_title(block: list[str]) -> bool:
 
 
 def parse(text: str) -> tuple[str | None, list[dict]]:
-    blocks = merge_label_value_blocks(split_blocks(text))
+    blocks = merge_label_value_blocks(merge_flow_blocks(split_blocks(text)))
     if not blocks:
         return None, []
     has_title = looks_like_title(blocks[0])
@@ -347,10 +409,32 @@ def group_sections(items: list[dict]) -> list[dict]:
     sections: list[dict] = [{"title": None, "items": []}]
     for it in items:
         if it["kind"] == "heading":
-            sections.append({"title": it["text"], "items": []})
+            # Cleaned here so the emoji the source carries cannot stop a title
+            # matching a known heading.
+            sections.append({"title": clean_text(it["text"]), "items": []})
         else:
             sections[-1]["items"].append(it)
-    return [s for s in sections if s["title"] or s["items"]]
+    sections = [s for s in sections if s["title"] or s["items"]]
+
+    # A title with nothing under it heads what comes next: "Calculation Steps"
+    # before the steps, "Correct Answer Analysis" before the analysis. Carry it
+    # forward and keep the follower's own title as a sub-label.
+    merged: list[dict] = []
+    carried: str | None = None
+    for sec in sections:
+        if sec["title"] and not sec["items"]:
+            if carried is None:
+                carried = sec["title"]
+            continue
+        if carried:
+            if sec["title"]:
+                sec["items"] = [{"kind": "sublabel", "text": sec["title"]}] + sec["items"]
+            sec["title"] = carried
+            carried = None
+        merged.append(sec)
+    if carried:
+        merged.append({"title": carried, "items": []})
+    return merged
 
 
 # ----------------------------------------------------------------- filters ---
@@ -510,16 +594,38 @@ def render_list(items: list[str], choices: list[str] | None = None) -> str:
     return f'<ul style="margin:0 0 12px 0; padding-left:22px">{lis}</ul>'
 
 
+def numeric_columns(t: dict) -> list[bool]:
+    """Which columns hold figures.
+
+    Alignment is decided from the content rather than the column position: a
+    four-column table can put text in column three, and a stylesheet rule keyed
+    on nth-child right-aligns it regardless.
+    """
+    width = len(t["cols"]) if t["cols"] else max((len(r) for r in t["rows"]), default=0)
+    flags = []
+    for col in range(width):
+        vals = [r[col] for r in t["rows"] if col < len(r) and r[col].strip()]
+        if not vals:
+            flags.append(False)
+            continue
+        numeric = sum(
+            1 for v in vals if re.fullmatch(r"[^A-Za-z]*[\d][^A-Za-z]*", clean_text(v))
+        )
+        flags.append(numeric / len(vals) >= 0.6)
+    return flags
+
+
 def render_table(t: dict) -> str:
     t = fold_mark_columns(t)
+    numeric = numeric_columns(t)
     head = ""
     if t["cols"]:
         head = (
             "<thead><tr>"
             + "".join(
-                f'<th style="border-bottom:2px solid {HEADER_BG}; padding:10px; '
-                f'text-align:left">{esc(c)}</th>'
-                for c in t["cols"]
+                f'<th class="{"mx-num" if numeric[i] else "mx-txt"}" '
+                f'style="border-bottom:2px solid {HEADER_BG}; padding:10px">{esc(c)}</th>'
+                for i, c in enumerate(t["cols"])
             )
             + "</tr></thead>"
         )
@@ -530,9 +636,10 @@ def render_table(t: dict) -> str:
         body.append(
             "<tr>"
             + "".join(
-                f'<td style="border-bottom:1px solid {TABLE_RULE}; padding:10px">'
+                f'<td class="{"mx-num" if i < len(numeric) and numeric[i] else "mx-txt"}" '
+                f'style="border-bottom:1px solid {TABLE_RULE}; padding:10px">'
                 f"{inline(c)}</td>"
-                for c in cells
+                for i, c in enumerate(cells)
             )
             + "</tr>"
         )
@@ -720,7 +827,7 @@ def _header_from_first_row(rows: list[list[str]]) -> bool:
 
 
 def parse_prompt(text: str) -> list[dict]:
-    blocks = merge_label_value_blocks(split_blocks(text))
+    blocks = merge_label_value_blocks(merge_flow_blocks(split_blocks(text)))
     items: list[dict] = []
     i = 0
     while i < len(blocks):

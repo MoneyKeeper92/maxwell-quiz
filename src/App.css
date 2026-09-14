@@ -1130,16 +1130,13 @@ textarea:focus-visible,
 /* Generated explanation tables put the label in the first column. Legacy rules
    above right-align that column, which reads wrong for a label. Amount columns
    stay right-aligned, which is the accounting convention. */
-.exp-content .mx-table td:first-child,
-.exp-content .mx-table th:first-child {
-  text-align: left !important;
-}
-
-.exp-content .mx-table td:not(:first-child) {
+/* Alignment follows the column's content, decided when the table is generated:
+   figures right with tabular digits, text left, headers over their own column. */
+.exp-content .mx-table .mx-num {
+  text-align: right !important;
   font-variant-numeric: tabular-nums;
 }
 
-/* Head the amount columns over the figures they describe. */
-.exp-content .mx-table th:not(:first-child) {
-  text-align: right !important;
+.exp-content .mx-table .mx-txt {
+  text-align: left !important;
 }

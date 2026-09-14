@@ -117,32 +117,50 @@ function payload(e: QuizEvent): string {
  * `keepalive` lets the request outlive the page, which matters for the exit
  * event. sendBeacon is used where available for the same reason.
  */
-export function track(e: QuizEvent, beacon = false): void {
+/**
+ * fetch with keepalive, not sendBeacon.
+ *
+ * The insert needs an apikey header and a JSON content type, neither of which
+ * is CORS-safelisted, so the request is preflighted. sendBeacon cannot carry
+ * that preflight through an unload reliably and reports success regardless,
+ * which is why every exit event was lost: the call returned true and the
+ * fallback below never ran. keepalive is built for exactly this, and sendBeacon
+ * is kept only for browsers that lack it.
+ */
+const SUPPORTS_KEEPALIVE = (() => {
+  try {
+    return "keepalive" in new Request("https://example.com", { method: "POST" });
+  } catch {
+    return false;
+  }
+})();
+
+export function track(e: QuizEvent, atExit = false): void {
   if (!analyticsEnabled) return;
   const url = `${URL_BASE}/rest/v1/quiz_events`;
   const body = payload(e);
 
   try {
-    if (beacon && navigator.sendBeacon) {
-      // sendBeacon cannot set headers, so the key rides in the query string.
-      const beaconUrl = `${url}?apikey=${encodeURIComponent(ANON_KEY!)}`;
-      const ok = navigator.sendBeacon(
-        beaconUrl,
-        new Blob([body], { type: "application/json" }),
-      );
-      if (ok) return;
+    if (!atExit || SUPPORTS_KEEPALIVE) {
+      void fetch(url, {
+        method: "POST",
+        keepalive: atExit,
+        headers: {
+          "Content-Type": "application/json",
+          apikey: ANON_KEY!,
+          Authorization: `Bearer ${ANON_KEY}`,
+          Prefer: "return=minimal",
+        },
+        body,
+      }).catch(() => {});
+      return;
     }
-    void fetch(url, {
-      method: "POST",
-      keepalive: true,
-      headers: {
-        "Content-Type": "application/json",
-        apikey: ANON_KEY!,
-        Authorization: `Bearer ${ANON_KEY}`,
-        Prefer: "return=minimal",
-      },
-      body,
-    }).catch(() => {});
+    // No keepalive: the key has to ride in the query string, because
+    // sendBeacon cannot set headers.
+    navigator.sendBeacon?.(
+      `${url}?apikey=${encodeURIComponent(ANON_KEY!)}`,
+      new Blob([body], { type: "application/json" }),
+    );
   } catch {
     // never let tracking break the quiz
   }
