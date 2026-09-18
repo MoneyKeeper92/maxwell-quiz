@@ -731,8 +731,10 @@ def step_card(title: str, inner: str) -> str:
 def option_card(rows: list[tuple[str, str]]) -> str:
     body = "".join(
         "<tr>"
-        f'<td style="border-bottom:1px solid {TABLE_RULE}; padding:10px">{inline(o)}</td>'
-        f'<td style="border-bottom:1px solid {TABLE_RULE}; padding:10px">{inline(a)}</td>'
+        f'<td class="mx-txt" style="border-bottom:1px solid {TABLE_RULE}; '
+        f'padding:10px">{inline(o)}</td>'
+        f'<td class="mx-txt" style="border-bottom:1px solid {TABLE_RULE}; '
+        f'padding:10px">{inline(a)}</td>'
         "</tr>"
         for o, a in rows
     )
@@ -740,10 +742,13 @@ def option_card(rows: list[tuple[str, str]]) -> str:
         '<div style="background-color:white; border-radius:8px; margin-bottom:20px; '
         'padding:15px">'
         f'<h3 style="color:{HEADER_BG}; margin:0 0 12px 0">Analysis of Answer Options</h3>'
-        '<table cellspacing="0" style="border-collapse:collapse; margin-top:15px; width:100%">'
+        '<table class="mx-table" cellspacing="0" style="border-collapse:collapse; '
+        'margin-top:15px; width:100%">'
         "<thead><tr>"
-        f'<th style="border-bottom:2px solid {HEADER_BG}; padding:10px; text-align:left">Option</th>'
-        f'<th style="border-bottom:2px solid {HEADER_BG}; padding:10px; text-align:left">Analysis</th>'
+        f'<th class="mx-txt" style="border-bottom:2px solid {HEADER_BG}; '
+        'padding:10px">Option</th>'
+        f'<th class="mx-txt" style="border-bottom:2px solid {HEADER_BG}; '
+        'padding:10px">Analysis</th>'
         "</tr></thead>"
         f"<tbody>{body}</tbody></table></div>"
     )

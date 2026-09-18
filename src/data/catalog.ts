@@ -236,6 +236,13 @@ export const intermediateCatalog: QuizCatalogItem[] = [
     discipline: "intermediate",
     course: "intermediate",
   },
+  {
+    key: "midterm-exam-1",
+    title: "Intermediate Accounting I Midterm Mock Exam",
+    subtitle: "40-question mock midterm covering the conceptual framework through inventory",
+    discipline: "intermediate",
+    course: "intermediate",
+  },
   // INTERMEDIATE_CATALOG_ENTRIES
 ];
 
