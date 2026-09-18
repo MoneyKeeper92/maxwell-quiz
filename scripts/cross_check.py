@@ -21,6 +21,7 @@ import json
 import os
 import re
 import sys
+import ssl
 import urllib.error
 import urllib.request
 
@@ -29,6 +30,20 @@ import qc  # noqa: E402  (reuses the module parser)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LETTERS = "ABCD"
+
+def _ssl_context() -> ssl.SSLContext:
+    """Python here ships without a usable trust store, so point at one."""
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        pass
+    if os.path.exists("/etc/ssl/cert.pem"):
+        return ssl.create_default_context(cafile="/etc/ssl/cert.pem")
+    return ssl.create_default_context()
+
+
+SSL_CTX = _ssl_context()
 
 SYSTEM = (
     "You are an intermediate accounting professor grading a draft exam. "
@@ -51,7 +66,7 @@ def post(url: str, payload: dict, headers: dict) -> dict:
         url, data=json.dumps(payload).encode(), method="POST",
         headers={"Content-Type": "application/json", **headers})
     try:
-        with urllib.request.urlopen(req, timeout=180) as r:
+        with urllib.request.urlopen(req, timeout=180, context=SSL_CTX) as r:
             return json.loads(r.read())
     except urllib.error.HTTPError as e:
         raise RuntimeError(f"{e.code} {e.read()[:300].decode('utf-8', 'replace')}") from None
