@@ -1,0 +1,290 @@
+// GENERATED from the verified sources — see the header comment. Do not hand-edit.
+//
+// Official AICPA FAR task-based simulation 110110 (Blear Co.).
+//
+// Grid, prompt and keyed answers: Fixing Question Errors/tbs_bundles/110110.md
+// Exhibit HTML:                   Video Animation Generator/tbs-110110/lib/exhibits.js
+// Chapter times:                  tbs-110110/final/YOUTUBE-PUBLISH.md
+//
+// The build script re-derives every subtotal and refuses to emit this file if
+// any figure disagrees with the bundle's keyed grid.
+import type { Sim } from "../types";
+
+/** Set this once the walkthrough is published; chapter links stay hidden until
+ *  it is, rather than pointing at nothing. */
+const VIDEO_URL: string | null = null;
+
+export const aicpaFarTbs110110: Sim = {
+  key: "aicpa-far-tbs-110110",
+  title: "Official AICPA FAR Simulation: Blear Co.",
+  subtitle: "Adjust a consolidated balance sheet from seven exhibits",
+  credit:
+    "Task-based simulation released publicly by the AICPA. Reproduced here for practice.",
+  discipline: "far",
+  videoUrl: VIDEO_URL,
+  prompt: "Scroll down to complete all parts of this task. Blear Co. is preparing its consolidated financial statements as of and for the year ended December 31, year 3. The consolidated financial statements are expected to be issued on February 25, year 4. Review the exhibits above to identify the adjustments, if any, to the draft consolidated statement of financial position as of December 31, year 3. To adjust the draft consolidated statement of financial position: Enter the amount associated with each adjustment in column D. Adjustments might not be required in some rows within the draft consolidated statement of financial position. Enter increases as positive whole values and decreases as negative whole values. If no adjustment is needed, then leave column D blank. If multiple adjustments affect a single financial statement line item, then enter the net amount of the adjustments in column D. Amounts in column E and subtotals will calculate automatically.",
+  columns: {
+    b: "Year 2 Balance",
+    c: "Year 3 Unadjusted Balance",
+    d: "Adjustment",
+    e: "Year 3 Adjusted Balance",
+  },
+  exhibits: [
+    {
+      "n": 1,
+      "title": "Email regarding sale of accounts receivable",
+      "cls": "compact",
+      "html": "<div class=\"ex-meta\"><p><b>From:</b> senioraccountant@blearco.com &nbsp; <b>To:</b> armanager@blearco.com</p><p><b>Sent:</b> 12/30/year 3 &nbsp; <b>Subject:</b> RE: Sale of Accounts Receivable</p></div><div class=\"ex-msg\"><p>Accounts Receivable Manager:</p><p>I have already recorded the following entry for the December close to record the sale:</p><div class=\"ex-scroll\"><table><thead><tr><th>Account</th><th class=\"n\">Debit</th><th class=\"n\">Credit</th></tr></thead><tbody><tr><td>Cash</td><td class=\"n\">27,000</td><td class=\"n\"></td></tr><tr><td>Accounts receivable</td><td class=\"n\"></td><td class=\"n\">27,000</td></tr></tbody></table></div><p class=\"ex-small\">Thanks, Senior Accountant &middot; senioraccountant@blearco.com &middot; 111.222.3456</p></div><hr><div class=\"ex-meta\"><p><b>From:</b> armanager@blearco.com &nbsp; <b>To:</b> senioraccountant@blearco.com</p><p><b>Sent:</b> 12/29/year 3 &nbsp; <b>Subject:</b> Sale of Accounts Receivable</p></div><div class=\"ex-msg\"><p>Senior Accountant:</p><p>On December 28, we entered into an agreement to sell $30,000 of our outstanding accounts receivable balances of our east coast operations. The agreement was made without recourse for a 10% fee. We received $27,000 from the buyer today to settle the transaction.</p><p>Please adjust the general ledger accordingly.</p><p class=\"ex-small\">Thanks, Accounts Receivable Manager &middot; armanager@blearco.com &middot; 111.222.7890</p></div>"
+    },
+    {
+      "n": 2,
+      "title": "Year-end inventory analysis",
+      "html": "<div class=\"ex-co\"><b>Blear Co.</b><br>Inventory Analysis<br>As of December 31, year 3</div><div class=\"ex-scroll\"><table><thead><tr><th class=\"c\">Product<br>type</th><th class=\"c\">Quantity per<br>inventory<br>subledger</th><th class=\"c\">Quantity per<br>physical<br>count</th><th class=\"c\">Unit<br>cost</th><th class=\"c\">Replacement<br>cost</th><th class=\"c\">Net<br>realizable<br>value (NRV)</th><th class=\"c\">Normal<br>profit<br>margin</th></tr></thead><tbody><tr><td class=\"c\">A</td><td class=\"c\">1,500</td><td class=\"c\">1,450</td><td class=\"c\">$25</td><td class=\"c\">$26</td><td class=\"c\">$20</td><td class=\"c\">$2</td></tr><tr><td class=\"c\">B</td><td class=\"c\">140</td><td class=\"c\">148</td><td class=\"c\">$30</td><td class=\"c\">$37</td><td class=\"c\">$35</td><td class=\"c\">$2</td></tr></tbody></table></div><p class=\"ex-note\"><b>Note -</b> The physical count was done on 12/31/year 3 by the warehouse manager, and the company uses FIFO for valuation purposes. The impact of the inventory analysis is not reflected in the unadjusted inventory balance as of 12/31/year 3.</p>"
+    },
+    {
+      "n": 3,
+      "title": "Accounts payable subledger",
+      "cls": "compact",
+      "html": "<div class=\"ex-co\"><b>Blear Co.</b><br>Accounts payable subledger<br>Month ended January 31, year 4</div><div class=\"ex-scroll\"><table><thead><tr><th>Date</th><th>Vendor</th><th>Description</th><th class=\"n\">Amount</th></tr></thead><tbody><tr><td style=\"white-space:nowrap\">12/31/year 3</td><td></td><td>Beginning balance</td><td class=\"n\">155,000</td></tr><tr><td style=\"white-space:nowrap\">1/4/year 4</td><td>Clean Co.</td><td>Janitorial services received in December, year 3</td><td class=\"n\">6,000</td></tr><tr><td style=\"white-space:nowrap\">1/5/year 4</td><td></td><td>Payments to vendors</td><td class=\"n\">(15,000)</td></tr><tr><td style=\"white-space:nowrap\">1/10/year 4</td><td>Guardian, LLC</td><td>Legal fees for general corporate matters</td><td class=\"n\">27,500</td></tr><tr><td style=\"white-space:nowrap\">1/15/year 4</td><td></td><td>Payments to vendors</td><td class=\"n\">(25,000)</td></tr><tr><td style=\"white-space:nowrap\">1/18/year 4</td><td></td><td>Payments to vendors</td><td class=\"n\">(22,000)</td></tr><tr><td style=\"white-space:nowrap\">1/19/year 4</td><td>Machine Co.</td><td>Inventory received on January 10, year 4 (f.o.b. destination)</td><td class=\"n\">18,000</td></tr><tr><td style=\"white-space:nowrap\">1/22/year 4</td><td>Computer Corp.</td><td>Computer supplies received on January 15, year 4 (ordered January 2, year 4)</td><td class=\"n\">8,500</td></tr><tr><td style=\"white-space:nowrap\">1/28/year 4</td><td></td><td>Payments to vendors</td><td class=\"n\">(75,300)</td></tr><tr><td style=\"white-space:nowrap\">1/29/year 4</td><td>Match Corp.</td><td>Inventory received on January 27, year 4 (f.o.b. destination)</td><td class=\"n\">22,200</td></tr><tr><td style=\"white-space:nowrap\">1/31/year 4</td><td></td><td>Ending balance</td><td class=\"n\">99,900</td></tr></tbody></table></div><p class=\"ex-note\"><b>Note:</b> The payments made during January, year 4, to vendors are for amounts included in the 12/31/year 3 balance in accounts payable.</p>"
+    },
+    {
+      "n": 4,
+      "title": "Accrued expense general ledger detail",
+      "html": "<div class=\"ex-co\"><b>Blear Co.</b><br>Accrued expense detail<br>Month ended January 31, year 4</div><div class=\"ex-scroll\"><table><thead><tr><th>Date</th><th>Description</th><th class=\"n\">Amount</th></tr></thead><tbody><tr><td style=\"white-space:nowrap\">12/31/year 3</td><td>Beginning balance</td><td class=\"n\">10,000</td></tr><tr><td style=\"white-space:nowrap\">1/31/year 4</td><td>Accrued sales commissions for January, year 4</td><td class=\"n\">8,000</td></tr><tr><td style=\"white-space:nowrap\">1/31/year 4</td><td>Accrued consulting fees incurred for January, year 4</td><td class=\"n\">7,000</td></tr><tr><td style=\"white-space:nowrap\">1/31/year 4</td><td>Ending balance</td><td class=\"n\">25,000</td></tr></tbody></table></div>"
+    },
+    {
+      "n": 5,
+      "title": "Home Build Corp. invoice",
+      "cls": "compact",
+      "html": "<div class=\"ex-two\"><div><b>Home Build Corp.</b><br>100 Park Street<br>Park, VA 55432<br>Phone: 999-998-1234</div><div><div class=\"ex-inv-h1\">INVOICE</div><table class=\"ex-kv\"><tr><td>DATE</td><td>12/31/year 3</td></tr><tr><td>INVOICE #</td><td>0567</td></tr></table></div></div></div><div class=\"ex-two\"><div><b>BILL TO:</b><br>Accounts payable department<br>Blear Co.<br>49 Industry Lane<br>Old Towne, MD 54321<br>111-232-5555</div><div>Posted to: Property, plant and equipment<br>Amount Posted: $85,300<br>Accounting Period: December, year 3<br>Posted: 12/31/year 3<br>Paid: 12/31/year 3</div></div><div class=\"ex-scroll\"><table><thead><tr><th>Item #</th><th>Description</th><th class=\"n\">Unit Price</th><th class=\"n\">TOTAL</th></tr></thead><tbody><tr><td>1122455</td><td>HVAC for manufacturing building installed December 31, year 3</td><td class=\"n\">75,000</td><td class=\"n\">75,000</td></tr><tr><td></td><td>Annual maintenance contract for the period 1/1/year 4 through 12/31/year 4</td><td class=\"n\">5,000</td><td class=\"n\">5,000</td></tr></tbody></table></div><div class=\"ex-two\"><div class=\"ex-small\"><b>Other Comments or Special Instructions</b><br>1. Total payment due on installation<br>2. Please include the invoice number on your remittance.</div><table class=\"ex-tot\"><tr><td>SUBTOTAL</td><td class=\"n\">80,000</td></tr><tr><td>TAXABLE</td><td class=\"n\">75,000</td></tr><tr><td>TAX RATE</td><td class=\"n\">6.00%</td></tr><tr><td>TAX</td><td class=\"n\">4,500</td></tr><tr><td>SHIPPING AND HANDLING</td><td class=\"n\">800</td></tr><tr class=\"grand\"><td>TOTAL</td><td class=\"n\">$85,300</td></tr></table></div></div>"
+    },
+    {
+      "n": 6,
+      "title": "Guardian LLC invoice",
+      "html": "<div class=\"ex-two\"><div><b>Guardian LLC</b><br>January 9, year 4<br>Invoice Number: 22544855</div><div class=\"ex-inv-h1\">Invoice</div></div><div class=\"ex-two\"><div><b>Bill to:</b><br>Accounts Payable Department<br>Blear Co.<br>49 Industry Lane<br>Old Towne, MD 54321</div><div>Posted to: Legal expense acct #6100<br>Amount posted: $27,500<br>Accounting period: January, year 4<br>Posted: 1/10/year 4<br>Paid: 2/28/year 4</div></div><div class=\"ex-scroll\"><table><thead><tr><th>Date(s) of Services</th><th>Description of Services</th><th class=\"n\">Service Total</th></tr></thead><tbody><tr><td>12/1/year 3 to 12/31/year 3</td><td>December, year 3, legal fees for general corporate matters</td><td class=\"n\">$27,500</td></tr></tbody></table></div><p>Invoice Terms: Net 60</p><p class=\"ex-small\">Guardian LLC, 102 Main Street, Baltimore, MD 55551 &middot; Phone 1-200-121-1212 &middot; billing@guardianllc.com</p>"
+    },
+    {
+      "n": 7,
+      "title": "Intangible Asset Summary",
+      "html": "<div class=\"ex-co\"><b>Blear Co.</b><br>Intangible Asset Summary<br>As of and for the year ended December 31, year 3</div><div class=\"ex-scroll\"><table><thead><tr><th>Account</th><th class=\"c y1\">Balance<br>12/31/year 1</th><th class=\"c y1\">Additions</th><th class=\"c y1\">Disposals</th><th class=\"c y2\">Balance<br>12/31/year 2</th><th class=\"c y3\">Additions</th><th class=\"c y3\">Disposals</th><th class=\"c y3\">Balance<br>12/31/year 3</th></tr></thead><tbody><tr><td>Patents</td><td class=\"n y1\">75,000</td><td class=\"n y1\">-</td><td class=\"n y1\">-</td><td class=\"n y2\">75,000</td><td class=\"n y3\">20,000</td><td class=\"n y3\">-</td><td class=\"n y3\">95,000</td></tr><tr><td>Copyrights</td><td class=\"n y1\">40,000</td><td class=\"n y1\">-</td><td class=\"n y1\">-</td><td class=\"n y2\">40,000</td><td class=\"n y3\">-</td><td class=\"n y3\">-</td><td class=\"n y3\">40,000</td></tr><tr><td>Accumulated<br>amortization</td><td class=\"n y1\">(50,000)</td><td class=\"n y1\">(10,000)</td><td class=\"n y1\">-</td><td class=\"n y2\">(60,000)</td><td class=\"n y3\">(10,000)</td><td class=\"n y3\">-</td><td class=\"n y3\">(70,000)</td></tr><tr><td><b>Total</b></td><td class=\"n y1\"><b>65,000</b></td><td class=\"n y1\"><b>(10,000)</b></td><td class=\"n y1\"><b>-</b></td><td class=\"n y2\"><b>55,000</b></td><td class=\"n y3\"><b>10,000</b></td><td class=\"n y3\"><b>-</b></td><td class=\"n y3\"><b>65,000</b></td></tr></tbody></table></div><p class=\"ex-note\"><b>Note:</b> The $20,000 addition to the patent account is attributable to salary and benefit costs incurred to continue research and development activities during the development of a new product that is expected to be launched in year 4.</p>"
+    }
+  ],
+  rows: [
+    {
+      "id": "sec-ca",
+      "label": "Current assets",
+      "kind": "section"
+    },
+    {
+      "id": "cash",
+      "label": "Cash",
+      "kind": "input",
+      "b": 645000,
+      "c": 777000,
+      "key": 0
+    },
+    {
+      "id": "ar",
+      "label": "Accounts receivable (net)",
+      "kind": "input",
+      "b": 110500,
+      "c": 80100,
+      "key": -3000,
+      "chapter": {
+        "label": "Adjustment 1: Sale of receivables without recourse",
+        "seconds": 278
+      }
+    },
+    {
+      "id": "inventory",
+      "label": "Inventory",
+      "kind": "input",
+      "b": 46250,
+      "c": 41700,
+      "key": -8260,
+      "chapter": {
+        "label": "Adjustment 2: Inventory count and lower of cost or market",
+        "seconds": 405
+      }
+    },
+    {
+      "id": "prepaid",
+      "label": "Prepaid expenses",
+      "kind": "input",
+      "b": 4500,
+      "c": 2500,
+      "key": 5000,
+      "chapter": {
+        "label": "Adjustment 4: PP&E vs prepaid maintenance contract",
+        "seconds": 782
+      }
+    },
+    {
+      "id": "total-ca",
+      "label": "Total current assets",
+      "kind": "subtotal",
+      "sum": [
+        "cash",
+        "ar",
+        "inventory",
+        "prepaid"
+      ]
+    },
+    {
+      "id": "sec-nca",
+      "label": "Noncurrent assets",
+      "kind": "section"
+    },
+    {
+      "id": "ppe",
+      "label": "Property, plant and equipment (net)",
+      "kind": "input",
+      "b": 705000,
+      "c": 820000,
+      "key": -5000,
+      "chapter": {
+        "label": "Adjustment 4: PP&E vs prepaid maintenance contract",
+        "seconds": 782
+      }
+    },
+    {
+      "id": "intangibles",
+      "label": "Intangible assets (net)",
+      "kind": "input",
+      "b": 55000,
+      "c": 65000,
+      "key": -20000,
+      "chapter": {
+        "label": "Adjustment 5: R&D costs in intangible assets",
+        "seconds": 869
+      }
+    },
+    {
+      "id": "total-assets",
+      "label": "Total assets",
+      "kind": "subtotal",
+      "sum": [
+        "total-ca",
+        "ppe",
+        "intangibles"
+      ]
+    },
+    {
+      "id": "sec-cl",
+      "label": "Current liabilities",
+      "kind": "section"
+    },
+    {
+      "id": "ap",
+      "label": "Accounts payable and accrued expenses",
+      "kind": "input",
+      "b": 188300,
+      "c": 165000,
+      "key": 33500,
+      "chapter": {
+        "label": "Adjustment 3: Accounts payable and accrued expenses cutoff",
+        "seconds": 619
+      }
+    },
+    {
+      "id": "cpltd",
+      "label": "Current portion of long-term debt",
+      "kind": "input",
+      "b": 0,
+      "c": 100000,
+      "key": 0
+    },
+    {
+      "id": "total-cl",
+      "label": "Total current liabilities",
+      "kind": "subtotal",
+      "sum": [
+        "ap",
+        "cpltd"
+      ]
+    },
+    {
+      "id": "sec-ncl",
+      "label": "Noncurrent liabilities",
+      "kind": "section"
+    },
+    {
+      "id": "ltd",
+      "label": "Long-term debt, less current portion",
+      "kind": "input",
+      "b": 400000,
+      "c": 200000,
+      "key": 0
+    },
+    {
+      "id": "total-liabilities",
+      "label": "Total liabilities",
+      "kind": "subtotal",
+      "sum": [
+        "total-cl",
+        "ltd"
+      ]
+    },
+    {
+      "id": "sec-se",
+      "label": "Shareholders' equity",
+      "kind": "section"
+    },
+    {
+      "id": "common-stock",
+      "label": "Common stock",
+      "kind": "input",
+      "b": 5000,
+      "c": 5000,
+      "key": 0
+    },
+    {
+      "id": "apic",
+      "label": "Additional paid-in capital",
+      "kind": "input",
+      "b": 210340,
+      "c": 225300,
+      "key": 0
+    },
+    {
+      "id": "retained-earnings",
+      "label": "Retained earnings",
+      "kind": "input",
+      "b": 748110,
+      "c": 1078600,
+      "key": -64760,
+      "chapter": {
+        "label": "Adjustment 6: Retained earnings",
+        "seconds": 953
+      }
+    },
+    {
+      "id": "aoci",
+      "label": "Accumulated other comprehensive income",
+      "kind": "input",
+      "b": 14500,
+      "c": 12400,
+      "key": 0
+    },
+    {
+      "id": "total-equity",
+      "label": "Total shareholders' equity",
+      "kind": "subtotal",
+      "sum": [
+        "common-stock",
+        "apic",
+        "retained-earnings",
+        "aoci"
+      ]
+    },
+    {
+      "id": "total-le",
+      "label": "Total liabilities and shareholders' equity",
+      "kind": "subtotal",
+      "sum": [
+        "total-liabilities",
+        "total-equity"
+      ]
+    }
+  ],
+};

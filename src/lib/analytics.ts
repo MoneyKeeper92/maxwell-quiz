@@ -19,7 +19,10 @@ export type QuizEventName =
   | "quiz_started"
   | "question_answered"
   | "quiz_submitted"
-  | "quiz_exit";
+  | "quiz_exit"
+  | "sim_started"
+  | "exhibit_opened"
+  | "sim_submitted";
 
 export interface QuizEvent {
   event: QuizEventName;
@@ -32,6 +35,8 @@ export interface QuizEvent {
   correct_count?: number | null;
   total_count?: number | null;
   active_ms?: number | null;
+  /** Per-cell results on a sim submit, or which exhibit was opened. */
+  detail?: unknown;
 }
 
 function randomId(): string {
@@ -79,6 +84,52 @@ export interface Student {
 const INITIAL_SEARCH =
   typeof window === "undefined" ? "" : window.location.search;
 
+/**
+ * Where the visit came from.
+ *
+ * Only document.referrer was kept before, which made a click from a YouTube
+ * description indistinguishable from any other YouTube link. The campaign tags
+ * are read once at load, for the same reason the learner variables are: by the
+ * time the exit event fires the URL may have changed.
+ */
+export interface Campaign {
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
+  utm_content: string | null;
+}
+
+export function parseCampaign(search: string): Campaign {
+  const empty: Campaign = {
+    utm_source: null,
+    utm_medium: null,
+    utm_campaign: null,
+    utm_content: null,
+  };
+  try {
+    const q = new URLSearchParams(search);
+    const get = (k: string) => {
+      const v = q.get(k)?.trim();
+      return v && !v.includes("{{") ? v.slice(0, 120) : null;
+    };
+    return {
+      utm_source: get("utm_source"),
+      utm_medium: get("utm_medium"),
+      utm_campaign: get("utm_campaign"),
+      utm_content: get("utm_content"),
+    };
+  } catch {
+    return empty;
+  }
+}
+
+let campaignResolved: Campaign | null = null;
+
+export function campaign(): Campaign {
+  if (!campaignResolved) campaignResolved = parseCampaign(INITIAL_SEARCH);
+  return campaignResolved;
+}
+
 export function parseStudent(search: string): Student {
   try {
     const q = new URLSearchParams(search);
@@ -104,13 +155,22 @@ export function student(): Student {
 
 function payload(e: QuizEvent): string {
   const who = student();
-  return JSON.stringify({
+  const row: Record<string, unknown> = {
     ...e,
+    ...campaign(),
     session_id: VISITOR_ID,
     student_email: who.email,
     student_name: who.name,
     referrer: document.referrer || null,
-  });
+  };
+  // PostgREST rejects the whole insert if a key has no column, so a row must
+  // never mention a column it has nothing to say about. Without this, every
+  // event from every quiz would 400 between deploying this build and running
+  // supabase/03_sim_events.sql, purely because of the four campaign keys.
+  for (const k of Object.keys(row)) {
+    if (row[k] === null || row[k] === undefined) delete row[k];
+  }
+  return JSON.stringify(row);
 }
 
 /**

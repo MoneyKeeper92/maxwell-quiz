@@ -81,6 +81,23 @@ function page(shell, { title, description, url }) {
     .replace("__TITLE__", head);
 }
 
+function readSims() {
+  const src = readFileSync(join(ROOT, "src/data/sims/index.ts"), "utf8");
+  const sims = [];
+  const re =
+    /\{\s*key:\s*"([^"]+)",\s*title:\s*"((?:[^"\\]|\\.)*)",\s*subtitle:\s*"((?:[^"\\]|\\.)*)",\s*discipline:\s*"([^"]+)",\s*\}/g;
+  let m;
+  while ((m = re.exec(src)) !== null) {
+    sims.push({
+      key: m[1],
+      title: m[2].replace(/\\"/g, '"'),
+      subtitle: m[3].replace(/\\"/g, '"'),
+      discipline: m[4],
+    });
+  }
+  return sims;
+}
+
 const shell = readFileSync(join(DIST, "index.html"), "utf8");
 const counts = readCounts();
 const entries = readCatalog();
@@ -101,6 +118,25 @@ for (const entry of entries) {
   const dir = join(DIST, path.slice(1));
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, "index.html"), html);
+  written++;
+}
+
+// Simulations carry their own copy: the link is posted in a YouTube
+// description, so the preview card is the first thing most visitors see.
+for (const sim of readSims()) {
+  const dir = join(DIST, sim.key);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(
+    join(dir, "index.html"),
+    page(shell, {
+      title: `${sim.title} | Free AICPA Practice | Maxwell CPA Review`,
+      description:
+        `Practice the official AICPA ${sim.discipline.toUpperCase()} task-based simulation free, ` +
+        `with no login. ${sim.subtitle}, with the exhibits, the real answer grid ` +
+        `and instant marking. From Maxwell CPA Review.`,
+      url: SITE + "/" + sim.key,
+    }),
+  );
   written++;
 }
 

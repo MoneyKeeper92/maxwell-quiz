@@ -3,7 +3,9 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import QuizPage from "./pages/QuizPage";
+import SimPage from "./pages/SimPage";
 import "./App.css";
+import "./sim.css";
 
 export default function App() {
   const location = useLocation();
@@ -36,6 +38,10 @@ export default function App() {
             path="/intermediate/:quizKey"
             element={<QuizPage course="intermediate" />}
           />
+          {/* Simulations sit at the top level beside the quizzes. Declared
+              before /:quizKey so the catch-all does not swallow them. */}
+          <Route path="/aicpa-far-tbs-110110" element={<SimPage />} />
+          <Route path="/official-far-tbs" element={<Navigate to="/aicpa-far-tbs-110110" replace />} />
           <Route path="/:quizKey" element={<QuizPage />} />
           </Routes>
         </ErrorBoundary>

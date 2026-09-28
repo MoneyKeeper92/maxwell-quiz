@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { Course } from "../data/types";
 import { getHomeQuizLinks } from "../data/registry";
+import { simCatalog, simHref } from "../data/sims";
 import { useDocumentTitle } from "../lib/documentTitle";
 
 interface HomePageProps {
@@ -15,6 +16,8 @@ export default function HomePage({
   subtitle = "Pick a topic and start practicing.",
 }: HomePageProps) {
   const quizzes = getHomeQuizLinks(course);
+  // Simulations only exist for the CPA catalog today.
+  const sims = course === "cpa" ? simCatalog : [];
   useDocumentTitle(
     course === "intermediate"
       ? "Intermediate Accounting Practice Quizzes | Maxwell CPA Review"
@@ -50,6 +53,28 @@ export default function HomePage({
             </li>
           ))}
         </ul>
+      )}
+      {sims.length > 0 && (
+        <>
+          <h2 className="home-h2">Task-based simulations</h2>
+          <p className="subtitle">
+            Full simulations with exhibits and an answer grid, the way they
+            appear on the exam.
+          </p>
+          <ul className="quiz-list">
+            {sims.map((sim) => (
+              <li key={sim.key}>
+                <Link to={simHref(sim.key)} className="quiz-link">
+                  <span className="quiz-link-tag">
+                    {sim.discipline.toUpperCase()}
+                  </span>
+                  <span className="quiz-link-title">{sim.title}</span>
+                  <span className="quiz-link-meta">Simulation</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );

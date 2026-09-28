@@ -1140,3 +1140,12 @@ textarea:focus-visible,
 .exp-content .mx-table .mx-txt {
   text-align: left !important;
 }
+
+/* Section heading on the index page, between the quiz list and the sims. */
+.home-h2 {
+  margin: 34px 0 4px;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #01506e;
+}

@@ -22,6 +22,14 @@ export interface ReportContext {
   prompt: string;
   selectedLetter: string | null;
   correctLetter: string;
+  /** "question" numbers within a quiz; "row" names a line of a sim grid, where
+   *  an ordinal would mean nothing to the person reporting it. */
+  kind?: "question" | "row";
+}
+
+/** What to call the thing being reported, in the button and the message. */
+export function reportSubject(ctx: ReportContext): string {
+  return ctx.kind === "row" ? `the "${ctx.prompt}" row` : `question ${ctx.questionIndex + 1}`;
 }
 
 /** `intermediate/leases#4940` — enough to jump straight to the question. */
@@ -35,14 +43,18 @@ export function materialId(ctx: ReportContext): string {
  */
 function composeMessage(ctx: ReportContext, message: string): string {
   const who = student();
+  const where =
+    ctx.kind === "row"
+      ? `row "${ctx.prompt}" | id ${ctx.questionId}`
+      : `question ${ctx.questionIndex + 1} of the set | id ${ctx.questionId}`;
   const lines = [
-    `[${ctx.quizTitle} | question ${ctx.questionIndex + 1} of the set | id ${ctx.questionId}]`,
+    `[${ctx.quizTitle} | ${where}]`,
     `URL: ${window.location.origin}${
       ctx.course === "intermediate" ? `/intermediate/${ctx.quiz}` : `/${ctx.quiz}`
     }`,
-    `Question: ${ctx.prompt.slice(0, 300)}${ctx.prompt.length > 300 ? "…" : ""}`,
+    ctx.kind === "row" ? null : `Question: ${ctx.prompt.slice(0, 300)}${ctx.prompt.length > 300 ? "…" : ""}`,
     `Keyed answer: ${ctx.correctLetter}${
-      ctx.selectedLetter ? ` | learner chose: ${ctx.selectedLetter}` : ""
+      ctx.selectedLetter ? ` | learner ${ctx.kind === "row" ? "typed" : "chose"}: ${ctx.selectedLetter}` : ""
     }`,
     who.email ? `Reported by: ${who.name ? `${who.name} <${who.email}>` : who.email}` : null,
     "",

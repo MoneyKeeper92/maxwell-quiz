@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { feedbackEnabled, submitReport, type ReportContext } from "../lib/feedback";
+import {
+  feedbackEnabled,
+  reportSubject,
+  submitReport,
+  type ReportContext,
+} from "../lib/feedback";
 
 interface ReportIssueButtonProps {
   context: ReportContext;
@@ -47,7 +52,7 @@ export default function ReportIssueButton({ context }: ReportIssueButtonProps) {
     return (
       <div className="report-row">
         <span className="report-sent" role="status">
-          Thanks, we&apos;ll take a look at this question.
+          Thanks, we&apos;ll take a look at this {context.kind === "row" ? "row" : "question"}.
         </span>
       </div>
     );
@@ -61,7 +66,7 @@ export default function ReportIssueButton({ context }: ReportIssueButtonProps) {
           className="report-trigger"
           onClick={() => setState("open")}
         >
-          Report an issue with this question
+          {context.kind === "row" ? "Report an issue with this row" : "Report an issue with this question"}
         </button>
       </div>
     );
@@ -70,7 +75,7 @@ export default function ReportIssueButton({ context }: ReportIssueButtonProps) {
   return (
     <div className="report-panel">
       <label className="report-label" htmlFor="report-message">
-        What looks wrong with question {context.questionIndex + 1}?
+        What looks wrong with {reportSubject(context)}?
       </label>
       <textarea
         id="report-message"

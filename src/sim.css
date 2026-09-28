@@ -1,0 +1,657 @@
+/* Task-based simulation page.
+ *
+ * Laid out to sit beside the quizzes rather than reinvent them: the buttons,
+ * report panel and card surface come from App.css. Only the grid, the exhibit
+ * panel and the answer marks are new.
+ *
+ * The grid is the one place the AICPA look matters. Figures are right aligned
+ * with tabular numerals so columns line up, the label column stays put while
+ * the figures scroll on a narrow screen, and subtotal rows are ruled rather
+ * than tinted so a wrong answer's mark still reads. */
+
+.sim {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px 72px;
+}
+
+.sim-head {
+  padding: 28px 0 18px;
+  border-bottom: 3px solid #01506e;
+}
+
+.sim-eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0099d4;
+  font-weight: 700;
+}
+
+.sim-head h1 {
+  margin: 0 0 8px;
+  font-size: clamp(22px, 3.6vw, 30px);
+  line-height: 1.2;
+  color: #12232d;
+}
+
+.sim-credit {
+  margin: 0;
+  color: #5a6b76;
+  font-size: 14px;
+  max-width: 62ch;
+}
+
+.sim-video-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #0099d4;
+  font-weight: 600;
+}
+
+.sim-h2 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #01506e;
+}
+
+.sim-h3 {
+  margin: 0;
+  font-size: 15px;
+  color: #01506e;
+}
+
+.sim-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------- exhibits -- */
+
+.sim-exhibits {
+  padding: 22px 0 6px;
+}
+
+.sim-exhibit-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 8px;
+}
+
+.sim-exhibit-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+  padding: 10px 12px;
+  border: 1px solid #cfdde5;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+  color: #12232d;
+  line-height: 1.3;
+}
+
+.sim-exhibit-tab:hover {
+  border-color: #0099d4;
+}
+
+.sim-exhibit-tab.is-open {
+  border-color: #01506e;
+  background: #eaf4f9;
+  box-shadow: inset 3px 0 0 #01506e;
+}
+
+.sim-exhibit-n {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #0099d4;
+}
+
+.sim-exhibit-title {
+  font-size: 13.5px;
+}
+
+/* ----------------------------------------------------------------- body -- */
+
+.sim-body {
+  display: block;
+  padding-top: 18px;
+}
+
+.sim-body.has-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+  gap: 22px;
+  align-items: start;
+}
+
+.sim-prompt {
+  margin-bottom: 20px;
+}
+
+.sim-prompt p {
+  margin: 0;
+  max-width: 78ch;
+  line-height: 1.6;
+  color: #33454f;
+}
+
+/* ----------------------------------------------------------------- grid -- */
+
+/* The container scrolls, not the page: the grid is five columns wide and a
+   phone is not. */
+.sim-grid-wrap {
+  overflow-x: auto;
+  border: 1px solid #cfdde5;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.sim-grid {
+  width: 100%;
+  min-width: 660px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.sim-grid th,
+.sim-grid td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #e6eef3;
+  vertical-align: middle;
+}
+
+.sim-grid thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #01506e;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: right;
+  border-bottom: none;
+}
+
+.sim-grid thead th.sim-col-label {
+  text-align: left;
+}
+
+.sim-col-label {
+  text-align: left;
+  font-weight: 500;
+  color: #12232d;
+  min-width: 250px;
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 1;
+}
+
+.sim-grid thead .sim-col-label {
+  background: #01506e;
+  z-index: 3;
+}
+
+.sim-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sim-section th {
+  background: #f1f6f8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #01506e;
+  text-align: left;
+}
+
+.sim-total th,
+.sim-total td {
+  font-weight: 700;
+  border-top: 2px solid #01506e;
+  border-bottom: 2px solid #01506e;
+  background: #f7fbfd;
+}
+
+.sim-total .sim-col-label {
+  background: #f7fbfd;
+}
+
+.sim-col-d {
+  background: #fffdf5;
+}
+
+.sim-total .sim-col-d {
+  background: #f7fbfd;
+}
+
+.sim-calc {
+  color: #33454f;
+}
+
+.sim-input-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.sim-input {
+  width: 110px;
+  padding: 5px 8px;
+  border: 1px solid #b9cdd8;
+  border-radius: 5px;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  background: #fff;
+  color: #12232d;
+}
+
+.sim-input:focus-visible {
+  outline: 2px solid #0099d4;
+  outline-offset: 1px;
+  border-color: #0099d4;
+}
+
+.sim-input.is-right {
+  border-color: #4caf50;
+  background: #f2fbf4;
+}
+
+.sim-input.is-wrong {
+  border-color: #f44336;
+  background: #fef4f3;
+}
+
+.sim-input.is-bad {
+  border-color: #c58b00;
+  background: #fffaf0;
+}
+
+.sim-mark {
+  font-weight: 700;
+  width: 1ch;
+}
+
+.sim-mark-right {
+  color: #4caf50;
+}
+
+.sim-mark-wrong {
+  color: #f44336;
+}
+
+.sim-warn {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-left: 3px solid #c58b00;
+  background: #fffaf0;
+  border-radius: 0 6px 6px 0;
+  font-size: 14px;
+  color: #4a3a12;
+}
+
+.sim-warn code {
+  background: #fff;
+  border: 1px solid #e6d9b8;
+  border-radius: 3px;
+  padding: 0 4px;
+}
+
+/* -------------------------------------------------------------- actions -- */
+
+.sim-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.sim-reset {
+  padding: 9px 16px;
+  border: 1px solid #b9cdd8;
+  border-radius: 6px;
+  background: #fff;
+  color: #01506e;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sim-reset:hover {
+  border-color: #0099d4;
+}
+
+.sim-reset.is-on {
+  background: #01506e;
+  border-color: #01506e;
+  color: #fff;
+}
+
+/* -------------------------------------------------------------- results -- */
+
+.sim-results {
+  margin-top: 26px;
+  padding: 20px;
+  border: 1px solid #cfdde5;
+  border-radius: 10px;
+  background: #fff;
+  scroll-margin-top: 16px;
+}
+
+.sim-results h2 {
+  font-size: 20px;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 4px;
+}
+
+.sim-results-note {
+  margin: 0 0 16px;
+  color: #5a6b76;
+  font-size: 14px;
+}
+
+.sim-wrong-list {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.sim-wrong-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 9px 12px;
+  border-left: 3px solid #f44336;
+  background: #fef7f6;
+  border-radius: 0 6px 6px 0;
+}
+
+.sim-wrong-label {
+  font-weight: 600;
+  color: #12232d;
+}
+
+.sim-wrong-key {
+  font-variant-numeric: tabular-nums;
+  color: #5a6b76;
+  font-size: 14px;
+}
+
+.sim-chapter {
+  font-size: 13.5px;
+  color: #0099d4;
+  font-weight: 600;
+}
+
+.sim-key {
+  margin: 16px 0;
+  padding: 14px 16px;
+  border: 1px solid #cfdde5;
+  border-radius: 8px;
+  background: #f7fbfd;
+}
+
+.sim-key ul {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.sim-key li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px dotted #cfdde5;
+  padding-bottom: 4px;
+}
+
+.sim-helpful {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e6eef3;
+}
+
+.sim-helpful-q {
+  margin: 0 0 10px;
+  font-weight: 600;
+  color: #12232d;
+}
+
+.sim-helpful-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------------------------------- panel -- */
+
+.sim-panel {
+  position: sticky;
+  top: 12px;
+  max-height: calc(100vh - 24px);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #cfdde5;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.sim-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #f1f6f8;
+  border-bottom: 1px solid #cfdde5;
+}
+
+.sim-panel-close {
+  border: none;
+  background: none;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 6px;
+  cursor: pointer;
+  color: #5a6b76;
+  border-radius: 4px;
+}
+
+.sim-panel-close:hover {
+  background: #dbe8ef;
+  color: #12232d;
+}
+
+.sim-panel-body {
+  overflow: auto;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #12232d;
+}
+
+.sim-panel-body.compact {
+  font-size: 13px;
+}
+
+.sim-panel-body p {
+  margin: 0 0 8px;
+}
+
+/* Each exhibit table scrolls on its own, so a column that will not fit is one
+   swipe away rather than the whole sheet sliding sideways. */
+.sim-panel-body .ex-scroll {
+  overflow-x: auto;
+  margin: 10px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sim-panel-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sim-panel-body th,
+.sim-panel-body td {
+  border: 1px solid #dde7ed;
+  padding: 5px 7px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.sim-panel-body thead th {
+  background: #f1f6f8;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.sim-panel-body .n {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.sim-panel-body .c {
+  text-align: center;
+}
+
+.sim-panel-body .ex-co {
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.sim-panel-body .ex-meta {
+  background: #f7fbfd;
+  border: 1px solid #e6eef3;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.sim-panel-body .ex-note,
+.sim-panel-body .ex-small {
+  font-size: 12.5px;
+  color: #5a6b76;
+}
+
+.sim-panel-body .ex-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.sim-panel-body .ex-inv-h1 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #01506e;
+}
+
+.sim-panel-body .ex-kv td,
+.sim-panel-body .ex-tot td {
+  border: none;
+  padding: 2px 6px;
+}
+
+.sim-panel-body .ex-tot {
+  width: auto;
+  margin-left: auto;
+}
+
+/* The invoice's own key/value blocks are layout, not data: they never need a
+   scroller and one would put a stray bar under the totals. */
+.sim-panel-body .ex-kv,
+.sim-panel-body .ex-tot {
+  min-width: 0;
+}
+
+.sim-panel-body .ex-tot .grand td {
+  border-top: 2px solid #01506e;
+  font-weight: 700;
+}
+
+.sim-panel-body hr {
+  border: none;
+  border-top: 1px solid #e6eef3;
+  margin: 14px 0;
+}
+
+/* ---------------------------------------------------------------- phone -- */
+
+/* YouTube traffic is mostly phones, so the exhibit becomes a full-screen sheet
+   rather than a column that would have nowhere to go. */
+@media (max-width: 860px) {
+  .sim-body.has-panel {
+    display: block;
+  }
+
+  .sim-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    max-height: none;
+    border: none;
+    border-radius: 0;
+  }
+
+  .sim-panel-head {
+    padding: 14px 16px;
+  }
+
+  .sim-panel-body {
+    padding-bottom: 48px;
+  }
+
+  .sim-panel-body .ex-two {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .sim-exhibit-tabs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sim-input {
+    width: 92px;
+  }
+
+  .sim-col-label {
+    min-width: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
