@@ -47,3 +47,16 @@ export function simHref(key: string): string {
 export function isSimKey(key: string | undefined): boolean {
   return !!key && key in loaders;
 }
+
+/**
+ * The sim key for a URL path.
+ *
+ * Netlify serves the pre-rendered `dist/<key>/index.html` and redirects the
+ * bare path to one with a trailing slash, so the browser's pathname is
+ * "/aicpa-far-tbs-110110/" in production and "/aicpa-far-tbs-110110" in dev.
+ * Both have to resolve, which is why this trims rather than slicing one
+ * leading character.
+ */
+export function simKeyFromPath(pathname: string): string {
+  return pathname.replace(/^\/+|\/+$/g, "");
+}

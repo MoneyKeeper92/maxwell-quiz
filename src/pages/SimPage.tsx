@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import SimRunner from "../components/SimRunner";
 import type { Sim } from "../data/types";
-import { getSimCatalogItem, getSimLoader } from "../data/sims";
+import { getSimCatalogItem, getSimLoader, simKeyFromPath } from "../data/sims";
 import { useDocumentTitle } from "../lib/documentTitle";
 
 type LoadState = "loading" | "ready" | "missing" | "error";
@@ -11,7 +11,8 @@ export default function SimPage() {
   // The route is a literal path rather than a param, so the key comes from
   // the location. useParams stays for when a second sim earns /:simKey.
   const { simKey: fromParam } = useParams<{ simKey: string }>();
-  const simKey = fromParam ?? window.location.pathname.replace(/^\//, "");
+  const { pathname } = useLocation();
+  const simKey = fromParam ?? simKeyFromPath(pathname);
   const [sim, setSim] = useState<Sim | null>(null);
   const [state, setState] = useState<LoadState>("loading");
   const item = getSimCatalogItem(simKey);
