@@ -6,6 +6,7 @@ import { ActiveTimer, newAttemptId, track } from "../lib/analytics";
 import {
   compute,
   formatAmount,
+  formatCurrency,
   formatTime,
   grade,
   inputRows,
@@ -24,6 +25,15 @@ function chapterHref(videoUrl: string, seconds: number): string {
   return `${videoUrl}${sep}t=${seconds}s`;
 }
 
+/** "06:54:53", the way the live player's clock reads. */
+function clock(ms: number): string {
+  const total = Math.floor(ms / 1000);
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  return [h, m, s].map((v) => String(v).padStart(2, "0")).join(":");
+}
+
 export default function SimRunner({ sim }: SimRunnerProps) {
   const [inputs, setInputs] = useState<SimInputs>({});
   const [openExhibit, setOpenExhibit] = useState<number | null>(null);
@@ -32,6 +42,8 @@ export default function SimRunner({ sim }: SimRunnerProps) {
   const [helpful, setHelpful] = useState<"yes" | "no" | null>(null);
   const [helpfulNote, setHelpfulNote] = useState("");
   const [helpfulSent, setHelpfulSent] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const attemptId = useMemo(() => newAttemptId(), []);
   const timer = useMemo(() => new ActiveTimer(), []);
@@ -46,28 +58,34 @@ export default function SimRunner({ sim }: SimRunnerProps) {
 
   useEffect(() => {
     track({ event: "sim_started", ...base, total_count: rows.length });
-    // One event per opening of the page; the id makes it one attempt.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  /* The clock on screen. It reads from the same ActiveTimer the analytics use,
+     so a paused clock and a paused "time on task" can never disagree. */
+  useEffect(() => {
+    const id = window.setInterval(() => setElapsed(timer.elapsedMs()), 1000);
+    return () => window.clearInterval(id);
+  }, [timer]);
 
   /* Time on screen, and one exit event per departure. The quiz runner learned
      the same two lessons: pause when the tab is hidden, and guard against
      visibilitychange and pagehide both firing for a single departure. */
   useEffect(() => {
     let lastExitMs = 0;
-    const onVisibility = () => {
-      if (document.visibilityState === "hidden") {
-        timer.pause();
-        reportExit();
-      } else {
-        timer.resume();
-      }
-    };
     const reportExit = () => {
       const ms = timer.elapsedMs();
       if (ms < 1000 || ms <= lastExitMs) return;
       lastExitMs = ms;
       track({ event: "quiz_exit", ...base, active_ms: ms }, true);
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        timer.pause();
+        reportExit();
+      } else if (!paused) {
+        timer.resume();
+      }
     };
     document.addEventListener("visibilitychange", onVisibility);
     window.addEventListener("pagehide", reportExit);
@@ -76,10 +94,29 @@ export default function SimRunner({ sim }: SimRunnerProps) {
       window.removeEventListener("pagehide", reportExit);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [paused]);
+
+  const togglePause = () => {
+    setPaused((was) => {
+      if (was) timer.resume();
+      else timer.pause();
+      setElapsed(timer.elapsedMs());
+      return !was;
+    });
+  };
 
   const setCell = useCallback((id: string, value: string) => {
     setInputs((prev) => ({ ...prev, [id]: value }));
+  }, []);
+
+  /** Format on blur, the way the live player's currency formatter does. */
+  const formatCell = useCallback((id: string) => {
+    setInputs((prev) => {
+      const raw = prev[id] ?? "";
+      const n = parseAmount(raw);
+      if (n === null) return prev;
+      return { ...prev, [id]: formatCurrency(n) };
+    });
   }, []);
 
   const toggleExhibit = (n: number) => {
@@ -159,293 +196,331 @@ export default function SimRunner({ sim }: SimRunnerProps) {
     return result.correct.includes(row.id) ? "right" : "wrong";
   };
 
+  const reportContext = {
+    course: "cpa",
+    quiz: sim.key,
+    quizTitle: sim.title,
+    questionId: result.wrong[0] ?? rows[0].id,
+    questionIndex: 0,
+    prompt: rows.find((r) => r.id === (result.wrong[0] ?? rows[0].id))?.label ?? "",
+    selectedLetter: (inputs[result.wrong[0] ?? rows[0].id] ?? "").trim() || null,
+    correctLetter: formatCurrency(
+      rows.find((r) => r.id === (result.wrong[0] ?? rows[0].id))?.key ?? 0,
+    ),
+    kind: "row" as const,
+  };
+
   return (
-    <div className="sim">
-      <header className="sim-head">
-        <p className="sim-eyebrow">Official AICPA FAR Simulation</p>
-        <h1>{sim.title}</h1>
-        <p className="sim-credit">{sim.credit}</p>
-        {sim.videoUrl && (
-          <a
-            className="sim-video-link"
-            href={sim.videoUrl}
-            target="_blank"
-            rel="noreferrer"
+    <div className="tbs">
+      {/* The exam's own chrome: clock on the left, the two controls on the
+          right. Laid out to match the player this simulation lives in, so the
+          page a student practises on is the page they will sit. */}
+      <div className="tbs-bar">
+        <div className="tbs-timer">
+          <button
+            type="button"
+            className="tbs-pause"
+            onClick={togglePause}
+            aria-label={paused ? "Resume the timer" : "Pause the timer"}
           >
-            Watch the full walkthrough
-          </a>
-        )}
-      </header>
-
-      <section className="sim-exhibits" aria-label="Exhibits">
-        <h2 className="sim-h2">Exhibits</h2>
-        <div className="sim-exhibit-tabs">
-          {sim.exhibits.map((ex) => (
-            <button
-              key={ex.n}
-              type="button"
-              className={`sim-exhibit-tab${openExhibit === ex.n ? " is-open" : ""}`}
-              onClick={() => toggleExhibit(ex.n)}
-              aria-expanded={openExhibit === ex.n}
-            >
-              <span className="sim-exhibit-n">Exhibit {ex.n}</span>
-              <span className="sim-exhibit-title">{ex.title}</span>
-            </button>
-          ))}
+            <span aria-hidden="true">{paused ? "▶" : "❚❚"}</span>
+          </button>
+          <div>
+            <div className="tbs-clock">{clock(elapsed)}</div>
+            <div className="tbs-clock-label">Question Time Elapsed</div>
+          </div>
         </div>
-      </section>
+        <div className="tbs-bar-actions">
+          {sim.videoUrl && (
+            <a className="tbs-btn tbs-btn-ghost" href={sim.videoUrl} target="_blank" rel="noreferrer">
+              Watch the walkthrough
+            </a>
+          )}
+          <button type="button" className="tbs-btn" onClick={check}>
+            Submit Test
+          </button>
+        </div>
+      </div>
 
-      <div className={`sim-body${exhibit ? " has-panel" : ""}`}>
-        <div className="sim-main">
-          <section className="sim-prompt">
-            <h2 className="sim-h2">Instructions</h2>
-            <p>{sim.prompt}</p>
-          </section>
+      <div className="tbs-page">
+        <div className="tbs-qnum">
+          <span className="tbs-qnum-active">1</span>
+        </div>
 
-          <div className="sim-grid-wrap">
-            <table className="sim-grid">
-              <caption className="sim-sr">
-                Draft consolidated statement of financial position. Type each
-                adjustment in the Adjustment column; the last column and the
-                subtotals calculate automatically.
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col" className="sim-col-label" />
-                  <th scope="col">{sim.columns.b}</th>
-                  <th scope="col">{sim.columns.c}</th>
-                  <th scope="col" className="sim-col-d">
-                    {sim.columns.d}
-                  </th>
-                  <th scope="col">{sim.columns.e}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sim.rows.map((row) => {
-                  if (row.kind === "section") {
+        <div className={`tbs-card${exhibit ? " has-panel" : ""}`}>
+          <div className="tbs-main">
+            <div className="tbs-card-head">
+              <h1>
+                <span className="tbs-q-n">1</span>
+                <span className="tbs-q-word">Question</span>
+              </h1>
+              <div className="tbs-qid">
+                <span>ID</span> : <span>110110</span>
+              </div>
+            </div>
+
+            <div className="tbs-exhibit-box">
+              <h2>Exhibits Information</h2>
+              <p>Exhibits included in this item:</p>
+              {sim.exhibits.map((ex) => (
+                <button
+                  key={ex.n}
+                  type="button"
+                  className={`tbs-exhibit${openExhibit === ex.n ? " is-open" : ""}`}
+                  onClick={() => toggleExhibit(ex.n)}
+                  aria-expanded={openExhibit === ex.n}
+                >
+                  Exhibit {ex.n} - {ex.title}
+                </button>
+              ))}
+            </div>
+
+            <div
+              className="tbs-prompt"
+              // Built at build time from the question bundle and checked to
+              // reproduce its prompt word for word. Never from the network.
+              dangerouslySetInnerHTML={{ __html: sim.promptHtml }}
+            />
+
+            <div className="tbs-grid-wrap">
+              <table className="tbs-grid">
+                <caption className="tbs-sr">
+                  Draft consolidated statement of financial position. Type each
+                  adjustment in the Adjustment column; the last column and the
+                  subtotals calculate automatically.
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" className="tbs-label" />
+                    <th scope="col">{sim.columns.b}</th>
+                    <th scope="col">{sim.columns.c}</th>
+                    <th scope="col">{sim.columns.d}</th>
+                    <th scope="col">{sim.columns.e}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sim.rows.map((row) => {
+                    if (row.kind === "section") {
+                      return (
+                        <tr key={row.id} className="tbs-section">
+                          <th scope="row" className="tbs-label">
+                            {row.label}
+                          </th>
+                          <td /><td /><td /><td />
+                        </tr>
+                      );
+                    }
+                    const isTotal = row.kind === "subtotal";
+                    const state = isTotal ? null : cellState(row);
                     return (
-                      <tr key={row.id} className="sim-section">
-                        <th scope="colgroup" colSpan={5}>
+                      <tr key={row.id}>
+                        <th scope="row" className="tbs-label">
                           {row.label}
                         </th>
-                      </tr>
-                    );
-                  }
-                  const isTotal = row.kind === "subtotal";
-                  const state = isTotal ? null : cellState(row);
-                  return (
-                    <tr key={row.id} className={isTotal ? "sim-total" : undefined}>
-                      <th scope="row" className="sim-col-label">
-                        {row.label}
-                      </th>
-                      <td className="sim-num">{formatAmount(computed.b[row.id] ?? 0)}</td>
-                      <td className="sim-num">{formatAmount(computed.c[row.id] ?? 0)}</td>
-                      <td className="sim-num sim-col-d">
-                        {isTotal ? (
-                          <span className="sim-calc">
-                            {formatAmount(computed.d[row.id] ?? 0, true)}
-                          </span>
-                        ) : (
-                          <span className="sim-input-wrap">
+                        <td>{formatAmount(computed.b[row.id] ?? 0)}</td>
+                        <td>{formatAmount(computed.c[row.id] ?? 0)}</td>
+                        <td>
+                          {isTotal ? (
                             <input
                               type="text"
-                              inputMode="text"
-                              autoComplete="off"
-                              className={`sim-input${
-                                state ? ` is-${state}` : ""
-                              }${isMalformed(inputs[row.id] ?? "") ? " is-bad" : ""}`}
-                              aria-label={`${sim.columns.d} for ${row.label}`}
-                              value={inputs[row.id] ?? ""}
-                              onChange={(e) => setCell(row.id, e.target.value)}
+                              className="tbs-input is-calc"
+                              value={formatCurrency(computed.d[row.id] ?? 0)}
+                              aria-label={`${sim.columns.d} for ${row.label}, calculated`}
+                              readOnly
+                              tabIndex={-1}
                             />
-                            {state && (
-                              <span
-                                className={`sim-mark sim-mark-${state}`}
-                                aria-hidden="true"
-                              >
-                                {state === "right" ? "✓" : "✗"}
-                              </span>
-                            )}
-                          </span>
-                        )}
-                      </td>
-                      <td className="sim-num sim-col-e">
-                        <span className="sim-calc">
-                          {formatAmount(computed.e[row.id] ?? 0)}
-                        </span>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                          ) : (
+                            <span className="tbs-cell">
+                              <input
+                                type="text"
+                                inputMode="text"
+                                autoComplete="off"
+                                className={`tbs-input${state ? ` is-${state}` : ""}${
+                                  isMalformed(inputs[row.id] ?? "") ? " is-bad" : ""
+                                }`}
+                                aria-label={`${sim.columns.d} for ${row.label}`}
+                                value={inputs[row.id] ?? "$0"}
+                                onChange={(e) => setCell(row.id, e.target.value)}
+                                onFocus={(e) => {
+                                  if (parseAmount(e.target.value) === 0) setCell(row.id, "");
+                                }}
+                                onBlur={() => formatCell(row.id)}
+                              />
+                              {state && (
+                                <span
+                                  className={`tbs-mark tbs-mark-${state}`}
+                                  aria-hidden="true"
+                                >
+                                  {state === "right" ? "✓" : "✗"}
+                                </span>
+                              )}
+                            </span>
+                          )}
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            className="tbs-input is-calc"
+                            value={formatCurrency(computed.e[row.id] ?? 0)}
+                            aria-label={`${sim.columns.e} for ${row.label}, calculated`}
+                            readOnly
+                            tabIndex={-1}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
 
-          {malformed && (
-            <p className="sim-warn" role="status">
-              Whole dollars only. Enter increases as positive and decreases as
-              negative, for example <code>-3000</code> or <code>(3,000)</code>.
-            </p>
-          )}
-
-          <div className="sim-actions">
-            <button type="button" className="btn-results" onClick={check}>
-              Check my answers
-            </button>
-            {checked && (
-              <button type="button" className="sim-reset" onClick={reset}>
-                Start over
-              </button>
-            )}
-          </div>
-
-          {checked && (
-            <div className="sim-results" ref={resultsRef}>
-              <h2 className="sim-h2">
-                {result.score} of {result.total} correct
-              </h2>
-              <p className="sim-results-note">
-                Only the {result.total} rows you type are graded. Subtotals and
-                the adjusted balance column calculate from them.
+            {malformed && (
+              <p className="tbs-warn" role="status">
+                Whole dollars only. Enter increases as positive and decreases as
+                negative, for example <code>-3000</code> or <code>(3,000)</code>.
               </p>
+            )}
 
-              {result.wrong.length > 0 && (
-                <ul className="sim-wrong-list">
-                  {rows
-                    .filter((r) => result.wrong.includes(r.id))
-                    .map((r) => (
-                      <li key={r.id}>
-                        <span className="sim-wrong-label">{r.label}</span>
-                        {showKey && (
-                          <span className="sim-wrong-key">
-                            keyed {formatAmount(r.key ?? 0) || "no adjustment"}
-                          </span>
-                        )}
-                        {sim.videoUrl && r.chapter && (
-                          <a
-                            className="sim-chapter"
-                            href={chapterHref(sim.videoUrl, r.chapter.seconds)}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {r.chapter.label} ({formatTime(r.chapter.seconds)})
-                          </a>
-                        )}
-                      </li>
-                    ))}
-                </ul>
+            <div className="tbs-actions">
+              <button type="button" className="tbs-btn tbs-btn-wide" onClick={check}>
+                Submit Test
+              </button>
+              {checked && (
+                <button type="button" className="tbs-btn tbs-btn-plain" onClick={reset}>
+                  Start over
+                </button>
               )}
+            </div>
 
-              {!showKey ? (
+            {checked && (
+              <div className="tbs-results" ref={resultsRef}>
+                <h2>
+                  {result.score} of {result.total} correct
+                </h2>
+                <p className="tbs-results-note">
+                  Only the {result.total} rows you type are graded. Subtotals and
+                  the adjusted balance column calculate from them.
+                </p>
+
+                {result.wrong.length > 0 && (
+                  <ul className="tbs-wrong">
+                    {rows
+                      .filter((r) => result.wrong.includes(r.id))
+                      .map((r) => (
+                        <li key={r.id}>
+                          <span className="tbs-wrong-label">{r.label}</span>
+                          {showKey && (
+                            <span className="tbs-wrong-key">
+                              keyed {(r.key ?? 0) === 0 ? "no adjustment" : formatCurrency(r.key ?? 0)}
+                            </span>
+                          )}
+                          {sim.videoUrl && r.chapter && (
+                            <a
+                              className="tbs-chapter"
+                              href={chapterHref(sim.videoUrl, r.chapter.seconds)}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {r.chapter.label} ({formatTime(r.chapter.seconds)})
+                            </a>
+                          )}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+
+                {!showKey ? (
+                  <button
+                    type="button"
+                    className="tbs-btn tbs-btn-plain"
+                    onClick={() => setShowKey(true)}
+                  >
+                    Show the keyed answers
+                  </button>
+                ) : (
+                  <div className="tbs-key">
+                    <h3>Keyed adjustments</h3>
+                    <ul>
+                      {rows.map((r) => (
+                        <li key={r.id}>
+                          <span>{r.label}</span>
+                          <span>
+                            {(r.key ?? 0) === 0 ? "no adjustment" : formatCurrency(r.key ?? 0)}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {feedbackEnabled && (
+                  <div className="tbs-helpful">
+                    {helpfulSent ? (
+                      <p role="status">Thanks, that is useful.</p>
+                    ) : (
+                      <>
+                        <p className="tbs-helpful-q">
+                          Did practicing alongside the video help?
+                        </p>
+                        <div className="tbs-helpful-actions">
+                          <button
+                            type="button"
+                            className={`tbs-btn tbs-btn-plain${helpful === "yes" ? " is-on" : ""}`}
+                            onClick={() => void sendHelpful("yes")}
+                          >
+                            Yes
+                          </button>
+                          <button
+                            type="button"
+                            className={`tbs-btn tbs-btn-plain${helpful === "no" ? " is-on" : ""}`}
+                            onClick={() => void sendHelpful("no")}
+                          >
+                            No
+                          </button>
+                        </div>
+                        <textarea
+                          className="report-textarea"
+                          rows={2}
+                          placeholder="Anything else? (optional)"
+                          value={helpfulNote}
+                          onChange={(e) => setHelpfulNote(e.target.value)}
+                        />
+                      </>
+                    )}
+                  </div>
+                )}
+
+                <ReportIssueButton context={reportContext} />
+              </div>
+            )}
+
+            <p className="tbs-credit">{sim.credit}</p>
+          </div>
+
+          {exhibit && (
+            <aside className="tbs-panel" aria-label={`Exhibit ${exhibit.n}`}>
+              <div className="tbs-panel-head">
+                <h2>
+                  Exhibit {exhibit.n} - {exhibit.title}
+                </h2>
                 <button
                   type="button"
-                  className="sim-reset"
-                  onClick={() => setShowKey(true)}
+                  className="tbs-panel-close"
+                  onClick={() => setOpenExhibit(null)}
+                  aria-label="Close exhibit"
                 >
-                  Show the keyed answers
+                  ✕
                 </button>
-              ) : (
-                <div className="sim-key">
-                  <h3 className="sim-h3">Keyed adjustments</h3>
-                  <ul>
-                    {rows.map((r) => (
-                      <li key={r.id}>
-                        <span>{r.label}</span>
-                        <span className="sim-num">
-                          {(r.key ?? 0) === 0
-                            ? "no adjustment"
-                            : formatAmount(r.key ?? 0)}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {feedbackEnabled && (
-                <div className="sim-helpful">
-                  {helpfulSent ? (
-                    <p role="status">Thanks, that is useful.</p>
-                  ) : (
-                    <>
-                      <p className="sim-helpful-q">
-                        Did practicing alongside the video help?
-                      </p>
-                      <div className="sim-helpful-actions">
-                        <button
-                          type="button"
-                          className={`sim-reset${helpful === "yes" ? " is-on" : ""}`}
-                          onClick={() => void sendHelpful("yes")}
-                        >
-                          Yes
-                        </button>
-                        <button
-                          type="button"
-                          className={`sim-reset${helpful === "no" ? " is-on" : ""}`}
-                          onClick={() => void sendHelpful("no")}
-                        >
-                          No
-                        </button>
-                      </div>
-                      <textarea
-                        className="report-textarea"
-                        rows={2}
-                        placeholder="Anything else? (optional)"
-                        value={helpfulNote}
-                        onChange={(e) => setHelpfulNote(e.target.value)}
-                      />
-                    </>
-                  )}
-                </div>
-              )}
-
-              <ReportIssueButton
-                context={{
-                  course: "cpa",
-                  quiz: sim.key,
-                  quizTitle: sim.title,
-                  questionId: result.wrong[0] ?? rows[0].id,
-                  questionIndex: 0,
-                  prompt:
-                    rows.find((r) => r.id === (result.wrong[0] ?? rows[0].id))
-                      ?.label ?? "",
-                  selectedLetter:
-                    (inputs[result.wrong[0] ?? rows[0].id] ?? "").trim() || null,
-                  correctLetter: formatAmount(
-                    rows.find((r) => r.id === (result.wrong[0] ?? rows[0].id))
-                      ?.key ?? 0,
-                  ),
-                  kind: "row",
-                }}
+              </div>
+              <div
+                className={`tbs-panel-body${exhibit.cls ? ` ${exhibit.cls}` : ""}`}
+                // Generated at build time from the AICPA documents in this
+                // repo's own source. Not user input, never from the network.
+                dangerouslySetInnerHTML={{ __html: exhibit.html }}
               />
-            </div>
+            </aside>
           )}
         </div>
-
-        {exhibit && (
-          <aside className="sim-panel" aria-label={`Exhibit ${exhibit.n}`}>
-            <div className="sim-panel-head">
-              <h2 className="sim-h3">
-                Exhibit {exhibit.n}: {exhibit.title}
-              </h2>
-              <button
-                type="button"
-                className="sim-panel-close"
-                onClick={() => setOpenExhibit(null)}
-                aria-label="Close exhibit"
-              >
-                ✕
-              </button>
-            </div>
-            <div
-              className={`sim-panel-body${exhibit.cls ? ` ${exhibit.cls}` : ""}`}
-              // The exhibit HTML is generated at build time from the AICPA
-              // documents in this repo's own source. It is not user input and
-              // never reaches this component from the network.
-              dangerouslySetInnerHTML={{ __html: exhibit.html }}
-            />
-          </aside>
-        )}
       </div>
     </div>
   );

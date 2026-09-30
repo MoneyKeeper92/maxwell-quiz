@@ -70,6 +70,10 @@ export interface Sim {
   videoUrl: string | null;
   /** The AICPA prompt, verbatim. */
   prompt: string;
+  /** The same words with the live player's structure restored: a bold lead-in,
+   *  two paragraphs and the five-item list. The build script refuses to emit a
+   *  module whose promptHtml does not reproduce `prompt` word for word. */
+  promptHtml: string;
   columns: { b: string; c: string; d: string; e: string };
   exhibits: SimExhibit[];
   rows: SimRow[];

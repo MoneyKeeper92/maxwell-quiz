@@ -12,11 +12,15 @@ export default function App() {
   // Intermediate quizzes are iframed into Thinkific lessons, so they render
   // without the site header to avoid a page-inside-a-page look.
   const embedded = location.pathname.startsWith("/intermediate");
+  // A simulation draws the exam's own full-width chrome, so it opts out of the
+  // 860px reading column the quizzes sit in rather than trying to escape it
+  // with negative margins, which have to guess this padding and get it wrong.
+  const sim = /^\/(aicpa-far-tbs-110110|official-far-tbs)\/?$/.test(location.pathname);
 
   return (
     <>
       {!embedded && <Header />}
-      <main className={embedded ? "main main-embed" : "main"}>
+      <main className={sim ? "main main-sim" : embedded ? "main main-embed" : "main"}>
         <ErrorBoundary>
           <Routes>
             <Route path="/" element={<HomePage />} />

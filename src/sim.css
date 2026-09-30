@@ -1,70 +1,47 @@
 /* Task-based simulation page.
  *
- * Laid out to sit beside the quizzes rather than reinvent them: the buttons,
- * report panel and card surface come from App.css. Only the grid, the exhibit
- * panel and the answer marks are new.
+ * Laid out to match the player this simulation actually lives in, so a student
+ * practising alongside the video sees the screen they will sit: the exam's dark
+ * clock bar, the numbered question card with its blue rail, the "Exhibits
+ * Information" box, and a grid whose given figures are plain text and whose
+ * calculated cells are greyed, read-only inputs.
  *
- * The grid is the one place the AICPA look matters. Figures are right aligned
- * with tabular numerals so columns line up, the label column stays put while
- * the figures scroll on a narrow screen, and subtotal rows are ruled rather
- * than tinted so a wrong answer's mark still reads. */
+ * Colours are the live player's Bootstrap 5 defaults, so the borders, greys and
+ * radii match rather than approximate: #212529 text, #dee2e6 borders, #e9ecef
+ * for a calculated cell, #ced4da for an input border, 0.375rem radius.
+ *
+ * What deliberately differs: exhibits open in a panel rather than a draggable
+ * PDF modal, because a phone cannot use a modal and most of this page's traffic
+ * arrives from a YouTube description. And answers are marked, which the exam
+ * does not do until you leave it.
+ */
 
-.sim {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 16px 72px;
+.tbs {
+  --tbs-ink: #212529;
+  --tbs-muted: #6c757d;
+  --tbs-line: #dee2e6;
+  --tbs-calc-bg: #e9ecef;
+  --tbs-input-line: #ced4da;
+  --tbs-blue: #5bb3e0;
+  --tbs-blue-dark: #3d9dcf;
+  --tbs-radius: 0.375rem;
+  --tbs-bar: #1b1b1b;
+
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  color: var(--tbs-ink);
+  background: #eeeeee;
+  min-height: 100vh;
+  padding-bottom: 60px;
 }
 
-.sim-head {
-  padding: 28px 0 18px;
-  border-bottom: 3px solid #01506e;
+/* The simulation supplies its own chrome edge to edge. */
+.main-sim {
+  max-width: none;
+  padding: 0;
 }
 
-.sim-eyebrow {
-  margin: 0 0 6px;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #0099d4;
-  font-weight: 700;
-}
-
-.sim-head h1 {
-  margin: 0 0 8px;
-  font-size: clamp(22px, 3.6vw, 30px);
-  line-height: 1.2;
-  color: #12232d;
-}
-
-.sim-credit {
-  margin: 0;
-  color: #5a6b76;
-  font-size: 14px;
-  max-width: 62ch;
-}
-
-.sim-video-link {
-  display: inline-block;
-  margin-top: 12px;
-  color: #0099d4;
-  font-weight: 600;
-}
-
-.sim-h2 {
-  margin: 0 0 10px;
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #01506e;
-}
-
-.sim-h3 {
-  margin: 0;
-  font-size: 15px;
-  color: #01506e;
-}
-
-.sim-sr {
+.tbs-sr {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -73,348 +50,441 @@
   white-space: nowrap;
 }
 
-/* ------------------------------------------------------------- exhibits -- */
+/* ------------------------------------------------------------ exam bar -- */
 
-.sim-exhibits {
-  padding: 22px 0 6px;
-}
-
-.sim-exhibit-tabs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 8px;
-}
-
-.sim-exhibit-tab {
+.tbs-bar {
   display: flex;
-  flex-direction: column;
-  gap: 3px;
-  text-align: left;
-  padding: 10px 12px;
-  border: 1px solid #cfdde5;
-  border-radius: 8px;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--tbs-bar);
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.tbs-timer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tbs-pause {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
   background: #fff;
-  cursor: pointer;
-  font: inherit;
-  color: #12232d;
-  line-height: 1.3;
-}
-
-.sim-exhibit-tab:hover {
-  border-color: #0099d4;
-}
-
-.sim-exhibit-tab.is-open {
-  border-color: #01506e;
-  background: #eaf4f9;
-  box-shadow: inset 3px 0 0 #01506e;
-}
-
-.sim-exhibit-n {
+  color: #1b1b1b;
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: #0099d4;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.sim-exhibit-title {
-  font-size: 13.5px;
+.tbs-pause:hover {
+  background: var(--tbs-line);
 }
 
-/* ----------------------------------------------------------------- body -- */
-
-.sim-body {
-  display: block;
-  padding-top: 18px;
+.tbs-clock {
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
 }
 
-.sim-body.has-panel {
+.tbs-clock-label {
+  font-size: 11px;
+  color: #c9c9c9;
+  line-height: 1.2;
+}
+
+.tbs-bar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tbs-btn {
+  border: none;
+  border-radius: 50rem;
+  background: var(--tbs-blue);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  padding: 9px 22px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tbs-btn:hover {
+  background: var(--tbs-blue-dark);
+}
+
+.tbs-btn-ghost {
+  background: transparent;
+  border: 1px solid #6f6f6f;
+}
+
+.tbs-btn-ghost:hover {
+  background: #2b2b2b;
+}
+
+.tbs-btn-plain {
+  background: #fff;
+  color: #2b7fa8;
+  border: 1px solid var(--tbs-input-line);
+}
+
+.tbs-btn-plain:hover {
+  background: #f4f9fc;
+  border-color: var(--tbs-blue);
+}
+
+.tbs-btn-plain.is-on {
+  background: var(--tbs-blue);
+  border-color: var(--tbs-blue);
+  color: #fff;
+}
+
+.tbs-btn-wide {
+  min-width: 160px;
+}
+
+/* ---------------------------------------------------------------- page -- */
+
+.tbs-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 18px 16px 0;
+}
+
+.tbs-qnum {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.tbs-qnum-active {
+  color: var(--tbs-blue-dark);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tbs-card {
+  background: #fff;
+  border-radius: 8px;
+  border-left: 5px solid var(--tbs-blue);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 26px 28px 30px;
+}
+
+.tbs-card.has-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
-  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+  gap: 24px;
   align-items: start;
 }
 
-.sim-prompt {
+.tbs-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.tbs-card-head h1 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.tbs-q-n {
+  color: var(--tbs-blue-dark);
+  font-size: 22px;
+}
+
+.tbs-qid {
+  color: var(--tbs-blue-dark);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------ exhibits -- */
+
+.tbs-exhibit-box {
+  border: 1px solid var(--tbs-line);
+  border-radius: var(--tbs-radius);
+  padding: 16px 18px;
   margin-bottom: 20px;
 }
 
-.sim-prompt p {
-  margin: 0;
-  max-width: 78ch;
-  line-height: 1.6;
-  color: #33454f;
+.tbs-exhibit-box h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-/* ----------------------------------------------------------------- grid -- */
+.tbs-exhibit-box > p {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+/* Styled as the player's plain lines, but they are buttons: on the exam these
+   open a PDF, here they open the exhibit beside the grid. */
+.tbs-exhibit {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  color: var(--tbs-ink);
+  padding: 4px 6px;
+  margin: 0 -6px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.tbs-exhibit:hover {
+  background: #f1f8fc;
+  color: var(--tbs-blue-dark);
+}
+
+.tbs-exhibit.is-open {
+  background: #e7f3fa;
+  color: var(--tbs-blue-dark);
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------- prompt -- */
+
+.tbs-prompt {
+  font-size: 15px;
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.tbs-prompt p {
+  margin: 0 0 10px;
+}
+
+.tbs-prompt ul {
+  margin: 0 0 10px;
+  padding-left: 22px;
+}
+
+.tbs-prompt li {
+  margin-bottom: 4px;
+}
+
+/* ---------------------------------------------------------------- grid -- */
 
 /* The container scrolls, not the page: the grid is five columns wide and a
    phone is not. */
-.sim-grid-wrap {
+.tbs-grid-wrap {
   overflow-x: auto;
-  border: 1px solid #cfdde5;
-  border-radius: 8px;
-  background: #fff;
 }
 
-.sim-grid {
+.tbs-grid {
   width: 100%;
-  min-width: 660px;
+  min-width: 700px;
   border-collapse: collapse;
   font-size: 14px;
 }
 
-.sim-grid th,
-.sim-grid td {
-  padding: 7px 10px;
-  border-bottom: 1px solid #e6eef3;
+.tbs-grid th,
+.tbs-grid td {
+  border: 1px solid var(--tbs-line);
+  padding: 14px 12px;
+  text-align: left;
   vertical-align: middle;
+  font-weight: 400;
 }
 
-.sim-grid thead th {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: #01506e;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.25;
-  text-align: right;
-  border-bottom: none;
+.tbs-grid thead th {
+  font-weight: 400;
+  color: var(--tbs-ink);
+  vertical-align: bottom;
 }
 
-.sim-grid thead th.sim-col-label {
-  text-align: left;
+.tbs-label {
+  min-width: 210px;
 }
 
-.sim-col-label {
-  text-align: left;
-  font-weight: 500;
-  color: #12232d;
-  min-width: 250px;
-  position: sticky;
-  left: 0;
-  background: #fff;
-  z-index: 1;
+/* The exam does not bold its subtotals, so neither does this. */
+.tbs-section th {
+  font-weight: 400;
 }
 
-.sim-grid thead .sim-col-label {
-  background: #01506e;
-  z-index: 3;
-}
-
-.sim-num {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-.sim-section th {
-  background: #f1f6f8;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #01506e;
-  text-align: left;
-}
-
-.sim-total th,
-.sim-total td {
-  font-weight: 700;
-  border-top: 2px solid #01506e;
-  border-bottom: 2px solid #01506e;
-  background: #f7fbfd;
-}
-
-.sim-total .sim-col-label {
-  background: #f7fbfd;
-}
-
-.sim-col-d {
-  background: #fffdf5;
-}
-
-.sim-total .sim-col-d {
-  background: #f7fbfd;
-}
-
-.sim-calc {
-  color: #33454f;
-}
-
-.sim-input-wrap {
+.tbs-cell {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  justify-content: flex-end;
+  gap: 7px;
 }
 
-.sim-input {
-  width: 110px;
-  padding: 5px 8px;
-  border: 1px solid #b9cdd8;
-  border-radius: 5px;
+.tbs-input {
+  width: 118px;
+  max-width: 100%;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--tbs-input-line);
+  border-radius: var(--tbs-radius);
   font: inherit;
-  font-variant-numeric: tabular-nums;
-  text-align: right;
+  font-size: 14px;
+  color: var(--tbs-ink);
   background: #fff;
-  color: #12232d;
+  font-variant-numeric: tabular-nums;
 }
 
-.sim-input:focus-visible {
-  outline: 2px solid #0099d4;
-  outline-offset: 1px;
-  border-color: #0099d4;
+.tbs-input:focus-visible {
+  outline: 0;
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
-.sim-input.is-right {
-  border-color: #4caf50;
-  background: #f2fbf4;
+.tbs-input.is-calc {
+  background: var(--tbs-calc-bg);
+  pointer-events: none;
+  color: var(--tbs-muted);
 }
 
-.sim-input.is-wrong {
-  border-color: #f44336;
-  background: #fef4f3;
+.tbs-input.is-right {
+  border-color: #198754;
+  background: #f1fbf4;
 }
 
-.sim-input.is-bad {
-  border-color: #c58b00;
+.tbs-input.is-wrong {
+  border-color: #dc3545;
+  background: #fdf3f3;
+}
+
+.tbs-input.is-bad {
+  border-color: #ffc107;
   background: #fffaf0;
 }
 
-.sim-mark {
+.tbs-mark {
   font-weight: 700;
   width: 1ch;
 }
 
-.sim-mark-right {
-  color: #4caf50;
+.tbs-mark-right {
+  color: #198754;
 }
 
-.sim-mark-wrong {
-  color: #f44336;
+.tbs-mark-wrong {
+  color: #dc3545;
 }
 
-.sim-warn {
-  margin: 12px 0 0;
-  padding: 10px 12px;
-  border-left: 3px solid #c58b00;
-  background: #fffaf0;
-  border-radius: 0 6px 6px 0;
+.tbs-warn {
+  margin: 14px 0 0;
+  padding: 10px 14px;
+  border: 1px solid #ffe69c;
+  background: #fff9e6;
+  border-radius: var(--tbs-radius);
   font-size: 14px;
-  color: #4a3a12;
 }
 
-.sim-warn code {
+.tbs-warn code {
   background: #fff;
-  border: 1px solid #e6d9b8;
+  border: 1px solid #ffe69c;
   border-radius: 3px;
   padding: 0 4px;
 }
 
-/* -------------------------------------------------------------- actions -- */
+/* ------------------------------------------------------------- actions -- */
 
-.sim-actions {
+.tbs-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  align-items: center;
-  margin-top: 18px;
-}
-
-.sim-reset {
-  padding: 9px 16px;
-  border: 1px solid #b9cdd8;
-  border-radius: 6px;
-  background: #fff;
-  color: #01506e;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.sim-reset:hover {
-  border-color: #0099d4;
-}
-
-.sim-reset.is-on {
-  background: #01506e;
-  border-color: #01506e;
-  color: #fff;
-}
-
-/* -------------------------------------------------------------- results -- */
-
-.sim-results {
+  justify-content: center;
   margin-top: 26px;
-  padding: 20px;
-  border: 1px solid #cfdde5;
-  border-radius: 10px;
-  background: #fff;
+}
+
+/* ------------------------------------------------------------- results -- */
+
+.tbs-results {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid var(--tbs-line);
+  border-radius: var(--tbs-radius);
+  background: #fbfdfe;
   scroll-margin-top: 16px;
 }
 
-.sim-results h2 {
+.tbs-results h2 {
+  margin: 0 0 4px;
   font-size: 20px;
-  text-transform: none;
-  letter-spacing: 0;
-  margin-bottom: 4px;
+  font-weight: 600;
 }
 
-.sim-results-note {
+.tbs-results-note {
   margin: 0 0 16px;
-  color: #5a6b76;
+  color: var(--tbs-muted);
   font-size: 14px;
 }
 
-.sim-wrong-list {
+.tbs-wrong {
   list-style: none;
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   padding: 0;
   display: grid;
   gap: 8px;
 }
 
-.sim-wrong-list li {
+.tbs-wrong li {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 4px 12px;
+  gap: 4px 14px;
   padding: 9px 12px;
-  border-left: 3px solid #f44336;
-  background: #fef7f6;
-  border-radius: 0 6px 6px 0;
+  border-left: 3px solid #dc3545;
+  background: #fdf3f3;
+  border-radius: 0 var(--tbs-radius) var(--tbs-radius) 0;
 }
 
-.sim-wrong-label {
+.tbs-wrong-label {
   font-weight: 600;
-  color: #12232d;
 }
 
-.sim-wrong-key {
-  font-variant-numeric: tabular-nums;
-  color: #5a6b76;
-  font-size: 14px;
-}
-
-.sim-chapter {
+.tbs-wrong-key,
+.tbs-chapter {
   font-size: 13.5px;
-  color: #0099d4;
+}
+
+.tbs-wrong-key {
+  color: var(--tbs-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tbs-chapter {
+  color: var(--tbs-blue-dark);
   font-weight: 600;
 }
 
-.sim-key {
+.tbs-key {
   margin: 16px 0;
   padding: 14px 16px;
-  border: 1px solid #cfdde5;
-  border-radius: 8px;
-  background: #f7fbfd;
+  border: 1px solid var(--tbs-line);
+  border-radius: var(--tbs-radius);
+  background: #fff;
 }
 
-.sim-key ul {
+.tbs-key h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tbs-key ul {
   list-style: none;
   margin: 10px 0 0;
   padding: 0;
@@ -423,186 +493,191 @@
   font-size: 14px;
 }
 
-.sim-key li {
+.tbs-key li {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  border-bottom: 1px dotted #cfdde5;
+  border-bottom: 1px dotted var(--tbs-line);
   padding-bottom: 4px;
+  font-variant-numeric: tabular-nums;
 }
 
-.sim-helpful {
+.tbs-helpful {
   margin-top: 20px;
   padding-top: 16px;
-  border-top: 1px solid #e6eef3;
+  border-top: 1px solid var(--tbs-line);
 }
 
-.sim-helpful-q {
+.tbs-helpful-q {
   margin: 0 0 10px;
   font-weight: 600;
-  color: #12232d;
 }
 
-.sim-helpful-actions {
+.tbs-helpful-actions {
   display: flex;
   gap: 8px;
   margin-bottom: 10px;
 }
 
+.tbs-credit {
+  margin: 26px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--tbs-line);
+  font-size: 12.5px;
+  color: var(--tbs-muted);
+}
+
 /* ---------------------------------------------------------------- panel -- */
 
-.sim-panel {
+.tbs-panel {
   position: sticky;
   top: 12px;
   max-height: calc(100vh - 24px);
   display: flex;
   flex-direction: column;
-  border: 1px solid #cfdde5;
-  border-radius: 10px;
+  border: 1px solid var(--tbs-line);
+  border-radius: var(--tbs-radius);
   background: #fff;
   overflow: hidden;
 }
 
-.sim-panel-head {
+.tbs-panel-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 14px;
-  background: #f1f6f8;
-  border-bottom: 1px solid #cfdde5;
+  padding: 11px 14px;
+  background: #f8f9fa;
+  border-bottom: 1px solid var(--tbs-line);
 }
 
-.sim-panel-close {
+.tbs-panel-head h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tbs-panel-close {
   border: none;
   background: none;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1;
   padding: 4px 6px;
   cursor: pointer;
-  color: #5a6b76;
-  border-radius: 4px;
+  color: var(--tbs-muted);
+  border-radius: 3px;
 }
 
-.sim-panel-close:hover {
-  background: #dbe8ef;
-  color: #12232d;
+.tbs-panel-close:hover {
+  background: var(--tbs-line);
+  color: var(--tbs-ink);
 }
 
-.sim-panel-body {
+.tbs-panel-body {
   overflow: auto;
   padding: 16px;
   font-size: 14px;
   line-height: 1.5;
-  color: #12232d;
 }
 
-.sim-panel-body.compact {
+.tbs-panel-body.compact {
   font-size: 13px;
 }
 
-.sim-panel-body p {
+.tbs-panel-body p {
   margin: 0 0 8px;
 }
 
 /* Each exhibit table scrolls on its own, so a column that will not fit is one
    swipe away rather than the whole sheet sliding sideways. */
-.sim-panel-body .ex-scroll {
+.tbs-panel-body .ex-scroll {
   overflow-x: auto;
   margin: 10px 0;
   -webkit-overflow-scrolling: touch;
 }
 
-.sim-panel-body table {
+.tbs-panel-body table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.sim-panel-body th,
-.sim-panel-body td {
-  border: 1px solid #dde7ed;
+.tbs-panel-body th,
+.tbs-panel-body td {
+  border: 1px solid var(--tbs-line);
   padding: 5px 7px;
   text-align: left;
   vertical-align: top;
 }
 
-.sim-panel-body thead th {
-  background: #f1f6f8;
+.tbs-panel-body thead th {
+  background: #f8f9fa;
   font-weight: 600;
   font-size: 12px;
 }
 
-.sim-panel-body .n {
+.tbs-panel-body .n {
   text-align: right;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
-.sim-panel-body .c {
+.tbs-panel-body .c {
   text-align: center;
 }
 
-.sim-panel-body .ex-co {
+.tbs-panel-body .ex-co {
   font-weight: 600;
   margin-bottom: 10px;
   line-height: 1.35;
 }
 
-.sim-panel-body .ex-meta {
-  background: #f7fbfd;
-  border: 1px solid #e6eef3;
-  border-radius: 6px;
+.tbs-panel-body .ex-meta {
+  background: #f8f9fa;
+  border: 1px solid var(--tbs-line);
+  border-radius: var(--tbs-radius);
   padding: 8px 10px;
   margin-bottom: 8px;
   font-size: 13px;
 }
 
-.sim-panel-body .ex-note,
-.sim-panel-body .ex-small {
+.tbs-panel-body .ex-note,
+.tbs-panel-body .ex-small {
   font-size: 12.5px;
-  color: #5a6b76;
+  color: var(--tbs-muted);
 }
 
-.sim-panel-body .ex-two {
+.tbs-panel-body .ex-two {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   margin-bottom: 10px;
 }
 
-.sim-panel-body .ex-inv-h1 {
+.tbs-panel-body .ex-inv-h1 {
   font-size: 19px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #01506e;
 }
 
-.sim-panel-body .ex-kv td,
-.sim-panel-body .ex-tot td {
+.tbs-panel-body .ex-kv td,
+.tbs-panel-body .ex-tot td {
   border: none;
   padding: 2px 6px;
 }
 
-.sim-panel-body .ex-tot {
+.tbs-panel-body .ex-tot {
   width: auto;
   margin-left: auto;
 }
 
-/* The invoice's own key/value blocks are layout, not data: they never need a
-   scroller and one would put a stray bar under the totals. */
-.sim-panel-body .ex-kv,
-.sim-panel-body .ex-tot {
-  min-width: 0;
-}
-
-.sim-panel-body .ex-tot .grand td {
-  border-top: 2px solid #01506e;
+.tbs-panel-body .ex-tot .grand td {
+  border-top: 2px solid var(--tbs-ink);
   font-weight: 700;
 }
 
-.sim-panel-body hr {
+.tbs-panel-body hr {
   border: none;
-  border-top: 1px solid #e6eef3;
+  border-top: 1px solid var(--tbs-line);
   margin: 14px 0;
 }
 
@@ -611,11 +686,15 @@
 /* YouTube traffic is mostly phones, so the exhibit becomes a full-screen sheet
    rather than a column that would have nowhere to go. */
 @media (max-width: 860px) {
-  .sim-body.has-panel {
+  .tbs-card {
+    padding: 20px 16px 24px;
+  }
+
+  .tbs-card.has-panel {
     display: block;
   }
 
-  .sim-panel {
+  .tbs-panel {
     position: fixed;
     inset: 0;
     z-index: 50;
@@ -624,29 +703,30 @@
     border-radius: 0;
   }
 
-  .sim-panel-head {
-    padding: 14px 16px;
-  }
-
-  .sim-panel-body {
+  .tbs-panel-body {
     padding-bottom: 48px;
   }
 
-  .sim-panel-body .ex-two {
+  .tbs-panel-body .ex-two {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  .sim-exhibit-tabs {
-    grid-template-columns: 1fr 1fr;
+  .tbs-clock {
+    font-size: 21px;
   }
 
-  .sim-input {
-    width: 92px;
+  .tbs-grid th,
+  .tbs-grid td {
+    padding: 10px 8px;
   }
 
-  .sim-col-label {
-    min-width: 180px;
+  .tbs-input {
+    width: 102px;
+  }
+
+  .tbs-label {
+    min-width: 170px;
   }
 }
 

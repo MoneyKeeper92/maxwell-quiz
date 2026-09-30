@@ -32,11 +32,17 @@ export interface SimComputed {
  * leave a row blank when no adjustment is needed.
  */
 export function parseAmount(raw: string): number | null {
-  const s = (raw ?? "").trim();
+  let s = (raw ?? "").trim();
+  if (!s) return 0;
+  // The real player seeds every cell with "$0" and formats on blur, so the
+  // dollar sign turns up outside the brackets ("$(3,000)"), inside them
+  // ("($3,000)") and in front of a minus ("-$3,000"). Strip it first and the
+  // bracket test below stays a test for the accounting negative.
+  s = s.replace(/\$/g, "").trim();
   if (!s) return 0;
   const negated = /^\(.*\)$/.test(s);
   const body = negated ? s.slice(1, -1) : s;
-  const cleaned = body.replace(/[$,\s]/g, "");
+  const cleaned = body.replace(/[,\s]/g, "");
   if (!/^[+-]?\d+$/.test(cleaned)) return null;
   const n = Number(cleaned);
   if (!Number.isFinite(n)) return null;
@@ -116,6 +122,13 @@ export function grade(sim: Sim, inputs: SimInputs): SimResult {
 
 export function inputRows(sim: Sim): SimRow[] {
   return sim.rows.filter((r) => r.kind === "input");
+}
+
+/** "$1,755,040" and "$(31,260)", the way the live player formats a cell. */
+export function formatCurrency(n: number): string {
+  return n < 0
+    ? `$(${Math.abs(n).toLocaleString("en-US")})`
+    : `$${n.toLocaleString("en-US")}`;
 }
 
 /** 1,755,040 and (31,260), the way the AICPA grid shows them. */

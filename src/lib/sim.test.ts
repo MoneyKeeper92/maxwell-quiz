@@ -3,6 +3,7 @@ import { aicpaFarTbs110110 as sim } from "../data/sims/aicpa-far-tbs-110110";
 import {
   compute,
   formatAmount,
+  formatCurrency,
   formatTime,
   grade,
   inputRows,
@@ -37,6 +38,16 @@ describe("parseAmount", () => {
 
   it("tolerates a dollar sign and stray spaces", () => {
     expect(parseAmount(" $5,000 ")).toBe(5000);
+  });
+
+  it("reads the dollar sign wherever the formatter puts it", () => {
+    // "$0" is what every cell holds before the student types anything.
+    expect(parseAmount("$0")).toBe(0);
+    expect(parseAmount("$5,000")).toBe(5000);
+    expect(parseAmount("$(3,000)")).toBe(-3000);
+    expect(parseAmount("($3,000)")).toBe(-3000);
+    expect(parseAmount("-$3,000")).toBe(-3000);
+    expect(parseAmount("$-3000")).toBe(-3000);
   });
 
   it("rejects decimals, because the prompt asks for whole values", () => {
@@ -145,6 +156,20 @@ describe("grading", () => {
   it("treats a malformed entry as wrong rather than as zero", () => {
     const r = grade(sim, { ...keyedInputs(), ar: "minus three thousand" });
     expect(r.wrong).toEqual(["ar"]);
+  });
+});
+
+describe("currency formatting", () => {
+  it("round-trips through parseAmount", () => {
+    for (const n of [0, 5000, -3000, 33500, -64760, 1755040, -31260]) {
+      expect(parseAmount(formatCurrency(n)), String(n)).toBe(n);
+    }
+  });
+
+  it("brackets a negative and keeps the dollar sign outside", () => {
+    expect(formatCurrency(-31260)).toBe("$(31,260)");
+    expect(formatCurrency(1755040)).toBe("$1,755,040");
+    expect(formatCurrency(0)).toBe("$0");
   });
 });
 
