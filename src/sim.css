@@ -908,3 +908,44 @@
     margin: 20px auto 0;
   }
 }
+
+/* ------------------------------------------------------------- one tap -- */
+
+/* The beta protocol wants an in-flow prompt on anything student-facing. One
+   row, two taps, sent on the tap: no textarea, so it does not become a form
+   standing between the student's score and the course card below it. */
+.tbs-tap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 14px 18px;
+  border: 1px solid var(--tbs-line);
+  border-radius: var(--tbs-radius);
+  background: #fbfdfe;
+  font-size: 14.5px;
+}
+
+.tbs-tap p {
+  margin: 0;
+  color: var(--tbs-muted);
+}
+
+.tbs-tap button {
+  border: 1px solid var(--tbs-input-line);
+  border-radius: 30px;
+  background: #fff;
+  color: var(--tbs-blue);
+  font: inherit;
+  font-weight: 600;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tbs-tap button:hover {
+  background: var(--tbs-blue);
+  border-color: var(--tbs-blue);
+  color: #fff;
+}

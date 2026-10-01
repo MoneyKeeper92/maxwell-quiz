@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Sim, SimRow } from "../data/types";
 import ExhibitWindow from "./ExhibitWindow";
 import ReportIssueButton from "./ReportIssueButton";
+import { feedbackEnabled, submitReport } from "../lib/feedback";
 import { ActiveTimer, newAttemptId, track } from "../lib/analytics";
 import {
   compute,
@@ -50,6 +51,9 @@ export default function SimRunner({ sim }: SimRunnerProps) {
   const [openExhibits, setOpenExhibits] = useState<number[]>([]);
   const [checked, setChecked] = useState(false);
   const [showKey, setShowKey] = useState(false);
+  /** One tap, sent immediately. The previous version asked for a comment too,
+   *  which made it a form sitting between the score and the course card. */
+  const [helped, setHelped] = useState<"yes" | "no" | null>(null);
   const [elapsed, setElapsed] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -177,6 +181,27 @@ export default function SimRunner({ sim }: SimRunnerProps) {
     setInputs({});
     setChecked(false);
     setShowKey(false);
+    setHelped(null);
+  };
+
+  const sayHelped = (verdict: "yes" | "no") => {
+    setHelped(verdict);
+    void submitReport(
+      {
+        course: "cpa",
+        quiz: sim.key,
+        quizTitle: sim.title,
+        questionId: "practice-alongside",
+        questionIndex: 0,
+        prompt: "Did practicing this simulation help?",
+        selectedLetter: verdict,
+        correctLetter: "n/a",
+        kind: "row",
+      },
+      `Helped: ${verdict}. Scored ${result.score} of ${result.total} in ` +
+        `${Math.round(timer.elapsedMs() / 1000)}s, opened ` +
+        `${openedExhibits.current.size} of ${sim.exhibits.length} exhibits.`,
+    );
   };
 
 
@@ -446,6 +471,24 @@ export default function SimRunner({ sim }: SimRunnerProps) {
 
 
                 <ReportIssueButton context={reportContext} />
+              </div>
+            )}
+
+            {checked && feedbackEnabled && (
+              <div className="tbs-tap" role="group" aria-label="Was this useful?">
+                {helped ? (
+                  <p role="status">Thanks, that helps.</p>
+                ) : (
+                  <>
+                    <span>Did practicing this simulation help?</span>
+                    <button type="button" onClick={() => sayHelped("yes")}>
+                      Yes
+                    </button>
+                    <button type="button" onClick={() => sayHelped("no")}>
+                      No
+                    </button>
+                  </>
+                )}
               </div>
             )}
 
