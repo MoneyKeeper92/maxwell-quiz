@@ -216,7 +216,7 @@ export default function SimRunner({ sim }: SimRunnerProps) {
           >
             <span aria-hidden="true">{paused ? "▶" : "❚❚"}</span>
           </button>
-          <div>
+          <div className="tbs-timer-text">
             <div className="tbs-clock">{clock(elapsed)}</div>
             <div className="tbs-clock-label">Question Time Elapsed</div>
           </div>
