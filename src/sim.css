@@ -527,111 +527,121 @@
   color: var(--tbs-muted);
 }
 
-/* ---------------------------------------------------------------- panel -- */
+/* --------------------------------------------------------------- window -- */
 
-.tbs-panel {
-  position: sticky;
-  top: 12px;
-  max-height: calc(100vh - 24px);
+/* The live player floats exhibits as draggable windows and lets several sit
+   open at once, which is what a seven-exhibit task needs: the invoice beside
+   the subledger. Dimensions follow it (50% wide, 80vh, centred, heavy shadow).
+
+   There is deliberately no backdrop. A modal that dimmed and blocked the page
+   would stop the student typing in the grid, which is the only reason to have
+   the exhibit open. */
+.tbs-window {
+  position: fixed;
+  width: min(50%, 760px);
+  height: 80vh;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--tbs-line);
-  border-radius: var(--tbs-radius);
   background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
-.tbs-panel-head {
+.tbs-window-head {
+  flex: 0 0 auto;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 11px 14px;
-  background: #f8f9fa;
+  padding: 6px 10px 6px 14px;
+  background: #f1f1f1;
   border-bottom: 1px solid var(--tbs-line);
-}
-
-.tbs-panel-head h2 {
-  margin: 0;
+  font-weight: 700;
   font-size: 14px;
-  font-weight: 600;
+  cursor: move;
+  user-select: none;
+  touch-action: none;
 }
 
-.tbs-panel-close {
+.tbs-window-close {
   border: none;
   background: none;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1;
-  padding: 4px 6px;
+  padding: 4px 8px;
   cursor: pointer;
   color: var(--tbs-muted);
   border-radius: 3px;
 }
 
-.tbs-panel-close:hover {
-  background: var(--tbs-line);
-  color: var(--tbs-ink);
+.tbs-window-close:hover {
+  background: #ddd;
+  color: #000;
 }
 
-.tbs-panel-body {
+.tbs-window-body {
+  flex: 1 1 auto;
   overflow: auto;
-  padding: 16px;
+  padding: 18px 20px;
   font-size: 14px;
   line-height: 1.5;
 }
 
-.tbs-panel-body.compact {
+.tbs-window-body.compact {
   font-size: 13px;
 }
 
-.tbs-panel-body p {
+.tbs-window-body p {
   margin: 0 0 8px;
 }
 
 /* Each exhibit table scrolls on its own, so a column that will not fit is one
    swipe away rather than the whole sheet sliding sideways. */
-.tbs-panel-body .ex-scroll {
+.tbs-window-body .ex-scroll {
   overflow-x: auto;
   margin: 10px 0;
   -webkit-overflow-scrolling: touch;
 }
 
-.tbs-panel-body table {
+.tbs-window-body table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.tbs-panel-body th,
-.tbs-panel-body td {
+.tbs-window-body th,
+.tbs-window-body td {
   border: 1px solid var(--tbs-line);
   padding: 5px 7px;
   text-align: left;
   vertical-align: top;
 }
 
-.tbs-panel-body thead th {
+.tbs-window-body thead th {
   background: #f8f9fa;
   font-weight: 600;
   font-size: 12px;
 }
 
-.tbs-panel-body .n {
+.tbs-window-body .n {
   text-align: right;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
-.tbs-panel-body .c {
+.tbs-window-body .c {
   text-align: center;
 }
 
-.tbs-panel-body .ex-co {
+.tbs-window-body .ex-co {
   font-weight: 600;
   margin-bottom: 10px;
   line-height: 1.35;
 }
 
-.tbs-panel-body .ex-meta {
+.tbs-window-body .ex-meta {
   background: #f8f9fa;
   border: 1px solid var(--tbs-line);
   border-radius: var(--tbs-radius);
@@ -640,42 +650,42 @@
   font-size: 13px;
 }
 
-.tbs-panel-body .ex-note,
-.tbs-panel-body .ex-small {
+.tbs-window-body .ex-note,
+.tbs-window-body .ex-small {
   font-size: 12.5px;
   color: var(--tbs-muted);
 }
 
-.tbs-panel-body .ex-two {
+.tbs-window-body .ex-two {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   margin-bottom: 10px;
 }
 
-.tbs-panel-body .ex-inv-h1 {
+.tbs-window-body .ex-inv-h1 {
   font-size: 19px;
   font-weight: 700;
   letter-spacing: 0.06em;
 }
 
-.tbs-panel-body .ex-kv td,
-.tbs-panel-body .ex-tot td {
+.tbs-window-body .ex-kv td,
+.tbs-window-body .ex-tot td {
   border: none;
   padding: 2px 6px;
 }
 
-.tbs-panel-body .ex-tot {
+.tbs-window-body .ex-tot {
   width: auto;
   margin-left: auto;
 }
 
-.tbs-panel-body .ex-tot .grand td {
+.tbs-window-body .ex-tot .grand td {
   border-top: 2px solid var(--tbs-ink);
   font-weight: 700;
 }
 
-.tbs-panel-body hr {
+.tbs-window-body hr {
   border: none;
   border-top: 1px solid var(--tbs-line);
   margin: 14px 0;
@@ -690,24 +700,28 @@
     padding: 20px 16px 24px;
   }
 
-  .tbs-card.has-panel {
-    display: block;
-  }
-
-  .tbs-panel {
-    position: fixed;
+  .tbs-window {
     inset: 0;
-    z-index: 50;
-    max-height: none;
+    width: 100%;
+    height: 100%;
     border: none;
     border-radius: 0;
+    /* The inline cascade offset is a desktop idea; override it. */
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
   }
 
-  .tbs-panel-body {
+  .tbs-window-head {
+    cursor: default;
+    padding: 12px 14px;
+  }
+
+  .tbs-window-body {
     padding-bottom: 48px;
   }
 
-  .tbs-panel-body .ex-two {
+  .tbs-window-body .ex-two {
     grid-template-columns: 1fr;
     gap: 8px;
   }
@@ -733,5 +747,89 @@
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------ cta -- */
+
+/* The free course this page feeds, in the card style the site already uses for
+   it: yellow eyebrow, navy heading, ticked list, one full-width button. It sits
+   after the result, because a student who has just scored themselves is the one
+   most likely to want the course. */
+.tbs-cta {
+  margin-top: 30px;
+  padding: 26px 28px 28px;
+  border: 1px solid var(--tbs-line);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.tbs-cta-badge {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 7px 14px;
+  background: #ffc629;
+  color: #0a4e6b;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tbs-cta h2 {
+  margin: 0 0 16px;
+  font-size: clamp(26px, 4vw, 34px);
+  font-weight: 700;
+  color: #0a4e6b;
+  line-height: 1.1;
+}
+
+.tbs-cta ul {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+}
+
+.tbs-cta li {
+  position: relative;
+  padding: 13px 0 13px 30px;
+  border-bottom: 1px solid #eef1f3;
+  font-size: 15.5px;
+}
+
+.tbs-cta li:last-child {
+  border-bottom: none;
+}
+
+.tbs-cta li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #3dbe6e;
+  font-weight: 700;
+}
+
+.tbs-cta-btn {
+  display: block;
+  width: 100%;
+  padding: 17px 20px;
+  background: #0a4e6b;
+  color: #fff;
+  border-radius: 50rem;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tbs-cta-btn:hover {
+  background: #08405a;
+}
+
+@media (max-width: 860px) {
+  .tbs-cta {
+    padding: 20px 18px 22px;
   }
 }

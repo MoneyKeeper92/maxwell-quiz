@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Sim, SimRow } from "../data/types";
+import ExhibitWindow from "./ExhibitWindow";
 import ReportIssueButton from "./ReportIssueButton";
-import { feedbackEnabled, submitReport } from "../lib/feedback";
 import { ActiveTimer, newAttemptId, track } from "../lib/analytics";
 import {
   compute,
@@ -18,6 +18,15 @@ import {
 interface SimRunnerProps {
   sim: Sim;
 }
+
+/**
+ * The free course this page feeds. Tagged so a signup traced back here is
+ * distinguishable from one that came through the video description, which
+ * carries utm_content=description_course.
+ */
+const COURSE_URL =
+  "https://maxwellcpareview.com/free-cpa-101" +
+  "?utm_source=quiz&utm_medium=sim&utm_campaign=far_tbs_110110&utm_content=sim_footer";
 
 /** Chapter deep link, e.g. ...&t=619s */
 function chapterHref(videoUrl: string, seconds: number): string {
@@ -36,12 +45,11 @@ function clock(ms: number): string {
 
 export default function SimRunner({ sim }: SimRunnerProps) {
   const [inputs, setInputs] = useState<SimInputs>({});
-  const [openExhibit, setOpenExhibit] = useState<number | null>(null);
+  // Open exhibits, last one on top. Order is the stacking order, so raising a
+  // window is a reorder rather than a separate z counter to keep in step.
+  const [openExhibits, setOpenExhibits] = useState<number[]>([]);
   const [checked, setChecked] = useState(false);
   const [showKey, setShowKey] = useState(false);
-  const [helpful, setHelpful] = useState<"yes" | "no" | null>(null);
-  const [helpfulNote, setHelpfulNote] = useState("");
-  const [helpfulSent, setHelpfulSent] = useState(false);
   const [elapsed, setElapsed] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -120,19 +128,24 @@ export default function SimRunner({ sim }: SimRunnerProps) {
   }, []);
 
   const toggleExhibit = (n: number) => {
-    setOpenExhibit((prev) => {
-      const next = prev === n ? null : n;
-      if (next !== null && !openedExhibits.current.has(next)) {
-        openedExhibits.current.add(next);
+    setOpenExhibits((prev) => {
+      if (prev.includes(n)) return prev.filter((x) => x !== n);
+      if (!openedExhibits.current.has(n)) {
+        openedExhibits.current.add(n);
         track({
           event: "exhibit_opened",
           ...base,
-          question_index: next,
-          detail: { exhibit: next, title: sim.exhibits[next - 1]?.title },
+          question_index: n,
+          detail: { exhibit: n, title: sim.exhibits[n - 1]?.title },
         });
       }
-      return next;
+      return [...prev, n];
     });
+  };
+
+  /** Clicking a window raises it above the others. */
+  const raise = (n: number) => {
+    setOpenExhibits((prev) => [...prev.filter((x) => x !== n), n]);
   };
 
   const check = () => {
@@ -166,29 +179,7 @@ export default function SimRunner({ sim }: SimRunnerProps) {
     setShowKey(false);
   };
 
-  const sendHelpful = async (verdict: "yes" | "no") => {
-    setHelpful(verdict);
-    if (!feedbackEnabled) return;
-    await submitReport(
-      {
-        course: "cpa",
-        quiz: sim.key,
-        quizTitle: sim.title,
-        questionId: "practice-alongside",
-        questionIndex: 0,
-        prompt: "Did practicing alongside the video help?",
-        selectedLetter: verdict,
-        correctLetter: "n/a",
-        kind: "row",
-      },
-      `Practising alongside the video helped: ${verdict}. Scored ${result.score} of ${result.total}.${
-        helpfulNote.trim() ? `\n\n${helpfulNote.trim()}` : ""
-      }`,
-    );
-    setHelpfulSent(true);
-  };
 
-  const exhibit = openExhibit === null ? null : sim.exhibits[openExhibit - 1];
   const malformed = rows.some((r) => isMalformed(inputs[r.id] ?? ""));
 
   const cellState = (row: SimRow): "right" | "wrong" | null => {
@@ -247,7 +238,7 @@ export default function SimRunner({ sim }: SimRunnerProps) {
           <span className="tbs-qnum-active">1</span>
         </div>
 
-        <div className={`tbs-card${exhibit ? " has-panel" : ""}`}>
+        <div className="tbs-card">
           <div className="tbs-main">
             <div className="tbs-card-head">
               <h1>
@@ -266,9 +257,9 @@ export default function SimRunner({ sim }: SimRunnerProps) {
                 <button
                   key={ex.n}
                   type="button"
-                  className={`tbs-exhibit${openExhibit === ex.n ? " is-open" : ""}`}
+                  className={`tbs-exhibit${openExhibits.includes(ex.n) ? " is-open" : ""}`}
                   onClick={() => toggleExhibit(ex.n)}
-                  aria-expanded={openExhibit === ex.n}
+                  aria-expanded={openExhibits.includes(ex.n)}
                 >
                   Exhibit {ex.n} - {ex.title}
                 </button>
@@ -453,75 +444,45 @@ export default function SimRunner({ sim }: SimRunnerProps) {
                   </div>
                 )}
 
-                {feedbackEnabled && (
-                  <div className="tbs-helpful">
-                    {helpfulSent ? (
-                      <p role="status">Thanks, that is useful.</p>
-                    ) : (
-                      <>
-                        <p className="tbs-helpful-q">
-                          Did practicing alongside the video help?
-                        </p>
-                        <div className="tbs-helpful-actions">
-                          <button
-                            type="button"
-                            className={`tbs-btn tbs-btn-plain${helpful === "yes" ? " is-on" : ""}`}
-                            onClick={() => void sendHelpful("yes")}
-                          >
-                            Yes
-                          </button>
-                          <button
-                            type="button"
-                            className={`tbs-btn tbs-btn-plain${helpful === "no" ? " is-on" : ""}`}
-                            onClick={() => void sendHelpful("no")}
-                          >
-                            No
-                          </button>
-                        </div>
-                        <textarea
-                          className="report-textarea"
-                          rows={2}
-                          placeholder="Anything else? (optional)"
-                          value={helpfulNote}
-                          onChange={(e) => setHelpfulNote(e.target.value)}
-                        />
-                      </>
-                    )}
-                  </div>
-                )}
 
                 <ReportIssueButton context={reportContext} />
               </div>
             )}
 
+            <aside className="tbs-cta">
+              <p className="tbs-cta-badge">High-yield FAR foundation</p>
+              <h2>FAR Exam 101</h2>
+              <ul>
+                <li>25 AICPA-released 2026 questions</li>
+                <li>Walkthrough video: how I think through questions</li>
+                <li>Find your five weakest FAR topics</li>
+                <li>FAR study outline + lease practice tool</li>
+              </ul>
+              <a className="tbs-cta-btn" href={COURSE_URL}>
+                Enroll for Free
+              </a>
+            </aside>
+
             <p className="tbs-credit">{sim.credit}</p>
           </div>
 
-          {exhibit && (
-            <aside className="tbs-panel" aria-label={`Exhibit ${exhibit.n}`}>
-              <div className="tbs-panel-head">
-                <h2>
-                  Exhibit {exhibit.n} - {exhibit.title}
-                </h2>
-                <button
-                  type="button"
-                  className="tbs-panel-close"
-                  onClick={() => setOpenExhibit(null)}
-                  aria-label="Close exhibit"
-                >
-                  ✕
-                </button>
-              </div>
-              <div
-                className={`tbs-panel-body${exhibit.cls ? ` ${exhibit.cls}` : ""}`}
-                // Generated at build time from the AICPA documents in this
-                // repo's own source. Not user input, never from the network.
-                dangerouslySetInnerHTML={{ __html: exhibit.html }}
-              />
-            </aside>
-          )}
         </div>
       </div>
+
+      {openExhibits.map((n, i) => {
+        const ex = sim.exhibits[n - 1];
+        if (!ex) return null;
+        return (
+          <ExhibitWindow
+            key={n}
+            exhibit={ex}
+            index={i}
+            z={1000 + i}
+            onFocus={() => raise(n)}
+            onClose={() => toggleExhibit(n)}
+          />
+        );
+      })}
     </div>
   );
 }
