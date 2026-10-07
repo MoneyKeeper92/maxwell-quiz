@@ -17,109 +17,7 @@ export const cashToAccrualQuiz: Quiz = {
         `$350,000`,
       ],
       correctIndex: 2,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; margin: 0 auto; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 10px;">
-<!-- Header -->
-<div style="background-color:#01506e; color: white; padding: 15px; border-radius: 10px 10px 0 0; margin-bottom: 20px;">
-<h2 style="margin: 0; color: white;">Converting Accrual-Basis Income to Cash-Basis Income</h2>
-</div> <!-- Answers Section -->
-<div style="background-color: #f9f9f9; padding: 15px; border-left: 5px solid #207bb5; border-radius: 5px; margin-bottom: 20px;">
-<h3 style="color: #207bb5; margin-top: 0;">Answer Options</h3>
-<ul style="list-style-type: none; padding-left: 0;">
-<li style="margin-bottom: 10px; padding: 8px; border-radius: 5px; background-color: #f1f1f1; color: #555;">$280,000</li>
-<li style="margin-bottom: 10px; padding: 8px; border-radius: 5px; background-color: #f1f1f1; color: #555;">$300,000</li>
-<li style="margin-bottom: 10px; padding: 8px; border-radius: 5px; background-color: #e8f7ef; border: 1px solid #68d3a7; color: #2a7d50;"><strong>$330,000</strong> ✓</li>
-<li style="margin-bottom: 10px; padding: 8px; border-radius: 5px; background-color: #f1f1f1; color: #555;">$350,000</li>
-</ul>
-</div> <!-- Explanation -->
-<div style="background-color: #f5f9fc; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-<h3 style="color: #207bb5; margin-top: 0;">Explanation</h3>
-<p>To convert accrual-basis income to cash-basis income, we need to adjust for changes in accounts that represent timing differences between when transactions are recorded and when cash changes hands.</p> <div style="background-color: #e8f7ef; padding: 15px; border-radius: 5px; border-left: 5px solid #68d3a7; margin: 15px 0;">
-<h4 style="color: #4B556A; margin-top: 0;">Key Adjustments</h4>
-<ul>
-<li><strong>Accounts Receivable decrease of $30,000</strong>: This means more cash was collected than revenue recorded, so we <strong>add $30,000</strong> to accrual-basis income.</li>
-<li><strong>Accounts Payable increase of $20,000</strong>: This means fewer expenses were paid in cash than recorded, so we <strong>add $20,000</strong> to accrual-basis income.</li>
-</ul>
-</div>
-</div> <!-- Calculation -->
-<div style="background-color: #f0f7fa; padding: 15px; border-radius: 5px; border-left: 5px solid #0099d4; margin-bottom: 20px;">
-<h3 style="color: #01506e; margin-top: 0;">Calculation</h3>
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-<div style="width: 200px;"><strong>Accrual-basis income:</strong></div>
-<div>$280,000</div>
-</div>
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-<div style="width: 200px;"><strong>Add: A/R decrease:</strong></div>
-<div>$30,000</div>
-</div>
-<div style="display: flex; align-items: center; margin-bottom: 10px;">
-<div style="width: 200px;"><strong>Add: A/P increase:</strong></div>
-<div>$20,000</div>
-</div>
-<div style="display: flex; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ccc;">
-<div style="width: 200px;"><strong>Cash-basis income:</strong></div>
-<div style="font-weight: bold; color: #2a7d50;">$330,000</div>
-</div>
-</div> <!-- Journal Entries -->
-<div style="background-color: #f5f5f7; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-<h3 style="color: #4B556A; margin-top: 0;">Journal Entries</h3>
-<p>The following journal entries reflect the adjustments needed to convert accrual-basis to cash-basis:</p> <div style="margin-bottom: 15px;">
-<h4 style="color: #207bb5; margin-bottom: 10px;">For the Decrease in Accounts Receivable</h4>
-<table style="width: 100%; border-collapse: collapse; border-radius: 5px; overflow: hidden;">
-<thead style="background-color: #207bb5; color: white;">
-<tr>
-<th style="padding: 10px; text-align: left;">Account</th>
-<th style="padding: 10px; text-align: right;">Debit</th>
-<th style="padding: 10px; text-align: right;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Cash</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;">$30,000</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;"></td>
-</tr>
-<tr style="background-color: #f3f3f3;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Accounts Receivable</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;">$30,000</td>
-</tr>
-</tbody>
-</table>
-</div> <div>
-<h4 style="color: #207bb5; margin-bottom: 10px;">For the Increase in Accounts Payable</h4>
-<table style="width: 100%; border-collapse: collapse; border-radius: 5px; overflow: hidden;">
-<thead style="background-color: #207bb5; color: white;">
-<tr>
-<th style="padding: 10px; text-align: left;">Account</th>
-<th style="padding: 10px; text-align: right;">Debit</th>
-<th style="padding: 10px; text-align: right;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Expenses</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;">$20,000</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;"></td>
-</tr>
-<tr style="background-color: #f3f3f3;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Accounts Payable</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;">$20,000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div> <!-- Summary -->
-<div style="background-color:#e8f7ef; padding: 15px; border-radius: 5px; border: 1px solid #68d3a7;">
-<h3 style="color: #01506e; margin-top: 0;">Summary</h3>
-<p>Nova Inc.'s cash-basis pretax income is <strong style="color: #2a7d50;">$330,000</strong>, which reflects the accrual-basis income adjusted for the timing differences in cash collection and payment:</p>
-<ul>
-<li>The decrease in accounts receivable ($30,000) means more cash was collected than revenue recorded.</li>
-<li>The increase in accounts payable ($20,000) means fewer expenses were paid in cash than recorded.</li>
-<li>Both adjustments increase the cash-basis income relative to the accrual-basis income.</li>
-</ul>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">C. $330,000 is correct.</strong> Nova collected $30,000 more cash than it recorded as revenue and paid $20,000 less cash than it recorded as expense, so cash-basis income sits $50,000 above accrual income.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Cash-basis income counts only <strong style="color:var(--mx-navy)">cash received and cash paid</strong>. To convert accrual income to cash income, back out revenue earned but not collected and expenses incurred but not paid. The two balance sheet accounts that carry those timing differences are <strong style="color:var(--mx-navy)">accounts receivable</strong> and <strong style="color:var(--mx-navy)">accounts payable</strong>, so their year-over-year changes drive the whole computation.</p><p style="margin:0 0 18px">A <strong style="color:var(--mx-navy)">decrease in receivables</strong> means collections exceeded sales recorded, so cash beat revenue: <strong style="color:var(--mx-navy)">add</strong> it. An <strong style="color:var(--mx-navy)">increase in payables</strong> means expenses were booked without a cash outflow, so cash expenses were lower: <strong style="color:var(--mx-navy)">add</strong> it too. Flip the signs going the other way. A receivable increase or a payable decrease would <strong style="color:var(--mx-navy)">subtract</strong>. Here both changes push in the same direction, which is why cash income exceeds accrual income by the full $50,000.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accrual-basis pretax income</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$280,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: decrease in accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">30,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: increase in accounts payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">20,000</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Cash-basis pretax income</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$330,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entries behind the adjustments</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$30,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$30,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$20,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Accounts payable</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$20,000</td></tr></tbody></table></div><p style="margin:0">Neither entry touches cash on the expense side, and the collection entry brings in cash for revenue already reported. That is the $50,000 gap.</p></div>`,
     },
     {
       id: "2",
@@ -133,75 +31,7 @@ What is the company's cash-basis income/loss from operations at the end of Year 
         `Income of $1,000,000.`,
       ],
       correctIndex: 2,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; margin: 0 auto; padding: 20px;">
-<div style="background-color:#01506e; color: white; padding: 15px; border-radius: 10px 10px 0 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-<h2 style="margin: 0; color: white;">Cash Basis Accounting Analysis</h2>
-</div> <div style="background-color: #f9f9f9; padding: 20px; border-left: 1px solid #ddd; border-right: 1px solid #ddd; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-<h3 style="color: #207bb5; border-bottom: 2px solid #68d3a7; padding-bottom: 8px;">Understanding the Question</h3>
-<p>We need to determine Wright Co.'s cash-basis income/loss for Year 1. Under cash basis accounting, only actual cash received and cash paid are recognized.</p> <h3 style="color: #207bb5; border-bottom: 2px solid #68d3a7; padding-bottom: 8px;">Analysis</h3>
-<div style="background-color: #f0f7fa; border-left: 4px solid #0099d4; padding: 15px; margin: 15px 0; border-radius: 5px;">
-<p>Cash basis accounting recognizes revenue when cash is received and expenses when cash is paid, regardless of when the goods or services are provided or received.</p>
-</div> <h4 style="color: #4B556A;">Step 1: Identify Cash Revenue</h4>
-<p>Cash sales = $1,200,000</p> <h4 style="color: #4B556A;">Step 2: Identify Cash Expenses</h4>
-<p>Cash expenses paid = $1,300,000</p> <h4 style="color: #4B556A;">Step 3: Calculate Cash Basis Income/Loss</h4>
-<div style="background-color: #e8f4f8; border: 1px solid #0099d4; border-radius: 5px; padding: 15px; margin: 15px 0;">
-<p>Cash Basis Income/Loss = Cash Revenue - Cash Expenses</p>
-<p>Cash Basis Income/Loss = $1,200,000 - $1,300,000 = -$100,000</p>
-</div> <h3 style="color: #207bb5; border-bottom: 2px solid #68d3a7; padding-bottom: 8px;">Important Considerations</h3>
-<ul style="list-style-type: none; padding-left: 0;">
-<li style="padding: 8px 0; border-bottom: 1px dashed #ddd;">
-✓ The $2,000,000 in receivables are NOT counted in cash basis accounting since no cash was received.
-</li>
-<li style="padding: 8px 0; border-bottom: 1px dashed #ddd;">
-✓ The $900,000 in accrued expenses are NOT counted in cash basis accounting since no cash was paid.
-</li>
-<li style="padding: 8px 0;">
-✓ Only actual cash transactions matter: $1,200,000 received and $1,300,000 paid.
-</li>
-</ul> <div style="margin: 20px 0; background-color:#f0f7fa; padding: 15px; border-radius: 5px; border-left: 5px solid #207bb5;">
-<h4 style="color: #01506e; margin-top: 0;">Comparison: Cash Basis vs. Accrual Basis</h4>
-<table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-<tr style="background-color: #e8f4f8;">
-<th style="border: 1px solid #0099d4; padding: 8px; text-align: left;">Item</th>
-<th style="border: 1px solid #0099d4; padding: 8px; text-align: right;">Cash Basis</th>
-<th style="border: 1px solid #0099d4; padding: 8px; text-align: right;">Accrual Basis</th>
-</tr>
-<tr>
-<td style="border: 1px solid #ddd; padding: 8px;">Revenue</td>
-<td style="border: 1px solid #ddd; padding: 8px; text-align: right;">$1,200,000</td>
-<td style="border: 1px solid #ddd; padding: 8px; text-align: right;">$3,200,000</td>
-</tr>
-<tr>
-<td style="border: 1px solid #ddd; padding: 8px;">Expenses</td>
-<td style="border: 1px solid #ddd; padding: 8px; text-align: right;">$1,300,000</td>
-<td style="border: 1px solid #ddd; padding: 8px; text-align: right;">$2,200,000</td>
-</tr>
-<tr style="font-weight: bold;">
-<td style="border: 1px solid #ddd; padding: 8px;">Income/(Loss)</td>
-<td style="border: 1px solid #ddd; padding: 8px; text-align: right;">($100,000)</td>
-<td style="border: 1px solid #ddd; padding: 8px; text-align: right;">$1,000,000</td>
-</tr>
-</table>
-</div> <h3 style="color: #207bb5; border-bottom: 2px solid #68d3a7; padding-bottom: 8px;">Answer</h3>
-<div style="display: flex; flex-direction: column; gap: 10px; margin: 15px 0;">
-<div style="padding: 10px; border-radius: 5px; background-color: #ffebee; color: #d32f2f; border-left: 4px solid #d32f2f;">
-A loss of $1,900,000. - Incorrect
-</div>
-<div style="padding: 10px; border-radius: 5px; background-color: #ffebee; color: #d32f2f; border-left: 4px solid #d32f2f;">
-A loss of $1,000,000. - Incorrect
-</div>
-<div style="padding: 10px; border-radius: 5px; background-color: #e8f5e9; color: #388e3c; border-left: 4px solid #68d3a7;">
-A loss of $100,000. - Correct
-</div>
-<div style="padding: 10px; border-radius: 5px; background-color: #ffebee; color: #d32f2f; border-left: 4px solid #d32f2f;">
-Income of $1,000,000. - Incorrect (This would be the accrual basis income)
-</div>
-</div>
-</div> <div style="background-color:#207bb5; color: white; padding: 15px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-<h3 style="margin: 0; color: white;">Summary</h3>
-<p style="margin-bottom: 0;">Under cash basis accounting, Wright Co. experienced a loss of $100,000 during Year 1, as the company received $1,200,000 in cash but paid out $1,300,000 in cash for expenses. Accounts receivable and accrued expenses are not recognized under cash basis accounting.</p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">C. A loss of $100,000 is correct.</strong> Only the $1,200,000 of cash collected and the $1,300,000 of cash actually paid belong on a cash basis income statement.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Cash basis accounting recognizes <strong style="color:var(--mx-navy)">revenue when cash is received</strong> and <strong style="color:var(--mx-navy)">expenses when cash is paid</strong>. When goods were delivered or services consumed does not matter, so <strong style="color:var(--mx-navy)">accounts receivable</strong> and <strong style="color:var(--mx-navy)">accrued expenses</strong> are simply ignored. Nothing accrues and nothing defers under this basis. A cash basis income statement is nothing more than cash in from customers minus cash out for operations.</p><p style="margin:0 0 18px">The stem hands you accrual figures and asks you to strip them back. Total sales were $3,200,000, but $2,000,000 sits in receivables, leaving only the <strong style="color:var(--mx-navy)">$1,200,000 of cash sales</strong> as revenue. Expenses incurred were $2,200,000, but $900,000 of that is <strong style="color:var(--mx-navy)">unpaid and accrued</strong>, leaving the <strong style="color:var(--mx-navy)">$1,300,000 actually paid</strong> as the expense. <strong style="color:var(--mx-navy)">Use each figure once</strong>: the accrued $900,000 is already inside the $2,200,000 total, so it is never subtracted a second time.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash collected from customers</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$1,200,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash paid for expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(1,300,000)</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Cash basis loss from operations</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$(100,000)</strong></td></tr></tbody></table></div><p style="margin:0 0 18px">Accrual basis income for the same year would be positive $1,000,000, which is why these two bases are tested together: the identical transactions produce a profit under accrual reporting and a small cash loss, purely because of what has not yet been collected or paid.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">Why the others are wrong</h3><p style="margin:0; color:var(--mx-grey)"><strong style="color:var(--mx-navy)">A. A loss of $1,900,000.</strong> Subtracts the $2,200,000 incurred and the $900,000 accrued, double counting the unpaid expenses.<br /><strong style="color:var(--mx-navy)">B. A loss of $1,000,000.</strong> Charges cash sales with the full accrual expense of $2,200,000, mixing the two bases.<br /><strong style="color:var(--mx-navy)">D. Income of $1,000,000.</strong> The accrual basis result: $3,200,000 of total sales less $2,200,000 of expenses incurred.</p></div>`,
     },
     {
       id: "3",
@@ -213,35 +43,7 @@ Income of $1,000,000. - Incorrect (This would be the accrual basis income)
         `$285,000`,
       ],
       correctIndex: 0,
-      explanation: `<div style="border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family:'Segoe UI',sans-serif; margin-bottom:0; margin-top:0; overflow:hidden">
-<div style="background-color:#01506e; border-top-left-radius:15px; border-top-right-radius:15px; color:white; padding:20px">
-<h1 style="margin-left:0; margin-right:0">Cash to Accrual Accounting Conversion</h1>
-</div> <div style="background-color:#f9f9f9; padding:20px">
-<div style="background-color:#eaf7ff; border-left:5px solid #0099d4; border-radius:5px; margin-bottom:20px; padding:15px">
-<h3>Answer Analysis</h3> <p><strong>✓ $298,000</strong> is the correct accrual-basis pretax income.</p> <p><strong>✗ $310,000</strong> is the cash-basis income before adjustments.</p> <p><strong>✗ $322,000</strong> is incorrect.</p> <p><strong>✗ $285,000</strong> is incorrect.</p>
-</div> <h2>Explanation: Converting Cash Basis to Accrual Basis</h2> <div style="margin-bottom:20px">
-<h3>Step 1: Adjustment for Increase in Accrued Expenses</h3> <p>An increase of $5,000 in accrued expenses means that expenses have been incurred but not yet paid. Under accrual accounting, we need to recognize these expenses in the current period.</p> <div style="background-color:#f5f5f5; border-radius:8px; margin-bottom:15px; margin-left:0; margin-right:0; margin-top:15px; overflow:hidden">
-<div style="background-color:#207bb5; color:white; font-weight:bold; padding:10px">Journal Entry</div> <table cellspacing="0" style="border-collapse:collapse; text-align:left; width:100%"> <tbody> <tr> <th style="width:60%">Account</th> <th style="width:20%">Debit</th> <th style="width:20%">Credit</th> </tr> <tr> <td>Expense</td> <td>$5,000</td> <td>&nbsp;</td> </tr> <tr> <td>Accrued Liabilities</td> <td>&nbsp;</td> <td>$5,000</td> </tr> </tbody>
-</table>
-</div>
-</div> <div style="margin-bottom:20px">
-<h3>Step 2: Adjustment for Decrease in Prepaid Expenses</h3> <p>A decrease of $7,000 in prepaid expenses indicates that prepaid items have been consumed or used up during the period, thus becoming expenses.</p> <div style="background-color:#f5f5f5; border-radius:8px; margin-bottom:15px; margin-left:0; margin-right:0; margin-top:15px; overflow:hidden">
-<div style="background-color:#207bb5; color:white; font-weight:bold; padding:10px">Journal Entry</div> <table cellspacing="0" style="border-collapse:collapse; text-align:left; width:100%"> <tbody> <tr> <th style="width:60%">Account</th> <th style="width:20%">Debit</th> <th style="width:20%">Credit</th> </tr> <tr> <td>Expense</td> <td>$7,000</td> <td>&nbsp;</td> </tr> <tr> <td>Prepaid Expenses</td> <td>&nbsp;</td> <td>$7,000</td> </tr> </tbody>
-</table>
-</div>
-</div> <div style="margin-bottom:20px">
-<h3>Step 3: Compute Accrual-Basis Pretax Income</h3> <p>To convert from cash-basis to accrual-basis income, we need to make the necessary adjustments for accrued and prepaid expenses.</p> <div style="background-color:#f0f9f6; border-left:5px solid #68d3a7; border-radius:8px; padding:15px">
-<table cellspacing="0" style="border-collapse:collapse; width:100%"> <tbody> <tr> <td>Cash-Basis Pretax Income</td> <td style="text-align:right">$310,000</td> </tr> <tr> <td>Less: Increase in Accrued Expenses</td> <td style="text-align:right">($5,000)</td> </tr> <tr> <td>Less: Decrease in Prepaid Expenses</td> <td style="text-align:right">($7,000)</td> </tr> <tr> <td>Accrual-Basis Pretax Income</td> <td style="text-align:right">$298,000</td> </tr> </tbody>
-</table>
-</div>
-</div> <div style="background-color:#e9f5fb; border-radius:8px; border:1px solid #0099d4; margin-top:20px; padding:15px">
-<h3>Key Concept: Cash vs. Accrual Accounting</h3> <ul> <li><strong>Cash basis:</strong> Revenue and expenses are recorded when cash is received or paid.</li> <li><strong>Accrual basis:</strong> Revenue and expenses are recorded when earned or incurred, regardless of when cash changes hands.</li> <li><strong>Increases in accrued expenses</strong> represent additional expenses under accrual accounting.</li> <li><strong>Decreases in prepaid expenses</strong> represent additional expenses as prepaid items are consumed.</li>
-</ul>
-</div> <div style="background-color:#f0f9f6; border-radius:8px; border:1px solid #68d3a7; margin-top:20px; padding:15px">
-<h3>Summary</h3> <p>Starting with cash-basis pretax income of $310,000, we subtracted $5,000 for the increase in accrued expenses and $7,000 for the decrease in prepaid expenses. This gives us the correct accrual-basis pretax income of <strong>$298,000</strong>.</p>
-</div>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">A. $298,000 is correct.</strong> Both adjustments add expense that never touched cash, so both reduce the cash-basis figure.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Cash-basis income counts an expense only when cash leaves. Accrual basis counts it when it is <strong style="color:var(--mx-navy)">incurred</strong>. To convert, hunt for expenses that belong to this period but were not paid this period, and subtract them.</p><p style="margin:0 0 18px">An <strong style="color:var(--mx-navy)">increase in accrued expenses</strong> means costs were incurred and the bill is still unpaid, so income drops. A <strong style="color:var(--mx-navy)">decrease in prepaid expenses</strong> means an asset paid for earlier was consumed this period, so income drops again. Flip either direction and the sign flips: a decrease in accrued expenses or an increase in prepaids would be <strong style="color:var(--mx-navy)">added back</strong>. Here both move the same way, so both are subtractions.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash-basis pretax income</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$310,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Less: increase in accrued expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(5,000)</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Less: decrease in prepaid expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(7,000)</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Accrual-basis pretax income</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$298,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The conversion entries</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Expense</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$5,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Accrued liabilities</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$5,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Expense</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$7,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Prepaid expenses</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$7,000</td></tr></tbody></table></div><p style="margin:0">Together the entries push <strong style="color:var(--mx-navy)">$12,000</strong> of additional expense into the period, taking $310,000 down to <strong style="color:var(--mx-navy)">$298,000</strong>.</p></div>`,
     },
     {
       id: "4",
@@ -261,43 +63,7 @@ There were no beginning balances. What is TechNova’s cash-basis revenue for th
         `$26,500`,
       ],
       correctIndex: 3,
-      explanation: `<div style="border-radius:10px; border:1px solid #e0e0e0; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family:'Segoe UI',sans-serif; margin-bottom:0; margin-top:0; overflow:hidden; padding:0"><!-- Header -->
-<div style="background-color:#01506e; border-bottom:4px solid #68d3a7; color:white; padding:20px">
-<h1 style="margin-left:0; margin-right:0">Converting Accrual-Basis to Cash-Basis Revenue</h1>
-</div>
-<!-- Content --> <div style="padding:20px"><!-- Question and Answer section -->
-<div style="background-color:#f9f9f9; border-left:5px solid #207bb5; border-radius:8px; margin-bottom:20px; padding:15px">
-<p><strong>Question:</strong> What is TechNova&#39;s cash-basis revenue for the year?</p> <p><s>$30,500</s></p> <p><s>$28,000</s></p> <p><s>$23,500</s></p> <p>$26,500 ✓</p>
-</div>
-<!-- Explanation --> <div style="margin-bottom:20px">
-<h3>Explanation</h3> <p>To convert from accrual-basis revenue to cash-basis revenue, we need to adjust for timing differences between when revenue is earned (accrual basis) and when cash is collected (cash basis).</p>
-</div>
-<!-- Step by Step Analysis --> <div style="margin-bottom:20px">
-<h3>Step-by-Step Analysis</h3> <div style="background-color:#f5f5f5; border-left:4px solid #68d3a7; border-radius:8px; margin-bottom:15px; padding:15px">
-<h4>Step 1: Start with Accrual-Basis Revenue</h4> <p>TechNova&#39;s accrual-basis revenue is <strong>$28,000</strong>. This represents all revenue earned during the year, regardless of when cash was received.</p>
-</div> <div style="background-color:#f5f5f5; border-left:4px solid #68d3a7; border-radius:8px; margin-bottom:15px; padding:15px">
-<h4>Step 2: Adjust for Unearned Fees</h4> <p>Unearned fees of <strong>$1,500</strong> represent cash received in advance that hasn&#39;t yet been recognized as revenue on the accrual basis. To convert to cash basis, we need to <strong>add</strong> this amount since the cash was received during the year.</p> <div style="margin-bottom:10px; margin-left:0; margin-right:0; margin-top:10px">
-<h5>Journal Entry (Accrual Basis) When Cash Was Received:</h5> <table border="1" cellspacing="0" style="border-collapse:collapse; border-radius:5px; border:1px solid #e0e0e0; overflow:hidden; width:100%"> <thead> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> </thead> <tbody> <tr> <td style="border-bottom:1px solid #e0e0e0">Cash</td> <td style="border-bottom:1px solid #e0e0e0; text-align:right">$1,500</td> <td style="border-bottom:1px solid #e0e0e0; text-align:right">&nbsp;</td> </tr> <tr> <td style="border-bottom:1px solid #e0e0e0">Unearned Fees</td> <td style="border-bottom:1px solid #e0e0e0; text-align:right">&nbsp;</td> <td style="border-bottom:1px solid #e0e0e0; text-align:right">$1,500</td> </tr> </tbody>
-</table>
-</div>
-</div> <div style="background-color:#f5f5f5; border-left:4px solid #68d3a7; border-radius:8px; margin-bottom:15px; padding:15px">
-<h4>Step 3: Adjust for Accounts Receivable</h4> <p>Accounts receivable of <strong>$3,000</strong> represent revenue recognized on the accrual basis but not yet collected in cash. To convert to cash basis, we need to <strong>subtract</strong> this amount since the cash was not received during the year.</p> <div style="margin-bottom:10px; margin-left:0; margin-right:0; margin-top:10px">
-<h5>Journal Entry (Accrual Basis) When Revenue Was Earned:</h5> <table border="1" cellspacing="0" style="border-collapse:collapse; border-radius:5px; border:1px solid #e0e0e0; overflow:hidden; width:100%"> <thead> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> </thead> <tbody> <tr> <td style="border-bottom:1px solid #e0e0e0">Accounts Receivable</td> <td style="border-bottom:1px solid #e0e0e0; text-align:right">$3,000</td> <td style="border-bottom:1px solid #e0e0e0; text-align:right">&nbsp;</td> </tr> <tr> <td style="border-bottom:1px solid #e0e0e0">Consulting Fee Revenue</td> <td style="border-bottom:1px solid #e0e0e0; text-align:right">&nbsp;</td> <td style="border-bottom:1px solid #e0e0e0; text-align:right">$3,000</td> </tr> </tbody>
-</table>
-</div>
-</div> <div style="background-color:#f5f5f5; border-left:4px solid #68d3a7; border-radius:8px; margin-bottom:15px; padding:15px">
-<h4>Step 4: Calculate Cash-Basis Revenue</h4> <p>Now we can calculate the cash-basis revenue:</p> <div style="background-color:#e8f7f3; border-left:4px solid #68d3a7; border-radius:5px; padding:10px">
-<p><strong>Cash-Basis Revenue = Accrual-Basis Revenue + Unearned Fees - Accounts Receivable</strong><br />
-Cash-Basis Revenue = $28,000 + $1,500 - $3,000 = <strong>$26,500</strong></p>
-</div>
-</div>
-</div>
-<!-- Summary --> <div style="background-color:#f9f9f9; border-left:5px solid #0099d4; border-radius:8px; padding:15px">
-<h3>Summary</h3> <p>TechNova&#39;s cash-basis revenue is <strong>$26,500</strong>. This represents the actual cash collected from consulting services during the year.</p> <p>To convert from accrual-basis to cash-basis revenue:</p> <ul> <li><strong>Add</strong> unearned fees ($1,500) - cash received but not yet counted as revenue on accrual basis</li> <li><strong>Subtract</strong> accounts receivable ($3,000) - revenue recognized but cash not yet received</li>
-</ul> <p>The cash-basis approach focuses on when cash changes hands, regardless of when services are performed.</p>
-</div>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">D. $26,500 is correct.</strong> Cash collected equals accrual revenue plus the fees collected in advance, minus the revenue still sitting in receivables.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Cash-basis revenue is simply the cash the company collected from customers. Start with accrual revenue and back out the two accounts that create timing differences. <strong style="color:var(--mx-navy)">Unearned fees</strong> are cash received before the work was done, so the cash is already in the bank and the amount is <strong style="color:var(--mx-navy)">added</strong>. <strong style="color:var(--mx-navy)">Accounts receivable</strong> is revenue earned with no cash yet collected, so the amount is <strong style="color:var(--mx-navy)">subtracted</strong>.</p><p style="margin:0 0 18px">Because this is the <strong style="color:var(--mx-navy)">first year of operations</strong>, there are no beginning balances, so each ending balance equals the change for the year. <strong style="color:var(--mx-navy)">Direction</strong> is the whole question. Ask whether the account pulled cash in without revenue, which means add, or booked revenue without cash, which means subtract. Reverse either sign and the arithmetic still works but the answer is wrong.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accrual-basis consulting fee revenue</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$28,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: unearned fees collected in advance</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">1,500</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Less: accounts receivable not yet collected</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(3,000)</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Cash-basis revenue</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$26,500</strong></td></tr></tbody></table></div><p style="margin:0 0 18px">As a formula: accrual revenue, plus the increase in unearned revenue, minus the increase in receivables, equals cash collected. In later years you would use the <strong style="color:var(--mx-navy)">change</strong> in each balance rather than the ending balance, but here they are the same.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entry behind the numbers</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$26,500</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">3,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Consulting fee revenue</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$28,000</td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Unearned fees</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">1,500</td></tr></tbody></table></div><p style="margin:0">The entry balances at $29,500 on each side, a quick check that both timing adjustments were taken in the right direction. The cash debit of <strong style="color:var(--mx-navy)">$26,500</strong> is the cash-basis figure.</p></div>`,
     },
     {
       id: "5",
@@ -309,76 +75,7 @@ Cash-Basis Revenue = $28,000 + $1,500 - $3,000 = <strong>$26,500</strong></p>
         `Lower by $16,000.`,
       ],
       correctIndex: 3,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; margin: 20px auto; border: 1px solid #e0e0e0;">
-<div style="background-color:#01506e; color: white; padding: 15px 20px; border-radius: 10px 10px 0 0;">
-<h2 style="margin: 0; color: white;">Cash Basis vs. Accrual Basis Accounting Analysis</h2>
-</div> <div style="padding: 20px; background-color: #f9f9f9;">
-<div style="background-color: #eaf7fd; border-left: 5px solid #0099d4; padding: 15px; margin-bottom: 20px; border-radius: 0 10px 10px 0;">
-<h3 style="color: #207bb5; margin-top: 0;">Problem Summary</h3>
-<p>Analyzing how cash-basis pretax income of $100,000 differs from accrual-basis income when accounts receivable increased by $10,000 and accounts payable decreased by $6,000.</p>
-</div> <h3 style="color: #01506e; border-bottom: 2px solid #68d3a7; padding-bottom: 8px;">Explanation of Cash vs. Accrual Differences</h3> <p>To convert cash-basis income to accrual-basis income, we need to adjust for timing differences in revenue and expense recognition.</p> <div style="display: flex; margin: 20px 0;">
-<div style="flex: 1; background-color:#207bb5; color: white; padding: 15px; border-radius: 10px 0 0 10px;">
-<h4 style="margin-top: 0; color: white;">Accounts Receivable Impact</h4>
-<p>An increase in accounts receivable of $10,000 means revenue was earned but not yet collected in cash. Under accrual accounting, this revenue is recognized, making accrual income higher than cash income.</p>
-</div> <div style="flex: 1; background-color:#4B556A; color: white; padding: 15px; border-radius: 0 10px 10px 0;">
-<h4 style="margin-top: 0; color: white;">Accounts Payable Impact</h4>
-<p>A decrease in accounts payable of $6,000 means more expenses were paid than incurred. Under accrual accounting, only expenses incurred are recognized, making accrual income higher than cash income.</p>
-</div>
-</div> <h3 style="color: #01506e; border-bottom: 2px solid #68d3a7; padding-bottom: 8px;">Journal Entries for Accrual Adjustments</h3> <table style="width: 100%; border-collapse: collapse; margin: 20px 0; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
-<tr style="background-color: #01506e; color: white;">
-<th style="padding: 12px 15px; text-align: left;">Account</th>
-<th style="padding: 12px 15px; text-align: right;">Debit</th>
-<th style="padding: 12px 15px; text-align: right;">Credit</th>
-</tr>
-<tr style="background-color: #f2f2f2;">
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Accounts Receivable</td>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: right;">$10,000</td>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: right;"></td>
-</tr>
-<tr>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Revenue</td>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: right;"></td>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: right;">$10,000</td>
-</tr>
-<tr style="background-color: #f2f2f2;">
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Expenses</td>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: right;">$6,000</td>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: right;"></td>
-</tr>
-<tr>
-<td style="padding: 12px 15px;">Accounts Payable</td>
-<td style="padding: 12px 15px; text-align: right;"></td>
-<td style="padding: 12px 15px; text-align: right;">$6,000</td>
-</tr>
-</table> <h3 style="color: #01506e; border-bottom: 2px solid #68d3a7; padding-bottom: 8px;">Calculation of Accrual-Basis Income</h3> <table style="width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-<tr style="background-color: #207bb5; color: white;">
-<th style="padding: 12px 15px; text-align: left;" colspan="2">Income Conversion</th>
-</tr>
-<tr style="background-color: #f2f2f2;">
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Cash-basis pretax income</td>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: right;">$100,000</td>
-</tr>
-<tr>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Add: Increase in accounts receivable</td>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: right;">$10,000</td>
-</tr>
-<tr style="background-color: #f2f2f2;">
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd;">Add: Decrease in accounts payable</td>
-<td style="padding: 12px 15px; border-bottom: 1px solid #ddd; text-align: right;">$6,000</td>
-</tr>
-<tr style="background-color: #e8f7f1; font-weight: bold;">
-<td style="padding: 12px 15px;">Accrual-basis pretax income</td>
-<td style="padding: 12px 15px; text-align: right;">$116,000</td>
-</tr>
-</table> <div style="background-color: #68d3a7; border-radius: 8px; padding: 15px; color: white; margin: 20px 0;">
-<h3 style="margin-top: 0; color: white;">Conclusion</h3>
-<p>Cash-basis pretax income is <span style="font-weight: bold; text-decoration: underline;">lower by $16,000</span> compared to accrual-basis income. This is because accrual accounting recognizes the additional $10,000 in revenue and $6,000 less in expenses, resulting in a total difference of $16,000.</p>
-</div> <div style="background-color: #f5f5f5; border-radius: 8px; padding: 15px; border-left: 5px solid #4B556A;">
-<h3 style="color: #01506e; margin-top: 0;">Key Takeaway</h3>
-<p>The difference between cash and accrual accounting lies in the timing of revenue and expense recognition. Cash accounting records transactions when cash changes hands, while accrual accounting recognizes revenue when earned and expenses when incurred, regardless of cash flow timing.</p>
-</div>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">D. Lower by $16,000 is correct.</strong> Accrual pretax income is $116,000, which is $16,000 above the $100,000 cash figure.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Cash basis records income when cash moves. Accrual basis records revenue when <strong style="color:var(--mx-navy)">earned</strong> and expenses when <strong style="color:var(--mx-navy)">incurred</strong>. An <strong style="color:var(--mx-navy)">increase in accounts receivable</strong> means sales were earned but not yet collected, so accrual revenue exceeds cash receipts: add $10,000.</p><p style="margin:0 0 18px">A <strong style="color:var(--mx-navy)">decrease in accounts payable</strong> means the company paid off old bills, so cash paid exceeds expenses incurred this year. Accrual expense is $6,000 lower, which again pushes accrual income up. Both adjustments move in the <strong style="color:var(--mx-navy)">same direction</strong>, so they add to $16,000 rather than netting to $4,000.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash-basis pretax income</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$100,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: increase in accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">10,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: decrease in accounts payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">6,000</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Accrual-basis pretax income</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$116,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The conversion entries</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$10,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Revenue</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$10,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accounts payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$6,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Expenses</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$6,000</td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">Why the others are wrong</h3><p style="margin:0; color:var(--mx-grey)"><strong style="color:var(--mx-navy)">A. Higher by $4,000.</strong> Nets the two adjustments and reverses the direction.<br /><strong style="color:var(--mx-navy)">B. Lower by $4,000.</strong> Subtracts the $6,000 payable change instead of adding it.<br /><strong style="color:var(--mx-navy)">C. Higher by $16,000.</strong> Correct amount, wrong direction: accrual income is the larger figure.</p></div>`,
     },
     {
       id: "6",
@@ -390,39 +87,7 @@ Cash-Basis Revenue = $28,000 + $1,500 - $3,000 = <strong>$26,500</strong></p>
         `$320,000`,
       ],
       correctIndex: 0,
-      explanation: `<div style="border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1); font-family:'Segoe UI',sans-serif; margin-bottom:0; margin-top:0; overflow:hidden"><!-- Header -->
-<div style="background-color:#01506e; border-radius:10px 10px 0 0; color:white; padding:20px">
-<h2 style="margin-left:0; margin-right:0">Converting Accrual Basis to Cash Basis Income</h2>
-</div>
-<!-- Answer section --> <div style="background-color:#f9f9f9; padding:20px">
-<div style="display:flex; margin-bottom:20px">
-<div style="background-color:#68d3a7; border-radius:10px; color:white; flex:1; font-weight:bold; margin-right:10px; padding:15px; text-align:center"><span style="color:white">Correct Answer: $290,000</span></div> <div style="background-color:#ffdddd; border-radius:10px; color:#777777; flex:1; margin-left:10px; padding:15px; text-align:center; text-decoration:line-through">$300,000</div> <div style="background-color:#ffdddd; border-radius:10px; color:#777777; flex:1; margin-left:10px; padding:15px; text-align:center; text-decoration:line-through">$310,000</div> <div style="background-color:#ffdddd; border-radius:10px; color:#777777; flex:1; margin-left:10px; padding:15px; text-align:center; text-decoration:line-through">$320,000</div>
-</div>
-<!-- Explanation --> <div style="background-color:white; border-left:5px solid #207bb5; border-radius:10px; margin-bottom:20px; padding:20px">
-<h3>Explanation</h3> <p>To convert accrual-basis income to cash-basis income, we need to adjust for timing differences related to prepaid expenses and accrued expenses:</p> <ul style="list-style-type:none"> <li><strong>Prepaid Expenses Increase ($12,000):</strong> An increase means more cash was paid than was expensed under accrual accounting. This reduces cash-basis income.</li> <li><strong>Accrued Expenses Decrease ($18,000):</strong> A decrease means more cash was paid than was expensed under accrual accounting. This further reduces cash-basis income.</li>
-</ul>
-</div>
-<!-- Calculation --> <div style="background-color:white; border-left:5px solid #0099d4; border-radius:10px; margin-bottom:20px; padding:20px">
-<h3>Calculation</h3> <div style="background-color:#f5f9fc; border-radius:8px; padding:15px">
-<table cellspacing="0" style="border-collapse:collapse; margin-bottom:15px; width:100%"> <tbody> <tr> <td>Accrual-Basis Pretax Income</td> <td style="text-align:right">$320,000</td> </tr> <tr> <td>Less: Increase in Prepaid Expenses</td> <td style="text-align:right">($12,000)</td> </tr> <tr> <td>Less: Decrease in Accrued Expenses</td> <td style="text-align:right">($18,000)</td> </tr> <tr> <td>Cash-Basis Pretax Income</td> <td style="text-align:right">$290,000</td> </tr> </tbody>
-</table>
-</div>
-</div>
-<!-- Journal Entries --> <div style="background-color:white; border-left:5px solid #4b556a; border-radius:10px; margin-bottom:20px; padding:20px">
-<h3>Journal Entries</h3> <p>The following journal entries represent the accounting treatment of the changes in prepaid and accrued expenses:</p> <div style="margin-bottom:15px">
-<h4>1. For the increase in prepaid expenses:</h4> <table border="1" cellspacing="0" style="border-collapse:collapse; border-radius:5px; border:1px solid #dddddd; overflow:hidden; width:100%"> <tbody> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Prepaid Expenses</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$12,000</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> </tr> <tr> <td>Cash</td> <td style="text-align:right">&nbsp;</td> <td style="text-align:right">$12,000</td> </tr> </tbody>
-</table>
-</div> <div>
-<h4>2. For the decrease in accrued expenses:</h4> <table border="1" cellspacing="0" style="border-collapse:collapse; border-radius:5px; border:1px solid #dddddd; overflow:hidden; width:100%"> <tbody> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Accrued Expenses</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$18,000</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> </tr> <tr> <td>Cash</td> <td style="text-align:right">&nbsp;</td> <td style="text-align:right">$18,000</td> </tr> </tbody>
-</table>
-</div>
-</div>
-<!-- Summary --> <div style="background-color:#68d3a7; border-radius:10px; color:white; padding:15px">
-<h3>Summary</h3> <p>When converting from accrual-basis to cash-basis income, we must consider how timing differences affect cash flow:</p> <ul> <li><strong>Increases in prepaid expenses</strong> reduce cash-basis income (cash outflow without expense recognition)</li> <li><strong>Decreases in accrued expenses</strong> reduce cash-basis income (paying off previously recognized expenses)</li>
-</ul> <p>Crescent Corp.&#39;s cash-basis pretax income is therefore $290,000.</p>
-</div>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">A. $290,000 is correct.</strong> Both changes represent cash paid out that accrual income has not yet absorbed, so cash-basis income is $30,000 lower.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">To move from accrual income to cash-basis income, <strong style="color:var(--mx-navy)">follow the cash</strong>. Accrual income measures expenses when they are incurred, cash-basis income measures them when they are paid, and the two balance sheet accounts named in the stem are exactly where that difference is parked. A <strong style="color:var(--mx-navy)">prepaid expense</strong> is cash paid now for an expense that accrual accounting will recognize later, so when prepaid expenses <strong style="color:var(--mx-navy)">increase by $12,000</strong>, the company spent $12,000 of cash that never hit accrual expense. Cash-basis income must come down by $12,000.</p><p style="margin:0 0 18px"><strong style="color:var(--mx-navy)">Accrued expenses payable</strong> works the other way around: the expense is recorded before the cash goes out. An <strong style="color:var(--mx-navy)">$18,000 decrease</strong> in that balance means the company paid off $18,000 of expenses already deducted in an earlier period, so more cash left the door this year than accrual expense shows. Subtract it as well. Both adjustments push the <strong style="color:var(--mx-navy)">same direction</strong>, they do not offset.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accrual-basis pretax income</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$320,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Less: increase in prepaid expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(12,000)</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Less: decrease in accrued expenses payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(18,000)</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Cash-basis pretax income</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$290,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entries behind the adjustments</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Prepaid expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$12,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$12,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accrued expenses payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$18,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Cash</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$18,000</td></tr></tbody></table></div><p style="margin:0 0 12px">Both entries <strong style="color:var(--mx-navy)">credit cash</strong>, which is the whole point: $30,000 of cash went out with no matching charge to this year's accrual income, so cash-basis pretax income is $290,000. On the exam the <strong style="color:var(--mx-navy)">direction</strong> matters more than the arithmetic: a prepaid balance that rises means cash out, and an accrued payable that falls also means cash out. Quick check for these conversions, any change that puts more cash out the door than accrual expense shows reduces cash-basis income, whether it lands in a prepaid asset or clears a payable.</p></div>`,
     },
     {
       id: "7",
@@ -434,25 +99,7 @@ Cash-Basis Revenue = $28,000 + $1,500 - $3,000 = <strong>$26,500</strong></p>
         `$240,000`,
       ],
       correctIndex: 2,
-      explanation: `<div style="border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family:'Segoe UI',Arial,sans-serif; margin-bottom:20px; margin-left:20px; margin-right:20px; margin-top:20px; padding:20px">
-<div style="background-color:#01506e; border-radius:8px 8px 0 0; color:white; margin-bottom:20px; padding:15px">
-<h2 style="margin-left:0; margin-right:0">Cash-Basis to Accrual-Basis Conversion</h2>
-</div> <div style="background-color:#f9f9f9; border-left:5px solid #207bb5; border-radius:8px; margin-bottom:20px; padding:15px">
-<h3>Solution Analysis</h3> <p>To convert cash-basis income to accrual-basis income, adjustments must be made for changes in accounts receivable and accounts payable:</p> <ul style="list-style-type:none"> <li><strong>&rarr;</strong> Starting cash-basis pretax income: <strong>$180,000</strong></li> <li><strong>&rarr;</strong> Increase in accounts receivable: <strong>+$25,000</strong> (revenue earned but not received)</li> <li><strong>&rarr;</strong> Decrease in accounts payable: <strong>+$15,000</strong> (more cash paid than expenses incurred)</li>
-</ul>
-</div> <div style="background-color:#f5f5f5; border-left:5px solid #68d3a7; border-radius:8px; margin-bottom:20px; padding:15px">
-<h3>Journal Entries</h3> <table cellspacing="0" style="border-collapse:collapse; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); margin-top:10px; overflow:hidden; width:100%"> <thead> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> </thead> <tbody> <tr> <td style="border-bottom:1px solid #dddddd">Accounts Receivable</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$25,000</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Revenue</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$25,000</td> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Expense</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$15,000</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Accounts Payable</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$15,000</td> </tr> </tbody>
-</table>
-</div> <div style="background-color:#f5f5f5; border-left:5px solid #0099d4; border-radius:8px; margin-bottom:20px; padding:15px">
-<h3>Accrual Basis Calculation</h3> <table cellspacing="0" style="border-collapse:collapse; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); margin-top:10px; overflow:hidden; width:100%"> <thead> <tr> <th style="text-align:left">Item</th> <th style="text-align:right">Amount</th> </tr> </thead> <tbody> <tr> <td style="border-bottom:1px solid #dddddd">Cash-basis pretax income</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$180,000</td> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Add: Increase in accounts receivable</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$25,000</td> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Add: Decrease in accounts payable</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$15,000</td> </tr> <tr> <td>Accrual-basis pretax income</td> <td style="text-align:right">$220,000</td> </tr> </tbody>
-</table>
-</div> <div style="background-color:#f9f9f9; border-radius:8px; margin-bottom:20px; padding:15px">
-<h3>Answer Options</h3> <ul style="list-style-type:none"> <li><span style="background-color:#ff6b6b; color:white">A</span>$180,000</li> <li><span style="background-color:#ff6b6b; color:white">B</span>$205,000</li> <li><span style="background-color:#68d3a7; color:white">C</span>$220,000 ✓</li> <li><span style="background-color:#ff6b6b; color:white">D</span>$240,000</li>
-</ul>
-</div> <div style="background-color:#68d3a7; border-radius:8px; color:white; margin-top:20px; padding:15px">
-<h3 style="margin-left:0; margin-right:0">Summary</h3> <p>Atlas Co.&#39;s accrual-basis pretax income is <strong>$220,000</strong>, calculated by adjusting the cash-basis income of $180,000 for the $25,000 increase in accounts receivable and the $15,000 decrease in accounts payable.</p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">C. $220,000 is correct.</strong> Both adjustments increase income: revenue was earned but not collected, and cash was paid on liabilities expensed in an earlier year.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Cash basis income counts money received and money paid. Accrual basis income counts <strong style="color:var(--mx-navy)">revenue when earned</strong> and <strong style="color:var(--mx-navy)">expense when incurred</strong>. The conversion runs through the balance sheet accounts that hold the timing difference: receivables carry revenue earned ahead of collection, payables carry expense incurred ahead of payment.</p><p style="margin:0 0 18px">An <strong style="color:var(--mx-navy)">increase in accounts receivable</strong> means Atlas earned $25,000 of revenue it has not yet collected, so add it. A <strong style="color:var(--mx-navy)">decrease in accounts payable</strong> means Atlas paid suppliers $15,000 more than it charged to expense this year, so that payment belongs to a prior period and comes back as well. Flip both signs when the balances move the other way: a receivable decrease and a payable increase are <strong style="color:var(--mx-navy)">subtractions</strong>.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash basis pretax income</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$180,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: increase in accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">25,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: decrease in accounts payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">15,000</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Accrual basis pretax income</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$220,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entries behind the adjustment</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$25,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Revenue</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$25,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accounts payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$15,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Expense</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$15,000</td></tr></tbody></table></div><p style="margin:0 0 12px">Read it the other way as a check: accrual revenue equals cash collected plus $25,000, and accrual expense equals cash paid minus $15,000. Both changes lift the total, so $180,000 + $25,000 + $15,000 = $220,000.</p><p style="margin:0">Nothing else in the problem touches income. The $180,000 already reflects every cash receipt and payment, so these two <strong style="color:var(--mx-navy)">working capital changes</strong> are the only conversions needed.</p></div>`,
     },
     {
       id: "8",
@@ -464,29 +111,7 @@ Cash-Basis Revenue = $28,000 + $1,500 - $3,000 = <strong>$26,500</strong></p>
         `$725,000`,
       ],
       correctIndex: 0,
-      explanation: `<div style="border-radius:8px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family:'Segoe UI',sans-serif; margin-bottom:0; margin-top:0; overflow:hidden">
-<div style="background-color:#01506e; border-top-left-radius:8px; border-top-right-radius:8px; color:white; padding:20px">
-<h2 style="margin-left:0; margin-right:0">Converting Cash-Basis to Accrual-Basis Income</h2>
-</div> <div style="background-color:#f9f9f9; padding:20px">
-<div style="background-color:#eaf6ff; border-left:5px solid #0099d4; border-radius:4px; margin-bottom:20px; padding:15px">
-<h3>The Correct Answer is:</h3> <p><span style="background-color:rgba(104, 211, 167, 0.1); color:#68d3a7">$665,000</span></p>
-</div> <h3>Explanation</h3> <p>To convert from cash-basis to accrual-basis income, we need to adjust for changes in accounts that represent timing differences between when cash is received/paid and when revenue/expenses are recognized.</p> <div style="background-color:#f0f7fa; border-radius:8px; border:1px solid #d1e6f3; margin-bottom:15px; margin-left:0; margin-right:0; margin-top:15px; padding:15px">
-<h4>Analysis of Adjustments</h4> <table cellspacing="0" style="border-collapse:collapse; margin:15px 0; width:100%"> <thead> <tr> <th style="text-align:left">Adjustment Item</th> <th style="text-align:left">Change</th> <th style="text-align:left">Effect on Income</th> <th style="text-align:right">Amount</th> </tr> </thead> <tbody> <tr> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Accounts Receivable</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Decreased by $50,000</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Decrease (less revenue was earned than collected)</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">- $50,000</td> </tr> <tr> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Accrued Expenses</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Increased by $20,000</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Decrease (more expenses were incurred than paid)</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">- $20,000</td> </tr> <tr> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Prepaid Rent</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Decreased by $15,000</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Decrease (more rent expense was recognized than paid)</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">- $15,000</td> </tr> </tbody>
-</table>
-</div> <h4>Calculation of Accrual-Basis Income</h4> <div style="background-color:#f4f9f4; border-radius:8px; border:1px solid #68d3a7; margin-bottom:15px; margin-left:0; margin-right:0; margin-top:15px; padding:15px">
-<p><strong>Cash-Basis Pretax Income:</strong> $750,000</p> <p><strong>Adjustments:</strong></p> <ul style="list-style-type:none"> <li>&bull; Accounts Receivable Decrease: <span style="color:#d43939">- $50,000</span></li> <li>&bull; Accrued Expenses Increase: <span style="color:#d43939">- $20,000</span></li> <li>&bull; Prepaid Rent Decrease: <span style="color:#d43939">- $15,000</span></li>
-</ul> <p>Accrual-Basis Pretax Income: $665,000</p>
-</div> <h3>Journal Entries for the Adjustments</h3> <div style="background-color:#f0f7fa; border-radius:8px; border:1px solid #d1e6f3; margin-bottom:15px; margin-left:0; margin-right:0; margin-top:15px; padding:15px">
-<p><strong>1. For the Decrease in Accounts Receivable:</strong></p> <table cellspacing="0" style="border-collapse:collapse; margin-bottom:15px; width:100%"> <thead> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> </thead> <tbody> <tr> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Revenue</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">$50,000</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">&nbsp;</td> </tr> <tr> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Accounts Receivable</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">&nbsp;</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">$50,000</td> </tr> </tbody>
-</table> <p><strong>2. For the Increase in Accrued Expenses:</strong></p> <table cellspacing="0" style="border-collapse:collapse; margin-bottom:15px; width:100%"> <thead> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> </thead> <tbody> <tr> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Expense</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">$20,000</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">&nbsp;</td> </tr> <tr> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Accrued Expenses</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">&nbsp;</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">$20,000</td> </tr> </tbody>
-</table> <p><strong>3. For the Decrease in Prepaid Rent:</strong></p> <table cellspacing="0" style="border-collapse:collapse; width:100%"> <thead> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> </thead> <tbody> <tr> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Rent Expense</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">$15,000</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">&nbsp;</td> </tr> <tr> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px">Prepaid Rent</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">&nbsp;</td> <td style="border-color:#d1e6f3; border-style:solid; border-width:1px; text-align:right">$15,000</td> </tr> </tbody>
-</table>
-</div> <div style="background-color:#eef7f2; border-radius:8px; border:1px solid #68d3a7; margin-bottom:15px; margin-left:0; margin-right:0; margin-top:15px; padding:15px">
-<h3>Summary</h3> <p>Under the accrual basis of accounting, we recognize revenue when earned and expenses when incurred, regardless of when cash changes hands. In this case, River Corp. needed to adjust its cash-basis income for:</p> <ul> <li>Fewer sales than collections (accounts receivable decrease)</li> <li>More expenses incurred than paid (accrued expenses increase)</li> <li>More rent expense recognized than paid (prepaid rent decrease)</li>
-</ul> <p>All three adjustments reduced the cash-basis income, resulting in an accrual-basis pretax income of <strong>$665,000</strong>.</p>
-</div>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">A. $665,000 is correct.</strong> All three changes push income down, so $750,000 minus $85,000 leaves $665,000.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Accrual income recognizes <strong style="color:var(--mx-navy)">revenue when earned and expense when incurred</strong>. Start with cash income and ask what each balance sheet change says about the timing gap. A <strong style="color:var(--mx-navy)">decrease in accounts receivable</strong> means the company collected more cash than it earned, so revenue is lower than the cash figure and income drops by $50,000.</p><p style="margin:0 0 18px">The two expense items work the same way. An <strong style="color:var(--mx-navy)">increase in accrued expenses</strong> means expenses incurred exceeded cash paid, so subtract $20,000. A <strong style="color:var(--mx-navy)">decrease in prepaid rent</strong> means rent expense was charged against a prepayment made in an earlier period, with no cash outflow now, so subtract another $15,000. Learn the direction test instead of the three cases: an <strong style="color:var(--mx-navy)">increase in an operating asset</strong> or a <strong style="color:var(--mx-navy)">decrease in an operating liability</strong> adds to income, and the mirror change subtracts.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash-basis pretax income</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$750,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accounts receivable decrease</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(50,000)</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accrued expenses increase</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(20,000)</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Prepaid rent decrease</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(15,000)</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Accrual-basis pretax income</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$665,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The adjustments as one entry</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Sales revenue</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$50,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Operating expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">20,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Rent expense</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">15,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$50,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Accrued expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">20,000</td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Prepaid rent</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">15,000</td></tr></tbody></table></div><p style="margin:0">The $85,000 of debits to income statement accounts is exactly the amount by which accrual income sits below cash income. If any one change had run the other way, the sign on that line would simply flip.</p></div>`,
     },
     {
       id: "9",
@@ -498,101 +123,7 @@ Cash-Basis Revenue = $28,000 + $1,500 - $3,000 = <strong>$26,500</strong></p>
         `$284,000`,
       ],
       correctIndex: 2,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; margin: 20px auto; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-<div style="background-color:#01506e; color: white; padding: 20px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-<h2 style="margin: 0; color: white;">Converting Cash-Basis to Accrual-Basis Income</h2>
-</div> <div style="padding: 20px; background-color: #f9f9f9;">
-<div style="background-color: white; border-radius: 8px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #68d3a7;">
-<h3 style="color: #207bb5; margin-top: 0;">Answer</h3>
-<p>$250,000 - <span style="color: red;">Incorrect</span></p>
-<p>$258,000 - <span style="color: red;">Incorrect</span></p>
-<p>$270,000 - <span style="color: #68d3a7; font-weight: bold;">Correct</span></p>
-<p>$284,000 - <span style="color: red;">Incorrect</span></p>
-</div> <div style="background-color: white; border-radius: 8px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #207bb5;">
-<h3 style="color: #207bb5; margin-top: 0;">Explanation</h3>
-<p>To convert cash-basis income to accrual-basis income, we need to account for timing differences between when cash is received/paid and when revenue/expenses are recognized.</p> <div style="background-color: #f0f7fa; border-radius: 8px; padding: 15px; margin: 15px 0; border: 1px solid #0099d4;">
-<h4 style="color: #01506e; margin-top: 0;">Key Adjustments:</h4>
-<ul>
-<li><strong>Accrued expenses decreased by $12,000</strong>: This means cash payments exceeded the expense recognized, increasing accrual income.</li>
-<li><strong>Prepaid expenses increased by $8,000</strong>: This means cash was paid for future expenses, increasing accrual income.</li>
-</ul>
-</div>
-</div> <div style="background-color: white; border-radius: 8px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #0099d4;">
-<h3 style="color: #207bb5; margin-top: 0;">Journal Entries</h3>
-<p>The following journal entries reflect the adjustments needed:</p> <table style="width: 100%; border-collapse: collapse; margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<thead style="background-color: #4B556A; color: white;">
-<tr>
-<th style="padding: 12px; text-align: left;">Account</th>
-<th style="padding: 12px; text-align: right;">Debit</th>
-<th style="padding: 12px; text-align: right;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 12px; border-bottom: 1px solid #eee;">Accrued Expenses</td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">$12,000</td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;"></td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 12px; border-bottom: 1px solid #eee;">Expense</td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;"></td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">$12,000</td>
-</tr>
-<tr style="background-color: #f0f0f0;">
-<td style="padding: 12px; border-bottom: 1px solid #eee;">Prepaid Expenses</td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">$8,000</td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;"></td>
-</tr>
-<tr style="background-color: #f0f0f0;">
-<td style="padding: 12px; border-bottom: 1px solid #eee;">Cash</td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;"></td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">$8,000</td>
-</tr>
-</tbody>
-</table> <p><strong>Effect on Income:</strong></p>
-<ul>
-<li>Decrease in accrued expenses: <strong>+$12,000</strong> to income</li>
-<li>Increase in prepaid expenses: <strong>+$8,000</strong> to income</li>
-</ul>
-</div> <div style="background-color: white; border-radius: 8px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #68d3a7;">
-<h3 style="color: #207bb5; margin-top: 0;">Calculation</h3>
-<table style="width: 100%; border-collapse: collapse; margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<thead style="background-color: #4B556A; color: white;">
-<tr>
-<th style="padding: 12px; text-align: left;">Item</th>
-<th style="padding: 12px; text-align: right;">Amount</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 12px; border-bottom: 1px solid #eee;">Cash-Basis Pretax Income</td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">$250,000</td>
-</tr>
-<tr style="background-color: #f0f0f0;">
-<td style="padding: 12px; border-bottom: 1px solid #eee;">Add: Decrease in Accrued Expenses</td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">$12,000</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 12px; border-bottom: 1px solid #eee;">Add: Increase in Prepaid Expenses</td>
-<td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">$8,000</td>
-</tr>
-<tr style="background-color: #e6f7ef; font-weight: bold;">
-<td style="padding: 12px;">Accrual-Basis Pretax Income</td>
-<td style="padding: 12px; text-align: right;">$270,000</td>
-</tr>
-</tbody>
-</table>
-</div> <div style="background-color: white; border-radius: 8px; padding: 15px; border-left: 5px solid #01506e;">
-<h3 style="color: #207bb5; margin-top: 0;">Summary</h3>
-<p>To convert from cash-basis to accrual-basis income:</p>
-<ul>
-<li>When accrued expenses <strong>decrease</strong>, add the decrease to cash-basis income</li>
-<li>When prepaid expenses <strong>increase</strong>, add the increase to cash-basis income</li>
-</ul>
-<p>In this case, the total adjustment is +$20,000, resulting in an accrual-basis pretax income of $270,000.</p>
-</div>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">C. $270,000 is correct.</strong> Both balance changes mean cash went out faster than expense was recognized, so accrual income sits $20,000 above cash income.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Cash-basis income measures <strong style="color:var(--mx-navy)">cash paid</strong>. Accrual-basis income measures <strong style="color:var(--mx-navy)">expense incurred</strong>. To convert, ask one question about each expense-related balance: did the company pay out more cash this year than the expense it recorded? If it did, cash-basis income is understated and the difference is <strong style="color:var(--mx-navy)">added back</strong>.</p><p style="margin:0 0 18px">A <strong style="color:var(--mx-navy)">decrease in accrued expenses</strong> means the company paid off liabilities carried over from last year: cash left, but the expense belonged to the prior period, so add $12,000. An <strong style="color:var(--mx-navy)">increase in prepaid expenses</strong> means cash left for benefits not yet consumed, so add $8,000. The signs flip when the balances move the other way: <strong style="color:var(--mx-navy)">rising accruals</strong> and <strong style="color:var(--mx-navy)">falling prepaids</strong> are subtractions from cash-basis income.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash-basis pretax income</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$250,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: decrease in accrued expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">12,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: increase in prepaid expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">8,000</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Accrual-basis pretax income</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$270,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The conversion entry</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accrued expenses payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$12,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Prepaid expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">8,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Operating expenses</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$20,000</td></tr></tbody></table></div><p style="margin:0">Expense drops $20,000, so pretax income rises by the same $20,000.</p></div>`,
     },
     {
       id: "10",
@@ -604,115 +135,7 @@ Cash-Basis Revenue = $28,000 + $1,500 - $3,000 = <strong>$26,500</strong></p>
         `$520,000`,
       ],
       correctIndex: 1,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-<div style="background-color:#01506e; color: white; padding: 15px; border-radius: 8px 8px 0 0; margin-bottom: 20px;">
-<h2 style="margin: 0; color: white;">Converting Accrual-Basis Income to Cash-Basis Income</h2>
-</div> <div style="background-color: #f9f9f9; padding: 15px; border-left: 5px solid #68d3a7; margin-bottom: 20px; border-radius: 5px;">
-<h3 style="color: #4B556A; margin-top: 0;">Answer: <span style="color: #68d3a7; font-weight: bold;">$465,000</span></h3>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 5px;">Explanation</h3>
-<p>To convert accrual-basis pretax income to cash-basis pretax income, we need to adjust for changes in working capital accounts that affect the timing difference between when transactions are recorded and when cash changes hands.</p>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 5px;">Calculation</h3>
-<div style="background-color: #f5f7fa; padding: 15px; border-radius: 5px;">
-<p><strong>Starting Point:</strong> Accrual-basis pretax income = $500,000</p>
-<p><strong>Adjustments:</strong></p>
-<ul style="list-style-type: none; padding-left: 10px;">
-<li style="margin-bottom: 8px;"> Increase in accounts receivable: <strong>$40,000</strong> (revenue recognized but not collected yet)</li>
-<li style="margin-bottom: 8px;"> Increase in inventory: <strong>$25,000</strong> (cash paid for inventory not yet expensed)</li>
-<li style="margin-bottom: 8px;"> Increase in accrued expenses: <strong>$30,000</strong> (expenses recognized but not paid yet)</li>
-</ul>
-<p><strong>Cash-basis pretax income</strong> = $500,000 - $40,000 - $25,000 + $30,000 = <strong>$465,000</strong></p>
-</div>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 5px;">Journal Entries Explanation</h3>
-<p>The following journal entries help explain the adjustments needed to convert accrual-basis to cash-basis:</p> <div style="margin-bottom: 15px;">
-<h4 style="color: #0099d4; margin-bottom: 5px;">1. Accounts Receivable Increase ($40,000)</h4>
-<table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 3px rgba(0,0,0,0.1);">
-<thead style="background-color: #4B556A; color: white;">
-<tr>
-<th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Account</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Debit</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; border: 1px solid #ddd;">Accounts Receivable</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$40,000</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-</tr>
-<tr>
-<td style="padding: 10px; border: 1px solid #ddd;">Revenue</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$40,000</td>
-</tr>
-</tbody>
-</table>
-<p><em>Effect: Reduces cash-basis income because this revenue hasn't been collected in cash yet</em></p>
-</div> <div style="margin-bottom: 15px;">
-<h4 style="color: #0099d4; margin-bottom: 5px;">2. Inventory Increase ($25,000)</h4>
-<table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 3px rgba(0,0,0,0.1);">
-<thead style="background-color: #4B556A; color: white;">
-<tr>
-<th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Account</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Debit</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; border: 1px solid #ddd;">Inventory</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$25,000</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-</tr>
-<tr>
-<td style="padding: 10px; border: 1px solid #ddd;">Cash/Accounts Payable</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$25,000</td>
-</tr>
-</tbody>
-</table>
-<p><em>Effect: Reduces cash-basis income because cash was paid for inventory that hasn't been sold yet</em></p>
-</div> <div style="margin-bottom: 15px;">
-<h4 style="color: #0099d4; margin-bottom: 5px;">3. Accrued Expenses Increase ($30,000)</h4>
-<table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; border-radius: 5px; overflow: hidden; box-shadow: 0 2px 3px rgba(0,0,0,0.1);">
-<thead style="background-color: #4B556A; color: white;">
-<tr>
-<th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Account</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Debit</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; border: 1px solid #ddd;">Expense</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$30,000</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-</tr>
-<tr>
-<td style="padding: 10px; border: 1px solid #ddd;">Accrued Expenses</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$30,000</td>
-</tr>
-</tbody>
-</table>
-<p><em>Effect: Adds to cash-basis income because these expenses were recognized but not paid in cash</em></p>
-</div>
-</div> <div style="background-color:#68d3a7; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-<h3 style="color: white; margin-top: 0;">Summary</h3>
-<p style="color: white; margin-bottom: 0;">The cash-basis pretax income for Solar Inc. is <strong>$465,000</strong>. This represents the actual cash flow from operations before considering taxes, after adjusting for timing differences in accounts receivable, inventory, and accrued expenses.</p>
-</div> <div style="background-color: #f0f5f9; padding: 15px; border-radius: 5px; border-left: 5px solid #01506e;">
-<h3 style="color: #01506e; margin-top: 0;">Key Concept</h3>
-<p style="margin-bottom: 0;">When converting from accrual to cash basis:</p>
-<ul>
-<li>Increase in assets (like accounts receivable, inventory) = <strong>subtract</strong> from accrual income</li>
-<li>Decrease in assets = <strong>add</strong> to accrual income</li>
-<li>Increase in liabilities (like accrued expenses) = <strong>add</strong> to accrual income</li>
-<li>Decrease in liabilities = <strong>subtract</strong> from accrual income</li>
-</ul>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">B. $465,000 is correct.</strong> Strip out the $65,000 of income that never touched cash and add back the $30,000 of expense that was never paid.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Cash basis income counts only the dollars that actually moved. Start with accrual income and reverse the timing differences sitting in the balance sheet. The shortcut is direction: an <strong style="color:var(--mx-navy)">increase in an operating asset</strong> is cash that went out or never came in, so <strong style="color:var(--mx-navy)">subtract</strong> it; an <strong style="color:var(--mx-navy)">increase in an operating liability</strong> is an expense recorded without a payment, so <strong style="color:var(--mx-navy)">add</strong> it back.</p><p style="margin:0 0 18px">Apply that here. <strong style="color:var(--mx-navy)">Receivables rose $40,000</strong>, so accrual sales exceed cash collected by that amount. <strong style="color:var(--mx-navy)">Inventory rose $25,000</strong>, so cash went out for goods still on the shelf that never reached cost of goods sold. <strong style="color:var(--mx-navy)">Accrued expenses rose $30,000</strong>, so the books deducted expenses the company has not yet paid, which lifts the cash number.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accrual-basis pretax income</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$500,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Less: increase in accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(40,000)</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Less: increase in inventory</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(25,000)</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Add: increase in accrued expenses</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">30,000</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Cash-basis pretax income</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$465,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entry behind the receivable</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accounts receivable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$40,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Sales revenue</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$40,000</td></tr></tbody></table></div><p style="margin:0 0 12px">Revenue went up, cash did not, so the $40,000 comes back out. Inventory runs the other way: cash or payables funded $25,000 of goods that accrual accounting parks on the balance sheet instead of in expense, so the cash figure absorbs that cost now. The accrued expenses work in reverse of both, since the expense hit income while the cash stayed in the bank. Flip every sign if the balances fall.</p></div>`,
     },
   ],
 };

@@ -17,96 +17,7 @@ export const ratiosQuiz: Quiz = {
         `$12,000`,
       ],
       correctIndex: 2,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; margin: 0 auto; background-color: #f9f9f9; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"> <div style="background-color:#01506e; color: white; padding: 20px; border-radius: 10px 10px 0 0;">
-<h1 style="margin: 0; color: white;">Current Ratio & Short-Term Debt Analysis</h1>
-</div> <div style="padding: 20px;">
-<div style="background-color: #f0f5f9; border-left: 5px solid #0099d4; padding: 15px; margin-bottom: 20px; border-radius: 0 5px 5px 0;">
-<h3 style="color: #01506e; margin-top: 0;">Current Position Analysis</h3>
-<p>The company's current financial position includes:</p>
-<ul>
-<li><strong>Current Assets:</strong> Cash ($10,000) + AR ($5,000) = $15,000</li>
-<li><strong>Current Liabilities:</strong> AP ($5,000) + Wages Payable ($5,000) = $10,000</li>
-<li><strong>Current Ratio:</strong> $15,000 ÷ $10,000 = 1.5</li>
-</ul>
-</div> <h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 8px;">Question Analysis</h3>
-<p>The company needs to determine how much short-term debt it can take on while maintaining a current ratio of at least 1.25.</p> <div style="background-color: #f0f8f7; border-radius: 8px; padding: 15px; margin-bottom: 20px; border: 1px solid #68d3a7;">
-<h3 style="color: #01506e; margin-top: 0;">Step-by-Step Solution</h3> <p>When the company takes on short-term debt to purchase inventory:</p>
-<ul>
-<li>Current assets increase by the amount of the loan (as inventory)</li>
-<li>Current liabilities increase by the same amount (as short-term debt)</li>
-</ul> <p>To maintain a current ratio of 1.25:</p>
-<div style="background-color: #eef7fc; padding: 10px; border-radius: 5px; border-left: 3px solid #207bb5;">
-<p><strong>Current Ratio = Current Assets ÷ Current Liabilities = 1.25</strong></p>
-<p>(Original Current Assets + Loan Amount) ÷ (Original Current Liabilities + Loan Amount) = 1.25</p>
-<p>($15,000 + x) ÷ ($10,000 + x) = 1.25</p>
-</div> <p>Solving for x:</p>
-<div style="background-color: #eef7fc; padding: 10px; margin-top: 10px; border-radius: 5px; border-left: 3px solid #207bb5;">
-<p>$15,000 + x = 1.25($10,000 + x)</p>
-<p>$15,000 + x = $12,500 + 1.25x</p>
-<p>$15,000 - $12,500 = 1.25x - x</p>
-<p>$2,500 = 0.25x</p>
-<p>x = $10,000</p>
-</div>
-</div> <h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 8px;">Journal Entry for the Transaction</h3> <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<thead>
-<tr style="background-color:#207bb5; color: white;">
-<th style="padding: 12px; text-align: left; border: 1px solid #0099d4;">Account</th>
-<th style="padding: 12px; text-align: right; border: 1px solid #0099d4;">Debit</th>
-<th style="padding: 12px; text-align: right; border: 1px solid #0099d4;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; border: 1px solid #ddd;">Inventory</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$10,000</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-</tr>
-<tr style="background-color: #f0f5f9;">
-<td style="padding: 10px; border: 1px solid #ddd;">Short-term Debt</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$10,000</td>
-</tr>
-</tbody>
-</table> <h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 8px;">Financial Position After Loan</h3> <div style="display: flex; gap: 20px; margin-bottom: 20px;">
-<div style="flex: 1; background-color: #f0f5f9; padding: 15px; border-radius: 8px; border: 1px solid #207bb5;">
-<h4 style="color: #01506e; margin-top: 0;">New Current Assets</h4>
-<ul>
-<li>Cash: $10,000</li>
-<li>Accounts Receivable: $5,000</li>
-<li>Inventory: $10,000</li>
-<li><strong>Total: $25,000</strong></li>
-</ul>
-</div> <div style="flex: 1; background-color: #f0f5f9; padding: 15px; border-radius: 8px; border: 1px solid #207bb5;">
-<h4 style="color: #01506e; margin-top: 0;">New Current Liabilities</h4>
-<ul>
-<li>Accounts Payable: $5,000</li>
-<li>Wages Payable: $5,000</li>
-<li>Short-term Debt: $10,000</li>
-<li><strong>Total: $20,000</strong></li>
-</ul>
-</div>
-</div> <div style="background-color: #f0f8f7; border-radius: 8px; padding: 15px; margin-bottom: 20px; border: 1px solid #68d3a7;">
-<h4 style="color: #01506e; margin-top: 0;">New Current Ratio</h4>
-<p>$25,000 ÷ $20,000 = 1.25</p>
-</div> <h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 8px;">Answer Assessment</h3> <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px;">
-<div style="padding: 10px; background-color: #ffe6e6; border-radius: 5px; border-left: 3px solid #ff6b6b;">
-<p>$20,000 - Incorrect</p>
-</div>
-<div style="padding: 10px; background-color: #ffe6e6; border-radius: 5px; border-left: 3px solid #ff6b6b;">
-<p>$17,500 - Incorrect</p>
-</div>
-<div style="padding: 10px; background-color: #e6ffe6; border-radius: 5px; border-left: 3px solid #68d3a7;">
-<p style="color: #2e7d32;"><strong>$10,000 - Correct</strong></p>
-</div>
-<div style="padding: 10px; background-color: #ffe6e6; border-radius: 5px; border-left: 3px solid #ff6b6b;">
-<p>$12,000 - Incorrect</p>
-</div>
-</div> <div style="background-color:#68d3a7; color: white; padding: 15px; border-radius: 8px; margin-top: 20px;">
-<h3 style="margin-top: 0; color: white;">Summary</h3>
-<p>The maximum short-term debt the company can obtain while maintaining a current ratio of 1.25 is $10,000. After this transaction, the company will have $25,000 in current assets and $20,000 in current liabilities, resulting in the required current ratio of 1.25.</p>
-</div>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">C. $10,000 is correct.</strong> The loan adds the same dollar to current assets and to current liabilities, and $10,000 is the point where the ratio lands exactly on 1.25.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">The <strong style="color:var(--mx-navy)">current ratio</strong> is current assets divided by current liabilities. The $10,000 of <strong style="color:var(--mx-navy)">fixed assets never enters</strong> the calculation. Cash of $10,000 plus receivables of $5,000 gives <strong style="color:var(--mx-navy)">$15,000 of current assets</strong>, and payables of $5,000 plus wages payable of $5,000 gives <strong style="color:var(--mx-navy)">$10,000 of current liabilities</strong>, a starting ratio of 1.5.</p><p style="margin:0 0 18px">Borrowing short term to buy inventory raises the <strong style="color:var(--mx-navy)">numerator and the denominator by the same amount</strong>. When a ratio starts above 1.0, adding equal dollars to both sides drags it <strong style="color:var(--mx-navy)">toward 1.0</strong>. So set the post-loan ratio equal to the 1.25 floor and solve for the loan.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Current assets, cash + AR</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$15,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Current liabilities, AP + wages payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$10,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Set ($15,000 + x) / ($10,000 + x)</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">= 1.25</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cross-multiply: $15,000 + x = $12,500 + 1.25x</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$2,500 = 0.25x</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Maximum short-term loan</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$10,000</strong></td></tr><tr><td style="border:0; padding:11px 14px">Proof: $25,000 / $20,000</td><td style="border:0; padding:11px 14px; text-align:right">1.25</td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entry</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Inventory</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$10,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Short-term note payable</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$10,000</td></tr></tbody></table></div><p style="margin:0">After the loan, current assets are $25,000 and current liabilities are $20,000, exactly <strong style="color:var(--mx-navy)">1.25</strong>. One more dollar borrowed pushes the company below the floor.</p></div>`,
     },
     {
       id: "5462",
@@ -118,69 +29,7 @@ export const ratiosQuiz: Quiz = {
         `25%`,
       ],
       correctIndex: 0,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; margin: 0 auto; padding: 20px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-<div style="background-color: #01506e; color: white; padding: 15px; border-radius: 8px 8px 0 0; margin-bottom: 20px;">
-<h2 style="margin: 0; color: white;">Financial Ratio Analysis: Net Profit Margin</h2>
-</div> <div style="background-color: #f9f9f9; padding: 15px; border-left: 5px solid #68d3a7; border-radius: 5px; margin-bottom: 20px;">
-<p><span style="color: #68d3a7; font-weight: bold;">✓ Correct Answer: 15%</span></p>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 5px;">Explanation</h3>
-<p>Net profit margin measures the percentage of revenue that translates into net income. It shows how effectively a company converts its sales into actual profit after all expenses.</p>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 5px;">Calculation</h3>
-<div style="background-color:#e6f7ff; padding: 15px; border-radius: 8px; border-left: 4px solid #0099d4;">
-<p><strong>Net Profit Margin</strong> = Net Income ÷ Revenue × 100%</p>
-<p>For Year 2: $75,000 ÷ $500,000 × 100% = 15%</p>
-</div>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 5px;">Comparative Analysis</h3>
-<table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<thead>
-<tr style="background-color: #4B556A; color: white;">
-<th style="padding: 12px; text-align: left;">Metric</th>
-<th style="padding: 12px; text-align: right;">Year 1</th>
-<th style="padding: 12px; text-align: right;">Year 2</th>
-<th style="padding: 12px; text-align: right;">Change</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f2f2f2;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Revenue</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$400,000</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$500,000</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">+$100,000 (+25%)</td>
-</tr>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Net Income</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$50,000</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$75,000</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">+$25,000 (+50%)</td>
-</tr>
-<tr style="background-color: #e6f7ff;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Net Profit Margin</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">12.5%</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right; font-weight: bold;">15%</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right; color: #68d3a7;">+2.5%</td>
-</tr>
-</tbody>
-</table>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="color: #207bb5; border-bottom: 2px solid #207bb5; padding-bottom: 5px;">Analysis</h3>
-<p>XYZ Corp's net profit margin increased from 12.5% in Year 1 to 15% in Year 2, indicating improved profitability. This 2.5 percentage point increase demonstrates that the company is becoming more efficient at converting sales into actual profit.</p>
-<p>While revenue grew by 25%, net income increased by 50%, showing that the company is managing its costs effectively as it grows.</p>
-</div> <div style="background-color: #f5f7fa; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #01506e;">
-<h3 style="color: #01506e; margin-top: 0;">Key Insights</h3>
-<ul style="padding-left: 20px;">
-<li>Net profit margin is a fundamental profitability ratio that measures how much of each dollar of revenue is kept as net income.</li>
-<li>Higher net profit margins indicate a more profitable company with better cost control.</li>
-<li>The 15% margin means that for every dollar of sales, XYZ Corp retains $0.15 as profit after all expenses.</li>
-<li>This improvement suggests the company may be experiencing economies of scale or implementing successful cost-cutting measures.</li>
-</ul>
-</div> <div style="background-color:#e6f3ff; padding: 15px; border-radius: 8px; border: 1px solid #d0e3ff;">
-<h3 style="color: #207bb5; margin-top: 0;">Summary</h3>
-<p>XYZ Corp's net profit margin for Year 2 is <strong style="color: #68d3a7;">15%</strong>, calculated by dividing the net income of $75,000 by the revenue of $500,000. This represents an improvement from Year 1's margin of 12.5%, indicating enhanced operational efficiency and cost management.</p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">A. 15% is correct.</strong> Year 2 net income of $75,000 divided by Year 2 revenue of $500,000 is 15%.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px"><strong style="color:var(--mx-navy)">Net profit margin</strong> equals <strong style="color:var(--mx-navy)">net income divided by revenue</strong>, using figures from the <strong style="color:var(--mx-navy)">same period</strong>. It measures how many cents of each sales dollar survive after every expense, including cost of sales, operating costs, interest and tax. Because the numerator is bottom line income, this ratio is the broadest of the profitability measures, unlike gross margin, which stops at cost of sales.</p><p style="margin:0 0 18px">The trap here is the <strong style="color:var(--mx-navy)">two years of data</strong>. Growth rates and prior year balances are distractor material: the question asks for a Year 2 ratio, so only Year 2 numbers belong in the formula. For context, the Year 1 margin was 12.5% ($50,000 / $400,000), so the margin <strong style="color:var(--mx-navy)">improved</strong> because net income grew 50% while revenue grew only 25%.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Year 2 net income</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$75,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Year 2 revenue</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$500,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Year 1 margin, $50,000 / $400,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">12.5%</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Year 2 margin, $75,000 / $500,000</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">15%</strong></td></tr></tbody></table></div><p style="margin:0 0 18px">Read it as <strong style="color:var(--mx-navy)">15 cents of profit per sales dollar</strong>, up 2.5 percentage points from the prior year.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">Why the others are wrong</h3><p style="margin:0; color:var(--mx-grey)"><strong style="color:var(--mx-navy)">B. 20%.</strong> Divides the $100,000 revenue increase by Year 2 revenue, which is a growth measure, not a margin.<br /><strong style="color:var(--mx-navy)">C. 10%.</strong> Mixes years, putting Year 1 net income of $50,000 over Year 2 revenue of $500,000.<br /><strong style="color:var(--mx-navy)">D. 25%.</strong> That is the revenue growth rate, $100,000 / $400,000, not profitability.</p></div>`,
     },
     {
       id: "5463",
@@ -192,72 +41,7 @@ export const ratiosQuiz: Quiz = {
         `0.50`,
       ],
       correctIndex: 3,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-<div style="background-color:#01506e; color: white; padding: 15px; border-radius: 10px 10px 0 0; margin-bottom: 20px;">
-<h1 style="margin: 0; color: white;">Debt-to-Equity Ratio Calculation</h1>
-</div> <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #0099d4;">
-<h3 style="color: #207bb5;">Multiple Choice Answer:</h3>
-<p>The correct answer is: <span style="color: #68d3a7; font-weight: bold;">0.50</span></p>
-</div> <div style="padding: 15px; border-radius: 10px; margin-bottom: 20px; background-color: #f8f9fa; border-left: 5px solid #01506e;">
-<h3 style="color: #207bb5;">Explanation:</h3>
-<p>To calculate the debt-to-equity ratio after the share issuance, we need to determine the new equity value and then divide the total liabilities by this value.</p> <table style="width: 100%; border-collapse: collapse; margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<tr style="background-color: #4B556A; color: white;">
-<th style="padding: 10px; text-align: left;">Component</th>
-<th style="padding: 10px; text-align: right;">Amount</th>
-</tr>
-<tr style="background-color: #f2f2f2;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Total Assets</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$500,000</td>
-</tr>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Total Liabilities</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$200,000</td>
-</tr>
-<tr style="background-color: #f2f2f2;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Original Equity (Assets - Liabilities)</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$300,000</td>
-</tr>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Additional Share Issue</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$100,000</td>
-</tr>
-<tr style="background-color: #f2f2f2; font-weight: bold;">
-<td style="padding: 10px;">New Total Equity</td>
-<td style="padding: 10px; text-align: right;">$400,000</td>
-</tr>
-</table> <p>The journal entry for the share issuance would be:</p> <table style="width: 100%; border-collapse: collapse; margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<tr style="background-color: #207bb5; color: white;">
-<th style="padding: 10px; text-align: left;">Account</th>
-<th style="padding: 10px; text-align: right;">Debit</th>
-<th style="padding: 10px; text-align: right;">Credit</th>
-</tr>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Cash</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$100,000</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;"></td>
-</tr>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Share Capital</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;"></td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$100,000</td>
-</tr>
-</table> <p>Now we can calculate the debt-to-equity ratio:</p> <div style="background-color: #e9f7fe; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 5px solid #68d3a7;">
-<p style="margin: 0; font-weight: bold;">Debt-to-Equity Ratio = Total Liabilities ÷ Total Equity</p>
-<p style="margin: 10px 0 0 0;">= $200,000 ÷ $400,000 = 0.50</p>
-</div>
-</div> <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #68d3a7;">
-<h3 style="color: #207bb5;">Analysis of Options:</h3>
-<ul style="list-style-type: none; padding-left: 0;">
-<li style="padding: 8px 0; border-bottom: 1px solid #eee;"><span style="color: red; font-weight: bold;">0.28</span> - Incorrect. This value doesn't correspond to the correct calculation.</li>
-<li style="padding: 8px 0; border-bottom: 1px solid #eee;"><span style="color: red; font-weight: bold;">0.33</span> - Incorrect. This is approximately the original debt-to-equity ratio ($200,000/$600,000).</li>
-<li style="padding: 8px 0; border-bottom: 1px solid #eee;"><span style="color: red; font-weight: bold;">0.40</span> - Incorrect. This value doesn't match the correct calculation.</li>
-<li style="padding: 8px 0;"><span style="color: #68d3a7; font-weight: bold;">0.50</span> - Correct. After issuing new shares, the debt-to-equity ratio is $200,000/$400,000 = 0.50.</li>
-</ul>
-</div> <div style="background-color:#207bb5; color: white; padding: 15px; border-radius: 10px; margin-top: 20px;">
-<h3 style="margin: 0; color: white;">Summary</h3>
-<p>When new shares are issued, the equity of a company increases, which results in a decrease in the debt-to-equity ratio if the debt remains unchanged. This improves the company's financial leverage position, making it more attractive to potential lenders and investors by demonstrating a lower financial risk profile.</p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">D. 0.50 is correct.</strong> Equity rises to $400,000 while debt stays at $200,000, so the ratio is $200,000 divided by $400,000.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">The <strong style="color:var(--mx-navy)">debt-to-equity ratio</strong> is total liabilities divided by total equity, and it measures how much financing comes from creditors relative to owners. Equity is not handed to you here, so pull it from the <strong style="color:var(--mx-navy)">accounting equation</strong>: assets minus liabilities. Before the issue that is $500,000 less $200,000, or $300,000 of equity, a starting ratio of 0.67.</p><p style="margin:0 0 18px">A <strong style="color:var(--mx-navy)">stock issuance for cash</strong> raises cash and raises equity by the same $100,000. <strong style="color:var(--mx-navy)">Liabilities do not move</strong>, so the numerator stays at $200,000 while the denominator climbs to $400,000 and the ratio falls. Fresh equity capital <strong style="color:var(--mx-navy)">deleverages</strong> the balance sheet. The classic trap is dropping <strong style="color:var(--mx-navy)">total assets</strong>, now $600,000, into the denominator, or forgetting to add the new shares to original equity at all.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Total assets</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$500,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Total liabilities</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$200,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Equity before issue, $500,000 less $200,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$300,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Shares issued for cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$100,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Equity after issue</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$400,000</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Debt-to-equity, $200,000 &divide; $400,000</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">0.50</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The share issuance entry</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$100,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Common stock</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$100,000</td></tr></tbody></table></div><p style="margin:0 0 18px">The entry touches only the asset and equity sides, which is exactly why the numerator never changes. Borrowing that same $100,000 instead would leave equity at $300,000 and push debt to $300,000, a ratio of 1.00.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">Why the others are wrong</h3><p style="margin:0; color:var(--mx-grey)"><strong style="color:var(--mx-navy)">A. 0.28.</strong> Divides $200,000 by $700,000, an equity figure that counts the new shares twice.<br /><strong style="color:var(--mx-navy)">B. 0.33.</strong> Debt over post-issue total assets of $600,000, which is debt-to-assets, not debt-to-equity.<br /><strong style="color:var(--mx-navy)">C. 0.40.</strong> Divides debt by the original $500,000 of total assets and ignores the issuance.</p></div>`,
     },
     {
       id: "5464",
@@ -269,103 +53,7 @@ export const ratiosQuiz: Quiz = {
         `$180,000`,
       ],
       correctIndex: 0,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-<div style="background-color:#01506e; color: white; padding: 15px; border-radius: 8px 8px 0 0; margin-bottom: 20px;">
-<h2 style="margin: 0; color: white;">Net Income Calculation</h2>
-</div> <div style="background-color: #f9f9f9; padding: 15px; border-left: 5px solid #0099d4; border-radius: 5px; margin-bottom: 20px;">
-<p style="font-size: 16px; line-height: 1.5;">The question asks for the Net Income of Company PQR based on EBIT of $200,000, Interest Expense of $20,000, and a Tax Rate of 30%.</p>
-<p style="font-weight: bold; color: #68d3a7;">Correct Answer: $126,000</p>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="background-color: #207bb5; color: white; padding: 10px; border-radius: 5px;">Explanation</h3>
-<p>Net Income is calculated by subtracting Interest Expense and Taxes from EBIT (Earnings Before Interest and Taxes).</p> <div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin: 15px 0;">
-<h4 style="color: #4B556A; margin-top: 0;">Step-by-Step Calculation:</h4>
-<ol style="color: #4B556A;">
-<li>First, calculate EBT (Earnings Before Taxes):
-<br>EBT = EBIT - Interest Expense
-<br>EBT = $200,000 - $20,000 = <strong>$180,000</strong>
-</li>
-<li>Then, calculate Tax Expense:
-<br>Tax Expense = EBT × Tax Rate
-<br>Tax Expense = $180,000 × 30% = <strong>$54,000</strong>
-</li>
-<li>Finally, calculate Net Income:
-<br>Net Income = EBT - Tax Expense
-<br>Net Income = $180,000 - $54,000 = <strong>$126,000</strong>
-</li>
-</ol>
-</div>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="background-color: #207bb5; color: white; padding: 10px; border-radius: 5px;">Journal Entries</h3>
-<p>The following journal entries would record the interest expense and tax expense for the period:</p> <table style="width: 100%; border-collapse: collapse; margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<thead>
-<tr style="background-color: #01506e; color: white;">
-<th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Account</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Debit</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd;">Interest Expense</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$20,000</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-</tr>
-<tr>
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd;">&nbsp;&nbsp;&nbsp;&nbsp;Cash/Interest Payable</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$20,000</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd;">Income Tax Expense</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$54,000</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-</tr>
-<tr>
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd;">&nbsp;&nbsp;&nbsp;&nbsp;Income Tax Payable</td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border: 1px solid #ddd;">$54,000</td>
-</tr>
-</tbody>
-</table>
-</div> <div style="margin-bottom: 20px;">
-<h3 style="background-color: #207bb5; color: white; padding: 10px; border-radius: 5px;">Answer Analysis</h3>
-<table style="width: 100%; border-collapse: collapse; margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<thead>
-<tr style="background-color: #01506e; color: white;">
-<th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Option</th>
-<th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Explanation</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #e8f7e8; border-left: 5px solid #68d3a7;">
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd; color: #007000; font-weight: bold;">$126,000</td>
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd;">Correct. EBIT ($200,000) - Interest ($20,000) = EBT ($180,000) - Taxes ($54,000) = $126,000</td>
-</tr>
-<tr style="background-color: #ffeded; border-left: 5px solid #ff7f7f;">
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd; color: #c00000; font-weight: bold;">$140,000</td>
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd;">Incorrect. This may result from calculating tax as 30% of EBIT rather than EBT.</td>
-</tr>
-<tr style="background-color: #ffeded; border-left: 5px solid #ff7f7f;">
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd; color: #c00000; font-weight: bold;">$160,000</td>
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd;">Incorrect. This may result from deducting only interest but not taxes.</td>
-</tr>
-<tr style="background-color: #ffeded; border-left: 5px solid #ff7f7f;">
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd; color: #c00000; font-weight: bold;">$180,000</td>
-<td style="padding: 10px; text-align: left; border: 1px solid #ddd;">Incorrect. This is the EBT (EBIT - Interest) but does not account for tax expense.</td>
-</tr>
-</tbody>
-</table>
-</div> <div style="background-color:#68d3a7; padding: 15px; border-radius: 8px; color: white; margin-top: 20px;">
-<h3 style="margin-top: 0; color: white;">Summary</h3>
-<p>To calculate Net Income from EBIT:</p>
-<ol>
-<li>Subtract Interest Expense from EBIT to get EBT</li>
-<li>Calculate Tax Expense (EBT × Tax Rate)</li>
-<li>Subtract Tax Expense from EBT to get Net Income</li>
-</ol>
-<p>In this case: $200,000 - $20,000 - $54,000 = <strong>$126,000</strong></p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">A. $126,000 is correct.</strong> Interest is deducted before tax, so the 30% rate applies to $180,000 of pretax income, not to EBIT.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px"><strong style="color:var(--mx-navy)">EBIT</strong> is earnings before interest and taxes. Work down the income statement in the order the name gives you: subtract <strong style="color:var(--mx-navy)">interest expense</strong> to get <strong style="color:var(--mx-navy)">earnings before taxes</strong>, apply the tax rate to that pretax figure, and what remains is <strong style="color:var(--mx-navy)">net income</strong>. Tax is never computed on EBIT when the company carries debt.</p><p style="margin:0 0 12px">The trap is taxing EBIT. Interest is <strong style="color:var(--mx-navy)">deductible</strong>, so it shields income from tax: each dollar of interest lowers pretax income by a dollar and lowers tax by 30 cents, dropping net income by only 70 cents. Taxing the full $200,000 would add $6,000 of tax the company never owes.</p><p style="margin:0 0 18px">Ratio questions lean on this ladder because each rung feeds a different ratio: EBIT drives <strong style="color:var(--mx-navy)">times interest earned</strong>, EBT drives the <strong style="color:var(--mx-navy)">effective tax rate</strong>, and net income drives return on equity and earnings per share. Read the stem for which rung it wants.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">EBIT</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$200,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Less: interest expense</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(20,000)</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Earnings before taxes</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$180,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Less: income tax, $180,000 x 30%</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">(54,000)</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Net income</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$126,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entries</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Interest expense</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$20,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Cash or interest payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$20,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Income tax expense</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$54,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Income tax payable</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$54,000</td></tr></tbody></table></div><p style="margin:0">Check it in one step: net income equals pretax income times one minus the tax rate, $180,000 x 70% = $126,000. The $20,000 of interest cost the company only $14,000 after tax, which is the same after-tax logic used in cost of capital work. If the stem changed the interest or the rate, the ladder does not change: interest first, tax second.</p></div>`,
     },
     {
       id: "5460",
@@ -377,82 +65,7 @@ export const ratiosQuiz: Quiz = {
         `45.5%`,
       ],
       correctIndex: 3,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-<div style="background-color: #01506e; color: white; padding: 12px 20px; border-radius: 8px 8px 0 0; margin-bottom: 20px;">
-<h2 style="margin: 0; color: white;">Debt-to-Equity Ratio Analysis</h2>
-</div> <div style="background-color: #f0f8ff; padding: 15px; border-radius: 8px; border-left: 5px solid #207bb5; margin-bottom: 20px;">
-<h3 style="color: #207bb5; margin-top: 0;">Understanding the Problem</h3>
-<p>We need to calculate the new debt-to-equity ratio after a $10,000 stock issuance when the company has:</p>
-<ul style="list-style-type: none; padding-left: 10px;">
-<li>• Initial debt-to-equity ratio: 0.60</li>
-<li>• Total assets: $50,000</li>
-<li>• New common shares issued: $10,000</li>
-</ul>
-</div> <div style="background-color: #f0f8ff; padding: 15px; border-radius: 8px; border-left: 5px solid #0099d4; margin-bottom: 20px;">
-<h3 style="color: #0099d4; margin-top: 0;">Step-by-Step Solution</h3> <h4 style="color: #4B556A;">Step 1: Determine Initial Equity and Debt</h4>
-<p>Using the accounting equation and the given debt-to-equity ratio:</p>
-<ul>
-<li>Assets = Liabilities + Equity = $50,000</li>
-<li>Debt-to-Equity Ratio = Liabilities / Equity = 0.60</li>
-<li>If we call Equity "X", then Liabilities = 0.60X</li>
-<li>So: $50,000 = 0.60X + X = 1.60X</li>
-<li>X = $50,000 / 1.60 = $31,250 (Equity)</li>
-<li>Liabilities = 0.60 × $31,250 = $18,750</li>
-</ul> <h4 style="color: #4B556A;">Step 2: Calculate New Equity After Stock Issuance</h4>
-<p>The company issues $10,000 in common shares:</p>
-<ul>
-<li>New Equity = $31,250 + $10,000 = $41,250</li>
-</ul> <h4 style="color: #4B556A;">Step 3: Record Journal Entry for Stock Issuance</h4>
-<table style="width: 90%; margin: 15px auto; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-<tr style="background-color: #207bb5; color: white;">
-<th style="padding: 10px; text-align: left; border: 1px solid #ccc;">Account</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ccc;">Debit</th>
-<th style="padding: 10px; text-align: right; border: 1px solid #ccc;">Credit</th>
-</tr>
-<tr style="background-color: white;">
-<td style="padding: 8px; border: 1px solid #ccc;">Cash</td>
-<td style="padding: 8px; text-align: right; border: 1px solid #ccc;">$10,000</td>
-<td style="padding: 8px; text-align: right; border: 1px solid #ccc;"></td>
-</tr>
-<tr style="background-color: #f5f5f5;">
-<td style="padding: 8px; border: 1px solid #ccc;">Common Stock</td>
-<td style="padding: 8px; text-align: right; border: 1px solid #ccc;"></td>
-<td style="padding: 8px; text-align: right; border: 1px solid #ccc;">$10,000</td>
-</tr>
-</table> <h4 style="color: #4B556A;">Step 4: Calculate New Debt-to-Equity Ratio</h4>
-<p>New Debt-to-Equity Ratio = Liabilities / New Equity</p>
-<p>New Debt-to-Equity Ratio = $18,750 / $41,250 = 0.455 or 45.5%</p>
-</div> <div style="background-color: #f0f8ff; padding: 15px; border-radius: 8px; border-left: 5px solid #68d3a7; margin-bottom: 20px;">
-<h3 style="color: #68d3a7; margin-top: 0;">Answer Analysis</h3>
-<table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
-<tr>
-<td style="padding: 10px; border: 1px solid #ddd;">92.0%</td>
-<td style="padding: 10px; border: 1px solid #ddd; color: red;">Incorrect</td>
-</tr>
-<tr>
-<td style="padding: 10px; border: 1px solid #ddd;">55.0%</td>
-<td style="padding: 10px; border: 1px solid #ddd; color: red;">Incorrect</td>
-</tr>
-<tr>
-<td style="padding: 10px; border: 1px solid #ddd;">52.0%</td>
-<td style="padding: 10px; border: 1px solid #ddd; color: red;">Incorrect</td>
-</tr>
-<tr>
-<td style="padding: 10px; border: 1px solid #ddd;">45.5%</td>
-<td style="padding: 10px; border: 1px solid #ddd; color: green; font-weight: bold;">Correct</td>
-</tr>
-</table>
-</div> <div style="background-color:#68d3a7; padding: 15px; border-radius: 8px; color: white; margin-top: 20px;">
-<h3 style="margin-top: 0; color: white;">Summary</h3>
-<p>When a company issues additional equity:</p>
-<ul>
-<li>The debt-to-equity ratio decreases (as long as no additional debt is taken)</li>
-<li>The original ratio was 0.60 or 60%</li>
-<li>After issuing $10,000 in common stock, the ratio decreased to 45.5%</li>
-<li>This decrease indicates a lower financial leverage and potentially less financial risk</li>
-</ul>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">D. 45.5% is correct.</strong> Equity grows by the $10,000 raised while liabilities are untouched, so $18,750 / $41,250 = 45.5%.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Debt to equity is <strong style="color:var(--mx-navy)">total liabilities divided by total equity</strong>. Work backward from the <strong style="color:var(--mx-navy)">accounting equation</strong>: assets equal liabilities plus equity. A ratio of 0.60 means liabilities are 0.60 of equity, so assets equal 1.60 times equity. Divide assets by 1.60 to get equity, then subtract to get liabilities.</p><p style="margin:0 0 18px">Issuing common stock for cash increases assets and <strong style="color:var(--mx-navy)">credits equity only</strong>. The numerator is frozen and the denominator grows, so the ratio must <strong style="color:var(--mx-navy)">fall</strong>, showing lower leverage. The trap is letting the $10,000 touch liabilities, or comparing debt to the new <strong style="color:var(--mx-navy)">asset</strong> total instead of equity.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Total assets</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$50,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Equity, $50,000 / 1.60</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$31,250</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Liabilities, $50,000 - $31,250</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$18,750</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Equity after issuance, $31,250 + $10,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$41,250</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Debt to equity, $18,750 / $41,250</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">45.5%</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entry for the issuance</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$10,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Common stock</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$10,000</td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">Why the others are wrong</h3><p style="margin:0; color:var(--mx-grey)"><strong style="color:var(--mx-navy)">A. 92.0%.</strong> Adds the $10,000 to liabilities instead of equity, giving $28,750 / $31,250.<br /><strong style="color:var(--mx-navy)">B. 55.0%.</strong> Trims the original 60% by estimate rather than recomputing liabilities over the new equity balance.<br /><strong style="color:var(--mx-navy)">C. 52.0%.</strong> Uses post-issuance total assets of $60,000 as the denominator instead of equity.</p></div>`,
     },
     {
       id: "5470",
@@ -468,91 +81,7 @@ How would you interpret this change?`,
         `The firm has become more profitable.`,
       ],
       correctIndex: 1,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-<div style="background-color:#01506e; color: white; padding: 15px; border-radius: 10px 10px 0 0; margin-bottom: 20px;">
-<h2 style="margin: 0; color: white;">Analysis of Current Ratio Changes</h2>
-</div> <div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #0099d4;">
-<h3 style="color: #207bb5; margin-top: 0;">Multiple Choice Analysis</h3>
-<ul style="list-style-type: none; padding-left: 0;">
-<li style="padding: 8px; margin-bottom: 5px; background-color: #ffeeee; border-radius: 5px; border-left: 4px solid #ff6666;">
-<span style="color: #ff0000;">✗</span> The firm's liquidity position has improved significantly.
-</li>
-<li style="padding: 8px; margin-bottom: 5px; background-color: #eeffee; border-radius: 5px; border-left: 4px solid #68d3a7;">
-<span style="color: #68d3a7;">✓</span> The firm may have trouble converting its assets into cash.
-</li>
-<li style="padding: 8px; margin-bottom: 5px; background-color: #ffeeee; border-radius: 5px; border-left: 4px solid #ff6666;">
-<span style="color: #ff0000;">✗</span> The firm has likely expanded its operations.
-</li>
-<li style="padding: 8px; margin-bottom: 5px; background-color: #ffeeee; border-radius: 5px; border-left: 4px solid #ff6666;">
-<span style="color: #ff0000;">✗</span> The firm has become more profitable.
-</li>
-</ul>
-</div> <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #68d3a7;">
-<h3 style="color: #207bb5; margin-top: 0;">Explanation of Current Ratio and Inventory</h3>
-<p>While an increase in the current ratio (current assets/current liabilities) might initially suggest improved liquidity, we need to examine the <strong>composition</strong> of current assets. In this case, the increase is primarily due to inventory growth, which is generally less liquid than cash or marketable securities.</p> <div style="background-color:#e6f7ff; padding: 12px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #0099d4;">
-<h4 style="color: #01506e; margin-top: 0;">Key Insight:</h4>
-<p>Not all current assets are equally liquid. The quality of liquidity matters as much as the quantity.</p>
-</div>
-</div> <div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #207bb5;">
-<h3 style="color: #207bb5; margin-top: 0;">Potential Implications</h3>
-<ul>
-<li>Increased inventory could indicate <strong>slow-moving stock</strong> or reduced demand</li>
-<li>The firm might be <strong>overstocking</strong> in anticipation of supply chain issues</li>
-<li>There could be <strong>obsolescence risk</strong> with the growing inventory</li>
-<li>Cash may be tied up in inventory, reducing actual available liquidity</li>
-</ul> <table style="width: 100%; border-collapse: collapse; margin-top: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<thead style="background-color: #4B556A; color: white;">
-<tr>
-<th style="padding: 10px; text-align: left;">Liquidity Measure</th>
-<th style="padding: 10px; text-align: left;">Includes Inventory?</th>
-<th style="padding: 10px; text-align: left;">Consideration</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Current Ratio</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Yes</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Less stringent liquidity test</td>
-</tr>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Quick Ratio</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">No</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">More stringent liquidity test</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Cash Ratio</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">No</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Most stringent liquidity test</td>
-</tr>
-</tbody>
-</table>
-</div> <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #01506e;">
-<h3 style="color: #207bb5; margin-top: 0;">Financial Impact Example</h3> <p>When inventory increases significantly, it affects the financial records as follows:</p> <table style="width: 100%; border-collapse: collapse; margin: 15px 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-<thead style="background-color: #207bb5; color: white;">
-<tr>
-<th style="padding: 10px; text-align: left; width: 60%;">Account</th>
-<th style="padding: 10px; text-align: right; width: 20%;">Debit</th>
-<th style="padding: 10px; text-align: right; width: 20%;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Inventory</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$1,000,000</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;"></td>
-</tr>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Accounts Payable</td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;"></td>
-<td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: right;">$1,000,000</td>
-</tr>
-</tbody>
-</table> <p>This increases both current assets and current liabilities, but the effect on current ratio depends on the relative sizes before the change.</p>
-</div> <div style="background-color:#68d3a7; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-<h3 style="color: white; margin-top: 0;">Summary</h3>
-<p style="color: #4B556A;">A rising current ratio driven primarily by inventory growth is a potential red flag. While the current ratio formula shows improvement, the <strong>quality of liquidity</strong> may be deteriorating. For a more accurate assessment of true liquidity, analysts should examine the quick ratio or cash ratio, which exclude inventory from their calculations.</p> <p style="color: #4B556A;">Further investigation into inventory turnover ratios, days inventory outstanding, and the reasons behind inventory accumulation would be essential for a complete analysis of the firm's operational efficiency and financial health.</p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">B. The firm may have trouble converting its assets into cash is correct.</strong> A current ratio lifted by inventory shows liquidity on paper that the firm cannot actually spend.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">The <strong style="color:var(--mx-navy)">current ratio</strong> is current assets divided by current liabilities, and it treats every current asset as if it were equally spendable. It is not. Cash and receivables are <strong style="color:var(--mx-navy)">near-cash</strong>; <strong style="color:var(--mx-navy)">inventory</strong> sits at the far end of the operating cycle, because it must be sold first and the resulting receivable then collected before any cash arrives. A ratio that climbs because inventory piled up reports more liquidity without delivering it.</p><p style="margin:0 0 12px">That is why the <strong style="color:var(--mx-navy)">quick ratio</strong> exists: it strips out inventory and prepaid items and compares only cash, marketable securities and receivables to current liabilities. When the current ratio rises and the quick ratio stays flat or falls, the gap is the warning sign. The build-up may be <strong style="color:var(--mx-navy)">slow-moving or obsolete stock</strong>, weakening demand, or simple overbuying. Confirm it with <strong style="color:var(--mx-navy)">inventory turnover</strong> and days inventory outstanding; falling turnover alongside rising inventory means the company is converting less of its stock to cash, not more.</p><p style="margin:0 0 18px">The <strong style="color:var(--mx-navy)">quality of liquidity</strong> matters as much as the quantity. A bigger pile of current assets only helps creditors if those assets turn into cash before the bills come due, so always ask which asset drove the improvement.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">Why the others are wrong</h3><p style="margin:0; color:var(--mx-grey)"><strong style="color:var(--mx-navy)">A.</strong> Confuses a larger ratio with better liquidity, when the added assets are the least liquid ones on the balance sheet.<br /><strong style="color:var(--mx-navy)">C.</strong> Rising inventory signals unsold goods just as easily as growth; sales trends and capacity data, not the current ratio, evidence expansion.<br /><strong style="color:var(--mx-navy)">D.</strong> The current ratio is a balance sheet measure and says nothing about earnings; excess inventory usually drags profit down through carrying costs and write-downs.</p></div>`,
     },
     {
       id: "8437",
@@ -564,37 +93,7 @@ How would you interpret this change?`,
         `$35,000`,
       ],
       correctIndex: 2,
-      explanation: `<div style="border-radius:10px; box-shadow:0 4px 8px rgba(0, 0, 0, 0.1); font-family:'Segoe UI',sans-serif; margin-bottom:0; margin-top:0; padding:20px">
-<div style="background-color:#01506e; border-radius:8px 8px 0 0; color:white; margin-bottom:20px; padding:15px">
-<h2 style="margin-left:0; margin-right:0">Current Ratio Analysis: Maximum Loan Determination</h2>
-</div> <div style="background-color:#f9f9f9; border-left:5px solid #0099d4; border-radius:8px; margin-bottom:20px; padding:15px">
-<h3>Question Analysis</h3> <p>We need to find the maximum loan amount Pioneer Trading can borrow while maintaining a current ratio of at least 1.25.</p> <div style="display:flex; justify-content:space-between; margin-bottom:15px">
-<div style="background-color:#f2f2f2; border-left:4px solid #68d3a7; border-radius:8px; padding:10px; width:48%">
-<h4>Initial Situation</h4> <ul style="list-style-type:none"> <li>Current Assets: <strong>$15,000</strong></li> <li>Current Liabilities: <strong>$7,000</strong></li> <li>Current Ratio: <strong>2.14</strong> ($15,000 &divide; $7,000)</li>
-</ul>
-</div> <div style="background-color:#f2f2f2; border-left:4px solid #207bb5; border-radius:8px; padding:10px; width:48%">
-<h4>Minimum Requirement</h4> <ul style="list-style-type:none"> <li>Minimum Current Ratio: <strong>1.25</strong></li>
-</ul>
-</div>
-</div>
-</div> <div style="background-color:#f5f5f5; border-left:5px solid #68d3a7; border-radius:8px; margin-bottom:20px; padding:15px">
-<h3>Mathematical Solution</h3> <p>When Pioneer borrows money, both current assets and current liabilities increase by the loan amount:</p> <div style="background-color:#ffffff; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05); margin-bottom:15px; padding:15px">
-<p>Let&#39;s call the loan amount <strong>L</strong>.</p> <p>New Current Assets = $15,000 + L</p> <p>New Current Liabilities = $7,000 + L</p> <p>We need the new current ratio to be at least 1.25:</p> <p>(15,000 + L) &divide; (7,000 + L) &ge; 1.25</p> <p>15,000 + L &ge; 1.25 &times; (7,000 + L)</p> <p>15,000 + L &ge; 8,750 + 1.25L</p> <p>15,000 - 8,750 &ge; 1.25L - L</p> <p>6,250 &ge; 0.25L</p> <p>25,000 &ge; L</p>
-</div> <p>Therefore, the maximum loan amount is <strong>$25,000</strong>.</p>
-</div> <div style="background-color:#f5f5f5; border-left:5px solid #0099d4; border-radius:8px; margin-bottom:20px; padding:15px">
-<h3>Verification</h3> <table cellspacing="0" style="background-color:white; border-collapse:collapse; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05); margin-bottom:15px; overflow:hidden; width:100%"> <thead> <tr> <th style="text-align:left">Item</th> <th style="text-align:right">Initial</th> <th style="text-align:right">After Loan</th> </tr> </thead> <tbody> <tr> <td style="border-bottom:1px solid #eeeeee">Current Assets</td> <td style="border-bottom:1px solid #eeeeee; text-align:right">$15,000</td> <td style="border-bottom:1px solid #eeeeee; text-align:right">$40,000</td> </tr> <tr> <td style="border-bottom:1px solid #eeeeee">Current Liabilities</td> <td style="border-bottom:1px solid #eeeeee; text-align:right">$7,000</td> <td style="border-bottom:1px solid #eeeeee; text-align:right">$32,000</td> </tr> <tr> <td><strong>Current Ratio</strong></td> <td style="text-align:right"><strong>2.14</strong></td> <td style="text-align:right"><strong>1.25</strong></td> </tr> </tbody>
-</table> <p>With a $25,000 loan:</p> <ul> <li>New Current Assets: $15,000 + $25,000 = $40,000</li> <li>New Current Liabilities: $7,000 + $25,000 = $32,000</li> <li>New Current Ratio: $40,000 &divide; $32,000 = 1.25</li>
-</ul>
-</div> <div style="background-color:#f5f5f5; border-left:5px solid #207bb5; border-radius:8px; margin-bottom:20px; padding:15px">
-<h3>Journal Entry for the Loan</h3> <table cellspacing="0" style="background-color:white; border-collapse:collapse; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05); overflow:hidden; width:100%"> <thead> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> </thead> <tbody> <tr> <td style="border-bottom:1px solid #eeeeee">Cash</td> <td style="border-bottom:1px solid #eeeeee; text-align:right">$25,000</td> <td style="border-bottom:1px solid #eeeeee; text-align:right">&nbsp;</td> </tr> <tr> <td>Short-term Loan Payable</td> <td style="text-align:right">&nbsp;</td> <td style="text-align:right">$25,000</td> </tr> </tbody>
-</table> <p>(To record the maximum short-term loan that maintains the current ratio at 1.25)</p>
-</div> <div style="background-color:#f9f9f9; border-radius:8px; margin-bottom:20px; padding:15px">
-<h3>Answer Options</h3> <ul style="list-style-type:none"> <li><span style="color:red">$20,000</span> - Incorrect</li> <li><span style="color:red">$30,000</span> - Incorrect</li> <li><strong>$25,000</strong> - Correct</li> <li><span style="color:red">$35,000</span> - Incorrect</li>
-</ul>
-</div> <div style="background-color:#e9f7f2; border-left:5px solid #68d3a7; border-radius:8px; padding:15px">
-<h3>Summary</h3> <p>The largest loan amount Pioneer Trading can borrow without dropping below a 1.25 current ratio is <strong>$25,000</strong>. This would increase current assets to $40,000 and current liabilities to $32,000, resulting in a current ratio of exactly 1.25.</p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">C. $25,000 is correct.</strong> A short-term loan adds the same dollars to current assets and to current liabilities, and $25,000 drives the ratio down to exactly 1.25.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">The <strong style="color:var(--mx-navy)">current ratio</strong> is current assets divided by current liabilities. Borrowing cash on a short-term note debits Cash and credits a current liability, so the loan amount is added to <strong style="color:var(--mx-navy)">both the numerator and the denominator</strong>. Pioneer starts at 2.14, well above 1, so every equal dollar added to both sides pulls the ratio <strong style="color:var(--mx-navy)">down toward 1.00</strong>.</p><p style="margin:0 0 18px">The question is how far the ratio can fall before it reaches the <strong style="color:var(--mx-navy)">1.25 floor</strong>. Set the post-loan ratio equal to 1.25, treat the loan as the unknown, clear the denominator and solve. Note that only <strong style="color:var(--mx-navy)">short-term</strong> borrowing creates this squeeze: a long-term note would raise current assets with no change to current liabilities, and the ratio would rise instead of fall.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Current assets before the loan</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$15,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Current liabilities before the loan</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$7,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Current ratio before the loan</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">2.14</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Set the target: ($15,000 + L) &divide; ($7,000 + L)</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">= 1.25</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Multiply out</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$15,000 + L = $8,750 + 1.25L</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Collect the L terms</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$6,250 = 0.25L</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Maximum loan, $6,250 &divide; 0.25</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$25,000</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entry</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$25,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Short-term loan payable</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$25,000</td></tr></tbody></table></div><p style="margin:0 0 12px">Check it: current assets of <strong style="color:var(--mx-navy)">$40,000</strong> over current liabilities of <strong style="color:var(--mx-navy)">$32,000</strong> is exactly <strong style="color:var(--mx-navy)">1.25</strong>, so $25,000 is the ceiling.</p></div>`,
     },
     {
       id: "8439",
@@ -612,35 +111,7 @@ What is the company’s working capital and current ratio after these transactio
         `Working Capital: $110,000; Current Ratio: 3.0`,
       ],
       correctIndex: 0,
-      explanation: `<div style="border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family:'Segoe UI',sans-serif; padding:20px">
-<div style="background-color:#01506e; border-radius:8px 8px 0 0; color:white; margin-bottom:20px; padding:15px">
-<h2 style="margin-left:0; margin-right:0">Analyzing Working Capital and Current Ratio After Bond Issuance</h2>
-</div> <div style="background-color:#f9f9f9; border-left:5px solid #0099d4; border-radius:5px; margin-bottom:20px; padding:15px">
-<h3>Original Financial Position</h3> <ul style="list-style-type:none"> <li><strong>Current Assets:</strong> $150,000</li> <li><strong>Current Liabilities:</strong> $100,000</li> <li><strong>Initial Working Capital:</strong> $150,000 - $100,000 = $50,000</li> <li><strong>Initial Current Ratio:</strong> $150,000 &divide; $100,000 = 1.50</li>
-</ul>
-</div> <div style="background-color:#f9f9f9; border-left:5px solid #68d3a7; border-radius:5px; margin-bottom:20px; padding:15px">
-<h3>Transaction Analysis</h3> <p>The company plans to issue bonds for $40,000 and use the proceeds to pay down accounts payable. Let&#39;s analyze how this affects the working capital and current ratio:</p> <h4>Journal Entries:</h4> <table cellspacing="0" style="border-collapse:collapse; border-radius:5px; margin-bottom:15px; overflow:hidden; width:100%"> <tbody> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Cash</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$40,000</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Bonds Payable</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$40,000</td> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Accounts Payable</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$40,000</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> </tr> <tr> <td style="border-bottom:1px solid #dddddd">Cash</td> <td style="border-bottom:1px solid #dddddd; text-align:right">&nbsp;</td> <td style="border-bottom:1px solid #dddddd; text-align:right">$40,000</td> </tr> </tbody>
-</table> <p><strong>Key Effects:</strong></p> <ul> <li>Cash increases by $40,000 (from bond issuance) and then decreases by $40,000 (payment of A/P), resulting in no net change to current assets</li> <li>Accounts Payable (current liability) decreases by $40,000</li> <li>Bonds Payable (long-term liability) increases by $40,000, but this doesn&#39;t affect current liabilities</li>
-</ul>
-</div> <div style="background-color:#f9f9f9; border-left:5px solid #0099d4; border-radius:5px; margin-bottom:20px; padding:15px">
-<h3>Financial Position After Transaction</h3> <ul style="list-style-type:none"> <li><strong>New Current Assets:</strong> $150,000 (unchanged)</li> <li><strong>New Current Liabilities:</strong> $100,000 - $40,000 = $60,000</li> <li><strong>New Working Capital:</strong> $150,000 - $60,000 = $90,000</li> <li><strong>New Current Ratio:</strong> $150,000 &divide; $60,000 = 2.50</li>
-</ul>
-</div> <div style="background-color:#f9f9f9; border-radius:5px; margin-bottom:20px; padding:20px">
-<h3>Answer Analysis</h3> <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:15px">
-<div style="background-color:#e8f7f1; border-radius:5px; border:2px solid #68d3a7; flex:1; min-width:200px; padding:10px">
-<p>Working Capital: $90,000; Current Ratio: 2.5 ✓</p> <p>This answer is correct. The working capital increases to $90,000 and the current ratio improves to 2.5.</p>
-</div> <div style="background-color:#ffeeee; border-radius:5px; border:2px solid #ff6b6b; flex:1; min-width:200px; padding:10px">
-<p>Working Capital: $50,000; Current Ratio: 1.5 ✗</p> <p>This represents the original position before the transaction.</p>
-</div> <div style="background-color:#ffeeee; border-radius:5px; border:2px solid #ff6b6b; flex:1; min-width:200px; padding:10px">
-<p>Working Capital: $70,000; Current Ratio: 2.0 ✗</p> <p>These values are incorrect calculations.</p>
-</div> <div style="background-color:#ffeeee; border-radius:5px; border:2px solid #ff6b6b; flex:1; min-width:200px; padding:10px">
-<p>Working Capital: $110,000; Current Ratio: 3.0 ✗</p> <p>These values overestimate the impact of the transaction.</p>
-</div>
-</div>
-</div> <div style="background-color:#68d3a7; border-radius:0 0 8px 8px; color:white; padding:15px">
-<h3 style="margin-left:0; margin-right:0">Summary</h3> <p>When Solaris Energy Solutions issues $40,000 in bonds and uses the proceeds to reduce accounts payable, the company&#39;s financial position improves. The working capital increases from $50,000 to $90,000, and the current ratio improves from 1.5 to 2.5. This occurs because the transaction shifts debt from short-term (accounts payable) to long-term (bonds payable), reducing current liabilities while keeping current assets constant.</p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">A. Working Capital: $90,000; Current Ratio: 2.5 is correct.</strong> Long-term bond proceeds retire a current liability, so current assets stay flat while current liabilities fall by $40,000.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px"><strong style="color:var(--mx-navy)">Working capital</strong> is current assets minus current liabilities, and the <strong style="color:var(--mx-navy)">current ratio</strong> is current assets divided by current liabilities. Same inputs, one stated in dollars and one as a multiple. Only <strong style="color:var(--mx-navy)">current</strong> accounts touch either measure, so the classification of the new debt decides the answer.</p><p style="margin:0 0 18px">Cash comes in from the bonds and goes straight back out to vendors, a <strong style="color:var(--mx-navy)">wash within current assets</strong>. Bonds payable is a <strong style="color:var(--mx-navy)">long-term liability</strong>, so nothing replaces the $40,000 of accounts payable that disappears. Refinancing short-term debt with long-term debt <strong style="color:var(--mx-navy)">raises working capital dollar for dollar</strong> and improves the ratio. Contrast that with paying vendors out of existing cash, which leaves working capital unchanged and moves the ratio only because both sides shrink.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entries</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$40,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Bonds payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$40,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accounts payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$40,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Cash</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$40,000</td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Current assets, unchanged</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$150,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Current liabilities, $100,000 less $40,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$60,000</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Working capital, $150,000 less $60,000</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">$90,000</strong></td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">Current ratio, $150,000 / $60,000</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">2.5</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">Why the others are wrong</h3><p style="margin:0; color:var(--mx-grey)"><strong style="color:var(--mx-navy)">B. $50,000; 1.5.</strong> That is the position before the transaction, ignoring the paydown entirely.<br /><strong style="color:var(--mx-navy)">C. $70,000; 2.0.</strong> Implies only $25,000 of payables was retired, not $40,000.<br /><strong style="color:var(--mx-navy)">D. $110,000; 3.0.</strong> Counts the $40,000 cash inflow in current assets and the payables reduction, double counting one transaction.</p></div>`,
     },
     {
       id: "5459",
@@ -652,84 +123,7 @@ What is the company’s working capital and current ratio after these transactio
         `Decrease, Decrease`,
       ],
       correctIndex: 1,
-      explanation: `<div style="font-family: 'Segoe UI', sans-serif; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-<div style="background-color:#01506e; color: white; padding: 15px; border-radius: 10px 10px 0 0; margin-bottom: 20px;">
-<h1 style="margin: 0; color: white;">Analyzing Bond Issuance Impact on Financial Ratios</h1>
-</div> <div style="background-color: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #207bb5;">
-<h2 style="color: #207bb5; margin-top: 0;">Journal Entries Analysis</h2> <div style="overflow-x: auto; margin-bottom: 15px;">
-<table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden;">
-<thead>
-<tr style="background-color: #4B556A; color: white;">
-<th style="padding: 10px; text-align: left;">Account</th>
-<th style="padding: 10px; text-align: right;">Debit</th>
-<th style="padding: 10px; text-align: right;">Credit</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f0f0f0;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Cash</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;">XXX</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;"></td>
-</tr>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Bonds Payable</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;">XXX</td>
-</tr>
-<tr style="background-color: #f0f0f0;">
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Accounts Payable</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;">XXX</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;"></td>
-</tr>
-<tr>
-<td style="padding: 10px; border-bottom: 1px solid #ddd;">Cash</td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;"></td>
-<td style="padding: 10px; text-align: right; border-bottom: 1px solid #ddd;">XXX</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div> <div style="background-color: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #68d3a7;">
-<h2 style="color: #207bb5; margin-top: 0;">Impact on Financial Ratios</h2> <h3 style="color: #01506e;">Current Ratio Effect</h3>
-<p>When the company issues bonds (long-term liability) and uses the proceeds to pay down accounts payable (current liability):</p>
-<ul style="list-style-type: square; padding-left: 25px;">
-<li>Current assets remain unchanged (cash increases then decreases)</li>
-<li>Current liabilities decrease (reduction in accounts payable)</li>
-<li>Result: <span style="font-weight: bold; color: #68d3a7;">Current Ratio Increases</span></li>
-</ul> <h3 style="color: #01506e;">Working Capital Effect</h3>
-<p>Working Capital = Current Assets - Current Liabilities</p>
-<ul style="list-style-type: square; padding-left: 25px;">
-<li>Current assets remain unchanged</li>
-<li>Current liabilities decrease</li>
-<li>Result: <span style="font-weight: bold; color: #68d3a7;">Working Capital Increases</span></li>
-</ul> <h3 style="color: #01506e;">Working Capital Turnover Effect</h3>
-<p>Working Capital Turnover = Sales / Working Capital</p>
-<ul style="list-style-type: square; padding-left: 25px;">
-<li>Sales remain unchanged</li>
-<li>Working capital increases</li>
-<li>Result: <span style="font-weight: bold; color: #68d3a7;">Working Capital Turnover Decreases</span></li>
-</ul>
-</div> <div style="background-color: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #0099d4;">
-<h2 style="color: #207bb5; margin-top: 0;">Answer Analysis</h2> <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
-<div style="flex: 1; min-width: 250px; background-color: #f0f0f0; padding: 15px; border-radius: 8px; border-left: 5px solid #ff6b6b;">
-<p>Option 1: Increase; Increase</p>
-<p><span style="color: #ff6b6b;">Incorrect</span> - Only partially correct. Current Ratio and Working Capital increase, but doesn't address Working Capital Turnover.</p>
-</div> <div style="flex: 1; min-width: 250px; background-color: #f0f0f0; padding: 15px; border-radius: 8px; border-left: 5px solid #68d3a7;">
-<p>Option 2: Increase, Decrease</p>
-<p><span style="color: #68d3a7;">Correct</span> - Current Ratio increases, Working Capital Turnover decreases.</p>
-</div> <div style="flex: 1; min-width: 250px; background-color: #f0f0f0; padding: 15px; border-radius: 8px; border-left: 5px solid #ff6b6b;">
-<p>Option 3: Decrease, Increase</p>
-<p><span style="color: #ff6b6b;">Incorrect</span> - Both effects are opposite of what actually occurs.</p>
-</div> <div style="flex: 1; min-width: 250px; background-color: #f0f0f0; padding: 15px; border-radius: 8px; border-left: 5px solid #ff6b6b;">
-<p>Option 4: Decrease, Decrease</p>
-<p><span style="color: #ff6b6b;">Incorrect</span> - Both effects are incorrect.</p>
-</div>
-</div>
-</div> <div style="background-color:#68d3a7; color: white; padding: 15px; border-radius: 0 0 10px 10px;">
-<h2 style="margin: 0; color: white;">Summary</h2>
-<p style="margin-bottom: 0;">When a company issues bonds and uses the proceeds to pay down accounts payable, it effectively replaces short-term debt with long-term debt. This increases the current ratio, increases working capital, and consequently decreases working capital turnover. The correct answer is <strong>Increase, Decrease</strong>.</p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">B. Increase, Decrease is correct.</strong> Swapping a current liability for a long-term one lifts the current ratio and lifts working capital, and a bigger working capital denominator pushes turnover down.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Bonds payable are a <strong style="color:var(--mx-navy)">long-term liability</strong>; accounts payable are a <strong style="color:var(--mx-navy)">current liability</strong>. Cash comes in and goes straight back out, so <strong style="color:var(--mx-navy)">current assets are unchanged</strong> while <strong style="color:var(--mx-navy)">current liabilities fall</strong>. A smaller denominator raises the <strong style="color:var(--mx-navy)">current ratio</strong> (current assets / current liabilities).</p><p style="margin:0 0 18px">Watch the second ratio, because the direction flips. <strong style="color:var(--mx-navy)">Working capital</strong> is current assets minus current liabilities, so it <strong style="color:var(--mx-navy)">increases</strong>. <strong style="color:var(--mx-navy)">Working capital turnover</strong> is sales divided by working capital. Sales did not change, and the denominator got bigger, so turnover <strong style="color:var(--mx-navy)">decreases</strong>. Improving liquidity and improving efficiency are not the same thing.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entries</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">XXX</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px 11px 40px">Bonds payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">XXX</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Accounts payable</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">XXX</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Cash</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">XXX</td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">Why the others are wrong</h3><p style="margin:0; color:var(--mx-grey)"><strong style="color:var(--mx-navy)">A. Increase; Increase.</strong> Confuses working capital, which rises, with working capital turnover, which falls as its denominator grows.<br /><strong style="color:var(--mx-navy)">C. Decrease, Increase.</strong> Reverses both effects, as if the bonds were classified as a current liability.<br /><strong style="color:var(--mx-navy)">D. Decrease, Decrease.</strong> Gets turnover right but misses that paying down accounts payable shrinks current liabilities and raises the current ratio.</p></div>`,
     },
     {
       id: "8438",
@@ -741,27 +135,7 @@ What is the company’s working capital and current ratio after these transactio
         `68.8%`,
       ],
       correctIndex: 1,
-      explanation: `<div style="border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family:'Segoe UI',sans-serif; margin-bottom:0; margin-top:0; padding:20px">
-<div style="background-color:#01506e; border-radius:10px 10px 0 0; color:white; margin-bottom:20px; padding:15px">
-<h1 style="margin-left:0; margin-right:0">Debt-to-Equity Ratio Analysis</h1>
-</div> <div style="background-color:#f9f9f9; border-left:5px solid #68d3a7; border-radius:5px; margin-bottom:20px; padding:15px">
-<h3>Question Answer</h3> <p>The new debt-to-equity ratio after issuing common shares will be: <strong>52.2%</strong></p>
-</div> <div style="margin-bottom:20px">
-<h2>Step-by-Step Solution</h2> <h3>Initial Financial Position</h3> <p>Given information:</p> <ul> <li>Total assets: $80,000</li> <li>Current debt-to-equity ratio: 0.75</li> <li>Planned capital raise: $20,000 through common shares</li>
-</ul> <h3>Step 1: Calculate Initial Liabilities and Equity</h3> <p>The current ratio of 0.75 means:</p> <ul> <li>Debt represents 3 parts</li> <li>Equity represents 4 parts (since 3/4 = 0.75)</li> <li>Total = 7 parts</li>
-</ul> <div style="background-color:#e8f4f8; border-radius:8px; margin-bottom:15px; margin-left:0; margin-right:0; margin-top:15px; padding:15px">
-<p>One part = $80,000 &divide; 7 = $11,428.57</p> <p>Initial equity = 4 &times; $11,428.57 = $45,714</p> <p>Initial liabilities = 3 &times; $11,428.57 = $34,286</p>
-</div> <h3>Step 2: Analyze the Impact of Stock Issuance</h3> <p>When the company issues $20,000 in common shares:</p> <table cellspacing="0" style="border-collapse:collapse; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); margin:15px 0; overflow:hidden; width:100%"> <tbody> <tr> <th style="text-align:left">Item</th> <th style="text-align:right">Before Issuance</th> <th style="text-align:right">Change</th> <th style="text-align:right">After Issuance</th> </tr> <tr> <td>Assets</td> <td style="text-align:right">$80,000</td> <td style="text-align:right">+$20,000</td> <td style="text-align:right">$100,000</td> </tr> <tr> <td>Liabilities</td> <td style="text-align:right">$34,286</td> <td style="text-align:right">$0</td> <td style="text-align:right">$34,286</td> </tr> <tr> <td>Equity</td> <td style="text-align:right">$45,714</td> <td style="text-align:right">+$20,000</td> <td style="text-align:right">$65,714</td> </tr> </tbody>
-</table> <h3>Journal Entry for Stock Issuance</h3> <table cellspacing="0" style="border-collapse:collapse; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.1); margin:15px 0; overflow:hidden; width:100%"> <tbody> <tr> <th style="text-align:left">Account</th> <th style="text-align:right">Debit</th> <th style="text-align:right">Credit</th> </tr> <tr> <td>Cash</td> <td style="text-align:right">$20,000</td> <td style="text-align:right">&nbsp;</td> </tr> <tr> <td>Common Stock</td> <td style="text-align:right">&nbsp;</td> <td style="text-align:right">$20,000</td> </tr> <tr> <td colspan="3">To record the issuance of common stock for cash</td> </tr> </tbody>
-</table> <h3>Step 3: Calculate the New Debt-to-Equity Ratio</h3> <div style="background-color:#e8f4f8; border-radius:8px; margin-bottom:15px; margin-left:0; margin-right:0; margin-top:15px; padding:15px">
-<p>New Debt-to-Equity Ratio = New Liabilities &divide; New Equity</p> <p>New Debt-to-Equity Ratio = $34,286 &divide; $65,714 = 0.522 or 52.2%</p>
-</div> <h3>Analysis of Multiple Choice Options</h3> <ul style="list-style-type:none"> <li>54.5% - Incorrect</li> <li>52.2% - Correct</li> <li>60.0% - Incorrect</li> <li>68.8% - Incorrect</li>
-</ul>
-</div> <div style="background-color:#f5f7fa; border-radius:8px; border-top:3px solid #207bb5; margin-top:20px; padding:15px">
-<h3>Summary</h3> <p>The debt-to-equity ratio decreased from 75% to 52.2% after the issuance of common stock. This indicates:</p> <ul> <li>An improved financial leverage position</li> <li>Lower financial risk</li> <li>Enhanced capacity for future borrowing</li> <li>A stronger balance sheet overall</li>
-</ul> <p>This is a common financial strategy to improve a company&#39;s capital structure while raising funds for operations or expansion.</p>
-</div>
-</div>`,
+      explanation: `<div style="--mx-navy:#01506e; --mx-blue:#207bb5; --mx-lightblue:#0099d4; --mx-yellow:#e9dc12; --mx-grey:#4B556A; --mx-rule:#dde4ea; --mx-tint:#f2f7fa; --mx-body:#232a33; color:var(--mx-body); line-height:1.6"><div style="background:var(--mx-tint); border-left:4px solid var(--mx-yellow); padding:13px 18px; margin-bottom:18px"><strong style="color:var(--mx-navy)">B. 52.2% is correct.</strong> The $20,000 share issuance adds to equity only, so the same debt is divided by a larger equity base.</div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The rule</h3><p style="margin:0 0 12px">Debt-to-equity is <strong style="color:var(--mx-navy)">total liabilities divided by total equity</strong>. Because assets equal liabilities plus equity, a ratio of 0.75 lets you split the $80,000 balance sheet: if equity is E, then liabilities are 0.75E, and <strong style="color:var(--mx-navy)">1.75E = $80,000</strong>. Solve for equity first, then take liabilities as the plug.</p><p style="margin:0 0 18px">Issuing common shares for cash raises assets and equity by the same $20,000 and leaves <strong style="color:var(--mx-navy)">liabilities unchanged</strong>. Only the <strong style="color:var(--mx-navy)">denominator</strong> moves, so the ratio must fall. Do not re-split the new $100,000 of assets using the old 0.75, and never put total assets in the denominator. The answer is often quoted as a percentage, so 0.522 and 52.2% are the same number.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The math</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Equity before, $80,000 / 1.75</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$45,714</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Liabilities, $80,000 - $45,714</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$34,286</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Liabilities after issuance, unchanged</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$34,286</td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Equity after issuance, $45,714 + $20,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$65,714</td></tr><tr><td style="border:0; padding:11px 14px"><strong style="color:var(--mx-navy)">New debt-to-equity, $34,286 / $65,714</strong></td><td style="border:0; padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">52.2%</strong></td></tr></tbody></table></div><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">The entry for the share issuance</h3><div style="background:var(--mx-tint); border-left:4px solid var(--mx-blue); padding:8px 10px; margin-bottom:18px"><table style="border:0; border-collapse:collapse; width:100%"><tbody><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px"><strong style="color:var(--mx-navy)">Account</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Debit</strong></td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"><strong style="color:var(--mx-navy)">Credit</strong></td></tr><tr><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px">Cash</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right">$20,000</td><td style="border:0; border-bottom:1px solid var(--mx-rule); padding:11px 14px; text-align:right"></td></tr><tr><td style="border:0; padding:11px 14px 11px 40px">Common stock</td><td style="border:0; padding:11px 14px; text-align:right"></td><td style="border:0; padding:11px 14px; text-align:right">$20,000</td></tr></tbody></table></div><p style="margin:0 0 18px">Assets rise to $100,000 and equity to $65,714, while the <strong style="color:var(--mx-navy)">$34,286 numerator never moves</strong>. Leverage drops from 75% to 52.2%.</p><h3 style="color:var(--mx-navy); font-size:17px; margin:0 0 8px">Why the others are wrong</h3><p style="margin:0; color:var(--mx-grey)"><strong style="color:var(--mx-navy)">A. 54.5%.</strong> Re-splits the enlarged $100,000 asset base instead of holding liabilities fixed at $34,286.<br /><strong style="color:var(--mx-navy)">C. 60.0%.</strong> Scales the old 75% by $80,000 / $100,000, which uses total assets rather than equity as the denominator.<br /><strong style="color:var(--mx-navy)">D. 68.8%.</strong> Credits only part of the $20,000 to equity, leaving the ratio close to the original 75%.</p></div>`,
     },
   ],
 };

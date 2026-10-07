@@ -16,7 +16,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "coverage": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/coverage.py \"$@\"' --",
-    "cross-check": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/cross_check.py \"$@\"' --"
+    "cross-check": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/cross_check.py \"$@\"' --",
+    "sync-explanations": "sh -c 'PY=$(ls ../venv/bin/python 2>/dev/null || command -v python3); \"$PY\" scripts/sync_explanations.py \"$@\"' --"
   },
   "dependencies": {
     "react": "^19.2.7",

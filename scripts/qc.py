@@ -258,6 +258,17 @@ def check_agreement(q: dict) -> list[tuple[str, str]]:
                 ("AGREEMENT", f"explanation calls {sorted(wrong)[:3]} correct, "
                               f"but the keyed choice is {sorted(keyed_nums)[:3]}")
             )
+
+    # 4. The newer explanations open with a banner: "B. $3,400 is correct."
+    #    The letter is what a student reads first, so a reordered choice list or
+    #    a stale key would send them to the wrong answer with total confidence.
+    opening = re.sub(r"\s+", " ", strip_tags(e)).strip()
+    mb = re.match(r"([A-D])\.\s", opening)
+    if mb:
+        if LETTERS.index(mb.group(1)) != ci:
+            out.append(
+                ("AGREEMENT", f"explanation opens with {mb.group(1)}, key is {LETTERS[ci]}")
+            )
     return out
 
 
