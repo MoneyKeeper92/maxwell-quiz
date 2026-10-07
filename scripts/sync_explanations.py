@@ -54,6 +54,11 @@ MEDIA_HOST = "https://coursemaxwellcpareview.com"
 ALLOWED_IFRAME_HOSTS = ("cloudflarestream.com", "coursemaxwellcpareview.com")
 
 
+# Quizzes whose questions were written for this app and are not in the database.
+# Their ids are plain numbers, so the IA- prefix cannot identify them.
+AUTHORED_QUIZZES = {"most-common-far", "most-common-aud", "most-common-reg"}
+
+
 def norm(s: str | None) -> str:
     s = H.unescape(re.sub(r"<[^>]+>", " ", s or ""))
     return re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
@@ -235,7 +240,7 @@ def main() -> None:
             rec = {"quiz": meta["key"], "id": q["id"], "n": n + 1}
             status = None
 
-            if q["id"].startswith("IA-"):
+            if q["id"].startswith("IA-") or meta["key"] in AUTHORED_QUIZZES:
                 status, why = "authored", "written for this app, not in the database"
             elif d is None:
                 status, why = "no_match", how

@@ -44,31 +44,34 @@ def main() -> None:
     a = ap.parse_args()
 
     recs = records()
-    by_id = {r.id: r for r in recs}
+    by_id = {r.key: r for r in recs}
     if len(by_id) != len(recs):
         sys.exit("duplicate ids in authored records")
     if a.show:
         print(mx.render(by_id[a.show])); return
 
     done, bad, seen = 0, [], set()
-    for f in sorted(DATA.glob("intermediate/*.ts")):
+    for f in sorted(DATA.glob("*.ts")) + sorted(DATA.glob("intermediate/*.ts")):
+        if f.name in qc.SKIP:
+            continue
         meta, qs = qc.parse_module(str(f))
         src = f.read_text(encoding="utf-8")
         starts = list(BLOCK.finditer(src))
         edits = []
         for n, q in enumerate(qs):
-            r = by_id.get(q["id"])
+            r = by_id.get(f"{meta['key']}/{q['id']}") or by_id.get(q["id"])
             if not r:
                 continue
-            seen.add(q["id"])
-            probs = mx.problems(r, q["correctIndex"], q["choices"][q["correctIndex"]])
+            seen.add(r.key)
+            label = r.key
+            probs = mx.problems(r, q["correctIndex"], q["choices"][q["correctIndex"]], meta["course"])
             if probs:
-                bad.append((q["id"], probs)); continue
+                bad.append((label, probs)); continue
             seg_start = starts[n].end()
             seg_end = starts[n + 1].start() if n + 1 < len(starts) else len(src)
             sp = explanation_span(src[seg_start:seg_end])
             if not sp:
-                bad.append((q["id"], ["no explanation literal"])); continue
+                bad.append((label, ["no explanation literal"])); continue
             edits.append((seg_start + sp[0], seg_start + sp[1], ts_template(mx.render(r))))
         if a.apply and edits:
             for s, e, rep in sorted(edits, key=lambda t: -t[0]):

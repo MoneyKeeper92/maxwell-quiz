@@ -47,6 +47,13 @@ class E:
     entry_title: str = "The entry"
     after_entry: str = ""
     math_title: str = "The math"
+    # Needed where the id alone is not unique: the three most-common-* quizzes
+    # each number their questions 1 to 10.
+    quiz: str = ""
+
+    @property
+    def key(self) -> str:
+        return f"{self.quiz}/{self.id}" if self.quiz else self.id
 
 
 def _para(texts: list[str], last_margin: str) -> str:
@@ -130,7 +137,7 @@ def render(e: E) -> str:
     return "".join(parts)
 
 
-def problems(e: E, correct_index: int, keyed_choice: str = "") -> list[str]:
+def problems(e: E, correct_index: int, keyed_choice: str = "", course: str = "intermediate") -> list[str]:
     """Everything that must be true before this is allowed near a module."""
     bad = []
     if e.letter != LETTERS[correct_index]:
@@ -146,6 +153,8 @@ def problems(e: E, correct_index: int, keyed_choice: str = "") -> list[str]:
     blob = render(e)
     if any(c in blob for c in ("—", "–")):
         bad.append("contains an em or en dash")
-    if re.search(r"\b(CPA|exam)\b", re.sub(r"<[^>]+>", " ", blob), re.I):
+    # The Intermediate course is for undergraduates and should not talk about the
+    # CPA exam. The free CPA quizzes are about nothing else.
+    if course == "intermediate" and re.search(r"\b(CPA|exam)\b", re.sub(r"<[^>]+>", " ", blob), re.I):
         bad.append("mentions the CPA exam, which this course should not")
     return bad
